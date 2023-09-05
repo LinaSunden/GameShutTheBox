@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SUP23_G4.Models
 {
-    internal class Player
+    public class Player
     {
+        public string? Name { get; set; }
+        public int Score { get; set; }
     }
 }
