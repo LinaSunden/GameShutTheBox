@@ -10,16 +10,27 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Border
-         Background="LightBlue"
+         Background="DarkGreen"
      BorderBrush="Gray"  
      BorderThickness="3"
      CornerRadius="5"
             >
         <Grid>
-          
-            
-            
-            <Canvas x:Name="Dice1Canvas" Width="100" Height="100" Margin="340,172,354,172">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Canvas x:Name="Dice1Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right">
                 <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="21" Canvas.Top="21" VerticalAlignment="Top"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="29" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible"/>
@@ -32,7 +43,7 @@
 
 
 
-            <Canvas x:Name="Dice2Canvas" Width="100" Height="100" Margin="500,172,354,172">
+            <Canvas x:Name="Dice2Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center">
                 <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="21" Canvas.Top="21" VerticalAlignment="Top" Visibility="Visible"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" />
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="29" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible"/>
@@ -42,7 +53,19 @@
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="44" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="44" Canvas.Top="44" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Visible"/>
             </Canvas>
-
+            
+            
+            <Image Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill"/>
+            <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
 
         </Grid>
     </Border>
