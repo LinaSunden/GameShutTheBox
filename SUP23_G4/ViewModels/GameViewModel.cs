@@ -34,9 +34,6 @@ namespace SUP23_G4.ViewModels
                 }
             }          
         }
-        //public void DiceToss2()
-        //{
-
-        //}
+     
     }
 }
