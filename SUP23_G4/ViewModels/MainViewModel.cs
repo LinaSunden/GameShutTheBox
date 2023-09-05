@@ -10,6 +10,22 @@ namespace SUP23_G4.ViewModels
 {
     internal class MainViewModel : BaseViewModel
     {
-        public BaseViewModel CurrentViewModel { get; set; } = new StartViewModel();
+
+        #region Konstruktor
+        public MainViewModel()
+        {
+            CurrentViewModel = new StartViewModel(this);
+        }
+
+        #endregion
+
+        #region Property
+        public BaseViewModel CurrentViewModel { get; set; }
+
+        #endregion
+
+        #region Instansvariabler
+        private BaseViewModel _mainViewModel;
+        #endregion
     }
 }
