@@ -12,11 +12,7 @@
             <views:StartView/> 
             
         </DataTemplate>
-        <!--<DataTemplate x:Key="DataTemplateGameView"
-            DataType="{x:Type vm:GameViewModel}">
-            <views:GameView/>
-
-        </DataTemplate>-->
+        
 
 
     </Application.Resources>
