@@ -29,6 +29,80 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock
+                    Text="Spelare 2:"
+                    HorizontalAlignment="Left"
+                    Foreground="White"
+                    FontSize="20"
+                    Margin="10,30,0,0"  
+                    Opacity="1" 
+                    FontWeight="Bold" 
+                    FontFamily="Cascadia Mono">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                
+                <TextBlock
+                    Text="Poäng:"
+                    HorizontalAlignment="left"
+                    Foreground="White"
+                    FontSize="20"
+                    Margin="10,20,0,0"  
+                    Opacity="1" 
+                    FontWeight="Bold" 
+                    FontFamily="Cascadia Mono">
+                     <TextBlock.Effect>
+                        <DropShadowEffect/>
+                     </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="0">
+                <TextBlock
+                    Text="Spelare 1:"
+                    HorizontalAlignment="Left"
+                    Foreground="White"
+                    FontSize="20"
+                    Margin="10,30,0,0"  
+                    Opacity="1" 
+                    FontWeight="Bold" 
+                    FontFamily="Cascadia Mono">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                
+                <TextBlock 
+                    Text="Poäng: "
+                    HorizontalAlignment="left"
+                    Foreground="White"
+                    FontSize="20"
+                    Margin="10,20,0,0"  
+                    Opacity="1" 
+                    FontWeight="Bold" 
+                    FontFamily="Cascadia Mono">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center">
+                <TextBlock
+          Text="Omgång:"
+          Foreground="White"
+          FontSize="20"  
+          Opacity="1" 
+          FontWeight="Bold" 
+          FontFamily="Cascadia Mono">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+
 
             <Canvas x:Name="Dice1Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right">
                 <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="21" Canvas.Top="21" VerticalAlignment="Top"/>
@@ -41,9 +115,7 @@
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="44" Canvas.Top="44" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
             </Canvas>
 
-
-
-            <Canvas x:Name="Dice2Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center">
+            <Canvas x:Name="Dice2Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="3" HorizontalAlignment="left">
                 <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="21" Canvas.Top="21" VerticalAlignment="Top" Visibility="Visible"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" />
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="29" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible"/>
@@ -54,7 +126,7 @@
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="44" Canvas.Top="44" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Visible"/>
             </Canvas>
             
-            
+            <!--Test med bilder för att se hur det ser ut och testade om man kunde göra så de gick över flera columner. Vilket är möjligt med Grid.ColumnSpan--> 
             <Image Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill"/>
             <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
