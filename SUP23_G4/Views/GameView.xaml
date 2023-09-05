@@ -19,11 +19,18 @@
 
 
             <Image Margin="73,190,451,66" Source="/Image1.png" Stretch="Fill"/>
-            <Rectangle HorizontalAlignment="Left" Height="58" Margin="541,201,0,0" Stroke="Black" VerticalAlignment="Top" Width="58" RadiusY="5" RadiusX="5" Fill="White"/>
-            <Rectangle HorizontalAlignment="Left" Height="58" Margin="457,201,0,0" Stroke="Black" VerticalAlignment="Top" Width="58" RadiusY="5" RadiusX="5" Fill="White" />
-            <Ellipse HorizontalAlignment="Left" Height="12" Margin="480,224,0,0" Stroke="Black" VerticalAlignment="Top" Width="12" Fill="Black"/>
-            <Ellipse HorizontalAlignment="Left" Height="12" Margin="583,240,0,0" Stroke="Black" VerticalAlignment="Top" Width="12" Fill="Black"/>
-            <Ellipse HorizontalAlignment="Left" Height="12" Margin="551,208,0,0" Stroke="Black" VerticalAlignment="Top" Width="12" Fill="Black"/>
+
+            <StackPanel Width="100" Height="100" Margin="520,190,174,154">
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black"/>
+                <Rectangle Height="58"  Stroke="Black" Width="58" RadiusY="5" RadiusX="5" Fill="White" HorizontalAlignment="Center"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black"/>
+            </StackPanel>
+            <StackPanel Width="100" Height="100" HorizontalAlignment="Right">
+                <Rectangle HorizontalAlignment="Left" Height="58" Stroke="Black" VerticalAlignment="Top" Width="58" RadiusY="5" RadiusX="5" Fill="White" />
+                <Ellipse HorizontalAlignment="Left" Height="12" Stroke="Black" VerticalAlignment="Top" Width="12" Fill="Black"/>
+            </StackPanel>
+
+
         </Grid>
     </Border>
 
