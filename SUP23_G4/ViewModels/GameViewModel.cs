@@ -11,7 +11,7 @@ namespace SUP23_G4.ViewModels
 {
     public class GameViewModel : BaseViewModel
     {
-        
+
         public int DieOne { get; private set; }
         public int DieTwo { get; private set; }
 
@@ -34,5 +34,9 @@ namespace SUP23_G4.ViewModels
                 }
             }          
         }
+        //public void DiceToss2()
+        //{
+
+        //}
     }
 }
