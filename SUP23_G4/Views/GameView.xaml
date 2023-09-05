@@ -16,19 +16,32 @@
      CornerRadius="5"
             >
         <Grid>
+          
+            
+            
+            <Canvas x:Name="Dice1Canvas" Width="100" Height="100" Margin="340,172,354,172">
+                <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="21" Canvas.Top="21" VerticalAlignment="Top"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="29" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="44" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="29" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="44" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="44" Canvas.Top="44" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
+            </Canvas>
 
 
-            <Image Margin="73,190,451,66" Source="/Image1.png" Stretch="Fill"/>
 
-            <StackPanel Width="100" Height="100" Margin="520,190,174,154">
-                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black"/>
-                <Rectangle Height="58"  Stroke="Black" Width="58" RadiusY="5" RadiusX="5" Fill="White" HorizontalAlignment="Center"/>
-                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black"/>
-            </StackPanel>
-            <StackPanel Width="100" Height="100" HorizontalAlignment="Right">
-                <Rectangle HorizontalAlignment="Left" Height="58" Stroke="Black" VerticalAlignment="Top" Width="58" RadiusY="5" RadiusX="5" Fill="White" />
-                <Ellipse HorizontalAlignment="Left" Height="12" Stroke="Black" VerticalAlignment="Top" Width="12" Fill="Black"/>
-            </StackPanel>
+            <Canvas x:Name="Dice2Canvas" Width="100" Height="100" Margin="500,172,354,172">
+                <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="21" Canvas.Top="21" VerticalAlignment="Top" Visibility="Visible"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" />
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="29" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="44" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="29" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="44" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden"/>
+                <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="44" Canvas.Top="44" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Visible"/>
+            </Canvas>
 
 
         </Grid>
