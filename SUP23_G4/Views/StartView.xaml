@@ -14,12 +14,108 @@
              BorderBrush="Gray"  
              BorderThickness="3"
              CornerRadius="5">
+
         <Grid>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300">
+
+                </RowDefinition>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Grid.Column="0" Grid.Row="1" Background="SlateGray"/>
+            <Border Grid.Column="0" Grid.Row="0" Background="SlateGray"/>
+            <TextBlock  Text="SHUT"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="70"
+                       Margin="61,27,0,0" FontFamily="Cascadia Mono" FontStyle="Italic" Opacity="0.8">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock Text="THE BOX"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="70"
+                       Margin="10,129,0,0" FontStyle="Italic" Opacity="0.8">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="1"
+           Text="Player 1"
+           VerticalAlignment="Top"
+           HorizontalAlignment="Left"
+           Foreground="White"
+           FontSize="20"
+           Margin="10,0,0,0"  Opacity="1" FontWeight="Bold" FontFamily="Cascadia Mono">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBox x:Name="txtPlayer1"
+                     Width="174"
+                     Height="30"
+                     Grid.Column="0" Grid.Row="1"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Margin="10,30,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
+            <TextBlock Grid.Column="0" Grid.Row="1"
+                       Text="Player 2"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="20"
+                       Margin="10,70,0,0"  Opacity="1" FontWeight="Bold" FontFamily="Cascadia Mono">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBox x:Name="txtPlayer2"
+                     Width="174"
+                     Height="30"
+                     Grid.Column="0" Grid.Row="1"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Margin="10,100,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
+
+            <Button Content="Start Game" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,22,42,72" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="LightGray" Offset="1"/>
+                        <GradientStop Color="DarkGreen" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.OpacityMask>
+            </Button>
+            <Button Content="Game Rules" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,97,42,-3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="LightGray" Offset="1"/>
+                        <GradientStop Color="DarkGreen" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.OpacityMask>
+            </Button>
         </Grid>
+
     </Border>
 
 </UserControl>
