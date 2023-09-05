@@ -8,13 +8,18 @@
              d:DataContext="{d:DesignInstance vm:StartViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-                    <Border
+
+    <Border
                  Background="DarkGreen"
              BorderBrush="Gray"  
              BorderThickness="3"
-             CornerRadius="5"
-        
- />
-    </Grid>
+             CornerRadius="5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </Border>
+
 </UserControl>
