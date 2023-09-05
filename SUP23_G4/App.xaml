@@ -7,16 +7,16 @@
              StartupUri="/Views/MainWindow.xaml">
     
     <Application.Resources>
-        <DataTemplate x:Key="DataTemplateStartView"
+        <DataTemplate
             DataType="{x:Type vm:StartViewModel}">
             <views:StartView/> 
             
         </DataTemplate>
-        <DataTemplate x:Key="DataTemplateGameView"
+        <!--<DataTemplate x:Key="DataTemplateGameView"
             DataType="{x:Type vm:GameViewModel}">
             <views:GameView/>
 
-        </DataTemplate>
+        </DataTemplate>-->
 
 
     </Application.Resources>
