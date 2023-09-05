@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SUP23_G4.Views.Dice
 {
-    internal class Die
+    public class Die
     {
+        public int DieValue { get; set; }
     }
 }
