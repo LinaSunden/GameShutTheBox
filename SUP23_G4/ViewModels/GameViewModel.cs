@@ -11,10 +11,13 @@ namespace SUP23_G4.ViewModels
 {
     public class GameViewModel : BaseViewModel
     {
-
+        #region Egenskaper
         public int DieOne { get; private set; }
         public int DieTwo { get; private set; }
 
+        #endregion
+
+        #region Metoder
         public void DiceToss()
         {
             Random r = new Random();
@@ -34,6 +37,7 @@ namespace SUP23_G4.ViewModels
                 }
             }          
         }
-     
+        #endregion
+
     }
 }

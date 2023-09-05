@@ -19,7 +19,7 @@ namespace SUP23_G4.ViewModels
 
         #endregion
 
-        #region Property
+        #region Egenskaper
         public BaseViewModel CurrentViewModel { get; set; }
 
         #endregion

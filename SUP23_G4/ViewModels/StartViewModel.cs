@@ -21,7 +21,7 @@ namespace SUP23_G4.ViewModels
 
         #endregion
 
-        #region Property
+        #region Egenskaper
         public ICommand StartGameCommand { get; set; }
 
         #endregion
