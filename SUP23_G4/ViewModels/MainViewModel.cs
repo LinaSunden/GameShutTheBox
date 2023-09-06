@@ -1,10 +1,12 @@
-﻿using SUP23_G4.ViewModels.Base;
+﻿using SUP23_G4.Commands;
+using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SUP23_G4.ViewModels
 {
@@ -27,5 +29,6 @@ namespace SUP23_G4.ViewModels
         #region Instansvariabler
         private BaseViewModel _mainViewModel;
         #endregion
+
     }
 }

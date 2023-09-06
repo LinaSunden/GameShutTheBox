@@ -48,7 +48,7 @@
                     <DropShadowEffect/>
                 </TextBlock.Effect></TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="1"
-           Text="Player 1"
+           Text="Spelare 1"
            VerticalAlignment="Top"
            HorizontalAlignment="Left"
            Foreground="White"
@@ -66,7 +66,7 @@
                      HorizontalAlignment="Left"
                      Margin="10,30,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
             <TextBlock Grid.Column="0" Grid.Row="1"
-                       Text="Player 2"
+                       Text="Spelare 2"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
                        Foreground="White"
@@ -84,7 +84,7 @@
                      HorizontalAlignment="Left"
                      Margin="10,100,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
 
-            <Button Content="Start Game" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,22,42,72" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding StartGameCommand}">
+            <Button Content="Starta spelet" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,22,42,72" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding GameRulesCommand}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -99,7 +99,7 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
-            <Button Content="Game Rules" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,97,42,-3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1">
+            <Button Content="Spelregler" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,97,42,-3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding GameRulesCommand}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
