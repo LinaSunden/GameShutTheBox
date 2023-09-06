@@ -18,7 +18,6 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -32,7 +31,7 @@
             </Grid.RowDefinitions>
 
             <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray"/>
-            <Border Grid.Column="1" Grid.RowSpan="3" Background="SandyBrown"/>
+          
             
 
             <StackPanel Grid.Row="0" Grid.Column="0">
@@ -110,7 +109,7 @@
             </StackPanel>
 
 
-            <Canvas x:Name="Dice1Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right">
+            <Canvas x:Name="Dice1Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right">
                 <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="21" Canvas.Top="21" VerticalAlignment="Top"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="29" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible"/>
@@ -121,7 +120,7 @@
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="44" Canvas.Top="44" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Hidden"/>
             </Canvas>
 
-            <Canvas x:Name="Dice2Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="4" HorizontalAlignment="left">
+            <Canvas x:Name="Dice2Canvas" Width="100" Height="100" Grid.Row="1" Grid.Column="3" HorizontalAlignment="left">
                 <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="21" Canvas.Top="21" VerticalAlignment="Top" Visibility="Visible"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="60" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" />
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="29" Canvas.Top="29" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible"/>
@@ -133,8 +132,8 @@
             </Canvas>
             
             <!--Test med bilder för att se hur det ser ut och testade om man kunde göra så de gick över flera columner. Vilket är möjligt med Grid.ColumnSpan--> 
-            <Image Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill"/>
-            <Image Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+            <Image Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill"/>
+            <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
