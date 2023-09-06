@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Automation;
 
-namespace SUP23_G4.Enums
+namespace SUP23_G4.Converters
 {
-    public class Status
+    internal class StatusToColorConverter
     {
-         
-
     }
 }
