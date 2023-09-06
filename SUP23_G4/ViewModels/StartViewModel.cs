@@ -15,14 +15,18 @@ namespace SUP23_G4.ViewModels
         public StartViewModel(MainViewModel mainViewModel)
         {
             StartGameCommand = new RelayCommand(x => SwitchToGameView());
+            GameRulesCommand = new RelayCommand(x => SwitchToGameRules());
             this._mainViewModel = mainViewModel;
+           
 
         }
+  
 
         #endregion
 
         #region Egenskaper
         public ICommand StartGameCommand { get; set; }
+        public ICommand GameRulesCommand { get; set; }
 
         #endregion
 
@@ -44,6 +48,10 @@ namespace SUP23_G4.ViewModels
         {
             _mainViewModel.CurrentViewModel = new GameViewModel();
 
+    }
+    protected void SwitchToGameRules()
+        {
+            _mainViewModel.CurrentViewModel = new GameRulesModel();
         }
 
         #endregion

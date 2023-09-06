@@ -18,7 +18,12 @@
             <views:GameView/>
 
         </DataTemplate>
+        
+        <DataTemplate
+       DataType="{x:Type vm:GameRulesModel}">
+            <views:GameRulesView/>
 
+        </DataTemplate>
 
     </Application.Resources>
 </Application>
