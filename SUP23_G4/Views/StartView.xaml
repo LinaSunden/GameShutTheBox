@@ -84,7 +84,7 @@
                      HorizontalAlignment="Left"
                      Margin="10,100,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
 
-            <Button Content="Starta spelet" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,22,42,72" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding GameRulesCommand}">
+            <Button Content="Starta spelet" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,22,42,72" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding StartGameCommand}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>

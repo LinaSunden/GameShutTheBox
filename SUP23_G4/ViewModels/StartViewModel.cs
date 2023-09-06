@@ -21,6 +21,7 @@ namespace SUP23_G4.ViewModels
 
 
         }
+
         #endregion
 
         #region Egenskaper
@@ -49,7 +50,11 @@ namespace SUP23_G4.ViewModels
             _mainViewModel.CurrentViewModel = new GameViewModel();
 
     }
-    protected void SwitchToGameRules()
+        /// <summary>
+        /// Byter CurrentViewModel från att visa startVy till att visa GameRules
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        protected void SwitchToGameRules()
         {
             _mainViewModel.CurrentViewModel = new GameRulesModel();
         }

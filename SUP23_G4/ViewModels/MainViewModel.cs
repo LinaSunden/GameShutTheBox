@@ -17,17 +17,25 @@ namespace SUP23_G4.ViewModels
         public MainViewModel()
         {
             CurrentViewModel = new StartViewModel(this);
+            StartViewClickCommand = new RelayCommand(x => SwitchToStartView());
+        }
+
+        private void SwitchToStartView()
+        {
+            CurrentViewModel = new StartViewModel(this);
         }
 
         #endregion
 
         #region Egenskaper
         public BaseViewModel CurrentViewModel { get; set; }
+        public ICommand StartViewClickCommand { get; set; } 
 
         #endregion
 
         #region Instansvariabler
         private BaseViewModel _mainViewModel;
+
         #endregion
 
     }
