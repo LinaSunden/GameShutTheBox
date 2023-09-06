@@ -39,7 +39,7 @@ namespace SUP23_G4.ViewModels
         }
         public void FillListOfAvailableTiles(/*int diceValue*/)
         {
-            int diceValue = 8;
+            int diceValue = 10;
             List<int> tiles = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             List<int> availableTiles = new List<int>();
             foreach (int tile in tiles)
@@ -54,7 +54,7 @@ namespace SUP23_G4.ViewModels
                 }
             }
             int[] arrayTiles = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            SubsetExists(arrayTiles, diceValue);
+            AvailableTiles(arrayTiles, diceValue);
             //    if (availableTiles.Count == 0)
             //    {
             //        AvailableTiles(tiles);
@@ -69,58 +69,108 @@ namespace SUP23_G4.ViewModels
             ////{
 
         }
-        public void SubsetExists(int[] tiles, int targetSum)
+        public void AvailableTiles(int[] tiles, int targetSum)
         {
-            //int[] tiles = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            
-            //int targetSum = 12;
 
-            if (tiles.Length == 0 || targetSum <= 0)
+            int[][] selectableTiles = new int[5][];
+
+            for (int i = 1; i < tiles.Length; i++)
             {
-                return;
-            }
-
-            int arrSize = tiles.Length;
-
-            int[][] count = new int[10][];
-            {
-                for (int i = 0; i < 10; i++)
+                if (tiles[i - 1] == targetSum)
                 {
-                    count[i] = new int[] { targetSum + 1 };
+                    selectableTiles[i - 1] = new int[] { i };
+                    break;
                 }
-            };
-
-            for (int i = 0; i < targetSum; i++)
-            {
-                count[i][0] = 1;
-            }
-
-            for (int j = 0; j <= targetSum; j++)
-            {
-                if (tiles[0] == j)
+                else if (tiles[i - 1] < targetSum)
                 {
-                    count[0][j] = 1;
-                }
-            }
-
-            for (int i =1; i < arrSize; i++)
-            {
-                for (int j = 1; j <= targetSum; j++)
-                {
-                    int includingCurrentValue = 0;
-                    int excludingCurrentValue = 0;
-                    
-                    if (tiles[i] <= j) 
+                    for (int j = i + 1; j < tiles.Length; j++)
                     {
-                        includingCurrentValue = count[i - 1][j - tiles[i]];
+                        if (tiles[i - 1] + tiles[j - 1] == targetSum)
+                        {
+                            selectableTiles[i - 1] = new int[] {i, j};
+                            break;
+                        }
+                        else if (tiles[i - 1] + tiles[j - 1] < targetSum)
+                        {
+                            for (int k = i + 2; k < tiles.Length; k++)
+                            {
+                                if (tiles[i - 1] + tiles[j - 1] + tiles[k - 1] == targetSum)
+                                {
+                                    selectableTiles[i - 1] = new int[] { i, j, k };
+                                    break;
+                                }
+                                else if (tiles[i - 1] + tiles[j - 1] + tiles[k - 1] < targetSum)
+                                {
+                                    for (int l = i + 3;  l < tiles.Length; l++)
+                                    {
+                                        if (tiles[i - 1] + tiles[j - 1] + tiles[k - 1] + tiles[l - 1] == targetSum)
+                                        {
+                                            selectableTiles[i - 1] = new int[] { i, j, k, l };
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
                     }
-
-                    excludingCurrentValue = count[i - 1][j];
-
-                    count[i][j] = includingCurrentValue + excludingCurrentValue;
+                }
+                else if (tiles[i] > targetSum)
+                {
+                    break;
                 }
             }
-            //count[arrSize - 1][targetSum];
         }
+        //public void SubsetExists(int[] tiles, int targetSum)
+        //{
+
+
+        //    if (tiles.Length == 0 || targetSum <= 0)
+        //    {
+        //        return;
+        //    }
+
+        //    int arrSize = tiles.Length;
+
+        //    int[][] count = new int[10][];
+        //    {
+        //        for (int i = 0; i < 10; i++)
+        //        {
+        //            count[i] = new int[] { targetSum + 1 };
+        //        }
+        //    };
+
+        //    for (int i = 0; i < targetSum; i++)
+        //    {
+        //        count[i][0] = 1;
+        //    }
+
+        //    for (int j = 0; j <= targetSum; j++)
+        //    {
+        //        if (tiles[0] == j)
+        //        {
+        //            count[0][j] = 1;
+        //        }
+        //    }
+
+        //    for (int i =1; i < arrSize; i++)
+        //    {
+        //        for (int j = 1; j <= targetSum; j++)
+        //        {
+        //            int includingCurrentValue = 0;
+        //            int excludingCurrentValue = 0;
+
+        //            if (tiles[i] <= j) 
+        //            {
+        //                includingCurrentValue = count[i - 1][j - tiles[i]];
+        //            }
+
+        //            excludingCurrentValue = count[i - 1][j];
+
+        //            count[i][j] = includingCurrentValue + excludingCurrentValue;
+        //        }
+        //    }
+
+        //}
     }
 }
