@@ -12,19 +12,19 @@ namespace SUP23_G4.ViewModels
     internal class StartViewModel : BaseViewModel
     {
         #region Konstruktor
+
         public StartViewModel(MainViewModel mainViewModel)
         {
             StartGameCommand = new RelayCommand(x => SwitchToGameView());
             GameRulesCommand = new RelayCommand(x => SwitchToGameRules());
             this._mainViewModel = mainViewModel;
-           
+
 
         }
-  
-
         #endregion
 
         #region Egenskaper
+
         public ICommand StartGameCommand { get; set; }
         public ICommand GameRulesCommand { get; set; }
 
