@@ -7,7 +7,7 @@ using System.Windows.Automation;
 
 namespace SUP23_G4.Enums
 {
-    public enum Status
+    public enum Status 
     {
          AvailableGameTile,
          NotAvailableGameTile,
