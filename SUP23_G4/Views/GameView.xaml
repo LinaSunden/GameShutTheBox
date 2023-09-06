@@ -31,6 +31,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray"/>
+            <Border Grid.Column="1" Grid.RowSpan="3" Background="SandyBrown"/>
+            
+
             <StackPanel Grid.Row="0" Grid.Column="0">
                 <TextBlock
                     Text="Spelare 2:"
