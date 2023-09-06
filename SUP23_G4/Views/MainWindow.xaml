@@ -19,11 +19,13 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <ContentControl Content="{Binding CurrentViewModel}"
+        <ContentControl
                     Grid.Row="1"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"/>
+                    HorizontalAlignment="Stretch">
+            <Button Content="Button" HorizontalAlignment="Left" Margin="256,119,0,0" VerticalAlignment="Top" Height="103" Width="195" Click="Button_Click"/>
+        </ContentControl>
 
     </Grid>
 </Window>

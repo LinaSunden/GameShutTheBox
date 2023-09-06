@@ -26,5 +26,11 @@ namespace SUP23_G4
             InitializeComponent();
             DataContext = new MainViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GameViewModel gameViewModel = new GameViewModel();
+            gameViewModel.FillListOfAvailableTiles();
+        }
     }
 }
