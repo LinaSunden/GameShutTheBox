@@ -116,7 +116,6 @@
 
 
             <!--Test med bilder för att se hur det ser ut och testade om man kunde göra så de gick över flera columner. Vilket är möjligt med Grid.ColumnSpan-->
-            <Image Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill"/>
             <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
