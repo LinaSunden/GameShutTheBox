@@ -26,10 +26,21 @@ namespace SUP23_G4.ViewModels
         public int DieOne { get; private set; }
         public int DieTwo { get; private set; } = 2;
 
-        public System.Windows.Visibility Visibility1 { get; private set; }
-        public System.Windows.Visibility Visibility5 { get; private set; } 
+        public System.Windows.Visibility VisibilityOne1 { get; private set; }
+        public System.Windows.Visibility VisibilityOne2 { get; private set; }
+        public System.Windows.Visibility VisibilityOne3 { get; private set; }
+        public System.Windows.Visibility VisibilityOne4 { get; private set; }
+        public System.Windows.Visibility VisibilityOne5 { get; private set; }
+        public System.Windows.Visibility VisibilityOne6 { get; private set; }
 
-       public ICommand RollDiceCommand { get; }
+        public System.Windows.Visibility VisibilityTwo1 { get; private set; }
+        public System.Windows.Visibility VisibilityTwo2 { get; private set; }
+        public System.Windows.Visibility VisibilityTwo3 { get; private set; }
+        public System.Windows.Visibility VisibilityTwo4 { get; private set; }
+        public System.Windows.Visibility VisibilityTwo5 { get; private set; }
+        public System.Windows.Visibility VisibilityTwo6 { get; private set; }
+
+        public ICommand RollDiceCommand { get; }
 
         #endregion
 
@@ -60,26 +71,121 @@ namespace SUP23_G4.ViewModels
         {
             DiceToss();
 
-    
+            switch (DieOne)
+            {
+                case 1:
+                    VisibilityOne1 = System.Windows.Visibility.Visible;
+                    VisibilityOne2 = System.Windows.Visibility.Hidden;
+                    VisibilityOne3 = System.Windows.Visibility.Hidden;
+                    VisibilityOne4 = System.Windows.Visibility.Hidden;
+                    VisibilityOne5 = System.Windows.Visibility.Hidden;
+                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+
+                    break;
+                case 2:
+                    VisibilityOne2 = System.Windows.Visibility.Visible;
+                    VisibilityOne1 = System.Windows.Visibility.Hidden;
+                    VisibilityOne3 = System.Windows.Visibility.Hidden;
+                    VisibilityOne4 = System.Windows.Visibility.Hidden;
+                    VisibilityOne5 = System.Windows.Visibility.Hidden;
+                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+
+                    break;
+                case 3:
+                    VisibilityOne3 = System.Windows.Visibility.Visible;
+                    VisibilityOne1 = System.Windows.Visibility.Hidden;
+                    VisibilityOne2 = System.Windows.Visibility.Hidden;
+                    VisibilityOne4 = System.Windows.Visibility.Hidden;
+                    VisibilityOne5 = System.Windows.Visibility.Hidden;
+                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+                    break;
+                case 4:
+                    VisibilityOne4 = System.Windows.Visibility.Visible;
+                    VisibilityOne1 = System.Windows.Visibility.Hidden;
+                    VisibilityOne2 = System.Windows.Visibility.Hidden;
+                    VisibilityOne3 = System.Windows.Visibility.Hidden;
+                    VisibilityOne5 = System.Windows.Visibility.Hidden;
+                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+                    break;
+                case 5:
+                    VisibilityOne5 = System.Windows.Visibility.Visible;
+                    VisibilityOne1 = System.Windows.Visibility.Hidden;
+                    VisibilityOne2 = System.Windows.Visibility.Hidden;
+                    VisibilityOne3 = System.Windows.Visibility.Hidden;
+                    VisibilityOne4 = System.Windows.Visibility.Hidden;
+                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+                    break;
+                case 6:
+                    VisibilityOne6 = System.Windows.Visibility.Visible;
+                    VisibilityOne1 = System.Windows.Visibility.Hidden;
+                    VisibilityOne2 = System.Windows.Visibility.Hidden;
+                    VisibilityOne3 = System.Windows.Visibility.Hidden;
+                    VisibilityOne4 = System.Windows.Visibility.Hidden;
+                    VisibilityOne5 = System.Windows.Visibility.Hidden;
+                    break;
+                default:
+                    break;
+            }
+
+
             switch (DieTwo)
             {
 
 
                 case 1:
-                    Visibility1 = System.Windows.Visibility.Visible;
-                    Visibility5 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo1 = System.Windows.Visibility.Visible;
+                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
                     
                     break;
                 case 2:
-                    Visibility1 = System.Windows.Visibility.Hidden;
-                    Visibility5 = System.Windows.Visibility.Visible;
+                    VisibilityTwo2 = System.Windows.Visibility.Visible;
+                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
 
                     break;
+                case 3:
+                    VisibilityTwo3 = System.Windows.Visibility.Visible;
+                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
+                    break;
+                case 4:
+                    VisibilityTwo4 = System.Windows.Visibility.Visible;
+                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
+                    break;
+                case 5:
+                    VisibilityTwo5 = System.Windows.Visibility.Visible;
+                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
+                    break;
+                case 6:
+                    VisibilityTwo6 = System.Windows.Visibility.Visible;
+                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
+                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
+                    break;
+
                 default:
                   
                     break;
-
-
 
             }
 

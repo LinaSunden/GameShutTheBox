@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SUP23_G4.Views.Dice.Dice2"
+﻿<UserControl x:Class="SUP23_G4.Views.Dice.Dice3"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="60">
     <Canvas Width="60" Height="60">
-        <Image Source="/Resources/Dice2.png" Stretch="Fill" Width="60" Height="60"/>
+        <Image Height="60" Width="60" Source="/Resources/Dice3.png" Stretch="Fill"/>
     </Canvas>
 </UserControl>
