@@ -4,8 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views.Dice"
+             xmlns:converters="clr-namespace:SUP23_G4.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="60">
+    <UserControl.Resources>
+        <converters:DiceNumberToDotConverter x:Key="DiceNumberToDotConverter" />
+    </UserControl.Resources>
+    
     <Grid>
         <Canvas Width="60" Height="60">
             <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" Canvas.Left="1" Canvas.Top="1"/>

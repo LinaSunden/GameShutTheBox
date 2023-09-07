@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SUP23_G4.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +27,25 @@ namespace SUP23_G4.Views.Dice
         }
 
         public int DieValue { get; set; }
+
+
+
+
+        public DiceNumber CurrentDiceNumber
+        {
+            get { return (DiceNumber)GetValue(CurrentDiceNumberProperty); }
+            set { SetValue(CurrentDiceNumberProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentDiceNumber.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentDiceNumberProperty =
+            DependencyProperty.Register("CurrentDiceNumber", typeof(DiceNumber), typeof(Dice), new PropertyMetadata(DiceNumber.Five));
+
+
+
+
+
+
+
     }
 }
