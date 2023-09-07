@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SUP23_G4.Views.GameTiles
 {
     /// <summary>
-    /// Interaction logic for GameTileThree.xaml
+    /// Interaction logic for GameTile.xaml
     /// </summary>
-    public partial class GameTileThree : Tile
+    public partial class GameTile : Tile
     {
-        public GameTileThree()
+        public GameTile()
         {
             InitializeComponent();
         }
