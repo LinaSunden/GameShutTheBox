@@ -10,8 +10,8 @@
     <UserControl.Resources>
         <converter:StatusToColorConverter x:Key="StatusToColorConverter" />
     </UserControl.Resources>
-    <Grid Width="50">
-        <Rectangle Width="50" Stroke="Black" StrokeThickness="3"  Fill="Tan"/>
+    <Grid Height="50" Width="50">
+        <Rectangle Stroke="Black" StrokeThickness="3"  Fill="Tan"/>
         <TextBlock Text="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Normal" Margin="5"/>
 
     </Grid>
