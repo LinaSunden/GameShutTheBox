@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
-             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice" x:Class="SUP23_G4.Views.GameView"
+             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice"  x:Class="SUP23_G4.Views.GameView"
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}"
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
 
@@ -111,21 +111,50 @@
                 </TextBlock>
             </StackPanel>
 
-            <Dice:Dice x:Name="Dice1" Grid.Column="2" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
-            <Dice:Dice x:Name="Dice2" Grid.Column="3" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center"/>
+            <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
 
+                <!--The First Dice-->
+                <Dice:Dice Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne1}"/>
+                <Dice:Dice2 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne2}"/>
+                <Dice:Dice3 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne3}"/>
+                <Dice:Dice4 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne4}"/>
+                <Dice:Dice5 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne5}"/>
+                <Dice:Dice6 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne6}"/>
 
-            <!--Test med bilder för att se hur det ser ut och testade om man kunde göra så de gick över flera columner. Vilket är möjligt med Grid.ColumnSpan-->
-            <Image Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Source="/Image.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="180"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
+                <!--The Second Dice-->
+                <Dice:Dice Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo1}"/>
+                <Dice:Dice2 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo2}"/>
+                <Dice:Dice3 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo3}"/>
+                <Dice:Dice4 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo4}"/>
+                <Dice:Dice5 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo5}"/>
+                <Dice:Dice6 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo6}"/>
+
+            </Grid>
+            
+
+            
+            <Button Content="Kasta Tärningen" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding RollDiceCommand}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="LightGray" Offset="1"/>
+                        <GradientStop Color="DarkGreen" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.OpacityMask>
+            </Button>
+
+            
 
             <GameTiles:GameTile  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="5,0,0,0"/>
 
