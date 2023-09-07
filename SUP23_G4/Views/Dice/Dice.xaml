@@ -5,22 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views.Dice"
              xmlns:converters="clr-namespace:SUP23_G4.Converters"
+            
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="60">
-    <UserControl.Resources>
-        <converters:DiceNumberToDotConverter x:Key="DiceNumberToDotConverter" />
-    </UserControl.Resources>
+
     
     <Grid>
         <Canvas Width="60" Height="60">
             <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" Canvas.Left="1" Canvas.Top="1"/>
-            <Ellipse x:Name="Dot1" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="8" Visibility="Visible"/>
-            <Ellipse x:Name="Dot2" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="8" Visibility="Visible"/>
-            <Ellipse x:Name="Dot3" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="24" Visibility="Visible"/>
-            <Ellipse x:Name="Dot4" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="42" Visibility="Visible"/>
-            <Ellipse x:Name="Dot5" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="41" Visibility="Visible"/>
-            <Ellipse x:Name="Dot6" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="24" Visibility="Visible"/>
-            <Ellipse x:Name="Dot7" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="24" Canvas.Top="24" Visibility="Visible"/>
+            <Ellipse x:Name="Dot1" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="8" Visibility="{Binding }"/>
+            <Ellipse x:Name="Dot2" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="8" Visibility="{Binding }"/>
+            <Ellipse x:Name="Dot3" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="24" Visibility="{Binding }"/>
+            <Ellipse x:Name="Dot4" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="42" Visibility="{Binding}"/>
+            <Ellipse x:Name="Dot5" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="41" Visibility="{Binding }"/>
+            <Ellipse x:Name="Dot6" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="24" Visibility="{Binding }"/>
+            <Ellipse x:Name="Dot7" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="24" Canvas.Top="24" Visibility="{Binding }"/>
         </Canvas>
     </Grid>
 </UserControl>

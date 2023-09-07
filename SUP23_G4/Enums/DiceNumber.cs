@@ -8,7 +8,7 @@ namespace SUP23_G4.Enums
 {
     public enum DiceNumber
     {
-        One,
+        One = 1,
         Two,
         Three,
         Four,

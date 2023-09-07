@@ -109,8 +109,8 @@
                 </TextBlock>
             </StackPanel>
 
-            <Dice:Dice x:Name="Dice1" Grid.Column="2" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
-            <Dice:Dice x:Name="Dice2" Grid.Column="3" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center"/>
+            <Dice:Dice x:Name="Dice1" CurrentDiceNumber="{Binding DiceNumber}" Grid.Column="2" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
+            <Dice:Dice x:Name="Dice2" CurrentDiceNumber="{Binding DiceNumber}" Grid.Column="3" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center"/>
 
 
             <!--Test med bilder för att se hur det ser ut och testade om man kunde göra så de gick över flera columner. Vilket är möjligt med Grid.ColumnSpan-->

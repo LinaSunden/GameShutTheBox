@@ -12,9 +12,15 @@ namespace SUP23_G4.ViewModels
 {
     public class GameViewModel : BaseViewModel
     {
+        public GameViewModel()
+        {
+            DiceNumber = DiceNumber.One;
+        }
+
+
         #region Egenskaper
-        public int DieOne { get; private set; }
-        public int DieTwo { get; private set; }
+        public int DieOne { get; private set; } = 1;
+        public int DieTwo { get; private set; } = 2;
 
         public DiceNumber DiceNumber { get; set; }
 
@@ -32,6 +38,7 @@ namespace SUP23_G4.ViewModels
                 {
                     die.DieValue = r.Next(1, 7);
                     DieOne = die.DieValue;
+
                 }
                 else if (i == 1)
                 {
@@ -39,6 +46,13 @@ namespace SUP23_G4.ViewModels
                     DieTwo = die.DieValue;
                 }
             }          
+        }
+
+
+        public void ShowDotsOnDice (int DieOne , int DieTwo)
+        {
+            DiceToss();
+            
         }
         #endregion
 

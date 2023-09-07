@@ -24,22 +24,36 @@ namespace SUP23_G4.Views.Dice
         public Dice()
         {
             InitializeComponent();
+
+            
         }
+
 
         public int DieValue { get; set; }
 
 
+        //public int DieValue
+        //{
+        //    get { return (int)GetValue(DieValueProperty); }
+        //    set { SetValue(DieValueProperty, value); }
+        //}
+
+        //Using a DependencyProperty as the backing store for DieValue.This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty DieValueProperty =
+        //    DependencyProperty.Register("DieValue", typeof(int), typeof(Dice), new PropertyMetadata(0));
 
 
-        public DiceNumber CurrentDiceNumber
-        {
-            get { return (DiceNumber)GetValue(CurrentDiceNumberProperty); }
-            set { SetValue(CurrentDiceNumberProperty, value); }
-        }
 
-        // Using a DependencyProperty as the backing store for CurrentDiceNumber.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CurrentDiceNumberProperty =
-            DependencyProperty.Register("CurrentDiceNumber", typeof(DiceNumber), typeof(Dice), new PropertyMetadata(DiceNumber.Five));
+
+        //public DiceNumber CurrentDiceNumber
+        //{
+        //    get { return (DiceNumber)GetValue(CurrentDiceNumberProperty); }
+        //    set { SetValue(CurrentDiceNumberProperty, value); }
+        //}
+
+        //Using a DependencyProperty as the backing store for CurrentDiceNumber.This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty CurrentDiceNumberProperty =
+        //    DependencyProperty.Register("CurrentDiceNumber", typeof(DiceNumber), typeof(Dice), new PropertyMetadata(DiceNumber.Five));
 
 
 
@@ -49,3 +63,4 @@ namespace SUP23_G4.Views.Dice
 
     }
 }
+
