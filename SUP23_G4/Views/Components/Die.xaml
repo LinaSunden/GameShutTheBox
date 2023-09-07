@@ -7,6 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+
+        <Canvas x:Name="Dice1Canvas" Width="60" Height="60" HorizontalAlignment="Right">
+            <Rectangle Height="58"  Fill="White" Stroke="Black" Width="58" RadiusY="5" RadiusX="5" HorizontalAlignment="Left" Canvas.Left="1" Canvas.Top="1" VerticalAlignment="Top"/>
+            <Ellipse x:Name ="Dot1" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="9" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Visible"/>
+            <Ellipse x:Name ="Dot2" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="9" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
+            <Ellipse x:Name ="Dot3" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="26" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
+            <Ellipse x:Name ="Dot4" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="40" Canvas.Top="41" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
+            <Ellipse x:Name ="Dot5" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="41" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Visible"/>
+            <Ellipse x:Name ="Dot6" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="8" Canvas.Top="26" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Visible"/>
+            <Ellipse x:Name ="Dot7" Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="24" Canvas.Top="26" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Visible"/>
+        </Canvas>
+
     </Grid>
 </UserControl>
