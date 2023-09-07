@@ -1,12 +1,15 @@
-﻿using SUP23_G4.Enums;
+﻿using SUP23_G4.Commands;
+using SUP23_G4.Enums;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.Dice;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SUP23_G4.ViewModels
 {
@@ -14,15 +17,19 @@ namespace SUP23_G4.ViewModels
     {
         public GameViewModel()
         {
-            DiceNumber = DiceNumber.One;
+            ShowDiceNumber();
+            RollDiceCommand = new RelayCommand(x => ShowDiceNumber());
         }
 
 
         #region Egenskaper
-        public int DieOne { get; private set; } = 1;
+        public int DieOne { get; private set; }
         public int DieTwo { get; private set; } = 2;
 
-        public DiceNumber DiceNumber { get; set; }
+        public System.Windows.Visibility Visibility1 { get; private set; }
+        public System.Windows.Visibility Visibility5 { get; private set; } 
+
+       public ICommand RollDiceCommand { get; }
 
         #endregion
 
@@ -45,14 +52,37 @@ namespace SUP23_G4.ViewModels
                     die.DieValue = r.Next(1, 7);
                     DieTwo = die.DieValue;
                 }
-            }          
+            }
         }
 
 
-        public void ShowDotsOnDice (int DieOne , int DieTwo)
+        public void ShowDiceNumber()
         {
             DiceToss();
-            
+
+    
+            switch (DieTwo)
+            {
+
+
+                case 1:
+                    Visibility1 = System.Windows.Visibility.Visible;
+                    Visibility5 = System.Windows.Visibility.Hidden;
+                    
+                    break;
+                case 2:
+                    Visibility1 = System.Windows.Visibility.Hidden;
+                    Visibility5 = System.Windows.Visibility.Visible;
+
+                    break;
+                default:
+                  
+                    break;
+
+
+
+            }
+
         }
         #endregion
 
