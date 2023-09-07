@@ -42,7 +42,7 @@ namespace SUP23_G4.ViewModels
         }
         public void FillListOfAvailableTiles(/*int diceValue*/)
         {
-            int diceValue = 8;
+            int diceValue = 12;
             List<int> tiles = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             List<int> availableTiles = new List<int>();
             foreach (int tile in tiles)
@@ -54,6 +54,10 @@ namespace SUP23_G4.ViewModels
                         availableTiles.Add(i);
                     }
                     break;
+                }
+                else if (diceValue > tiles.Count())
+                {
+                    availableTiles = tiles;
                 }
             }
             AvailableTiles = availableTiles;
@@ -123,7 +127,7 @@ namespace SUP23_G4.ViewModels
                 }
                 else if (i < targetSum)
                 {
-                    for(int j = i + 1; j < tiles.Count(); j++)
+                    for(int j = i + 1; j <= tiles.Count(); j++)
                     {
                         if (i + j ==  targetSum)
                         {
@@ -135,10 +139,59 @@ namespace SUP23_G4.ViewModels
                             collection.Add(availableTiles);
                             break;
                         }
+                        else if (i + j < targetSum)
+                        {
+                            for (int k = i + 2;  k <= tiles.Count(); k++)
+                            {
+                                if (i + j + k == targetSum)
+                                {
+                                    availableTiles = new List<int>()
+                                    {
+                                        i,
+                                        j,
+                                        k,
+                                    };
+                                    collection.Add(availableTiles);
+                                    break;
+                                }
+                                else if (i + j + k < targetSum)
+                                {
+                                    for ( int l = i + 3; l <= tiles.Count(); l++)
+                                    {
+                                        if (j + l + k +l == targetSum)
+                                        {
+                                            availableTiles = new List<int>()
+                                            {
+                                                i,
+                                                j,
+                                                k,
+                                                l,
+                                            };
+                                            collection.Add(availableTiles);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
+        }
+        public bool CalculateSelectedTiles(List<int>selectedTiles, int targetSum)
+        {
+            int calculatedSum = 0;
 
+            foreach(int i in selectedTiles)
+            {
+                calculatedSum += i;
+            }
+            if (calculatedSum == targetSum)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         //public void ArrayOfAvailableTiles(int[] tiles, int targetSum)
