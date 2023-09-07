@@ -85,7 +85,6 @@ namespace SUP23_G4.ViewModels
             {
                 if (i == targetSum)
                 {
-                    availableTiles = new List<int>();
                         availableTiles.Add(i);
                     break;
                 }
