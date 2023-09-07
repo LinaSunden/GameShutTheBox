@@ -13,20 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SUP23_G4.Views.Components
+namespace SUP23_G4.Views.Dice
 {
     /// <summary>
-    /// Interaction logic for Die.xaml
+    /// Interaction logic for Dice.xaml
     /// </summary>
-    public partial class Die : UserControl
+    public partial class Dice : UserControl
     {
-        public Die()
+        public Dice()
         {
             InitializeComponent();
         }
 
-
         public int DieValue { get; set; }
-
     }
 }

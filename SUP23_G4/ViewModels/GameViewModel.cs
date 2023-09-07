@@ -1,5 +1,6 @@
-﻿using SUP23_G4.ViewModels.Base;
-using SUP23_G4.Views.Components;
+﻿using SUP23_G4.Enums;
+using SUP23_G4.ViewModels.Base;
+using SUP23_G4.Views.Dice;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +16,8 @@ namespace SUP23_G4.ViewModels
         public int DieOne { get; private set; }
         public int DieTwo { get; private set; }
 
+        public DiceNumber DiceNumber { get; set; }
+
         #endregion
 
         #region Metoder
@@ -24,7 +27,7 @@ namespace SUP23_G4.ViewModels
             
             for (int i = 0; i < 2; i++)
             {
-                Die die = new Die();
+                Dice die = new Dice();
                 if (i == 0)
                 {
                     die.DieValue = r.Next(1, 7);
