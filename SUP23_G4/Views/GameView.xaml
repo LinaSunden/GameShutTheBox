@@ -144,7 +144,7 @@
                 </Image.RenderTransform>
             </Image>
 
-            <GameTiles:GameTile Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="5,0,0,0"/>
+            <GameTiles:GameTile  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="5,0,0,0"/>
 
         </Grid>
     </Border>
