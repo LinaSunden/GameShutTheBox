@@ -1,4 +1,4 @@
-﻿<local:Tile  x:Class="SUP23_G4.Views.GameTiles.GameTile"
+﻿<local:Tile  x:Class="SUP23_G4.Views.GameTiles.GameTileOne"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <converter:StatusToColorConverter x:Key="StatusToColorConverter"/>
+        <converter:StatusToColorConverter x:Key="StatusToColorConverter" />
     </UserControl.Resources>
     <Grid Width="50">
         <Rectangle Width="50" Stroke="Black" StrokeThickness="3"  Fill="{Binding CurrentStatus, Converter={StaticResource StatusToColorConverter}}"/>
