@@ -111,6 +111,7 @@ namespace SUP23_G4.ViewModels
 
         public void GetAvailableTiles(List<int>tiles, int targetSum)
         {
+
             List<List<int>> collection = new List<List<int>>();
             List<int> availableTiles;
 
