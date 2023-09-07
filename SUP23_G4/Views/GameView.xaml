@@ -127,7 +127,40 @@
                 </Image.RenderTransform>
             </Image>
 
-            <GameTiles:GameTile  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="5,0,0,0"/>
+            <!--Grid för själva boxen, kankse kan vi byta ut denna svarta ruta mot en snyggare bakgrundsbild för att få den att likna spelet mer senare? -->
+            <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Background="Black">
+            </Grid>
+            
+            <!-- Grid med GameTiles-->
+            <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne"/>
+                <GameTiles:GameTile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo"/>
+                <GameTiles:GameTile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree"/>
+                <GameTiles:GameTile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour"/>
+                <GameTiles:GameTile Grid.Column="4" VerticalAlignment="Top" x:Name="GameTileFive"/>
+                <GameTiles:GameTile Grid.Column="5" VerticalAlignment="Top" x:Name="GameTileSix"/>
+                <GameTiles:GameTile Grid.Column="6" VerticalAlignment="Top" x:Name="GameTileSeven"/>
+                <GameTiles:GameTile Grid.Column="7" VerticalAlignment="Top" x:Name="GameTileEight"/>
+                <GameTiles:GameTile Grid.Column="8" VerticalAlignment="Top" x:Name="GameTileNine"/>
+                <GameTiles:GameTile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen"/>
+            </Grid>
+            
+
+
+
+
 
         </Grid>
     </Border>

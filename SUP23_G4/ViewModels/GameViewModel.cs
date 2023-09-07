@@ -18,6 +18,10 @@ namespace SUP23_G4.ViewModels
 
         public DiceNumber DiceNumber { get; set; }
 
+        public string GameTileValue { get; set; } = "1";
+
+        //observablecollection
+
         #endregion
 
         #region Metoder
