@@ -116,7 +116,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+
 
                 <!--The First Dice-->
                 <Dice:Dice Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne1}"/>
@@ -135,9 +135,9 @@
                 <Dice:Dice6 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo6}"/>
 
             </Grid>
-            
 
-            
+
+
             <Button Content="Kasta Tärningen" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding RollDiceCommand}" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -154,7 +154,7 @@
                 </Button.OpacityMask>
             </Button>
 
-            
+
 
             <GameTiles:GameTile  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Margin="5,0,0,0"/>
 
