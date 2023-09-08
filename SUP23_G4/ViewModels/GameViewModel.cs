@@ -36,11 +36,10 @@ namespace SUP23_G4.ViewModels
 
             ShowDiceNumber();
             RollDiceCommand = new RelayCommand(x => ShowDiceNumber());
+
+            FillCollectionOfGameTiles();
         }
 
-        public GameViewModel()
-        {
-        }
 
 
 
@@ -86,7 +85,7 @@ namespace SUP23_G4.ViewModels
 
         public GameViewModel()
         {
-            FillCollectionOfGameTiles();
+            
         }
 
 
