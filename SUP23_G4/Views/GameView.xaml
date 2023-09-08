@@ -111,13 +111,19 @@
                 </TextBlock>
             </StackPanel>
 
-            <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+            <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.InputBindings>
+                    <MouseBinding
+                        Gesture="LeftClick"
+                        Command="{Binding RollDiceCommand}"/>
+                </Grid.InputBindings>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
-
+                
+                
+                
                 <!--The First Dice-->
                 <Dice:Dice Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne1}"/>
                 <Dice:Dice2 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne2}"/>
@@ -138,12 +144,12 @@
 
 
 
-            <Button Content="Kasta Tärningen" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding RollDiceCommand}" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Kasta Tärningar" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding RollDiceCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="True">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
                         <GradientStop Color="LightGray" Offset="1"/>
-                        <GradientStop Color="DarkGreen" Offset="0"/>
+                        <GradientStop Color="Gray" Offset="0"/>
                     </LinearGradientBrush>
                 </Button.Background>
                 <Button.OpacityMask>
@@ -153,26 +159,26 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
-
+            
 
 
             <!--Grid för själva boxen, kankse kan vi byta ut denna svarta ruta mot en snyggare bakgrundsbild för att få den att likna spelet mer senare? -->
             <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Background="Black">
             </Grid>
-            
+
             <!-- Grid med GameTiles-->
             <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne"/>
                 <TextBlock Text="{Binding GameTiles[0]}" Grid.Column="0" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
@@ -195,7 +201,8 @@
                 <GameTiles:GameTile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen"/>
                 <TextBlock Text="{Binding GameTiles[9]}" Grid.Column="9" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
-            
+           
+
 
 
 
