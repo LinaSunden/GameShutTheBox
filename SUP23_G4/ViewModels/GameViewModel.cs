@@ -19,13 +19,9 @@ namespace SUP23_G4.ViewModels
 
         public DiceNumber DiceNumber { get; set; }
         
-        public ObservableCollection<Tile>? GameTileValue { get; private set; } = new ObservableCollection<Tile>();
+        //public ObservableCollection<Tile>? GameTileValue { get; private set; } 
 
-        private void SetGameTileValues()
-        {
-            GameTileValue = new ObservableCollection<Tile>();
-
-        }
+        
 
 
         #endregion

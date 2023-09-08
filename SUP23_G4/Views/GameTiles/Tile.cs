@@ -24,14 +24,14 @@ namespace SUP23_G4.Views.GameTiles
         public static readonly DependencyProperty CurrentStatusProperty =
             DependencyProperty.Register("CurrentStatus", typeof(Status), typeof(Tile), new PropertyMetadata(Status.AvailableGameTile));
 
-        public ObservableCollection<Tile> TileswithValue { get; set; }
+        //public ObservableCollection<Tile> TileswithValue { get; set; }
 
-        public Tile(ObservableCollection<Tile> tileswithValue)
-        {
-            TileswithValue = tileswithValue;
+        //public Tile(ObservableCollection<Tile> tileswithValue)
+        //{
+        //    TileswithValue = tileswithValue;
 
-            tileswithValue.Add(this);
-            tileswithValue.Add(this);
-        }
+        //    tileswithValue.Add(this);
+        //    tileswithValue.Add(this);
+        //}
     }
 }
