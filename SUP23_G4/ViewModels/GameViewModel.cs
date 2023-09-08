@@ -34,10 +34,11 @@ namespace SUP23_G4.ViewModels
             Player1 = startViewModel.Player1;
             Player2 = startViewModel.Player2;
 
-            ShowDiceNumber();
+            FillCollectionOfGameTiles();
+            //ShowDiceNumber();
             RollDiceCommand = new RelayCommand(x => ShowDiceNumber());
 
-            FillCollectionOfGameTiles();
+            
         }
 
 
@@ -47,21 +48,21 @@ namespace SUP23_G4.ViewModels
         public int DieOne { get; private set; }
         public int DieTwo { get; private set; }
         public int DiceValue { get; private set; }
-        public List<int> AvailableTiles { get; set; } = new List<int>();
+        //public List<int> AvailableTiles { get; set; } = new List<int>();
 
-        public System.Windows.Visibility VisibilityOne1 { get; private set; }
-        public System.Windows.Visibility VisibilityOne2 { get; private set; }
-        public System.Windows.Visibility VisibilityOne3 { get; private set; }
-        public System.Windows.Visibility VisibilityOne4 { get; private set; }
-        public System.Windows.Visibility VisibilityOne5 { get; private set; }
-        public System.Windows.Visibility VisibilityOne6 { get; private set; }
+        public System.Windows.Visibility VisibilityOne1 { get; private set; } = Visibility.Visible;
+        public System.Windows.Visibility VisibilityOne2 { get; private set; } = Visibility.Hidden;
+        public System.Windows.Visibility VisibilityOne3 { get; private set; } = Visibility.Hidden;
+        public System.Windows.Visibility VisibilityOne4 { get; private set; } = Visibility.Hidden;
+        public System.Windows.Visibility VisibilityOne5 { get; private set; } = Visibility.Hidden;
+        public System.Windows.Visibility VisibilityOne6 { get; private set; } = Visibility.Hidden;
 
-        public System.Windows.Visibility VisibilityTwo1 { get; private set; }
-        public System.Windows.Visibility VisibilityTwo2 { get; private set; }
-        public System.Windows.Visibility VisibilityTwo3 { get; private set; }
-        public System.Windows.Visibility VisibilityTwo4 { get; private set; }
-        public System.Windows.Visibility VisibilityTwo5 { get; private set; }
-        public System.Windows.Visibility VisibilityTwo6 { get; private set; }
+        public System.Windows.Visibility VisibilityTwo1 { get; private set; } = Visibility.Hidden;
+        public System.Windows.Visibility VisibilityTwo2 { get; private set; } = Visibility.Hidden;
+        public System.Windows.Visibility VisibilityTwo3 { get; private set; } = Visibility.Hidden;
+        public System.Windows.Visibility VisibilityTwo4 { get; private set; } = Visibility.Hidden;
+        public System.Windows.Visibility VisibilityTwo5 { get; private set; } = Visibility.Visible;
+        public System.Windows.Visibility VisibilityTwo6 { get; private set; } = Visibility.Hidden;
 
         public ICommand RollDiceCommand { get; }
 
@@ -117,38 +118,45 @@ namespace SUP23_G4.ViewModels
                 }
             }
             DiceValue = DieOne + DieTwo;
+            FillListOfAvailableTiles();
         }
 
         /// <summary>
         /// Metod som räknar ut vilka brickor som är tillgängliga utifrån 
         /// det sammanlagda värdet av båda tärningar
         /// </summary>
-        public void FillListOfAvailableTiles(/*int diceValue*/)
+        public void FillListOfAvailableTiles()
         {
-            int diceValue = 12;
-            List<int> tiles = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            List<int> availableTiles = new List<int>();
-            foreach (int tile in tiles)
+            int diceValue = DiceValue;
+
+            //List<int> tiles = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            ObservableCollection<Tile> gameTiles = GameTiles;
+            ObservableCollection<Tile> availableTiles = new ObservableCollection<Tile>();
+            //List<int> availableTiles = new List<int>();
+            Tile availableTile; 
+            foreach (Tile tile in GameTiles)
             {
-                if (tile == diceValue)
+                if (tile.Value == diceValue)
                 {
-                    for (int i = 1; i <= tile; i++)
+                    for (int i = 1; i <= diceValue; i++)
                     {
-                        availableTiles.Add(i);
+                        availableTile = new Tile()
+                        {
+                            Value = i,
+                            DisplayValue = i.ToString(),
+                        };
+                        availableTiles.Add(availableTile);
                     }
                     break;
                 }
-                else if (diceValue > tiles.Count())
+                else if (diceValue > GameTiles.Count())
                 {
-                    availableTiles = tiles;
+                    availableTiles = GameTiles;
                 }
             }
-            AvailableTiles = availableTiles;
+            GameTiles = availableTiles;
 
-
-            int[] arrayTiles = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-            GetAvailableTiles(availableTiles, diceValue);
+            //GetAvailableTiles(availableTiles, diceValue);
 
         }
 
@@ -156,28 +164,28 @@ namespace SUP23_G4.ViewModels
         /// Metod som testar om spelarens val av brickor är möjliga att välja
         /// för att nå tärningarnas summa (Eventuellt överflödig)
         /// </summary>
-        public void AvailableTilesAfterSelectedTile(int selectedTile, int targetSum)
-        {
-            List<int> availableTiles = new List<int>();
+        //public void AvailableTilesAfterSelectedTile(int selectedTile, int targetSum)
+        //{
+        //    List<int> availableTiles = new List<int>();
 
-            if (selectedTile == targetSum)
-            {
+        //    if (selectedTile == targetSum)
+        //    {
 
-            }
-            else if (selectedTile < targetSum) 
-            { 
-                foreach (int i in AvailableTiles)
-                {
-                    if (selectedTile + i == targetSum)
-                    {
-                        availableTiles.Add(selectedTile);
-                        availableTiles.Add(i);
-                    }
+        //    }
+        //    else if (selectedTile < targetSum) 
+        //    { 
+        //        foreach (int i in AvailableTiles)
+        //        {
+        //            if (selectedTile + i == targetSum)
+        //            {
+        //                availableTiles.Add(selectedTile);
+        //                availableTiles.Add(i);
+        //            }
 
-                }
+        //        }
             
-            }
-        }
+        //    }
+        //}
 
         /// <summary>
         /// Metod som undersöker vilka kombinationer av brickor som är
