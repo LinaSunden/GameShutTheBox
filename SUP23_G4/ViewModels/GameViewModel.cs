@@ -1,5 +1,6 @@
 ﻿using SUP23_G4.Commands;
 using SUP23_G4.Enums;
+using SUP23_G4.Models;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.Dice;
 using System;
@@ -17,11 +18,29 @@ namespace SUP23_G4.ViewModels
 {
     public class GameViewModel : BaseViewModel
     {
-        public GameViewModel()
+        private StartViewModel _startViewModel;
+        public Player Player1 { get; private set; }
+        public Player Player2 { get; private set; }
+
+        //public GameViewModel()
+        //{
+        //    ShowDiceNumber();
+        //    RollDiceCommand = new RelayCommand(x => ShowDiceNumber());
+        //}
+        public GameViewModel(StartViewModel startViewModel)
         {
+            _startViewModel = startViewModel;
+            Player1 = startViewModel.Player1;
+            Player2 = startViewModel.Player2;
+
             ShowDiceNumber();
             RollDiceCommand = new RelayCommand(x => ShowDiceNumber());
         }
+
+        public GameViewModel()
+        {
+        }
+
 
 
         #region Egenskaper
