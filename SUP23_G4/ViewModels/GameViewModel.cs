@@ -24,7 +24,7 @@ namespace SUP23_G4.ViewModels
 
         #region Egenskaper
         public int DieOne { get; private set; }
-        public int DieTwo { get; private set; } = 2;
+        public int DieTwo { get; private set; }
 
         public System.Windows.Visibility VisibilityOne1 { get; private set; }
         public System.Windows.Visibility VisibilityOne2 { get; private set; }
@@ -45,6 +45,10 @@ namespace SUP23_G4.ViewModels
         #endregion
 
         #region Metoder
+
+        /// <summary>
+        /// Kastar två tärningar och får uppdaterade värden på DieOne och DieTwo
+        /// </summary>
         public void DiceToss()
         {
             Random r = new Random();
@@ -66,62 +70,57 @@ namespace SUP23_G4.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Väljer vilken specifk tärningssida för båda tärningarna som ska synas 
+        /// i gränssnittet när tärningen har kastats.
+        /// </summary>
         public void ShowDiceNumber()
         {
             DiceToss();
+
+            VisibilityOne1 = System.Windows.Visibility.Hidden;
+            VisibilityOne2 = System.Windows.Visibility.Hidden;
+            VisibilityOne3 = System.Windows.Visibility.Hidden;
+            VisibilityOne4 = System.Windows.Visibility.Hidden;
+            VisibilityOne5 = System.Windows.Visibility.Hidden;
+            VisibilityOne6 = System.Windows.Visibility.Hidden;
+
+            VisibilityTwo1 = System.Windows.Visibility.Hidden;
+            VisibilityTwo2 = System.Windows.Visibility.Hidden;
+            VisibilityTwo3 = System.Windows.Visibility.Hidden;
+            VisibilityTwo4 = System.Windows.Visibility.Hidden;
+            VisibilityTwo5 = System.Windows.Visibility.Hidden;
+            VisibilityTwo6 = System.Windows.Visibility.Hidden;
+
+
 
             switch (DieOne)
             {
                 case 1:
                     VisibilityOne1 = System.Windows.Visibility.Visible;
-                    VisibilityOne2 = System.Windows.Visibility.Hidden;
-                    VisibilityOne3 = System.Windows.Visibility.Hidden;
-                    VisibilityOne4 = System.Windows.Visibility.Hidden;
-                    VisibilityOne5 = System.Windows.Visibility.Hidden;
-                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+                    
 
                     break;
                 case 2:
                     VisibilityOne2 = System.Windows.Visibility.Visible;
-                    VisibilityOne1 = System.Windows.Visibility.Hidden;
-                    VisibilityOne3 = System.Windows.Visibility.Hidden;
-                    VisibilityOne4 = System.Windows.Visibility.Hidden;
-                    VisibilityOne5 = System.Windows.Visibility.Hidden;
-                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+                  
 
                     break;
                 case 3:
                     VisibilityOne3 = System.Windows.Visibility.Visible;
-                    VisibilityOne1 = System.Windows.Visibility.Hidden;
-                    VisibilityOne2 = System.Windows.Visibility.Hidden;
-                    VisibilityOne4 = System.Windows.Visibility.Hidden;
-                    VisibilityOne5 = System.Windows.Visibility.Hidden;
-                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+                    
                     break;
                 case 4:
                     VisibilityOne4 = System.Windows.Visibility.Visible;
-                    VisibilityOne1 = System.Windows.Visibility.Hidden;
-                    VisibilityOne2 = System.Windows.Visibility.Hidden;
-                    VisibilityOne3 = System.Windows.Visibility.Hidden;
-                    VisibilityOne5 = System.Windows.Visibility.Hidden;
-                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+                   
                     break;
                 case 5:
                     VisibilityOne5 = System.Windows.Visibility.Visible;
-                    VisibilityOne1 = System.Windows.Visibility.Hidden;
-                    VisibilityOne2 = System.Windows.Visibility.Hidden;
-                    VisibilityOne3 = System.Windows.Visibility.Hidden;
-                    VisibilityOne4 = System.Windows.Visibility.Hidden;
-                    VisibilityOne6 = System.Windows.Visibility.Hidden;
+                    
                     break;
                 case 6:
                     VisibilityOne6 = System.Windows.Visibility.Visible;
-                    VisibilityOne1 = System.Windows.Visibility.Hidden;
-                    VisibilityOne2 = System.Windows.Visibility.Hidden;
-                    VisibilityOne3 = System.Windows.Visibility.Hidden;
-                    VisibilityOne4 = System.Windows.Visibility.Hidden;
-                    VisibilityOne5 = System.Windows.Visibility.Hidden;
+                    
                     break;
                 default:
                     break;
@@ -134,53 +133,29 @@ namespace SUP23_G4.ViewModels
 
                 case 1:
                     VisibilityTwo1 = System.Windows.Visibility.Visible;
-                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
+                    
                     
                     break;
                 case 2:
                     VisibilityTwo2 = System.Windows.Visibility.Visible;
-                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
+                   
 
                     break;
                 case 3:
                     VisibilityTwo3 = System.Windows.Visibility.Visible;
-                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
+                    
                     break;
                 case 4:
                     VisibilityTwo4 = System.Windows.Visibility.Visible;
-                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
+                    
                     break;
                 case 5:
                     VisibilityTwo5 = System.Windows.Visibility.Visible;
-                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo6 = System.Windows.Visibility.Hidden;
+                    
                     break;
                 case 6:
                     VisibilityTwo6 = System.Windows.Visibility.Visible;
-                    VisibilityTwo1 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo2 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo3 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo4 = System.Windows.Visibility.Hidden;
-                    VisibilityTwo5 = System.Windows.Visibility.Hidden;
+                    
                     break;
 
                 default:
