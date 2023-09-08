@@ -76,7 +76,7 @@ namespace SUP23_G4.ViewModels
 
         /// <summary>
         /// Metod som testar om spelarens val av brickor är möjliga att välja
-        /// för att nå tärningarnas summa 
+        /// för att nå tärningarnas summa (Eventuellt överflödig)
         /// </summary>
         public void AvailableTilesAfterSelectedTile(int selectedTile, int targetSum)
         {
@@ -178,7 +178,7 @@ namespace SUP23_G4.ViewModels
 
         /// <summary>
         /// Metod som testar om spelarens valda brickor blir tärningarnas
-        /// summa
+        /// summa (Eventuellt överflödig)
         /// </summary>
         public bool CalculateSelectedTiles(List<int>selectedTiles, int targetSum)
         {
