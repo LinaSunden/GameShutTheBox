@@ -26,12 +26,13 @@ namespace SUP23_G4.Views.GameTiles
 
         //public ObservableCollection<Tile> TileswithValue { get; set; }
 
-        //public Tile(ObservableCollection<Tile> tileswithValue)
-        //{
-        //    TileswithValue = tileswithValue;
+        public string DisplayValue { get; set; }
 
-        //    tileswithValue.Add(this);
-        //    tileswithValue.Add(this);
-        //}
+        public int Value { get; set; }
+
+        public override string ToString()
+        {
+            return DisplayValue;
+        }
     }
 }

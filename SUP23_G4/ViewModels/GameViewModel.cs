@@ -18,10 +18,30 @@ namespace SUP23_G4.ViewModels
         public int DieTwo { get; private set; }
 
         public DiceNumber DiceNumber { get; set; }
-        
-        //public ObservableCollection<Tile>? GameTileValue { get; private set; } 
 
-        
+        public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
+           
+        public void FillCollectionOfGameTiles() 
+        {
+            Tile tile; 
+            for (int i= 1; i<=10; i++) 
+            {
+                tile = new Tile();
+                {
+                    tile.DisplayValue = i.ToString();
+                    tile.Value = i; 
+                };
+                GameTiles.Add(tile);
+            }
+
+        }
+
+
+        public GameViewModel()
+        {
+            FillCollectionOfGameTiles();
+        }
+
 
 
         #endregion

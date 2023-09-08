@@ -145,16 +145,26 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne"/> 
+                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne"/>
+                <TextBlock Text="{Binding GameTiles[0]}" Grid.Column="0" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo"/>
+                <TextBlock Text="{Binding GameTiles[1]}" Grid.Column="1" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree"/>
+                <TextBlock Text="{Binding GameTiles[2]}" Grid.Column="2" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour"/>
+                <TextBlock Text="{Binding GameTiles[3]}" Grid.Column="3" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="4" VerticalAlignment="Top" x:Name="GameTileFive"/>
+                <TextBlock Text="{Binding GameTiles[4]}" Grid.Column="4" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="5" VerticalAlignment="Top" x:Name="GameTileSix"/>
+                <TextBlock Text="{Binding GameTiles[5]}" Grid.Column="5" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="6" VerticalAlignment="Top" x:Name="GameTileSeven"/>
+                <TextBlock Text="{Binding GameTiles[6]}" Grid.Column="6" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="7" VerticalAlignment="Top" x:Name="GameTileEight"/>
+                <TextBlock Text="{Binding GameTiles[7]}" Grid.Column="7" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="8" VerticalAlignment="Top" x:Name="GameTileNine"/>
+                <TextBlock Text="{Binding GameTiles[8]}" Grid.Column="8" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen"/>
+                <TextBlock Text="{Binding GameTiles[9]}" Grid.Column="9" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
             
 
