@@ -145,7 +145,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne"/>
+                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne"/> 
                 <GameTiles:GameTile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo"/>
                 <GameTiles:GameTile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree"/>
                 <GameTiles:GameTile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour"/>

@@ -1,6 +1,7 @@
 ﻿using SUP23_G4.Enums;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.Dice;
+using SUP23_G4.Views.GameTiles;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,10 +18,15 @@ namespace SUP23_G4.ViewModels
         public int DieTwo { get; private set; }
 
         public DiceNumber DiceNumber { get; set; }
+        
+        public ObservableCollection<Tile>? GameTileValue { get; private set; } = new ObservableCollection<Tile>();
 
-        public string GameTileValue { get; set; } = "1";
+        private void SetGameTileValues()
+        {
+            GameTileValue = new ObservableCollection<Tile>();
 
-        //observablecollection
+        }
+
 
         #endregion
 

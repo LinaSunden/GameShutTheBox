@@ -13,7 +13,7 @@
     </UserControl.Resources>
     <Grid Height="50">
         <Rectangle Stroke="Black" StrokeThickness="3"  Fill="Tan"/>
-        <TextBlock Text="{Binding GameTileValue}" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Normal" Margin="5"/>
+        <TextBlock Text="{Binding GameTileValue}" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Normal" Margin="5"/> 
 
     </Grid>
 </local:Tile>
