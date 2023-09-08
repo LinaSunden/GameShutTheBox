@@ -10,31 +10,44 @@ using System.Windows.Input;
 
 namespace SUP23_G4.ViewModels
 {
-    internal class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
+
 
         #region Konstruktor
         public MainViewModel()
         {
             CurrentViewModel = new StartViewModel(this);
             StartViewClickCommand = new RelayCommand(x => SwitchToStartView());
+            StartGameCommand = new RelayCommand(x => StartGame());
         }
 
-        private void SwitchToStartView()
-        {
-            CurrentViewModel = new StartViewModel(this);
-        }
 
         #endregion
 
         #region Egenskaper
         public BaseViewModel CurrentViewModel { get; set; }
-        public ICommand StartViewClickCommand { get; set; } 
+        public ICommand StartViewClickCommand { get; set; }
+        public ICommand StartGameCommand { get; set; }
 
         #endregion
 
         #region Instansvariabler
         private BaseViewModel _mainViewModel;
+
+        #endregion
+        #region Metoder
+        // Byter CurrentViewModel till StartViewModel//
+        private void SwitchToStartView()
+        {
+            CurrentViewModel = new StartViewModel(this);
+        }
+        // Skickar med vår StartViewModel till GameViewModel direkt när programmet startas.
+        private void StartGame()
+        {
+            GameViewModel gameViewModel = new GameViewModel((StartViewModel)CurrentViewModel);
+            CurrentViewModel = gameViewModel;
+        }
 
         #endregion
 
