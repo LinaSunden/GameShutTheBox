@@ -26,5 +26,6 @@ namespace SUP23_G4
             InitializeComponent();
             DataContext = new MainViewModel();
         }
+
     }
 }
