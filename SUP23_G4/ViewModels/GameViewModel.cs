@@ -3,6 +3,7 @@ using SUP23_G4.Enums;
 using SUP23_G4.Models;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.Dice;
+using SUP23_G4.Views.GameTiles;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -64,6 +65,31 @@ namespace SUP23_G4.ViewModels
         public System.Windows.Visibility VisibilityTwo6 { get; private set; }
 
         public ICommand RollDiceCommand { get; }
+
+        public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
+           
+        public void FillCollectionOfGameTiles() 
+        {
+            Tile tile; 
+            for (int i= 1; i<=10; i++) 
+            {
+                tile = new Tile();
+                {
+                    tile.DisplayValue = i.ToString();
+                    tile.Value = i; 
+                };
+                GameTiles.Add(tile);
+            }
+
+        }
+
+
+        public GameViewModel()
+        {
+            FillCollectionOfGameTiles();
+        }
+
+
 
         #endregion
 

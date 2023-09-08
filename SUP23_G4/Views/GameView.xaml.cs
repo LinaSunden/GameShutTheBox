@@ -25,6 +25,7 @@ namespace SUP23_G4.Views
         public GameView()
         {
             InitializeComponent();
+            
         }
 
         public GameViewModel GameViewModel = new();

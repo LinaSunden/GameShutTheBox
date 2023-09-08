@@ -4,15 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views.GameTiles"
+             xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
              xmlns:converter="clr-namespace:SUP23_G4.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converter:StatusToColorConverter x:Key="StatusToColorConverter" />
     </UserControl.Resources>
-    <Grid Height="50" Width="50">
+    <Grid Height="50">
         <Rectangle Stroke="Black" StrokeThickness="3"  Fill="Tan"/>
-        <TextBlock Text="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Normal" Margin="5"/>
+        <!--<TextBlock Text="{Binding GameTileValue}" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Normal" Margin="5"/> -->
 
     </Grid>
 </local:Tile>
