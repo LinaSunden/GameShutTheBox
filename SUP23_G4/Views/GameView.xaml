@@ -165,14 +165,28 @@
 
             </Grid>
 
-
-
-            <Button Content="Kasta Tärningar" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding RollDiceCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="True">
+            <Button Content="Genomför drag" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="2" Grid.ColumnSpan="2" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="{Binding ExecuteMove}" Command="{Binding ExecuteMoveCommand}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
-                        <GradientStop Color="LightGray" Offset="1"/>
-                        <GradientStop Color="Gray" Offset="0"/>
+                        <GradientStop Color="#FF9EE7FF" Offset="1"/>
+                        <GradientStop Color="#FF005B59" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.OpacityMask>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.OpacityMask>
+            </Button>
+
+            <Button Content="Kasta Tärningar" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="3" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding RollDiceCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="{Binding IsThrowButtonEnable}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF9EE7FF" Offset="1"/>
+                        <GradientStop Color="#FF005B59" Offset="0"/>
                     </LinearGradientBrush>
                 </Button.Background>
                 <Button.OpacityMask>

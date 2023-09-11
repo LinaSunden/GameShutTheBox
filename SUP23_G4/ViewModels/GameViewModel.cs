@@ -38,6 +38,7 @@ namespace SUP23_G4.ViewModels
             FillCollectionOfGameTiles();
             //ShowDiceNumber();
             RollDiceCommand = new RelayCommand(x => DiceToss());
+            ExecuteMoveCommand = new RelayCommand(x => MoveIsExecuted());
 
 
         }
@@ -54,10 +55,16 @@ namespace SUP23_G4.ViewModels
 
         public ICommand RollDiceCommand { get; }
 
+        public ICommand ExecuteMoveCommand { get; }
+
         public Player Player1 { get; private set; }
         public Player Player2 { get; private set; }
 
         public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
+
+        public Visibility ExecuteMove {  get; set; } = Visibility.Hidden;
+
+        public bool IsThrowButtonEnable { get; set; } = true;
 
     
         #endregion
@@ -99,8 +106,20 @@ namespace SUP23_G4.ViewModels
             }
             DiceValue = DieOne + DieTwo;
             FillListOfAvailableTiles();
+            VisibilityGameButton();
         }
 
+        public void VisibilityGameButton()
+        {
+            ExecuteMove = Visibility.Visible;
+            IsThrowButtonEnable = false;
+        }
+
+        public void MoveIsExecuted()
+        {
+            ExecuteMove = Visibility.Hidden;
+            IsThrowButtonEnable = true;
+        }
 
         public void FillCollectionOfGameTiles()
         {
