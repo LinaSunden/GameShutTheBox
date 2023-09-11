@@ -64,7 +64,7 @@ namespace SUP23_G4.ViewModels
 
         public Visibility ExecuteMove {  get; set; } = Visibility.Hidden;
 
-        public bool IsThrowButtonEnable { get; set; } = true;
+        public bool IsThrowEnable { get; set; } = true;
 
     
         #endregion
@@ -112,13 +112,13 @@ namespace SUP23_G4.ViewModels
         public void VisibilityGameButton()
         {
             ExecuteMove = Visibility.Visible;
-            IsThrowButtonEnable = false;
+            IsThrowEnable = false;
         }
 
         public void MoveIsExecuted()
         {
             ExecuteMove = Visibility.Hidden;
-            IsThrowButtonEnable = true;
+            IsThrowEnable = true;
         }
 
         public void FillCollectionOfGameTiles()
