@@ -58,18 +58,8 @@ namespace SUP23_G4.ViewModels
         public Player Player2 { get; private set; }
 
         public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
-           
-        public void FillCollectionOfGameTiles() 
-        {
-            Tile tile; 
-            for (int i= 1; i<=10; i++) 
-            {
-                tile = new Tile();
-                {                   
-                    tile.TileValue = i; 
-                };
-                GameTiles.Add(tile);
-            }
+
+    
         #endregion
 
 
@@ -119,13 +109,12 @@ namespace SUP23_G4.ViewModels
             {
                 tile = new Tile();
                 {
-                    tile.DisplayValue = i.ToString();
-                    tile.Value = i;
+                    tile.TileValue = i;
                 };
                 GameTiles.Add(tile);
             }
-
         }
+
 
         /// <summary>
         /// Metod som räknar ut vilka brickor som är tillgängliga utifrån 
@@ -302,4 +291,4 @@ namespace SUP23_G4.ViewModels
         
        
     }
-}
+
