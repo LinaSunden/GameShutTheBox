@@ -234,6 +234,8 @@
                 <TextBlock Text="{Binding GameTiles[8]}" Grid.Column="8" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <GameTiles:GameTile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen"/>
                 <TextBlock Text="{Binding GameTiles[9]}" Grid.Column="9" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+
             </Grid>
 
 

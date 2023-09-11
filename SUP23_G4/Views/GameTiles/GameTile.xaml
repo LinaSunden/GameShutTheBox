@@ -6,13 +6,14 @@
              xmlns:local="clr-namespace:SUP23_G4.Views.GameTiles"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
              xmlns:converter="clr-namespace:SUP23_G4.Converters"
+             x:Name="tile"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converter:StatusToColorConverter x:Key="StatusToColorConverter" />
     </UserControl.Resources>
     <Grid Height="50">
-        <Rectangle Stroke="Black" StrokeThickness="3"  Fill="Tan"/>
+        <Rectangle Stroke="Black" StrokeThickness="3"  Fill="{Binding CurrentStatus, ElementName=tile, Converter={StaticResource StatusToColorConverter}}"/>
         <!--<TextBlock Text="{Binding GameTileValue}" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Normal" Margin="5"/> -->
 
     </Grid>

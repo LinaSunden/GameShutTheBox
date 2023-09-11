@@ -129,32 +129,37 @@ namespace SUP23_G4.ViewModels
         {
             int diceValue = DiceValue;
 
-            //List<int> tiles = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            ObservableCollection<Tile> gameTiles = GameTiles;
             ObservableCollection<Tile> availableTiles = new ObservableCollection<Tile>();
             //List<int> availableTiles = new List<int>();
-            Tile availableTile; 
+            //Tile availableTile; 
             foreach (Tile tile in GameTiles)
             {
-                if (tile.Value == diceValue)
+                if (tile.Value <= diceValue)
                 {
-                    for (int i = 1; i <= diceValue; i++)
-                    {
-                        availableTile = new Tile()
-                        {
-                            Value = i,
-                            DisplayValue = i.ToString(),
-                        };
-                        availableTiles.Add(availableTile);
-                    }
-                    break;
+                    tile.CurrentStatus = Status.AvailableGameTile;
+                    //for (int i = 1; i <= diceValue; i++)
+                    //{
+                    //    availableTile = new Tile()
+                    //    {
+                    //        Value = i,
+                    //        DisplayValue = i.ToString(),
+                    //        CurrentStatus = Status.AvailableGameTile
+                    //    };
+                    //    availableTiles.Add(availableTile);
+                    //}
+                    //break;
                 }
-                else if (diceValue > GameTiles.Count())
+                else if (tile.Value > diceValue ) 
                 {
-                    availableTiles = GameTiles;
+                    tile.CurrentStatus = Status.NotAvailableGameTile;
+                
                 }
+                //else if (diceValue > GameTiles.Count())
+                //{
+                //    availableTiles = GameTiles;
+                //}
             }
-            GameTiles = availableTiles;
+            //GameTiles = availableTiles;
 
             //GetAvailableTiles(availableTiles, diceValue);
 
