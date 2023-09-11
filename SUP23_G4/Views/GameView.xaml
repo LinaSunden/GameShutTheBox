@@ -145,6 +145,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </StackPanel>
+            
             <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
                 <Grid.InputBindings>
                     <MouseBinding
@@ -156,24 +157,11 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-
-
                 <!--The First Dice-->
-                <Dice:DiceOne Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
-                
-                <!--<Dice:Dice2 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne2}"/>
-                <Dice:Dice3 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne3}"/>
-                <Dice:Dice4 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne4}"/>
-                <Dice:Dice5 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne5}"/>
-                <Dice:Dice6 Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityOne6}"/>
+                <Dice:DiceOne Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" DieOneValue="{Binding DieOne}"/>
 
-                --><!--The Second Dice--><!--
-                <Dice:Dice Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo1}"/>
-                <Dice:Dice2 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo2}"/>
-                <Dice:Dice3 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo3}"/>
-                <Dice:Dice4 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo4}"/>
-                <Dice:Dice5 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo5}"/>
-                <Dice:Dice6 Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding VisibilityTwo6}"/>-->
+                <!--The Second Dice-->
+                <Dice:DiceTwo Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" DieTwoValue="{Binding DieTwo}"/>
 
             </Grid>
 
