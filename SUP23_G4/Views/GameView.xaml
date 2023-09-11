@@ -8,15 +8,13 @@
              xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice"  x:Class="SUP23_G4.Views.GameView"
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}"
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
-
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Border
      BorderBrush="Gray"  
      BorderThickness="3"
-     CornerRadius="5" Background="DarkGreen"
-            >
+     CornerRadius="5" Background="DarkGreen">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
@@ -152,6 +150,7 @@
                         Gesture="LeftClick"
                         Command="{Binding RollDiceCommand}"/>
                 </Grid.InputBindings>
+               
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition/>
