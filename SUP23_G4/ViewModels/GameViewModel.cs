@@ -66,6 +66,8 @@ namespace SUP23_G4.ViewModels
 
         public ICommand RollDiceCommand { get; }
 
+        
+
         public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
            
         public void FillCollectionOfGameTiles() 
@@ -383,6 +385,6 @@ namespace SUP23_G4.ViewModels
         }
         #endregion
         
-
+       
     }
 }

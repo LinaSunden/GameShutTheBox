@@ -1,4 +1,5 @@
-﻿using SUP23_G4.Enums;
+﻿using SUP23_G4.Commands;
+using SUP23_G4.Enums;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace SUP23_G4.Views.GameTiles
@@ -35,7 +37,30 @@ namespace SUP23_G4.Views.GameTiles
 
         // Using a DependencyProperty as the backing store for TileValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TileValueProperty =
-            DependencyProperty.Register("TileValue", typeof(int), typeof(Tile), new PropertyMetadata(1));
+            DependencyProperty.Register("TileValue", typeof(int), typeof(Tile), new PropertyMetadata(0));
 
+        public ICommand SelectedTileCommand { get; }
+
+
+        public void ChosenTile() 
+        {
+ 
+            if (CurrentStatus == Status.AvailableGameTile) 
+            {
+                CurrentStatus = Status.SelectedGameTile;
+            }
+
+
+            else if (CurrentStatus == Status.SelectedGameTile) 
+            {
+                CurrentStatus = Status.AvailableGameTile;
+            }
+        }
+
+        public Tile()
+        {
+            SelectedTileCommand = new RelayCommand(x => ChosenTile());
+        }
+        
     }
 }

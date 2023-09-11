@@ -13,8 +13,7 @@
         <converter:StatusToColorConverter x:Key="StatusToColorConverter" />
     </UserControl.Resources>
     <Grid Height="50">
-        <Rectangle Stroke="Black" StrokeThickness="3" Fill="{Binding CurrentStatus, ElementName=tile, Converter={StaticResource StatusToColorConverter}}"/>
-        <TextBlock Text="{Binding TileValue, ElementName=tile}" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Normal" Margin="5"/>
-
+        <Button BorderBrush="Black" BorderThickness="1" Background="{Binding CurrentStatus, ElementName=tile, Converter={StaticResource StatusToColorConverter}}" Command="{Binding SelectedTileCommand, ElementName=tile}"
+                Content="{Binding TileValue, ElementName=tile}" FontSize="18" FontWeight="Normal"/>
     </Grid>
 </local:Tile>
