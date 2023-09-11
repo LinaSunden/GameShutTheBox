@@ -25,15 +25,17 @@ namespace SUP23_G4.Views.GameTiles
         public static readonly DependencyProperty CurrentStatusProperty =
             DependencyProperty.Register("CurrentStatus", typeof(Status), typeof(Tile), new PropertyMetadata(Status.AvailableGameTile));
 
-        //public ObservableCollection<Tile> TileswithValue { get; set; }
 
-        public string DisplayValue { get; set; }
-
-        public int Value { get; set; }
-
-        public override string ToString()
+ 
+        public int TileValue
         {
-            return DisplayValue;
+            get { return (int)GetValue(TileValueProperty); }
+            set { SetValue(TileValueProperty, value); }
         }
+
+        // Using a DependencyProperty as the backing store for TileValue.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TileValueProperty =
+            DependencyProperty.Register("TileValue", typeof(int), typeof(Tile), new PropertyMetadata(1));
+
     }
 }

@@ -214,26 +214,16 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne" CurrentStatus="{Binding GameTiles[0].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[0]}" Grid.Column="0" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo" CurrentStatus="{Binding GameTiles[1].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[1]}" Grid.Column="1" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree" CurrentStatus="{Binding GameTiles[2].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[2]}" Grid.Column="2" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour" CurrentStatus="{Binding GameTiles[3].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[3]}" Grid.Column="3" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="4" VerticalAlignment="Top" x:Name="GameTileFive" CurrentStatus="{Binding GameTiles[4].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[4]}" Grid.Column="4" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="5" VerticalAlignment="Top" x:Name="GameTileSix" CurrentStatus="{Binding GameTiles[5].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[5]}" Grid.Column="5" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="6" VerticalAlignment="Top" x:Name="GameTileSeven" CurrentStatus="{Binding GameTiles[6].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[6]}" Grid.Column="6" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="7" VerticalAlignment="Top" x:Name="GameTileEight" CurrentStatus="{Binding GameTiles[7].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[7]}" Grid.Column="7" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="8" VerticalAlignment="Top" x:Name="GameTileNine" CurrentStatus="{Binding GameTiles[8].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[8]}" Grid.Column="8" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <GameTiles:GameTile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen" CurrentStatus="{Binding GameTiles[9].CurrentStatus}"/>
-                <TextBlock Text="{Binding GameTiles[9]}" Grid.Column="9" FontSize="20" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne" CurrentStatus="{Binding GameTiles[0].CurrentStatus}" TileValue="{Binding GameTiles[0].TileValue}"/>
+                <GameTiles:GameTile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo" CurrentStatus="{Binding GameTiles[1].CurrentStatus}" TileValue="{Binding GameTiles[1].TileValue}"/>
+                <GameTiles:GameTile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree" CurrentStatus="{Binding GameTiles[2].CurrentStatus}" TileValue="{Binding GameTiles[2].TileValue}"/>
+                <GameTiles:GameTile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour" CurrentStatus="{Binding GameTiles[3].CurrentStatus}" TileValue="{Binding GameTiles[3].TileValue}" />
+                <GameTiles:GameTile Grid.Column="4" VerticalAlignment="Top" x:Name="GameTileFive" CurrentStatus="{Binding GameTiles[4].CurrentStatus}" TileValue="{Binding GameTiles[4].TileValue}"/>
+                <GameTiles:GameTile Grid.Column="5" VerticalAlignment="Top" x:Name="GameTileSix" CurrentStatus="{Binding GameTiles[5].CurrentStatus}" TileValue="{Binding GameTiles[5].TileValue}"/>
+                <GameTiles:GameTile Grid.Column="6" VerticalAlignment="Top" x:Name="GameTileSeven" CurrentStatus="{Binding GameTiles[6].CurrentStatus}" TileValue="{Binding GameTiles[6].TileValue}"/>
+                <GameTiles:GameTile Grid.Column="7" VerticalAlignment="Top" x:Name="GameTileEight" CurrentStatus="{Binding GameTiles[7].CurrentStatus}" TileValue="{Binding GameTiles[7].TileValue}"/>
+                <GameTiles:GameTile Grid.Column="8" VerticalAlignment="Top" x:Name="GameTileNine" CurrentStatus="{Binding GameTiles[8].CurrentStatus}" TileValue="{Binding GameTiles[8].TileValue}"/>
+                <GameTiles:GameTile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen" CurrentStatus="{Binding GameTiles[9].CurrentStatus}" TileValue="{Binding GameTiles[9].TileValue}"/>
 
 
             </Grid>

@@ -74,9 +74,8 @@ namespace SUP23_G4.ViewModels
             for (int i= 1; i<=10; i++) 
             {
                 tile = new Tile();
-                {
-                    tile.DisplayValue = i.ToString();
-                    tile.Value = i; 
+                {                   
+                    tile.TileValue = i; 
                 };
                 GameTiles.Add(tile);
             }
@@ -134,7 +133,7 @@ namespace SUP23_G4.ViewModels
             //Tile availableTile; 
             foreach (Tile tile in GameTiles)
             {
-                if (tile.Value <= diceValue)
+                if (tile.TileValue <= diceValue)
                 {
                     tile.CurrentStatus = Status.AvailableGameTile;
                     //for (int i = 1; i <= diceValue; i++)
@@ -149,7 +148,7 @@ namespace SUP23_G4.ViewModels
                     //}
                     //break;
                 }
-                else if (tile.Value > diceValue ) 
+                else if (tile.TileValue > diceValue ) 
                 {
                     tile.CurrentStatus = Status.NotAvailableGameTile;
                 
