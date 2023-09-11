@@ -1,4 +1,5 @@
 ﻿using SUP23_G4.ViewModels;
+using SUP23_G4.Views.Dice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace SUP23_G4.Views
             
         }
 
-        public GameViewModel GameViewModel = new();
+   public GameViewModel GameViewModel = new();
 
         //Det fungerar inte att klicka direkt på tärningarna för att kasta dem. Funderar på om det
         //beror på att GameViewModel nyas upp här eller att det inte går att använda en metod från GameViewModel
@@ -37,7 +38,7 @@ namespace SUP23_G4.Views
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                GameViewModel.ShowDiceNumber();
+                GameViewModel.DiceToss();
             }
 
         }

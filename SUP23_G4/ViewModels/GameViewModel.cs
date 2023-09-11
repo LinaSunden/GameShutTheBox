@@ -19,6 +19,9 @@ namespace SUP23_G4.ViewModels
 {
     public class GameViewModel : BaseViewModel
     {
+
+        public DiceOne diceOne = new();
+
         private StartViewModel _startViewModel;
         public Player Player1 { get; private set; }
         public Player Player2 { get; private set; }
@@ -28,55 +31,67 @@ namespace SUP23_G4.ViewModels
         //    ShowDiceNumber();
         //    RollDiceCommand = new RelayCommand(x => ShowDiceNumber());
         //}
+
         public GameViewModel(StartViewModel startViewModel)
         {
+
             _startViewModel = startViewModel;
             Player1 = startViewModel.Player1;
             Player2 = startViewModel.Player2;
 
             FillCollectionOfGameTiles();
             //ShowDiceNumber();
-            RollDiceCommand = new RelayCommand(x => ShowDiceNumber());
+            RollDiceCommand = new RelayCommand(x => DiceToss());
 
-            
+
         }
 
 
 
 
         #region Egenskaper
-        public int DieOne { get; private set; }
+        public int DieOne { get; set; }
+
+
+
+
+
+
+
         public int DieTwo { get; private set; }
         public int DiceValue { get; private set; }
-        //public List<int> AvailableTiles { get; set; } = new List<int>();
-
-        public System.Windows.Visibility VisibilityOne1 { get; private set; } = Visibility.Visible;
-        public System.Windows.Visibility VisibilityOne2 { get; private set; } = Visibility.Hidden;
-        public System.Windows.Visibility VisibilityOne3 { get; private set; } = Visibility.Hidden;
-        public System.Windows.Visibility VisibilityOne4 { get; private set; } = Visibility.Hidden;
-        public System.Windows.Visibility VisibilityOne5 { get; private set; } = Visibility.Hidden;
-        public System.Windows.Visibility VisibilityOne6 { get; private set; } = Visibility.Hidden;
-
-        public System.Windows.Visibility VisibilityTwo1 { get; private set; } = Visibility.Hidden;
-        public System.Windows.Visibility VisibilityTwo2 { get; private set; } = Visibility.Hidden;
-        public System.Windows.Visibility VisibilityTwo3 { get; private set; } = Visibility.Hidden;
-        public System.Windows.Visibility VisibilityTwo4 { get; private set; } = Visibility.Hidden;
-        public System.Windows.Visibility VisibilityTwo5 { get; private set; } = Visibility.Visible;
-        public System.Windows.Visibility VisibilityTwo6 { get; private set; } = Visibility.Hidden;
 
         public ICommand RollDiceCommand { get; }
 
+        //public List<int> AvailableTiles { get; set; } = new List<int>();
+
+        //public System.Windows.Visibility VisibilityOne1 { get; private set; } = Visibility.Visible;
+        //public System.Windows.Visibility VisibilityOne2 { get; private set; } = Visibility.Hidden;
+        //public System.Windows.Visibility VisibilityOne3 { get; private set; } = Visibility.Hidden;
+        //public System.Windows.Visibility VisibilityOne4 { get; private set; } = Visibility.Hidden;
+        //public System.Windows.Visibility VisibilityOne5 { get; private set; } = Visibility.Hidden;
+        //public System.Windows.Visibility VisibilityOne6 { get; private set; } = Visibility.Hidden;
+
+        //public System.Windows.Visibility VisibilityTwo1 { get; private set; } = Visibility.Hidden;
+        //public System.Windows.Visibility VisibilityTwo2 { get; private set; } = Visibility.Hidden;
+        //public System.Windows.Visibility VisibilityTwo3 { get; private set; } = Visibility.Hidden;
+        //public System.Windows.Visibility VisibilityTwo4 { get; private set; } = Visibility.Hidden;
+        //public System.Windows.Visibility VisibilityTwo5 { get; private set; } = Visibility.Visible;
+        //public System.Windows.Visibility VisibilityTwo6 { get; private set; } = Visibility.Hidden;
+
+        //public ICommand RollDiceCommand { get; }
+
         public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
-           
-        public void FillCollectionOfGameTiles() 
+
+        public void FillCollectionOfGameTiles()
         {
-            Tile tile; 
-            for (int i= 1; i<=10; i++) 
+            Tile tile;
+            for (int i = 1; i <= 10; i++)
             {
                 tile = new Tile();
                 {
                     tile.DisplayValue = i.ToString();
-                    tile.Value = i; 
+                    tile.Value = i;
                 };
                 GameTiles.Add(tile);
             }
@@ -86,7 +101,7 @@ namespace SUP23_G4.ViewModels
 
         public GameViewModel()
         {
-            
+
         }
 
 
@@ -104,17 +119,17 @@ namespace SUP23_G4.ViewModels
 
             for (int i = 0; i < 2; i++)
             {
-                Dice die = new Dice();
+                DiceOne die = new();
                 if (i == 0)
                 {
-                    die.DieValue = r.Next(1, 7);
-                    DieOne = die.DieValue;
+                    die.DieOneValue = r.Next(1, 7);
+                    DieOne = die.DieOneValue;
 
                 }
                 else if (i == 1)
                 {
-                    die.DieValue = r.Next(1, 7);
-                    DieTwo = die.DieValue;
+                    die.DieTwoValue = r.Next(1, 7);
+                    DieTwo = die.DieTwoValue;
                 }
             }
             DiceValue = DieOne + DieTwo;
@@ -133,7 +148,7 @@ namespace SUP23_G4.ViewModels
             ObservableCollection<Tile> gameTiles = GameTiles;
             ObservableCollection<Tile> availableTiles = new ObservableCollection<Tile>();
             //List<int> availableTiles = new List<int>();
-            Tile availableTile; 
+            Tile availableTile;
             foreach (Tile tile in GameTiles)
             {
                 if (tile.Value == diceValue)
@@ -183,7 +198,7 @@ namespace SUP23_G4.ViewModels
         //            }
 
         //        }
-            
+
         //    }
         //}
 
@@ -191,7 +206,7 @@ namespace SUP23_G4.ViewModels
         /// Metod som undersöker vilka kombinationer av brickor som är
         /// möjliga för att nå tärningarnas summa
         /// </summary>
-        public void GetAvailableTiles(List<int>tiles, int targetSum)
+        public void GetAvailableTiles(List<int> tiles, int targetSum)
         {
 
             List<List<int>> collection = new List<List<int>>();
@@ -202,7 +217,7 @@ namespace SUP23_G4.ViewModels
                 if (i == targetSum)
                 {
                     availableTiles = new List<int>()
-                    { 
+                    {
                         i,
                     };
                     collection.Add(availableTiles);
@@ -210,9 +225,9 @@ namespace SUP23_G4.ViewModels
                 }
                 else if (i < targetSum)
                 {
-                    for(int j = i + 1; j <= tiles.Count(); j++)
+                    for (int j = i + 1; j <= tiles.Count(); j++)
                     {
-                        if (i + j ==  targetSum)
+                        if (i + j == targetSum)
                         {
                             availableTiles = new List<int>()
                             {
@@ -224,7 +239,7 @@ namespace SUP23_G4.ViewModels
                         }
                         else if (i + j < targetSum)
                         {
-                            for (int k = i + 2;  k <= tiles.Count(); k++)
+                            for (int k = i + 2; k <= tiles.Count(); k++)
                             {
                                 if (i + j + k == targetSum)
                                 {
@@ -239,9 +254,9 @@ namespace SUP23_G4.ViewModels
                                 }
                                 else if (i + j + k < targetSum)
                                 {
-                                    for ( int l = i + 3; l <= tiles.Count(); l++)
+                                    for (int l = i + 3; l <= tiles.Count(); l++)
                                     {
-                                        if (j + l + k +l == targetSum)
+                                        if (j + l + k + l == targetSum)
                                         {
                                             availableTiles = new List<int>()
                                             {
@@ -266,11 +281,11 @@ namespace SUP23_G4.ViewModels
         /// Metod som testar om spelarens valda brickor blir tärningarnas
         /// summa (Eventuellt överflödig)
         /// </summary>
-        public bool CalculateSelectedTiles(List<int>selectedTiles, int targetSum)
+        public bool CalculateSelectedTiles(List<int> selectedTiles, int targetSum)
         {
             int calculatedSum = 0;
 
-            foreach(int i in selectedTiles)
+            foreach (int i in selectedTiles)
             {
                 calculatedSum += i;
             }
@@ -282,103 +297,151 @@ namespace SUP23_G4.ViewModels
             return false;
         }
 
-        /// <summary>
-        /// Väljer vilken specifk tärningssida för båda tärningarna som ska synas 
-        /// i gränssnittet när tärningen har kastats.
-        /// </summary>
-        public void ShowDiceNumber()
-        {
-            DiceToss();
 
-            VisibilityOne1 = System.Windows.Visibility.Hidden;
-            VisibilityOne2 = System.Windows.Visibility.Hidden;
-            VisibilityOne3 = System.Windows.Visibility.Hidden;
-            VisibilityOne4 = System.Windows.Visibility.Hidden;
-            VisibilityOne5 = System.Windows.Visibility.Hidden;
-            VisibilityOne6 = System.Windows.Visibility.Hidden;
+        //public void ShowDiceNumber()
+        //{
+        //    DiceToss();
 
-            VisibilityTwo1 = System.Windows.Visibility.Hidden;
-            VisibilityTwo2 = System.Windows.Visibility.Hidden;
-            VisibilityTwo3 = System.Windows.Visibility.Hidden;
-            VisibilityTwo4 = System.Windows.Visibility.Hidden;
-            VisibilityTwo5 = System.Windows.Visibility.Hidden;
-            VisibilityTwo6 = System.Windows.Visibility.Hidden;
+            
+
+        //    diceOne.VisibilityDiceOne1 = Visibility.Hidden;
+        //    diceOne.VisibilityDiceOne2 = Visibility.Hidden;
+        //    diceOne.VisibilityDiceOne3 = Visibility.Hidden;
+        //    diceOne.VisibilityDiceOne4 = Visibility.Hidden;
+        //    diceOne.VisibilityDiceOne5 = Visibility.Hidden;
+        //    diceOne.VisibilityDiceOne6 = Visibility.Hidden;
+
+        //    switch (DieOne)
+        //    {
+        //        case 1:
+        //            diceOne.VisibilityDiceOne1 = Visibility.Visible;
 
 
-
-            switch (DieOne)
-            {
-                case 1:
-                    VisibilityOne1 = System.Windows.Visibility.Visible;
-                    
-
-                    break;
-                case 2:
-                    VisibilityOne2 = System.Windows.Visibility.Visible;
-                  
-
-                    break;
-                case 3:
-                    VisibilityOne3 = System.Windows.Visibility.Visible;
-                    
-                    break;
-                case 4:
-                    VisibilityOne4 = System.Windows.Visibility.Visible;
-                   
-                    break;
-                case 5:
-                    VisibilityOne5 = System.Windows.Visibility.Visible;
-                    
-                    break;
-                case 6:
-                    VisibilityOne6 = System.Windows.Visibility.Visible;
-                    
-                    break;
-                default:
-                    break;
-            }
+        //            break;
+        //        case 2:
+        //            diceOne.VisibilityDiceOne2 = Visibility.Visible;
 
 
-            switch (DieTwo)
-            {
+        //            break;
+        //        case 3:
+        //            diceOne.VisibilityDiceOne3 = Visibility.Visible;
+
+        //            break;
+        //        case 4:
+        //            diceOne.VisibilityDiceOne4 = Visibility.Visible;
+
+        //            break;
+        //        case 5:
+        //            diceOne.VisibilityDiceOne5 = Visibility.Visible;
+
+        //            break;
+        //        case 6:
+        //            diceOne.VisibilityDiceOne6 = Visibility.Visible;
+
+        //            break;
+        //        default:
+        //            break;
+        //    }
+
+            /// <summary>
+            /// Väljer vilken specifk tärningssida för båda tärningarna som ska synas 
+            /// i gränssnittet när tärningen har kastats.
+            /// </summary>
+            //public void ShowDiceNumber()
+            //{
+            //    DiceToss();
+
+            //    VisibilityOne1 = System.Windows.Visibility.Hidden;
+            //    VisibilityOne2 = System.Windows.Visibility.Hidden;
+            //    VisibilityOne3 = System.Windows.Visibility.Hidden;
+            //    VisibilityOne4 = System.Windows.Visibility.Hidden;
+            //    VisibilityOne5 = System.Windows.Visibility.Hidden;
+            //    VisibilityOne6 = System.Windows.Visibility.Hidden;
+
+            //    VisibilityTwo1 = System.Windows.Visibility.Hidden;
+            //    VisibilityTwo2 = System.Windows.Visibility.Hidden;
+            //    VisibilityTwo3 = System.Windows.Visibility.Hidden;
+            //    VisibilityTwo4 = System.Windows.Visibility.Hidden;
+            //    VisibilityTwo5 = System.Windows.Visibility.Hidden;
+            //    VisibilityTwo6 = System.Windows.Visibility.Hidden;
 
 
-                case 1:
-                    VisibilityTwo1 = System.Windows.Visibility.Visible;
-                    
-                    
-                    break;
-                case 2:
-                    VisibilityTwo2 = System.Windows.Visibility.Visible;
-                   
 
-                    break;
-                case 3:
-                    VisibilityTwo3 = System.Windows.Visibility.Visible;
-                    
-                    break;
-                case 4:
-                    VisibilityTwo4 = System.Windows.Visibility.Visible;
-                    
-                    break;
-                case 5:
-                    VisibilityTwo5 = System.Windows.Visibility.Visible;
-                    
-                    break;
-                case 6:
-                    VisibilityTwo6 = System.Windows.Visibility.Visible;
-                    
-                    break;
+            //    switch (DieOne)
+            //    {
+            //        case 1:
+            //            VisibilityOne1 = System.Windows.Visibility.Visible;
 
-                default:
-                  
-                    break;
 
-            }
+            //            break;
+            //        case 2:
+            //            VisibilityOne2 = System.Windows.Visibility.Visible;
+
+
+            //            break;
+            //        case 3:
+            //            VisibilityOne3 = System.Windows.Visibility.Visible;
+
+            //            break;
+            //        case 4:
+            //            VisibilityOne4 = System.Windows.Visibility.Visible;
+
+            //            break;
+            //        case 5:
+            //            VisibilityOne5 = System.Windows.Visibility.Visible;
+
+            //            break;
+            //        case 6:
+            //            VisibilityOne6 = System.Windows.Visibility.Visible;
+
+            //            break;
+            //        default:
+            //            break;
+            //    }
+
+
+            //    switch (DieTwo)
+            //    {
+
+
+            //        case 1:
+            //            VisibilityTwo1 = System.Windows.Visibility.Visible;
+
+
+            //            break;
+            //        case 2:
+            //            VisibilityTwo2 = System.Windows.Visibility.Visible;
+
+
+            //            break;
+            //        case 3:
+            //            VisibilityTwo3 = System.Windows.Visibility.Visible;
+
+            //            break;
+            //        case 4:
+            //            VisibilityTwo4 = System.Windows.Visibility.Visible;
+
+            //            break;
+            //        case 5:
+            //            VisibilityTwo5 = System.Windows.Visibility.Visible;
+
+            //            break;
+            //        case 6:
+            //            VisibilityTwo6 = System.Windows.Visibility.Visible;
+
+            //            break;
+
+            //        default:
+
+            //            break;
+
+            //    }
+
+            //}
+            #endregion
+
 
         }
-        #endregion
-        
-
     }
-}
+
+
