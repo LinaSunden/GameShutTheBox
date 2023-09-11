@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SUP23_G4.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace SUP23_G4.Views.GameTiles
             InitializeComponent();
         }
 
-        
+
+
     }
 }
