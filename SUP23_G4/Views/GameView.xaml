@@ -157,11 +157,15 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
+                <Rectangle Fill="Transparent" Height="100" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" />
+                
                 <!--The First Dice-->
                 <Dice:DiceOne Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" DieOneValue="{Binding DieOne}"/>
 
                 <!--The Second Dice-->
                 <Dice:DiceTwo Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" DieTwoValue="{Binding DieTwo}"/>
+
+                
 
             </Grid>
 
