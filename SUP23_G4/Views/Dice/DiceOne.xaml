@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="SUP23_G4.Views.Dice.DiceOne"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converter="clr-namespace:SUP23_G4.Converters"
+             x:Name="firstDice"
+             xmlns:local="clr-namespace:SUP23_G4.Views.Dice"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="60">
+    <UserControl.Resources>
+        <converter:DiceValueToVisibilityConverter x:Key="DiceValueToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Canvas Width="60" Height="60" >
+        <Image Source="/Resources/Dice1.png" Stretch="Fill" Width="60" Height="60" Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=1, ElementName=firstDice}"/>
+        <Image Source="/Resources/Dice2.png" Stretch="Fill" Width="60" Height="60" Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=2, ElementName=firstDice}"/>
+        <Image Height="60" Width="60" Source="/Resources/Dice3.png" Stretch="Fill" Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=3, ElementName=firstDice}"/>
+        <Image Source="/Resources/Dice4.png" Stretch="Fill" Width="60" Height="60" Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=4, ElementName=firstDice}"/>
+        <Image Source="/Resources/Dice5.png" Stretch="Fill" Width="60" Height="60" Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=5, ElementName=firstDice}"/>
+        <Image Height="60" Source="/Resources/Dice6.png" Stretch="Fill" Width="60" Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=6, ElementName=firstDice}"/>
+    </Canvas>
+    
+</UserControl>
