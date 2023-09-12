@@ -56,23 +56,25 @@ namespace SUP23_G4.ViewModels
         public ICommand ExecuteMoveCommand { get; }
         public ICommand PointCounterCommand { get; }
 
-        public Player Player1 { get; private set; }
-        public Player Player2 { get; private set; } 
+        public Player Player1 { get; set; }
+        public Player Player2 { get; set; } 
 
         public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
 
         public Visibility ExecuteMove {  get; set; } = Visibility.Hidden;
 
         public bool IsThrowEnable { get; set; } = true;
-        public int GameRound { get; set; } = 3;
+        public int GameRound { get; set; } = 1;
+        public int Player1Point { get; set; } = 0;
+        public int Player2Point { get; set; } = 0;
 
-    
+
         #endregion
 
 
         #region Instansvariabler
 
-        private StartViewModel _startViewModel;
+        public StartViewModel _startViewModel;
 
         #endregion
 
@@ -115,30 +117,37 @@ namespace SUP23_G4.ViewModels
             IsThrowEnable = false;
         }
 
+        /// <summary>
+        /// GameRound Startar vid 1, och plusar för tillfället vid varje genomförd drag, en omgång består av varje spelares drag.
+        /// </summary>
         public void MoveIsExecuted()
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
-            GameRound = GameRound + 1;
-            
-        }
+            GameRound = GameRound + 1;        }
 
+        /// <summary>
+        /// Metod för att räkna ut varje spelares poäng. För tillfället är vald brickas status satt till NotAvailableGameTile, inte DownWardTile som är målet
+        /// En property har gjorts som int Player1Point som tar Player1's värde då Vi inte fick till Binding Player1.Score att uppdateras.
+        /// En Modulus används för att avgöra om Spelare 1 / Spelare 2 får poäng. Spelare 1 = Ojämna omgångar, Spelare 2 = Jämna omgångar.
+        /// </summary>
         public void PointCounter()
         {
-             foreach (Tile tile in GameTiles)
+
+            foreach (Tile tile in GameTiles)
             {
                 if (tile.CurrentStatus == Status.NotAvailableGameTile)
                 {
-                    if (GameRound == GameRound % 2)
+                    if (GameRound % 2 != 0)
                     {
-                        Player2.Score += tile.TileValue;
+                         Player1Point = Player1.Score += tile.TileValue;
                     }
                     else
                     {
-                        Player1.Score += tile.TileValue;
+                         Player2Point =  Player2.Score += tile.TileValue;
                     }
                 }
-                
+
             }
         }
 
