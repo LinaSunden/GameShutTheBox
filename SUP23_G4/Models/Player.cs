@@ -10,7 +10,7 @@ namespace SUP23_G4.Models
     {
         
         public string? Name { get; set; }
-        public int Score { get; set; }
+        public int Score { get; set; } = 10;
 
         public Player(string name)
         {

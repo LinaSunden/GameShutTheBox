@@ -34,13 +34,11 @@ namespace SUP23_G4.ViewModels
             _startViewModel = startViewModel;
             Player1 = startViewModel.Player1;
             Player2 = startViewModel.Player2;
-
             FillCollectionOfGameTiles();
             //ShowDiceNumber();
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => MoveIsExecuted());
-
-
+            PointCounterCommand = new RelayCommand(x => PointCounter());
         }
 
         #endregion
@@ -56,15 +54,17 @@ namespace SUP23_G4.ViewModels
         public ICommand RollDiceCommand { get; }
 
         public ICommand ExecuteMoveCommand { get; }
+        public ICommand PointCounterCommand { get; }
 
         public Player Player1 { get; private set; }
-        public Player Player2 { get; private set; }
+        public Player Player2 { get; private set; } 
 
         public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
 
         public Visibility ExecuteMove {  get; set; } = Visibility.Hidden;
 
         public bool IsThrowEnable { get; set; } = true;
+        public int GameRound { get; set; } = 3;
 
     
         #endregion
@@ -119,6 +119,27 @@ namespace SUP23_G4.ViewModels
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
+            GameRound = GameRound + 1;
+            
+        }
+
+        public void PointCounter()
+        {
+             foreach (Tile tile in GameTiles)
+            {
+                if (tile.CurrentStatus == Status.NotAvailableGameTile)
+                {
+                    if (GameRound == GameRound % 2)
+                    {
+                        Player2.Score += tile.TileValue;
+                    }
+                    else
+                    {
+                        Player1.Score += tile.TileValue;
+                    }
+                }
+                
+            }
         }
 
         public void FillCollectionOfGameTiles()
