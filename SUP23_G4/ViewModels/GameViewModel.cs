@@ -38,8 +38,8 @@ namespace SUP23_G4.ViewModels
             FillCollectionOfGameTiles();
             //ShowDiceNumber();
             RollDiceCommand = new RelayCommand(x => DiceToss());
-            ExecuteMoveCommand = new RelayCommand(x => MoveIsExecuted());
-
+            ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
+            NewSelectedTileCommand = new RelayCommand(x => UpdateStatusOfChosenGameTileInObservableCollection(x));
 
         }
 
@@ -66,7 +66,13 @@ namespace SUP23_G4.ViewModels
 
         public bool IsThrowEnable { get; set; } = true;
 
-    
+        public ICommand NewSelectedTileCommand { get; set; }
+
+        public Tile tile = new Tile();
+
+
+
+
         #endregion
 
 
@@ -105,8 +111,38 @@ namespace SUP23_G4.ViewModels
                 }
             }
             DiceValue = DieOne + DieTwo;
-            FillListOfAvailableTiles();
+            SetStatusOfGameTiles();
             VisibilityGameButton();
+        }
+
+
+        public void ChangeStatusOfChosenTile(Tile tile)
+        {
+
+            if (tile.CurrentStatus == Status.AvailableGameTile)
+            {
+                tile.CurrentStatus = Status.SelectedGameTile;
+            }
+
+            else if (tile.CurrentStatus == Status.SelectedGameTile)
+            {
+                tile.CurrentStatus = Status.AvailableGameTile;
+            }
+        }
+
+
+        public void UpdateStatusOfChosenGameTileInObservableCollection(Object x)
+        {
+            var tile = (Tile)x;
+            ChangeStatusOfChosenTile(tile);
+            foreach (Tile t in GameTiles)
+            {
+                if (tile.TileValue == t.TileValue)
+                {
+                    t.CurrentStatus = tile.CurrentStatus;
+                }
+
+            }
         }
 
         public void VisibilityGameButton()
@@ -129,6 +165,7 @@ namespace SUP23_G4.ViewModels
                 tile = new Tile();
                 {
                     tile.TileValue = i;
+                    tile.CurrentStatus = Status.AvailableGameTile;
                 };
                 GameTiles.Add(tile);
             }
@@ -139,44 +176,21 @@ namespace SUP23_G4.ViewModels
         /// Metod som räknar ut vilka brickor som är tillgängliga utifrån 
         /// det sammanlagda värdet av båda tärningar
         /// </summary>
-        public void FillListOfAvailableTiles()
+        public void SetStatusOfGameTiles()
         {
-            int diceValue = DiceValue;
 
-            ObservableCollection<Tile> availableTiles = new ObservableCollection<Tile>();
-            //List<int> availableTiles = new List<int>();
-            //Tile availableTile; 
             foreach (Tile tile in GameTiles)
             {
-                if (tile.TileValue <= diceValue)
+                if (tile.TileValue <= DiceValue && tile.CurrentStatus != Status.DownwardGameTile)
                 {
                     tile.CurrentStatus = Status.AvailableGameTile;
-                    //for (int i = 1; i <= diceValue; i++)
-                    //{
-                    //    availableTile = new Tile()
-                    //    {
-                    //        Value = i,
-                    //        DisplayValue = i.ToString(),
-                    //        CurrentStatus = Status.AvailableGameTile
-                    //    };
-                    //    availableTiles.Add(availableTile);
-                    //}
-                    //break;
+
                 }
-                else if (tile.TileValue > diceValue ) 
+                else if (tile.TileValue > DiceValue && tile.CurrentStatus != Status.DownwardGameTile) 
                 {
-                    tile.CurrentStatus = Status.NotAvailableGameTile;
-                
+                    tile.CurrentStatus = Status.NotAvailableGameTile;               
                 }
-                //else if (diceValue > GameTiles.Count())
-                //{
-                //    availableTiles = GameTiles;
-                //}
             }
-            //GameTiles = availableTiles;
-
-            //GetAvailableTiles(availableTiles, diceValue);
-
         }
 
         /// <summary>
@@ -283,29 +297,48 @@ namespace SUP23_G4.ViewModels
 
         /// <summary>
         /// Metod som testar om spelarens valda brickor blir tärningarnas
-        /// summa (Eventuellt överflödig)
+        /// summa och sätter relevant status (Eventuellt överflödig)
         /// </summary>
-        public bool CalculateSelectedTiles(List<int> selectedTiles, int targetSum)
+        public void CompareSelectedTilesWithDiceValue()
         {
             int calculatedSum = 0;
 
-            foreach (int i in selectedTiles)
+            foreach (Tile tile in GameTiles)
             {
-                calculatedSum += i;
-            }
-            if (calculatedSum == targetSum)
-            {
-                return true;
+                if (tile.CurrentStatus == Status.SelectedGameTile)
+                {
+                    calculatedSum += tile.TileValue;
+                }
             }
 
-            return false;
+            if (calculatedSum == DiceValue)
+            {
+                MessageBox.Show("Rätt");
+                
+                foreach (Tile tile in GameTiles)
+                {
+                    if (tile.CurrentStatus == Status.SelectedGameTile)
+                    {
+                        tile.CurrentStatus = Status.DownwardGameTile;
+                    }
+                }
+                MoveIsExecuted();
+            }
+            else if (calculatedSum < DiceValue)
+            {
+                MessageBox.Show("För lågt");
+            }
+            else if (calculatedSum > DiceValue)
+            {
+                MessageBox.Show("För högt");
+            }
         }
 
 
-        
 
 
-        }
+
+    }
         #endregion
         
        

@@ -1,5 +1,6 @@
 ﻿using SUP23_G4.Commands;
 using SUP23_G4.Enums;
+using SUP23_G4.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +16,7 @@ namespace SUP23_G4.Views.GameTiles
 {
     public class Tile : UserControl
     {
-       
+
 
         public Status CurrentStatus
         {
@@ -28,7 +29,7 @@ namespace SUP23_G4.Views.GameTiles
             DependencyProperty.Register("CurrentStatus", typeof(Status), typeof(Tile), new PropertyMetadata(Status.AvailableGameTile));
 
 
- 
+
         public int TileValue
         {
             get { return (int)GetValue(TileValueProperty); }
@@ -39,28 +40,41 @@ namespace SUP23_G4.Views.GameTiles
         public static readonly DependencyProperty TileValueProperty =
             DependencyProperty.Register("TileValue", typeof(int), typeof(Tile), new PropertyMetadata(0));
 
-        public ICommand SelectedTileCommand { get; }
+        //public ICommand SelectedTileCommand { get; }
 
 
-        public void ChosenTile() 
+
+        public ICommand SelectedTileCommand
         {
- 
-            if (CurrentStatus == Status.AvailableGameTile) 
-            {
-                CurrentStatus = Status.SelectedGameTile;
-            }
-
-
-            else if (CurrentStatus == Status.SelectedGameTile) 
-            {
-                CurrentStatus = Status.AvailableGameTile;
-            }
+            get { return (ICommand)GetValue(SelectedTileCommandProperty); }
+            set { SetValue(SelectedTileCommandProperty, value); }
         }
 
-        public Tile()
-        {
-            SelectedTileCommand = new RelayCommand(x => ChosenTile());
-        }
-        
+        // Using a DependencyProperty as the backing store for SelectedTileCommand.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedTileCommandProperty =
+            DependencyProperty.Register("SelectedTileCommand", typeof(ICommand), typeof(Tile), new PropertyMetadata(null));
+
+
+        //public void ChangeStatusOfChosenTile()
+        //{
+
+        //    if (CurrentStatus == Status.AvailableGameTile)
+        //    {
+        //        CurrentStatus = Status.SelectedGameTile;
+        //    }
+
+
+
+        //    else if (CurrentStatus == Status.SelectedGameTile)
+        //    {
+        //        CurrentStatus = Status.AvailableGameTile;
+        //    }
+        //}
+
+        //public Tile()
+        //{
+        //    SelectedTileCommand = new RelayCommand(x => ChangeStatusOfChosenTile());
+        //}
+        //GameViewModel gameViewModel = new GameViewModel();
     }
 }
