@@ -30,7 +30,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray"/>
+            <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray">
+                <Viewbox/>
+            </Border>
+
+            <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding TurnPlayer1}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
                     Text="Spelare 1:"
@@ -60,7 +64,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Grid.Row="0" Grid.Column="0" Margin="10,50,0,0">
-                <TextBlock
+                    <TextBlock
                     Text="Poäng:"
                     HorizontalAlignment="left"
                     Foreground="White"
@@ -69,11 +73,11 @@
                     Opacity="1" 
                     FontWeight="Bold" 
                     FontFamily="Cascadia Mono">
-                    <TextBlock.Effect>
-                        <DropShadowEffect/>
-                    </TextBlock.Effect>
-                </TextBlock>
-                <TextBlock 
+                        <TextBlock.Effect>
+                            <DropShadowEffect/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <TextBlock 
                    Text="{Binding Player1Point}"
                    HorizontalAlignment="Left"
                    Foreground="{Binding ForegroundBrushPlayer1}"
@@ -82,11 +86,12 @@
                    Opacity="1" 
                    FontWeight="Bold" 
                    FontFamily="Cascadia Mono">
-                    <TextBlock.Effect>
-                        <DropShadowEffect/>
-                    </TextBlock.Effect>
-                </TextBlock>
-            </StackPanel>
+                        <TextBlock.Effect>
+                            <DropShadowEffect/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </StackPanel>
+            
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
                 <TextBlock
                     Text="Omgång:"
@@ -113,6 +118,8 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </StackPanel>
+
+            <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="5" Visibility="{Binding TurnPlayer2}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
                     Text="Spelare 2:"

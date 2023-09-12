@@ -41,9 +41,12 @@ namespace SUP23_G4.ViewModels
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             NewSelectedTileCommand = new RelayCommand(x => UpdateStatusOfChosenGameTileInObservableCollection(x));
-
             ExecuteMoveCommand = new RelayCommand(x => MoveIsExecuted());
             PointCounterCommand = new RelayCommand(x => PointCounter());
+
+            TurnPlayer1 = Visibility.Visible;
+            TurnPlayer2 = Visibility.Hidden;
+
         }
 
         #endregion
@@ -67,6 +70,10 @@ namespace SUP23_G4.ViewModels
         public ObservableCollection<Tile> GameTiles { set; get; } = new ObservableCollection<Tile>();
 
         public Visibility ExecuteMove {  get; set; } = Visibility.Hidden;
+
+        public Visibility TurnPlayer1 { get; set; }
+
+        public Visibility TurnPlayer2 { get; set; } 
 
         public bool IsThrowEnable { get; set; } = true;
         public int GameRound { get; set; } = 1;
@@ -169,7 +176,9 @@ namespace SUP23_G4.ViewModels
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
-            GameRound = GameRound + 1;        }
+            GameRound = GameRound + 1;
+            SwitchPlayerTurn();
+        }
 
         /// <summary>
         /// Metod för att räkna ut varje spelares poäng. För tillfället är vald brickas status satt till NotAvailableGameTile, inte DownWardTile som är målet
@@ -195,6 +204,20 @@ namespace SUP23_G4.ViewModels
 
             }
             Point45();
+        }
+
+        public void SwitchPlayerTurn()
+        {
+            if (GameRound % 2 != 0)
+            {
+                TurnPlayer1 = Visibility.Visible;
+                TurnPlayer2 = Visibility.Hidden;
+            }
+            else
+            {
+                TurnPlayer2 = Visibility.Visible;
+                TurnPlayer1 = Visibility.Hidden;
+            }
         }
 
         public void Point45()
