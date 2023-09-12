@@ -76,7 +76,7 @@
                 <TextBlock 
                    Text="{Binding Player1Point}"
                    HorizontalAlignment="Left"
-                   Foreground="White"
+                   Foreground="{Binding ForegroundBrushPlayer1}"
                    FontSize="20"
                    Margin="10,20,0,0"  
                    Opacity="1" 
@@ -159,7 +159,7 @@
                 <TextBlock 
                    Text="{Binding Player2Point}"
                    HorizontalAlignment="Left"
-                   Foreground="White"
+                   Foreground="{Binding ForegroundBrushPlayer2}"
                    FontSize="20"
                    Margin="10,30,0,0"  
                    Opacity="1" 

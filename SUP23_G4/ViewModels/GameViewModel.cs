@@ -8,12 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace SUP23_G4.ViewModels
 {
@@ -74,6 +76,10 @@ namespace SUP23_G4.ViewModels
         public ICommand NewSelectedTileCommand { get; set; }
 
         public Tile tile = new Tile();
+
+        public Brush ForegroundBrushPlayer1 { get; set; } = Brushes.White;
+
+        public Brush ForegroundBrushPlayer2 { get; set; } = Brushes.White;
 
 
 
@@ -187,6 +193,23 @@ namespace SUP23_G4.ViewModels
                     }
                 }
 
+            }
+            Point45();
+        }
+
+        public void Point45()
+        {
+            if (Player1Point >= 45)
+            {
+                ForegroundBrushPlayer1 = Brushes.Red;
+                MessageBox.Show($"Du har fått {Player1Point} poäng. " +
+                    $"Om spelare2 inte får fler poäng förlorar du");
+            }
+            if (Player2Point >= 45)
+            {
+               ForegroundBrushPlayer2 = Brushes.Red;
+                MessageBox.Show($"Du har fått {Player2Point} poäng. " +
+                     $"Om spelare1 inte får fler poäng förlorar du");
             }
         }
 
