@@ -197,28 +197,7 @@ namespace SUP23_G4.ViewModels
         /// Metod som testar om spelarens val av brickor är möjliga att välja
         /// för att nå tärningarnas summa (Eventuellt överflödig)
         /// </summary>
-        //public void AvailableTilesAfterSelectedTile(int selectedTile, int targetSum)
-        //{
-        //    List<int> availableTiles = new List<int>();
 
-        //    if (selectedTile == targetSum)
-        //    {
-
-        //    }
-        //    else if (selectedTile < targetSum) 
-        //    { 
-        //        foreach (int i in AvailableTiles)
-        //        {
-        //            if (selectedTile + i == targetSum)
-        //            {
-        //                availableTiles.Add(selectedTile);
-        //                availableTiles.Add(i);
-        //            }
-
-        //        }
-
-        //    }
-        //}
 
         /// <summary>
         /// Metod som undersöker vilka kombinationer av brickor som är
