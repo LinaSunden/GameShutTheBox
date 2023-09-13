@@ -133,7 +133,9 @@ namespace SUP23_G4.ViewModels
             VisibilityGameButton();
         }
 
-
+        /// <summary>
+        /// Ändrar status på vald tile från view
+        /// </summary>
         public void ChangeStatusOfChosenTile(Tile tile)
         {
 
@@ -148,7 +150,9 @@ namespace SUP23_G4.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Ändrar status på vald tile i kollektionen av tiles
+        /// </summary>
         public void UpdateStatusOfChosenGameTileInObservableCollection(Object x)
         {
             var tile = (Tile)x;
@@ -157,10 +161,96 @@ namespace SUP23_G4.ViewModels
             {
                 if (tile.TileValue == t.TileValue)
                 {
-                    t.CurrentStatus = tile.CurrentStatus;
+                    t.CurrentStatus = tile.CurrentStatus;                    
+                    UpdateStatusOfAvailableTiles(GetTargetSum());
                 }
-
             }
+        }
+
+        public void UpdateStatusOfAvailableTiles(int targetSum)
+        {
+            
+            if (targetSum == 0)
+            {
+                foreach (Tile t in GameTiles)
+                {
+                    if (t.CurrentStatus == Status.AvailableGameTile)
+                    {
+                        t.CurrentStatus = Status.NotAvailableGameTile;
+                    }               
+                }
+            }
+            else if (targetSum > 0)
+            {
+                int combinedSum = 0;
+
+                foreach (Tile t in GameTiles)
+                {
+                    if ((t.TileValue == targetSum) && t.CurrentStatus == Status.AvailableGameTile)
+                    {
+                        t.CurrentStatus = Status.AvailableGameTile;
+                    }
+                    else if ((t.TileValue > targetSum) && t.CurrentStatus == Status.AvailableGameTile)
+                    {
+                        t.CurrentStatus = Status.NotAvailableGameTile;
+                    }
+                    else if ((t.TileValue < targetSum) && t.CurrentStatus == Status.AvailableGameTile)
+                    {
+                        combinedSum += t.TileValue;
+                        if (combinedSum > targetSum)
+                        {
+                            t.CurrentStatus = Status.NotAvailableGameTile;
+                            combinedSum -= t.TileValue;
+                        }
+                        //foreach (Tile u in GameTiles)
+                        //{
+                        //    if (t.TileValue + u.TileValue == targetSum)
+                        //    {
+                        //        t.CurrentStatus = Status.AvailableGameTile;
+                        //        u.CurrentStatus = Status.AvailableGameTile;
+                        //    }
+                        //    else if (t.TileValue + u.TileValue > targetSum)
+                        //    {
+                        //        u.CurrentStatus = Status.NotAvailableGameTile;
+                        //    }
+                        //}
+                        //for (int i = 1; i < targetSum; i++)
+                        //{
+                        //    if (t.TileValue != i)
+                        //    {
+                        //        int combinedSum = t.TileValue + i;
+                        //        if (combinedSum == targetSum)
+                        //        {
+
+                        //        }
+                        //    }
+                        //}
+
+                        //if ((targetSum -= t.TileValue) < targetSum)
+                        //{
+                        //    t.CurrentStatus = Status.NotAvailableGameTile;
+                        //}
+
+                    }
+
+                }
+            }
+        }
+        /// <summary>
+        /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
+        /// </summary>
+        private int GetTargetSum()
+        {
+            int targetSum = DiceValue;
+
+            foreach (Tile t in GameTiles)
+            {
+                if (t.CurrentStatus == Status.SelectedGameTile)
+                {
+                    targetSum -= t.TileValue;
+                }
+            }
+            return targetSum;
         }
 
         public void VisibilityGameButton()
