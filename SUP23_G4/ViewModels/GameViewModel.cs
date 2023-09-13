@@ -278,24 +278,7 @@ namespace SUP23_G4.ViewModels
             //Den som har minst poäng utses till vinnare i en MessageBox
             // och när man klickar på OK kommer man åter till startview för spelet. 
         }
-        public void WinnerOfGame()
-        {
-            int gameRound = GameRound;
-
-
-            if (gameRound == gameRound + 1)
-            {
-
-                if (Player1Point > Player2Point)
-                {
-                    MessageBox.Show($"Grattis {Player2Name} du vann!");
-                }
-                else if (Player1Point < Player2Point)
-                {
-                    MessageBox.Show($"Grattis {Player1Name} du vann!");
-
-                }
-            }
+       
 
 
             //när player två har kört sin tur
