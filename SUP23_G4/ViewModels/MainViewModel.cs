@@ -37,7 +37,6 @@ namespace SUP23_G4.ViewModels
 
         #region Instansvariabler
         private BaseViewModel _mainViewModel;
-        private GameViewModel gameViewModel;
 
         #endregion
         #region Metoder
@@ -52,6 +51,10 @@ namespace SUP23_G4.ViewModels
             GameViewModel gameViewModel = new GameViewModel((StartViewModel)CurrentViewModel);
             CurrentViewModel = gameViewModel;
         }
+
+        /// <summary>
+        /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
+        /// </summary>
         public void GoToStart()
         {
             if (CurrentViewModel is GameViewModel)
