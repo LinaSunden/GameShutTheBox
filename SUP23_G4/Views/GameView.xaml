@@ -10,12 +10,17 @@
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
+    
     <Border
      BorderBrush="Gray"  
      BorderThickness="3"
-     CornerRadius="5" Background="DarkGreen">
+     CornerRadius="5">
+        <Border.Background>
+            <ImageBrush ImageSource="/Views/GreenBackground.jpg"/>
+        </Border.Background>
+
         <Grid>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="*"/>
@@ -32,7 +37,6 @@
 
             <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray">
             </Border>
-
             <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding TurnPlayer1}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
@@ -63,7 +67,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Grid.Row="0" Grid.Column="0" Margin="10,50,0,0">
-                    <TextBlock
+                <TextBlock
                     Text="Poäng:"
                     HorizontalAlignment="left"
                     Foreground="White"
@@ -72,11 +76,11 @@
                     Opacity="1" 
                     FontWeight="Bold" 
                     FontFamily="Cascadia Mono">
-                        <TextBlock.Effect>
-                            <DropShadowEffect/>
-                        </TextBlock.Effect>
-                    </TextBlock>
-                    <TextBlock 
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock 
                    Text="{Binding Player1Point}"
                    HorizontalAlignment="Left"
                    Foreground="{Binding ForegroundBrushPlayer1}"
@@ -85,12 +89,12 @@
                    Opacity="1" 
                    FontWeight="Bold" 
                    FontFamily="Cascadia Mono">
-                        <TextBlock.Effect>
-                            <DropShadowEffect/>
-                        </TextBlock.Effect>
-                    </TextBlock>
-                </StackPanel>
-            
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
                 <TextBlock
                     Text="Omgång:"
@@ -117,7 +121,6 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </StackPanel>
-
             <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="5" Visibility="{Binding TurnPlayer2}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
@@ -146,7 +149,7 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                
+
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,50,0,0">
                 <TextBlock
@@ -176,27 +179,27 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </StackPanel>
-            
+
             <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" IsEnabled="{Binding IsThrowEnable}">
                 <Grid.InputBindings>
                     <MouseBinding
                         Gesture="LeftClick"
                         Command="{Binding RollDiceCommand}"/>
                 </Grid.InputBindings>
-               
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
                 <Rectangle Fill="Transparent" Height="100" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" />
-                
+
                 <!--The First Dice-->
                 <Dice:DiceOne Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" DieOneValue="{Binding DieOne}"/>
 
                 <!--The Second Dice-->
                 <Dice:DiceTwo Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" DieTwoValue="{Binding DieTwo}"/>
-                
+
 
 
 
@@ -233,7 +236,7 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
-           
+
             <!--Grid för själva boxen, kankse kan vi byta ut denna svarta ruta mot en snyggare bakgrundsbild för att få den att likna spelet mer senare? -->
             <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Background="Black">
             </Grid>
@@ -265,7 +268,8 @@
 
 
             </Grid>
-         
+        
+
 
 
 
@@ -275,7 +279,7 @@
 
 
         </Grid>
-        
+
     </Border>
 
 </UserControl>
