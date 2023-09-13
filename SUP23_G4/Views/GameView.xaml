@@ -31,7 +31,8 @@
             </Grid.RowDefinitions>
 
             <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray">
-                <Viewbox/>
+              
+                
             </Border>
 
             <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding TurnPlayer1}"/>
@@ -197,8 +198,9 @@
 
                 <!--The Second Dice-->
                 <Dice:DiceTwo Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="1" VerticalAlignment="Center" DieTwoValue="{Binding DieTwo}"/>
-
                 
+
+
 
             </Grid>
 
@@ -265,6 +267,7 @@
 
 
             </Grid>
+    
 
 
 
@@ -273,6 +276,7 @@
 
 
         </Grid>
+        
     </Border>
 
 </UserControl>

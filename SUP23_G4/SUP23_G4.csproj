@@ -8,13 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\1.png" />
+    <None Remove="Resources\1Crop.png" />
     <None Remove="Resources\Dice1.png" />
     <None Remove="Resources\Dice2.png" />
     <None Remove="Resources\Dice3.png" />
     <None Remove="Resources\Dice4.png" />
     <None Remove="Resources\Dice5.png" />
     <None Remove="Resources\Dice6.png" />
-    <None Remove="Resources\Red1.jpg" />
     <None Remove="Views\Spelregler Engelska.png" />
     <None Remove="Views\Spelregler.png" />
   </ItemGroup>
@@ -28,13 +29,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\1.png" />
+    <Resource Include="Resources\1Crop.png" />
     <Resource Include="Resources\Dice1.png" />
     <Resource Include="Resources\Dice2.png" />
     <Resource Include="Resources\Dice3.png" />
     <Resource Include="Resources\Dice4.png" />
     <Resource Include="Resources\Dice5.png" />
     <Resource Include="Resources\Dice6.png" />
-    <Resource Include="Resources\Red1.jpg" />
     <Resource Include="Views\Spelregler Engelska.png" />
     <Resource Include="Views\Spelregler.png" />
   </ItemGroup>
