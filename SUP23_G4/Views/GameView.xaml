@@ -50,7 +50,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <TextBlock 
-                   Text="{Binding Player1.Name}"
+                   Text="{Binding Player1Name}"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="20"
@@ -135,7 +135,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <TextBlock 
-                   Text="{Binding Player2.Name}"
+                   Text="{Binding Player2Name}"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="20"

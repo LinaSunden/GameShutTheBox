@@ -41,13 +41,13 @@ namespace SUP23_G4.ViewModels
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             NewSelectedTileCommand = new RelayCommand(x => UpdateStatusOfChosenGameTileInObservableCollection(x));
-            ExecuteMoveCommand = new RelayCommand(x => MoveIsExecuted());
             PointCounterCommand = new RelayCommand(x => PointCounter());
 
             TurnPlayer1 = Visibility.Visible;
             TurnPlayer2 = Visibility.Hidden;
-            Player2Name = Player2.Name;
-            Player1Name = Player1.Name;
+            Player2Name = "Frida";
+            Player1Name = "Gibson"; 
+
         }
 
         #endregion
@@ -80,8 +80,8 @@ namespace SUP23_G4.ViewModels
         public int GameRound { get; set; } = 1;
         public int Player1Point { get; set; } = 0;
         public int Player2Point { get; set; } = 0;
-        public string Player1Name { get; set; }
-        public string Player2Name { get; set; }
+        public string Player1Name { get; set; } 
+        public string Player2Name { get; set; } 
 
         public ICommand NewSelectedTileCommand { get; set; }
 
@@ -142,7 +142,8 @@ namespace SUP23_G4.ViewModels
 
             if (tile.CurrentStatus == Status.AvailableGameTile)
             {
-                tile.CurrentStatus = Status.SelectedGameTile;            
+                //tile.CurrentStatus = Status.SelectedGameTile;
+                tile.CurrentStatus = Status.DownwardGameTile; 
             }
 
             else if (tile.CurrentStatus == Status.SelectedGameTile)
@@ -179,12 +180,23 @@ namespace SUP23_G4.ViewModels
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
-            PointCounter();
-            SwitchPlayerTurn();
-            GameRound = GameRound + 1;
-          
+            
 
         }
+
+        //public void SetTileStatusDownwardTile(Tile tile) 
+        //{
+        //    foreach(Tile tile in GameTiles) 
+        //    {
+        //        if (tile.CurrentStatus == Status.SelectedGameTile)
+        //        {
+        //            tile.CurrentStatus = Status.DownwardGameTile;
+        //        }
+
+        //    }
+               
+        //}
+
 
         /// <summary>
         /// Metod för att räkna ut varje spelares poäng. För tillfället är vald brickas status satt till NotAvailableGameTile, inte DownWardTile som är målet
@@ -433,6 +445,7 @@ namespace SUP23_G4.ViewModels
             {
                 MessageBox.Show("För högt");
             }
+            //SetTileStatusDownwardTile();
         }
 
 
