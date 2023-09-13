@@ -446,6 +446,9 @@ namespace SUP23_G4.ViewModels
             SetStatusOfGameTiles(sortedList);
         }
 
+        /// <summary>
+        /// Tar bort alla listor från listan med listor som innehåller otillgängliga värden
+        /// </summary>
         private List<List<int>> SortOutDownWardTiles(List<List<int>>collection)
         {
             foreach (List<int> list in collection)
@@ -460,6 +463,11 @@ namespace SUP23_G4.ViewModels
             }
             return collection;
         }
+
+        /// <summary>
+        /// Skickar ut en lista med tillåtna värden från listan med listor.
+        /// Dubbletter av värden sorteras bort och listan sorteras i ordning, minst till störst
+        /// </summary>
         private List<int> SortOutDuplicates(List<List<int>> collection)
         {
             List<int> sorted = new List<int>();
