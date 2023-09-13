@@ -282,8 +282,6 @@ namespace SUP23_G4.ViewModels
             //Den som har minst poäng utses till vinnare i en MessageBox
             // och när man klickar på OK kommer man åter till startview för spelet. 
         }
-
-
         public void FillCollectionOfGameTiles()
         {
             Tile tile;
