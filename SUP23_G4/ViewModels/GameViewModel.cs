@@ -142,8 +142,7 @@ namespace SUP23_G4.ViewModels
 
             if (tile.CurrentStatus == Status.AvailableGameTile)
             {
-                //tile.CurrentStatus = Status.SelectedGameTile;
-                tile.CurrentStatus = Status.DownwardGameTile; 
+                tile.CurrentStatus = Status.SelectedGameTile;
             }
 
             else if (tile.CurrentStatus == Status.SelectedGameTile)
@@ -184,6 +183,7 @@ namespace SUP23_G4.ViewModels
 
         }
 
+        //Metod för att sätta status DownwardTile (just nu görs detta i metoden CompareSelectedTilesWithDiceValue) - vi får diskutera hur vi vill lägga upp det
         //public void SetTileStatusDownwardTile(Tile tile) 
         //{
         //    foreach(Tile tile in GameTiles) 
