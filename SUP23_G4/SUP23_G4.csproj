@@ -14,6 +14,7 @@
     <None Remove="Resources\Dice4.png" />
     <None Remove="Resources\Dice5.png" />
     <None Remove="Resources\Dice6.png" />
+    <None Remove="Resources\Red1.jpg" />
     <None Remove="Views\Spelregler Engelska.png" />
     <None Remove="Views\Spelregler.png" />
   </ItemGroup>
@@ -33,6 +34,7 @@
     <Resource Include="Resources\Dice4.png" />
     <Resource Include="Resources\Dice5.png" />
     <Resource Include="Resources\Dice6.png" />
+    <Resource Include="Resources\Red1.jpg" />
     <Resource Include="Views\Spelregler Engelska.png" />
     <Resource Include="Views\Spelregler.png" />
   </ItemGroup>

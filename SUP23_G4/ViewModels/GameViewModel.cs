@@ -55,7 +55,7 @@ namespace SUP23_G4.ViewModels
 
 
         #region Egenskaper
-        public int DieOne { get; set; } = 5;
+        public int DieOne { get; set; } = 1;
 
         public int DieTwo { get; set; } = 3;
         public int DiceValue { get; private set; }
