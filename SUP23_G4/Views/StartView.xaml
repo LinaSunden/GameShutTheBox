@@ -11,10 +11,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Border
-                 Background="DarkGreen"
              BorderBrush="Gray"  
              BorderThickness="3"
              CornerRadius="5">
+        <Border.Background>
+            <ImageBrush ImageSource="/Views/GreenBackground.jpg"/>
+        </Border.Background>
 
         <Grid>
 
