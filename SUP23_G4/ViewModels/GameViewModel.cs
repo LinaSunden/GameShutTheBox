@@ -142,8 +142,7 @@ namespace SUP23_G4.ViewModels
 
             if (tile.CurrentStatus == Status.AvailableGameTile)
             {
-                //tile.CurrentStatus = Status.SelectedGameTile;
-                tile.CurrentStatus = Status.DownwardGameTile;  //testar för att se om downwardtile status funkar
+                tile.CurrentStatus = Status.SelectedGameTile;            
             }
 
             else if (tile.CurrentStatus == Status.SelectedGameTile)
