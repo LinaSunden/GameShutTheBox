@@ -278,15 +278,7 @@ namespace SUP23_G4.ViewModels
             //Den som har minst poäng utses till vinnare i en MessageBox
             // och när man klickar på OK kommer man åter till startview för spelet. 
         }
-       
 
-
-            //när player två har kört sin tur
-            //kontrollera om någon har poäng som är över 45
-            //om ja, kolla vem som har mest poäng
-            //Den som har minst poäng utses till vinnare i en MessageBox
-            // och när man klickar på OK kommer man åter till startview för spelet. 
-        }
         public void FillCollectionOfGameTiles()
         {
             Tile tile;
