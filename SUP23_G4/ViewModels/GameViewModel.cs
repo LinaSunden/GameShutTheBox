@@ -46,7 +46,8 @@ namespace SUP23_G4.ViewModels
 
             TurnPlayer1 = Visibility.Visible;
             TurnPlayer2 = Visibility.Hidden;
-
+            Player2Name = Player2.Name;
+            Player1Name = Player1.Name;
         }
 
         #endregion
@@ -79,6 +80,8 @@ namespace SUP23_G4.ViewModels
         public int GameRound { get; set; } = 1;
         public int Player1Point { get; set; } = 0;
         public int Player2Point { get; set; } = 0;
+        public string Player1Name { get; set; }
+        public string Player2Name { get; set; }
 
         public ICommand NewSelectedTileCommand { get; set; }
 
@@ -176,8 +179,10 @@ namespace SUP23_G4.ViewModels
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
+            PointCounter();
             GameRound = GameRound + 1;
             SwitchPlayerTurn();
+
         }
 
         /// <summary>
@@ -194,14 +199,13 @@ namespace SUP23_G4.ViewModels
                 {
                     if (GameRound % 2 != 0)
                     {
-                         Player1Point = Player1.Score += tile.TileValue;
+                        Player1Point = Player1.Score += tile.TileValue;
                     }
                     else
                     {
-                         Player2Point =  Player2.Score += tile.TileValue;
+                        Player2Point = Player2.Score += tile.TileValue;
                     }
                 }
-
             }
             Point45();
         }
@@ -217,6 +221,22 @@ namespace SUP23_G4.ViewModels
             {
                 TurnPlayer2 = Visibility.Visible;
                 TurnPlayer1 = Visibility.Hidden;
+               
+            }
+            SwitchPlayerTurnNotifier();
+        }
+        public void SwitchPlayerTurnNotifier()
+        {
+            if (GameRound % 2 != 0)
+            {
+                if (Player1Point <= 44)
+                {
+                    MessageBox.Show($"Din tur är nu över. Det är nu {Player2.Name}'s tur.");
+                }
+            }
+            else if (Player2Point <= 44)
+            {
+                MessageBox.Show($"Din tur är nu över. Det är nu {Player1.Name}'s tur.");
             }
         }
 
@@ -226,13 +246,13 @@ namespace SUP23_G4.ViewModels
             {
                 ForegroundBrushPlayer1 = Brushes.Red;
                 MessageBox.Show($"Du har fått {Player1Point} poäng. " +
-                    $"Om spelare2 inte får fler poäng förlorar du");
+                    $"Om {Player2.Name} inte får fler poäng förlorar du");
             }
             if (Player2Point >= 45)
             {
                ForegroundBrushPlayer2 = Brushes.Red;
                 MessageBox.Show($"Du har fått {Player2Point} poäng. " +
-                     $"Om spelare1 inte får fler poäng förlorar du");
+                     $"Om {Player1.Name} inte får fler poäng förlorar du");
             }
         }
 
