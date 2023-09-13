@@ -63,9 +63,9 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] _1 {
+        public static byte[] DiceSide1 {
             get {
-                object obj = ResourceManager.GetObject("_1", resourceCulture);
+                object obj = ResourceManager.GetObject("DiceSide1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] _1Crop {
+        public static byte[] DiceSide2 {
             get {
-                object obj = ResourceManager.GetObject("_1Crop", resourceCulture);
+                object obj = ResourceManager.GetObject("DiceSide2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] _2 {
+        public static byte[] DiceSide3 {
             get {
-                object obj = ResourceManager.GetObject("_2", resourceCulture);
+                object obj = ResourceManager.GetObject("DiceSide3", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] _3 {
+        public static byte[] DiceSide4 {
             get {
-                object obj = ResourceManager.GetObject("_3", resourceCulture);
+                object obj = ResourceManager.GetObject("DiceSide4", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] _4 {
+        public static byte[] DiceSide5 {
             get {
-                object obj = ResourceManager.GetObject("_4", resourceCulture);
+                object obj = ResourceManager.GetObject("DiceSide5", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -113,69 +113,9 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] _6 {
+        public static byte[] DiceSide6 {
             get {
-                object obj = ResourceManager.GetObject("_6", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Dice1 {
-            get {
-                object obj = ResourceManager.GetObject("Dice1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Dice2 {
-            get {
-                object obj = ResourceManager.GetObject("Dice2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Dice3 {
-            get {
-                object obj = ResourceManager.GetObject("Dice3", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Dice4 {
-            get {
-                object obj = ResourceManager.GetObject("Dice4", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Dice5 {
-            get {
-                object obj = ResourceManager.GetObject("Dice5", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Dice6 {
-            get {
-                object obj = ResourceManager.GetObject("Dice6", resourceCulture);
+                object obj = ResourceManager.GetObject("DiceSide6", resourceCulture);
                 return ((byte[])(obj));
             }
         }
