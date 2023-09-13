@@ -64,6 +64,7 @@ namespace SUP23_G4.ViewModels
 
         public ICommand ExecuteMoveCommand { get; }
         public ICommand PointCounterCommand { get; }
+        public ICommand GoToStartCommand { get; }
 
         public Player Player1 { get; set; }
         public Player Player2 { get; set; } 
@@ -75,7 +76,6 @@ namespace SUP23_G4.ViewModels
         public Visibility TurnPlayer1 { get; set; }
 
         public Visibility TurnPlayer2 { get; set; } 
-
         public bool IsThrowEnable { get; set; } = true;
         public int GameRound { get; set; } = 1;
         public int Player1Point { get; set; } = 0;
@@ -180,8 +180,9 @@ namespace SUP23_G4.ViewModels
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
             PointCounter();
-            GameRound = GameRound + 1;
             SwitchPlayerTurn();
+            GameRound = GameRound + 1;
+          
 
         }
 
@@ -204,25 +205,22 @@ namespace SUP23_G4.ViewModels
                     else
                     {
                          Player2Point =  Player2.Score += tile.TileValue;
-                        WinnerOfGame();
                     }
                 }
             }
-            Point45();
         }
-
         public void SwitchPlayerTurn()
         {
             if (GameRound % 2 != 0)
             {
-                TurnPlayer1 = Visibility.Visible;
-                TurnPlayer2 = Visibility.Hidden;
+                TurnPlayer2 = Visibility.Visible;
+                TurnPlayer1 = Visibility.Hidden;
             }
             else
             {
-                TurnPlayer2 = Visibility.Visible;
-                TurnPlayer1 = Visibility.Hidden;
-               
+                TurnPlayer1 = Visibility.Visible;
+                TurnPlayer2 = Visibility.Hidden; 
+
             }
             SwitchPlayerTurnNotifier();
         }
@@ -232,15 +230,15 @@ namespace SUP23_G4.ViewModels
             {
                 if (Player1Point <= 44)
                 {
-                    MessageBox.Show($"Din tur är nu över. Det är nu {Player2.Name}'s tur.");
+                    MessageBox.Show($"{Player1Name}s tur är nu över. Du har {Player1Point} poäng och det är nu {Player2Name}'s tur.");
                 }
             }
             else if (Player2Point <= 44)
             {
-                MessageBox.Show($"Din tur är nu över. Det är nu {Player1.Name}'s tur.");
+                MessageBox.Show($"{Player2Name}s tur är nu över. Du har {Player2Point} poäng och det är nu {Player1Name}'s tur.");
             }
+            Point45();
         }
-
         public void Point45()
         {
             if (Player1Point >= 45)
@@ -248,12 +246,14 @@ namespace SUP23_G4.ViewModels
                 ForegroundBrushPlayer1 = Brushes.Red;
                 MessageBox.Show($"Du har fått {Player1Point} poäng. " +
                     $"Om {Player2.Name} inte får fler poäng förlorar du");
+                
             }
             if (Player2Point >= 45)
             {
                ForegroundBrushPlayer2 = Brushes.Red;
                 MessageBox.Show($"Du har fått {Player2Point} poäng. " +
                      $"Om {Player1.Name} inte får fler poäng förlorar du");
+              
             }
         }
 
@@ -278,7 +278,32 @@ namespace SUP23_G4.ViewModels
             //Den som har minst poäng utses till vinnare i en MessageBox
             // och när man klickar på OK kommer man åter till startview för spelet. 
         }
+        public void WinnerOfGame()
+        {
+            int gameRound = GameRound;
 
+
+            if (gameRound == gameRound + 1)
+            {
+
+                if (Player1Point > Player2Point)
+                {
+                    MessageBox.Show($"Grattis {Player2Name} du vann!");
+                }
+                else if (Player1Point < Player2Point)
+                {
+                    MessageBox.Show($"Grattis {Player1Name} du vann!");
+
+                }
+            }
+
+
+            //när player två har kört sin tur
+            //kontrollera om någon har poäng som är över 45
+            //om ja, kolla vem som har mest poäng
+            //Den som har minst poäng utses till vinnare i en MessageBox
+            // och när man klickar på OK kommer man åter till startview för spelet. 
+        }
         public void FillCollectionOfGameTiles()
         {
             Tile tile;
