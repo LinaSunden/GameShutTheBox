@@ -8,14 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Dice1.png" />
-    <None Remove="Resources\Dice2.png" />
-    <None Remove="Resources\Dice3.png" />
-    <None Remove="Resources\Dice4.png" />
-    <None Remove="Resources\Dice5.png" />
-    <None Remove="Resources\Dice6.png" />
+    <None Remove="Resources\DiceSide1.png" />
+    <None Remove="Resources\DiceSide2.png" />
+    <None Remove="Resources\DiceSide3.png" />
+    <None Remove="Resources\DiceSide4.png" />
+    <None Remove="Resources\DiceSide5.png" />
+    <None Remove="Resources\DiceSide6.png" />
     <None Remove="Views\Spelregler Engelska.png" />
     <None Remove="Views\Spelregler.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\DiceSide1.png" />
+    <Resource Include="Resources\DiceSide2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,12 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Dice1.png" />
-    <Resource Include="Resources\Dice2.png" />
-    <Resource Include="Resources\Dice3.png" />
-    <Resource Include="Resources\Dice4.png" />
-    <Resource Include="Resources\Dice5.png" />
-    <Resource Include="Resources\Dice6.png" />
+    <Resource Include="Resources\DiceSide3.png" />
+    <Resource Include="Resources\DiceSide4.png" />
+    <Resource Include="Resources\DiceSide5.png" />
+    <Resource Include="Resources\DiceSide6.png" />
     <Resource Include="Views\Spelregler Engelska.png" />
     <Resource Include="Views\Spelregler.png" />
   </ItemGroup>
