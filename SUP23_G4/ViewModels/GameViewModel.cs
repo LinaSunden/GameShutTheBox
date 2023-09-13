@@ -176,6 +176,7 @@ namespace SUP23_G4.ViewModels
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
+            PointCounter();
             GameRound = GameRound + 1;
             SwitchPlayerTurn();
         }
@@ -199,6 +200,7 @@ namespace SUP23_G4.ViewModels
                     else
                     {
                          Player2Point =  Player2.Score += tile.TileValue;
+                        WinnerOfGame();
                     }
                 }
 
@@ -234,6 +236,28 @@ namespace SUP23_G4.ViewModels
                 MessageBox.Show($"Du har fått {Player2Point} poäng. " +
                      $"Om spelare1 inte får fler poäng förlorar du");
             }
+        }
+
+        public void WinnerOfGame()
+        {
+            if(Player2Point >= 45 || Player1Point >= 45)
+            {
+                if(Player1Point > Player2Point)
+                {
+                    MessageBox.Show("Grattis Spelare2 du vann!");
+                }
+                else if (Player1Point < Player2Point)
+                {
+                    MessageBox.Show("Grattis Spelare1 du vann!");
+
+                }
+
+            }
+            //när player två har kört sin tur
+            //kontrollera om någon har poäng som är över 45
+            //om ja, kolla vem som har mest poäng
+            //Den som har minst poäng utses till vinnare i en MessageBox
+            // och när man klickar på OK kommer man åter till startview för spelet. 
         }
 
         public void FillCollectionOfGameTiles()
