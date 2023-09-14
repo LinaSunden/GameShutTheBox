@@ -398,7 +398,7 @@ namespace SUP23_G4.ViewModels
         public void GetAvailableTiles()
         {
             List<int> tiles = new List<int>();
-           
+
             foreach (Tile tile in GameTiles)
             {
                 if (tile.CurrentStatus != Status.DownwardGameTile)
@@ -406,7 +406,7 @@ namespace SUP23_G4.ViewModels
                     tiles.Add(tile.TileValue);
                 }
             }
-            
+
             List<List<int>> collection = new List<List<int>>();
             List<int> availableTiles;
 
@@ -423,48 +423,57 @@ namespace SUP23_G4.ViewModels
                 }
                 else if (i < DiceValue)
                 {
-                    for (int j = i + 1; j <= tiles.Count(); j++)
+                    foreach (int j in tiles)
                     {
-                        if (i + j == DiceValue)
+                        if (i != j)
                         {
-                            availableTiles = new List<int>()
+                            if (i + j == DiceValue)
+                            {
+                                availableTiles = new List<int>()
                             {
                                 i,
                                 j,
                             };
-                            collection.Add(availableTiles);
-                            break;
-                        }
-                        else if (i + j < DiceValue)
-                        {
-                            for (int k = i + 2; k <= tiles.Count(); k++)
+                                collection.Add(availableTiles);
+                                break;
+                            }
+                            else if (i + j < DiceValue)
                             {
-                                if (i + j + k == DiceValue)
+                                foreach (int k in tiles)
                                 {
-                                    availableTiles = new List<int>()
+                                    if (i != k && j != k)
                                     {
-                                        i,
-                                        j,
-                                        k,
-                                    };
-                                    collection.Add(availableTiles);
-                                    break;
-                                }
-                                else if (i + j + k < DiceValue)
-                                {
-                                    for (int l = i + 3; l <= tiles.Count(); l++)
-                                    {
-                                        if (j + l + k + l == DiceValue)
+                                        if (i + j + k == DiceValue)
                                         {
                                             availableTiles = new List<int>()
-                                            {
-                                                i,
-                                                j,
-                                                k,
-                                                l,
-                                            };
+                                        {
+                                            i,
+                                            j,
+                                            k,
+                                        };
                                             collection.Add(availableTiles);
                                             break;
+                                        }
+                                        else if (i + j + k < DiceValue)
+                                        {
+                                            foreach (int l in tiles)
+                                            {
+                                                if (i != j && i != k && i != l)
+                                                {
+                                                    if (j + l + k + l == DiceValue)
+                                                    {
+                                                        availableTiles = new List<int>()
+                                                        {
+                                                            i,
+                                                            j,
+                                                            k,
+                                                            l,
+                                                        };
+                                                        collection.Add(availableTiles);
+                                                        break;
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
