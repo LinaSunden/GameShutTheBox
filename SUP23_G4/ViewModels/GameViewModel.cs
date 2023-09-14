@@ -525,11 +525,6 @@ namespace SUP23_G4.ViewModels
                 MessageBox.Show("För högt");
             }
         }
-
-
-
-
-
     }
         #endregion
         
