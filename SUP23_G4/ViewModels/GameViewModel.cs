@@ -37,7 +37,6 @@ namespace SUP23_G4.ViewModels
             Player1 = startViewModel.Player1;
             Player2 = startViewModel.Player2;
             FillCollectionOfGameTiles();
-            //ShowDiceNumber();
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             NewSelectedTileCommand = new RelayCommand(x => UpdateStatusOfChosenGameTileInObservableCollection(x));
@@ -61,7 +60,7 @@ namespace SUP23_G4.ViewModels
         public int DiceValue { get; private set; }
 
         public ICommand RollDiceCommand { get; }
-
+        public ICommand NewSelectedTileCommand { get; set; }
         public ICommand ExecuteMoveCommand { get; }
         public ICommand PointCounterCommand { get; }
         public ICommand GoToStartCommand { get; }
@@ -82,8 +81,6 @@ namespace SUP23_G4.ViewModels
         public int Player2Point { get; set; } = 0;
         public string Player1Name { get; set; } 
         public string Player2Name { get; set; } 
-
-        public ICommand NewSelectedTileCommand { get; set; }
 
         public Tile tile = new Tile();
 
@@ -107,7 +104,22 @@ namespace SUP23_G4.ViewModels
 
 
         #region Metoder
-
+        /// <summary>
+        /// Skapar 10 tiles med värde 1-10 och ger dem status AvailableGameTile och lägger dem i en ObservableCollection som heter GameTiles.
+        /// </summary>
+        public void FillCollectionOfGameTiles()
+        {
+            Tile tile;
+            for (int i = 1; i <= 10; i++)
+            {
+                tile = new Tile();
+                {
+                    tile.TileValue = i;
+                    tile.CurrentStatus = Status.AvailableGameTile;
+                };
+                GameTiles.Add(tile);
+            }
+        }
         /// <summary>
         /// Kastar två tärningar och får uppdaterade värden på DieOne och DieTwo
         /// </summary>
@@ -136,7 +148,6 @@ namespace SUP23_G4.ViewModels
             VisibilityGameButton();
         }
 
-
         public void ChangeStatusOfChosenTile(Tile tile)
         {
 
@@ -151,7 +162,6 @@ namespace SUP23_G4.ViewModels
             }
         }
 
-
         public void UpdateStatusOfChosenGameTileInObservableCollection(Object x)
         {
             var tile = (Tile)x;
@@ -165,7 +175,9 @@ namespace SUP23_G4.ViewModels
 
             }
         }
-
+        /// <summary>
+        /// Metod som gör
+        /// </summary>
         public void VisibilityGameButton()
         {
             ExecuteMove = Visibility.Visible;
@@ -179,10 +191,9 @@ namespace SUP23_G4.ViewModels
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
-            
-
+            NotAvailableToAvailable();
         }
-
+ 
         //Metod för att sätta status DownwardTile (just nu görs detta i metoden CompareSelectedTilesWithDiceValue) - vi får diskutera hur vi vill lägga upp det
         //public void SetTileStatusDownwardTile(Tile tile) 
         //{
@@ -194,7 +205,7 @@ namespace SUP23_G4.ViewModels
         //        }
 
         //    }
-               
+
         //}
 
 
@@ -291,21 +302,6 @@ namespace SUP23_G4.ViewModels
             // och när man klickar på OK kommer man åter till startview för spelet. 
         }
 
-        public void FillCollectionOfGameTiles()
-        {
-            Tile tile;
-            for (int i = 1; i <= 10; i++)
-            {
-                tile = new Tile();
-                {
-                    tile.TileValue = i;
-                    tile.CurrentStatus = Status.AvailableGameTile;
-                };
-                GameTiles.Add(tile);
-            }
-        }
-
-
         /// <summary>
         /// Metod som räknar ut vilka brickor som är tillgängliga utifrån 
         /// det sammanlagda värdet av båda tärningar
@@ -323,6 +319,19 @@ namespace SUP23_G4.ViewModels
                 else if (tile.TileValue > DiceValue && tile.CurrentStatus != Status.DownwardGameTile) 
                 {
                     tile.CurrentStatus = Status.NotAvailableGameTile;               
+                }
+            }
+        }
+        /// <summary>
+        /// Metod som ändrar CurrentStatus på Tiles som är NotAvailable till Available.
+        /// </summary>
+        public void NotAvailableToAvailable()
+        {
+            foreach (Tile tile in GameTiles)
+            {
+                if (tile.CurrentStatus == Status.NotAvailableGameTile)
+                {
+                    tile.CurrentStatus = Status.AvailableGameTile;
                 }
             }
         }
@@ -427,7 +436,7 @@ namespace SUP23_G4.ViewModels
             if (calculatedSum == DiceValue)
             {
                 MessageBox.Show("Rätt");
-                
+
                 foreach (Tile tile in GameTiles)
                 {
                     if (tile.CurrentStatus == Status.SelectedGameTile)

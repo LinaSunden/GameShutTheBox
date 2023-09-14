@@ -24,7 +24,7 @@ namespace SUP23_G4.Converters
                     Status.AvailableGameTile => new SolidColorBrush(Colors.Tan),
                     Status.NotAvailableGameTile => new SolidColorBrush(Colors.Gray),
                     Status.SelectedGameTile => new SolidColorBrush(Colors.Yellow),
-                    Status.DownwardGameTile=> new SolidColorBrush(Colors.Red),  //Lägger till röd färg på downward tile för att kunna testa statusen
+                    Status.DownwardGameTile=> new SolidColorBrush(Colors.Tan),  
                     _ => new SolidColorBrush(Colors.White),
                 };
             }
