@@ -20,15 +20,15 @@ namespace SUP23_G4.Converters
                 return status switch
                 {
 
-                    Status.AvailableGameTile => new Size(width: 50, height: 50),
-                    Status.NotAvailableGameTile => new Size(width: 50, height: 50),
-                    Status.SelectedGameTile => new Size(width: 50, height: 50),
-                    Status.DownwardGameTile => new Size(width: 50, height: 150),
+                    Status.AvailableGameTile => 250,
+                    Status.NotAvailableGameTile => 50,
+                    Status.SelectedGameTile => 50,
+                    Status.DownwardGameTile => 150,
 
-                    _ => new Size(width: 50, height: 250), //osäker på vilken storlek vi ska sätta här? har gjort den extra stor för att identifiera fel i test
+                    _ => 250, //osäker på vilken storlek vi ska sätta här? har gjort den extra stor för att identifiera fel i test
                 };
             }
-            return new Size(width: 50, height: 150);
+            return 150;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

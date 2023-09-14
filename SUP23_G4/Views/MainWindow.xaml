@@ -10,6 +10,12 @@
    
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <!--<Window.InputBindings>
+        <KeyBinding Key="Space" Command="{Binding GoToStartCommand}"/>
+
+    </Window.InputBindings>-->
+    
     <Border Background="SandyBrown">
         <Grid>
             <Grid.ColumnDefinitions>
