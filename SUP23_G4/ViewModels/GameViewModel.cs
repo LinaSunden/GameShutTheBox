@@ -210,7 +210,7 @@ namespace SUP23_G4.ViewModels
             /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
             /// </summary>
             private int GetTargetSum()
-        {
+            {
             int targetSum = DiceValue;
 
             foreach (Tile t in GameTiles)
@@ -221,10 +221,10 @@ namespace SUP23_G4.ViewModels
                 }
             }
             return targetSum;
-        }
+        
 
             }
-        }
+        
         /// <summary>
         /// Metod som gör
         /// </summary>
@@ -364,11 +364,10 @@ namespace SUP23_G4.ViewModels
                 {
                     tile.CurrentStatus = Status.AvailableGameTile;
                 }
-                else if (!sortedList.Contains(tile.TileValue))
+                else if (!sortedList.Contains(tile.TileValue) && tile.CurrentStatus != Status.DownwardGameTile)
                 {
                     tile.CurrentStatus = Status.NotAvailableGameTile;
                 }
-
             }
         }
         /// <summary>
@@ -390,9 +389,21 @@ namespace SUP23_G4.ViewModels
         /// Metod som undersöker vilka kombinationer av brickor som är
         /// möjliga för att nå tärningarnas summa
         /// </summary>
+        /// 
+
+        //TITTA HÄR!!!
         public void GetAvailableTiles()
         {
-            List<int> tiles = new List<int>() {1,2,3,4,5,6,7,8,9,10 };
+            List<int> tiles = new List<int>();
+           
+            foreach (Tile tile in GameTiles)
+            {
+                if (tile.CurrentStatus != Status.DownwardGameTile)
+                {
+                    tiles.Add(tile.TileValue);
+                }
+            }
+            
             List<List<int>> collection = new List<List<int>>();
             List<int> availableTiles;
 
@@ -459,27 +470,29 @@ namespace SUP23_G4.ViewModels
                     }
                 }
             }
-            Collection = SortOutDownWardTiles(collection);
+            Collection = collection;
             List<int> sortedList = SortOutDuplicates(Collection);
             SetStatusOfGameTiles(sortedList);
         }
+        
 
-        /// <summary>
-        /// Tar bort alla listor från listan med listor som innehåller nedvända/otillgängliga värden
-        /// </summary>
-        private List<List<int>> SortOutDownWardTiles(List<List<int>>collection)
+            /// <summary>
+            /// Tar bort alla listor från listan med listor som innehåller nedvända/otillgängliga värden
+            /// </summary>
+            private List<List<int>> SortOutDownWardTiles(List<List<int>>collection)
         {
-            foreach (List<int> list in collection)
+            List<List<int>> updatedCollection = new List<List<int>>(collection);
+            foreach (List<int> list in updatedCollection)
             {
                 foreach (int i in list)
                 {
                     if (GameTiles[i - 1].CurrentStatus == Status.DownwardGameTile)
                     {
-                        collection.Remove(list);
+                        updatedCollection.Remove(list);
                     }
                 }
             }
-            return collection;
+            return updatedCollection;
         }
 
         /// <summary>
