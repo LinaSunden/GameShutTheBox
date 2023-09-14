@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -147,6 +148,8 @@ namespace SUP23_G4.ViewModels
             DiceValue = DieOne + DieTwo;
             GetAvailableTiles();
             VisibilityGameButton();
+            var player = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
+            player.Play();
         }
 
         /// <summary>
