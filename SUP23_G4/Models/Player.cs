@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SUP23_G4.ViewModels.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace SUP23_G4.Models
 {
-    public class Player
+    public class Player : BaseViewModel
     {
 
         public string? Name { get; set; }

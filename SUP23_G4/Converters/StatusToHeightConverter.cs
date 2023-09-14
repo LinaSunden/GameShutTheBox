@@ -20,15 +20,15 @@ namespace SUP23_G4.Converters
                 return status switch
                 {
 
-                    Status.AvailableGameTile => 250,
-                    Status.NotAvailableGameTile => 50,
-                    Status.SelectedGameTile => 50,
-                    Status.DownwardGameTile => 150,
+                    Status.AvailableGameTile => 100,
+                    Status.NotAvailableGameTile => 100,
+                    Status.SelectedGameTile => 100,
+                    Status.DownwardGameTile => 310,
 
-                    _ => 250, //osäker på vilken storlek vi ska sätta här? har gjort den extra stor för att identifiera fel i test
+                    _ => 50, //osäker på vilken storlek vi ska sätta här? har gjort den extra stor för att identifiera fel i test
                 };
             }
-            return 150;
+            return 50;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
