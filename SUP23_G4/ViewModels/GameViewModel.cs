@@ -232,7 +232,9 @@ namespace SUP23_G4.ViewModels
             VisibilityDiceButton();
 
         }
-
+        /// <summary>
+        /// Ger vyn förutsättningar och utseende för att spela en bonusomgång
+        /// </summary>
         public void StartBonusGame()
         {
             Player1Point = 0;
@@ -242,7 +244,9 @@ namespace SUP23_G4.ViewModels
             SwitchGameRoundVisibility();
 
         }
-
+        /// <summary>
+        /// Metod som ger vyn försättningar och utseende för att spela en vanlig spelomgång
+        /// </summary>
         public void StartNewGame()
         {
             SetNewGameTurn();
@@ -250,14 +254,15 @@ namespace SUP23_G4.ViewModels
             Player2Point = 0;
             ForegroundBrushPlayer1 = Brushes.White;
             ForegroundBrushPlayer2 = Brushes.White;
-            GameRoundCounter = 1; 
+            GameRoundCounter = 1;
+            BonusRoundVisibility = Visibility.Hidden;
+            GameRoundVisibility = Visibility.Visible; 
 
         }
-
-            /// <summary>
-            /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
-            /// </summary>
-            private int GetTargetSum()
+        /// <summary>
+        /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
+        /// </summary>
+        private int GetTargetSum()
             {
             int targetSum = DiceValue;
 
@@ -316,9 +321,7 @@ namespace SUP23_G4.ViewModels
 
 
         /// <summary>
-        /// Metod för att räkna ut varje spelares poäng. För tillfället är vald brickas status satt till NotAvailableGameTile, inte DownWardTile som är målet
-        /// En property har gjorts som int Player1Point som tar Player1's värde då Vi inte fick till Binding Player1.Score att uppdateras.
-        /// En Modulus används för att avgöra om Spelare 1 / Spelare 2 får poäng. Spelare 1 = Ojämna omgångar, Spelare 2 = Jämna omgångar.
+        /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden omgång. 
         /// </summary>
         public void PointCounter()
         {
@@ -340,6 +343,9 @@ namespace SUP23_G4.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// Metod som gör så att aktuell spelares namn och poäng markeras med en grön ruta i vyn
+        /// </summary>
         public void SwitchPlayerTurn()
         {
             if (PlayerTurnCounter == 1)
@@ -358,7 +364,9 @@ namespace SUP23_G4.ViewModels
             }
             
         }
-
+        /// <summary>
+        /// Metod som gör bonusomgången synlig i vyn
+        /// </summary>
         public void SwitchGameRoundVisibility()
         {
             GameRoundVisibility = Visibility.Hidden;
@@ -366,39 +374,9 @@ namespace SUP23_G4.ViewModels
             
         }
 
-        //public void SwitchPlayerTurnNotifier()
-        //{
-        //    if (GameRoundC % 2 != 0)
-        //    {
-        //        if (Player1Point <= 44)
-        //        {
-        //            MessageBox.Show($"{Player1Name}s tur är nu över. Du har {Player1Point} poäng och det är nu {Player2Name}'s tur.");
-        //        }
-        //    }
-        //    else if (Player2Point <= 44)
-        //    {
-        //        MessageBox.Show($"{Player2Name}s tur är nu över. Du har {Player2Point} poäng och det är nu {Player1Name}'s tur.");
-        //    }
-        //    Point45();
-        //}
-        public void Point45()
-        {
-            if (Player1Point >= 45)
-            {
-                ForegroundBrushPlayer1 = Brushes.Red;
-                MessageBox.Show($"Du har fått {Player1Point} poäng. " +
-                    $"Om {Player2.Name} inte får fler poäng förlorar du");
-                
-            }
-            if (Player2Point >= 45)
-            {
-               ForegroundBrushPlayer2 = Brushes.Red;
-                MessageBox.Show($"Du har fått {Player2Point} poäng. " +
-                     $"Om {Player1.Name} inte får fler poäng förlorar du");
-              
-            }
-        }
-
+        /// <summary>
+        /// Metod som avgör vilken typ av spelomgång det är, vanlig eller bonusomgång
+        /// </summary>
         public void GameWinner()
         {
             if(BonusRoundVisibility == Visibility.Visible)
@@ -410,7 +388,9 @@ namespace SUP23_G4.ViewModels
                 WinnerOfGame();
             }
         }
-
+        /// <summary>
+        /// Metod som utser vinnaren i bonusomgång
+        /// </summary>
         private void BonusGame()
         {   
             
@@ -444,12 +424,12 @@ namespace SUP23_G4.ViewModels
                 }
                 else if (Player2Point < 45 && Player1Point >= 45)
                 {
-                    MessageBox.Show($"Grattis {Player2Name}, du har vunnit! Du fick {Player2Point} och {Player1Name} fick {Player1Point}.");
+                    MessageBox.Show($"Grattis {Player2Name}, du har vunnit! Du fick {Player2Point} poäng och {Player1Name} fick {Player1Point} poäng.");
                     StartNewGame();
                 }
                 else if (Player1Point < 45 && Player2Point >= 45)
                 {
-                    MessageBox.Show($"Grattis {Player1Name}, du har vunnit bonusomgången! Du fick {Player1Point} och {Player2Name} fick {Player2Point}.");
+                    MessageBox.Show($"Grattis {Player1Name}, du har vunnit bonusomgången! Du fick {Player1Point} poäng och {Player2Name} fick {Player2Point} poäng.");
                     StartNewGame();
                 }
                 
@@ -457,7 +437,9 @@ namespace SUP23_G4.ViewModels
 
 
         }
-
+        /// <summary>
+        /// Metod som utser vinnaren vanlig spelomgång alternativ ger övergång till en bonusomgång
+        /// </summary>
         public void WinnerOfGame()
         {          
             
@@ -492,7 +474,7 @@ namespace SUP23_G4.ViewModels
             else if (PlayerTurnCounter == 2 && Player1Point >= 45 && Player2Point >= 45)
             {
                 ForegroundBrushPlayer2 = Brushes.Red;
-                MessageBoxResult result = MessageBox.Show("Spelet slutade lika, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("Spelet slutade lika då båda spelarna fick över 45 poäng i samma omgång, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
 
