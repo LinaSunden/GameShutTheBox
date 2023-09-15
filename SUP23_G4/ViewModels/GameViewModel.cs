@@ -1,4 +1,5 @@
 ﻿using SUP23_G4.Commands;
+using SUP23_G4.Converters;
 using SUP23_G4.Enums;
 using SUP23_G4.Models;
 using SUP23_G4.ViewModels.Base;
@@ -95,6 +96,10 @@ namespace SUP23_G4.ViewModels
         private List<List<int>> Collection { get; set; }
 
 
+        public string? DisplayDiceSum { get; set; }
+    
+        public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
+       
         #endregion
 
 
@@ -153,6 +158,8 @@ namespace SUP23_G4.ViewModels
             var soundPlayer = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
             soundPlayer.Play();
             IsTileEnabled = true;
+            DisplayDiceSum = $"= {DiceValue}";
+            DisplayDiceSumVisibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -232,6 +239,7 @@ namespace SUP23_G4.ViewModels
             IsThrowEnable = true;
             NotAvailableToAvailable();
             IsTileEnabled = false;
+            DisplayDiceSumVisibility = Visibility.Hidden;
         }
  
 
