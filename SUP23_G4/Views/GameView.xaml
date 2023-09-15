@@ -42,7 +42,7 @@
             <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding TurnPlayer1}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
-                    Text="{Binding Language.PlayerName1}"
+                    Text="{Binding Languages[0].PlayerName1}"
                     HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="20"

@@ -40,7 +40,7 @@ namespace SUP23_G4.ViewModels
             Player1 = startViewModel.Player1;
             Player2 = startViewModel.Player2;
             GameTiles = new ObservableCollection<Tile>();
-            //Language = new ObservableCollection<Language>();
+            Languages = new ObservableCollection<Language>();
             FillCollectionOfGameTiles();
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
@@ -76,9 +76,7 @@ namespace SUP23_G4.ViewModels
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
 
-        //public ObservableCollection<Language> Language { get; set; } 
-
-        public Language Language { get; set; } = new();
+        public ObservableCollection<Language> Languages { get; set; }
 
         public ObservableCollection<Tile> GameTiles { set; get; }
 
@@ -656,7 +654,34 @@ namespace SUP23_G4.ViewModels
 
             }
         }
+
+
+public static ObservableCollection<Language> GetLanguages()
+        {
+            var languages = new ObservableCollection<Language>()
+            {new Language(){PlayerName1="Spelar 1: ",
+                            PlayerName2="Spelare 2: ",
+                            PointsPlayer="Poäng: ",
+                            Round="Omgång: ",
+                            MyTurn="Din tur",
+                            GameRuleBtn="Visa spelregler",
+                            ThrowDiceBtn="Kasta tärningar",
+                            MakeMove="Genomför drag"},
+
+            new Language(){ PlayerName1="Player 1: ",
+                            PlayerName2="Player 2: ",
+                            PointsPlayer="Points: ",
+                            Round="Omgång: ",
+                            MyTurn="My turn",
+                            GameRuleBtn="Show Game rules",
+                            ThrowDiceBtn="Throw dice",
+                            MakeMove="Make move"},
+           };
+            return languages;
+        }
+
     }
+
 
         #endregion
         
