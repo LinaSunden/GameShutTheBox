@@ -1,6 +1,7 @@
 ﻿using SUP23_G4.Commands;
 using SUP23_G4.Converters;
 using SUP23_G4.Enums;
+using SUP23_G4.Languages;
 using SUP23_G4.Models;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.Dice;
@@ -39,6 +40,7 @@ namespace SUP23_G4.ViewModels
             Player1 = startViewModel.Player1;
             Player2 = startViewModel.Player2;
             GameTiles = new ObservableCollection<Tile>();
+            //Language = new ObservableCollection<Language>();
             FillCollectionOfGameTiles();
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
@@ -72,7 +74,11 @@ namespace SUP23_G4.ViewModels
         public ICommand ShowGameRulesCommand { get; }
 
         public Player Player1 { get; set; }
-        public Player Player2 { get; set; } 
+        public Player Player2 { get; set; }
+
+        //public ObservableCollection<Language> Language { get; set; } 
+
+        public Language Language { get; set; } = new();
 
         public ObservableCollection<Tile> GameTiles { set; get; }
 

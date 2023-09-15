@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
-             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice"  x:Class="SUP23_G4.Views.GameView"
+             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice"  
+             x:Class="SUP23_G4.Views.GameView"
+             xmlns:Language="clr-namespace:SUP23_G4.Languages"
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}"
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
              mc:Ignorable="d" 
@@ -40,7 +42,7 @@
             <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding TurnPlayer1}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
-                    Text="Spelare 1:"
+                    Text="{Binding Language.PlayerName1}"
                     HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="20"
