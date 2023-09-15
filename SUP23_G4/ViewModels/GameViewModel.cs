@@ -79,6 +79,7 @@ namespace SUP23_G4.ViewModels
         public Visibility TurnPlayer2 { get; set; } 
         public bool IsThrowEnable { get; set; } = true;
         public int GameRound { get; set; } = 1;
+        public int TurnCounter { get; set; } = 1;     
         public int Player1Point { get; set; } = 0;
         public int Player2Point { get; set; } = 0;
         public string Player1Name { get; set; } 
@@ -111,6 +112,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void FillCollectionOfGameTiles()
         {
+            
             Tile tile;
             for (int i = 1; i <= 10; i++)
             {
@@ -146,8 +148,8 @@ namespace SUP23_G4.ViewModels
                 }
             }
             DiceValue = DieOne + DieTwo;
-            GetAvailableTiles();
             VisibilityGameButton();
+            GetAvailableTiles();
             var soundPlayer = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
             soundPlayer.Play();
         }
@@ -209,6 +211,24 @@ namespace SUP23_G4.ViewModels
             SetStatusOfGameTiles(sortedTiles);
         }
      
+        /// <summary>
+        /// Metod som sätter alla tiles till available, används vid start av ny spelares tur
+        /// </summary>
+        public void SetNewGameTurn()
+        {
+            
+            foreach(Tile tile in GameTiles)
+            {
+                if(tile.CurrentStatus != Status.AvailableGameTile) 
+                {
+                    tile.CurrentStatus = Status.AvailableGameTile;
+                }
+            }
+            VisibilityDiceButton();
+
+        }
+
+
             /// <summary>
             /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
             /// </summary>
@@ -227,7 +247,18 @@ namespace SUP23_G4.ViewModels
         
 
             }
-        
+
+        public void NotAvailableToAvailable()
+        {
+            foreach (Tile tile in GameTiles)
+            {
+                if (tile.CurrentStatus == Status.NotAvailableGameTile)
+                {
+                    tile.CurrentStatus = Status.AvailableGameTile;
+                }
+            }
+        }
+
         /// <summary>
         /// Metod som gör
         /// </summary>
@@ -238,14 +269,25 @@ namespace SUP23_G4.ViewModels
         }
 
         /// <summary>
+        /// Metod som gör DiceButton synlig igen
+        /// </summary>
+        public void VisibilityDiceButton()
+        {
+            ExecuteMove = Visibility.Hidden;
+            IsThrowEnable = true;
+        }
+
+        /// <summary>
         /// GameRound Startar vid 1, och plusar för tillfället vid varje genomförd drag, en omgång består av varje spelares drag.
         /// </summary>
         public void MoveIsExecuted()
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
-            NotAvailableToAvailable();
+            NotAvailableToAvailable(); 
         }
+
+
  
         //Metod för att sätta status DownwardTile (just nu görs detta i metoden CompareSelectedTilesWithDiceValue) - vi får diskutera hur vi vill lägga upp det
         //public void SetTileStatusDownwardTile(Tile tile) 
@@ -272,33 +314,37 @@ namespace SUP23_G4.ViewModels
 
             foreach (Tile tile in GameTiles)
             {
-                if (tile.CurrentStatus == Status.NotAvailableGameTile)
+                if (tile.CurrentStatus == Status.AvailableGameTile || tile.CurrentStatus == Status.NotAvailableGameTile)
                 {
-                    if (GameRound % 2 != 0)
+                    if (TurnCounter == 1)
                     {
                         Player1Point = Player1.Score += tile.TileValue;
+                        
                     }
                     else
                     {
                          Player2Point =  Player2.Score += tile.TileValue;
+                        
                     }
                 }
             }
         }
         public void SwitchPlayerTurn()
         {
-            if (GameRound % 2 != 0)
+            if (TurnCounter == 1)
             {
                 TurnPlayer2 = Visibility.Visible;
                 TurnPlayer1 = Visibility.Hidden;
+                TurnCounter++;
             }
             else
             {
                 TurnPlayer1 = Visibility.Visible;
-                TurnPlayer2 = Visibility.Hidden; 
+                TurnPlayer2 = Visibility.Hidden;
+                TurnCounter = 1;
 
             }
-            SwitchPlayerTurnNotifier();
+            
         }
         public void SwitchPlayerTurnNotifier()
         {
@@ -379,23 +425,24 @@ namespace SUP23_G4.ViewModels
             }
             if (count == 0)
             {
-                MessageBox.Show("Slut");
+                PointCounter();
+
+                if (TurnCounter == 1)
+                {
+                    MessageBox.Show($"Nu är din tur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
+                }
+                else
+                {
+                    MessageBox.Show($"Nu är din tur slut. Du har {Player2Point} poäng.Det är nu {Player1Name}s tur");
+                }    
+                
+                SwitchPlayerTurn();
+                SetNewGameTurn();
+                
             }
      
         }
-        /// <summary>
-        /// Metod som ändrar CurrentStatus på Tiles som är NotAvailable till Available.
-        /// </summary>
-        public void NotAvailableToAvailable()
-        {
-            foreach (Tile tile in GameTiles)
-            {
-                if (tile.CurrentStatus == Status.NotAvailableGameTile)
-                {
-                    tile.CurrentStatus = Status.AvailableGameTile;
-                }
-            }
-        }
+
 
 
         /// <summary>
@@ -558,7 +605,7 @@ namespace SUP23_G4.ViewModels
 
             if (calculatedSum == DiceValue)
             {
-                MessageBox.Show("Rätt");
+                //MessageBox.Show("Rätt");
 
                 foreach (Tile tile in GameTiles)
                 {
@@ -571,11 +618,11 @@ namespace SUP23_G4.ViewModels
             }
             else if (calculatedSum < DiceValue)
             {
-                MessageBox.Show("För lågt");
+                //MessageBox.Show("För lågt");
             }
             else if (calculatedSum > DiceValue)
             {
-                MessageBox.Show("För högt");
+                //MessageBox.Show("För högt");
             }
             //SetTileStatusDownwardTile();
         }
