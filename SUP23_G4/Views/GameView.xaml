@@ -242,7 +242,7 @@
             </Grid>
 
             <!-- Grid med GameTiles-->
-            <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2">
+            <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" IsEnabled="{Binding IsTileEnabled}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>

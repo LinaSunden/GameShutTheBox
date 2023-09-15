@@ -40,7 +40,6 @@ namespace SUP23_G4.Views.GameTiles
         public static readonly DependencyProperty TileValueProperty =
             DependencyProperty.Register("TileValue", typeof(int), typeof(Tile), new PropertyMetadata(0));
 
-        //public ICommand SelectedTileCommand { get; }
 
 
 
@@ -55,26 +54,5 @@ namespace SUP23_G4.Views.GameTiles
             DependencyProperty.Register("SelectedTileCommand", typeof(ICommand), typeof(Tile), new PropertyMetadata(null));
 
 
-        //public void ChangeStatusOfChosenTile()
-        //{
-
-        //    if (CurrentStatus == Status.AvailableGameTile)
-        //    {
-        //        CurrentStatus = Status.SelectedGameTile;
-        //    }
-
-
-
-        //    else if (CurrentStatus == Status.SelectedGameTile)
-        //    {
-        //        CurrentStatus = Status.AvailableGameTile;
-        //    }
-        //}
-
-        //public Tile()
-        //{
-        //    SelectedTileCommand = new RelayCommand(x => ChangeStatusOfChosenTile());
-        //}
-        //GameViewModel gameViewModel = new GameViewModel();
     }
 }

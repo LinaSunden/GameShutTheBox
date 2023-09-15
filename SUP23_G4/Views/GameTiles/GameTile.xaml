@@ -16,6 +16,6 @@
     </UserControl.Resources>
     <Grid>
         <Button Height="{Binding CurrentStatus, ElementName=tile, Converter={StaticResource StatusToHeightConverter}}" BorderBrush="Black" BorderThickness="1" Background="{Binding CurrentStatus, ElementName=tile, Converter={StaticResource StatusToColorConverter}}" Command="{Binding SelectedTileCommand, ElementName=tile}" CommandParameter="{Binding ElementName=tile}"
-                Content="{Binding TileValue, ElementName=tile}" FontSize="18" FontWeight="Normal"/>
+                Content="{Binding TileValue, ElementName=tile}" FontSize="18" FontWeight="Normal" />
     </Grid>
 </local:Tile>

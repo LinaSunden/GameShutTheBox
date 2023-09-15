@@ -82,7 +82,9 @@ namespace SUP23_G4.ViewModels
         public int Player1Point { get; set; } = 0;
         public int Player2Point { get; set; } = 0;
         public string Player1Name { get; set; } 
-        public string Player2Name { get; set; } 
+        public string Player2Name { get; set; }
+
+        public bool IsTileEnabled { get; set; } = false;
 
         public Tile tile = new Tile();
 
@@ -150,8 +152,23 @@ namespace SUP23_G4.ViewModels
             VisibilityGameButton();
             var soundPlayer = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
             soundPlayer.Play();
+            IsTileEnabled = true;
         }
 
+        //private void ChangeTileEnabled()
+        //{
+        //    foreach (Tile tile in GameTiles)
+        //    {
+        //        if (tile.IsTileEnable)
+        //        {
+        //            tile.IsTileEnable = false;
+        //        }
+        //        else if (!tile.IsTileEnable)
+        //        {
+        //            tile.IsTileEnable = true;
+        //        }              
+        //    }
+        //}
         /// <summary>
         /// Ändrar status på vald tile från view
         /// </summary>
@@ -245,6 +262,7 @@ namespace SUP23_G4.ViewModels
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
             NotAvailableToAvailable();
+            IsTileEnabled = false;
         }
  
         //Metod för att sätta status DownwardTile (just nu görs detta i metoden CompareSelectedTilesWithDiceValue) - vi får diskutera hur vi vill lägga upp det
