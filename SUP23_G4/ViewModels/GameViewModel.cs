@@ -148,8 +148,8 @@ namespace SUP23_G4.ViewModels
             DiceValue = DieOne + DieTwo;
             GetAvailableTiles();
             VisibilityGameButton();
-            var player = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
-            player.Play();
+            var soundPlayer = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
+            soundPlayer.Play();
         }
 
         /// <summary>
@@ -361,6 +361,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void SetStatusOfGameTiles(List<int> sortedList)
         {
+            int count = 0;
             foreach (Tile tile in GameTiles)
             {
                 if (sortedList.Contains(tile.TileValue) && tile.CurrentStatus != Status.DownwardGameTile && tile.CurrentStatus != Status.SelectedGameTile)
@@ -371,7 +372,16 @@ namespace SUP23_G4.ViewModels
                 {
                     tile.CurrentStatus = Status.NotAvailableGameTile;
                 }
+                if (tile.CurrentStatus == Status.AvailableGameTile || tile.CurrentStatus == Status.SelectedGameTile)
+                {
+                    count++;
+                }
             }
+            if (count == 0)
+            {
+                MessageBox.Show("Slut");
+            }
+     
         }
         /// <summary>
         /// Metod som ändrar CurrentStatus på Tiles som är NotAvailable till Available.
