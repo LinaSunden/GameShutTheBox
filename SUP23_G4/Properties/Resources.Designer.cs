@@ -138,5 +138,25 @@ namespace SUP23_G4.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] storbritanniensFlagga {
+            get {
+                object obj = ResourceManager.GetObject("storbritanniensFlagga", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] sverigesFlagga {
+            get {
+                object obj = ResourceManager.GetObject("sverigesFlagga", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
