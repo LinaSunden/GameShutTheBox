@@ -43,6 +43,7 @@ namespace SUP23_G4.ViewModels
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             NewSelectedTileCommand = new RelayCommand(x => UpdateStatusOfChosenGameTileInObservableCollection(x));
             PointCounterCommand = new RelayCommand(x => PointCounter());
+            ShowGameRulesCommand = new RelayCommand(x => ViewGameRules()); 
 
             TurnPlayer1 = Visibility.Visible;
             TurnPlayer2 = Visibility.Hidden;
@@ -66,6 +67,8 @@ namespace SUP23_G4.ViewModels
         public ICommand ExecuteMoveCommand { get; }
         public ICommand PointCounterCommand { get; }
         public ICommand GoToStartCommand { get; }
+
+        public ICommand ShowGameRulesCommand { get; }
 
         public Player Player1 { get; set; }
         public Player Player2 { get; set; } 
@@ -92,8 +95,14 @@ namespace SUP23_G4.ViewModels
 
         private List<List<int>> Collection { get; set; }
 
+        public string GameRuleBtnGameView { get; set; } = "Visa spelregler";
+
+        public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
 
         #endregion
+
+
+  
 
 
         #region Instansvariabler
@@ -569,7 +578,26 @@ namespace SUP23_G4.ViewModels
             }
             //SetTileStatusDownwardTile();
         }
+
+        /// <summary>
+        /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
+        /// </summary>
+        public void ViewGameRules()
+        {
+            if (GameRuleBtnGameView == "Visa spelregler")
+            {
+                GameRuleVisibility = Visibility.Visible;
+                GameRuleBtnGameView = "Dölj spelregler";
+            }
+            else if (GameRuleBtnGameView == "Dölj spelregler")
+            {
+                GameRuleVisibility = Visibility.Hidden;
+                GameRuleBtnGameView = "Visa spelregler";
+
+            }
+        }
     }
+
         #endregion
         
        

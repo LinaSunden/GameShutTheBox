@@ -14,6 +14,7 @@
     <None Remove="Resources\DiceSide4.png" />
     <None Remove="Resources\DiceSide5.png" />
     <None Remove="Resources\DiceSide6.png" />
+    <None Remove="Resources\GameRules.png" />
     <None Remove="Views\GreenBackground.jpg" />
     <None Remove="Views\Spelregler Engelska.png" />
     <None Remove="Views\Spelregler.png" />
@@ -37,6 +38,7 @@
     <Resource Include="Resources\DiceSide4.png" />
     <Resource Include="Resources\DiceSide5.png" />
     <Resource Include="Resources\DiceSide6.png" />
+    <Resource Include="Resources\GameRules.png" />
     <Resource Include="Views\GreenBackground.jpg" />
     <Resource Include="Views\Spelregler Engelska.png" />
     <Resource Include="Views\Spelregler.png" />
