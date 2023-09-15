@@ -81,11 +81,13 @@ namespace SUP23_G4.ViewModels
         public Visibility TurnPlayer1 { get; set; }
 
         public Visibility TurnPlayer2 { get; set; } 
+        public Visibility GameRoundVisibility { get; set; }
+        public Visibility BonusRoundVisibility { get; set; } = Visibility.Hidden; 
         public bool IsThrowEnable { get; set; } = true;
         public int GameRoundCounter { get; set; } = 1;
         public int PlayerTurnCounter { get; set; } = 1;     
-        public int Player1Point { get; set; } = 0;
-        public int Player2Point { get; set; } = 0;
+        public int Player1Point { get; set; } = 40;
+        public int Player2Point { get; set; } = 40;
         public string Player1Name { get; set; } 
         public string Player2Name { get; set; }
 
@@ -246,12 +248,37 @@ namespace SUP23_G4.ViewModels
             VisibilityDiceButton();
 
         }
+        /// <summary>
+        /// Ger vyn förutsättningar och utseende för att spela en bonusomgång
+        /// </summary>
+        public void StartBonusGame()
+        {
+            Player1Point = 0;
+            Player2Point = 0;
+            ForegroundBrushPlayer1 = Brushes.White;
+            ForegroundBrushPlayer2 = Brushes.White;
+            SwitchGameRoundVisibility();
 
+        }
+        /// <summary>
+        /// Metod som ger vyn försättningar och utseende för att spela en vanlig spelomgång
+        /// </summary>
+        public void StartNewGame()
+        {
+            SetNewGameTurn();
+            Player1Point = 0;
+            Player2Point = 0;
+            ForegroundBrushPlayer1 = Brushes.White;
+            ForegroundBrushPlayer2 = Brushes.White;
+            GameRoundCounter = 1;
+            BonusRoundVisibility = Visibility.Hidden;
+            GameRoundVisibility = Visibility.Visible; 
 
-            /// <summary>
-            /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
-            /// </summary>
-            private int GetTargetSum()
+        }
+        /// <summary>
+        /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
+        /// </summary>
+        private int GetTargetSum()
             {
             int targetSum = DiceValue;
 
@@ -313,9 +340,7 @@ namespace SUP23_G4.ViewModels
 
 
         /// <summary>
-        /// Metod för att räkna ut varje spelares poäng. För tillfället är vald brickas status satt till NotAvailableGameTile, inte DownWardTile som är målet
-        /// En property har gjorts som int Player1Point som tar Player1's värde då Vi inte fick till Binding Player1.Score att uppdateras.
-        /// En Modulus används för att avgöra om Spelare 1 / Spelare 2 får poäng. Spelare 1 = Ojämna omgångar, Spelare 2 = Jämna omgångar.
+        /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden omgång. 
         /// </summary>
         public void PointCounter()
         {
@@ -326,17 +351,20 @@ namespace SUP23_G4.ViewModels
                 {
                     if (PlayerTurnCounter == 1)
                     {
-                        Player1Point = Player1.Score += tile.TileValue;
+                        Player1Point = Player1Point += tile.TileValue;
                         
                     }
                     else
                     {
-                         Player2Point =  Player2.Score += tile.TileValue;
+                         Player2Point =  Player2Point += tile.TileValue;
                         
                     }
                 }
             }
         }
+        /// <summary>
+        /// Metod som gör så att aktuell spelares namn och poäng markeras med en grön ruta i vyn
+        /// </summary>
         public void SwitchPlayerTurn()
         {
             if (PlayerTurnCounter == 1)
@@ -355,59 +383,129 @@ namespace SUP23_G4.ViewModels
             }
             
         }
-        //public void SwitchPlayerTurnNotifier()
-        //{
-        //    if (GameRoundC % 2 != 0)
-        //    {
-        //        if (Player1Point <= 44)
-        //        {
-        //            MessageBox.Show($"{Player1Name}s tur är nu över. Du har {Player1Point} poäng och det är nu {Player2Name}'s tur.");
-        //        }
-        //    }
-        //    else if (Player2Point <= 44)
-        //    {
-        //        MessageBox.Show($"{Player2Name}s tur är nu över. Du har {Player2Point} poäng och det är nu {Player1Name}'s tur.");
-        //    }
-        //    Point45();
-        //}
-        public void Point45()
+        /// <summary>
+        /// Metod som gör bonusomgången synlig i vyn
+        /// </summary>
+        public void SwitchGameRoundVisibility()
         {
-            if (Player1Point >= 45)
+            GameRoundVisibility = Visibility.Hidden;
+            BonusRoundVisibility = Visibility.Visible; 
+            
+        }
+
+        /// <summary>
+        /// Metod som avgör vilken typ av spelomgång det är, vanlig eller bonusomgång
+        /// </summary>
+        public void GameWinner()
+        {
+            if(BonusRoundVisibility == Visibility.Visible)
+            {
+                BonusGame();
+            }
+            else
+            {
+                WinnerOfGame();
+            }
+        }
+        /// <summary>
+        /// Metod som utser vinnaren i bonusomgång
+        /// </summary>
+        private void BonusGame()
+        {   
+            
+            if (PlayerTurnCounter == 1)
+            {
+                if (Player1Point < 45)
+                {
+                    MessageBox.Show($"Nu är din bonustur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
+                }
+                else if (Player1Point >= 45)
+                {
+                    ForegroundBrushPlayer1 = Brushes.Red;
+                    MessageBox.Show($"Du har fått {Player1Point} poäng. " +
+                        $"Om {Player2Name} inte får fler poäng än du så förlorar du bonusomgången");
+                }
+            }
+            
+            else if (PlayerTurnCounter ==2 && Player1Point >= 45 && Player2Point >= 45)
+            {
+                if (Player1Point < Player2Point) { MessageBox.Show($"Grattis {Player1Name}, du har vunnit bonusomgången! Du fick {Player1Point} och {Player2Name} fick {Player2Point}."); }
+                else { MessageBox.Show($"Grattis {Player2Name}, du har vunnit bonusomgången! Du fick {Player2Point} och {Player1Name} fick {Player1Point}."); }
+
+                StartNewGame(); 
+            }
+
+            else 
+            {
+                if (Player2Point < 45 && Player1Point < 45)
+                {
+                    MessageBox.Show($"Nu är din bonustur slut. Du har {Player2Point} poäng.Det är nu {Player1Name}s tur");
+                }
+                else if (Player2Point < 45 && Player1Point >= 45)
+                {
+                    MessageBox.Show($"Grattis {Player2Name}, du har vunnit! Du fick {Player2Point} poäng och {Player1Name} fick {Player1Point} poäng.");
+                    StartNewGame();
+                }
+                else if (Player1Point < 45 && Player2Point >= 45)
+                {
+                    MessageBox.Show($"Grattis {Player1Name}, du har vunnit bonusomgången! Du fick {Player1Point} poäng och {Player2Name} fick {Player2Point} poäng.");
+                    StartNewGame();
+                }
+                
+            }
+
+
+        }
+        /// <summary>
+        /// Metod som utser vinnaren vanlig spelomgång alternativ ger övergång till en bonusomgång
+        /// </summary>
+        public void WinnerOfGame()
+        {          
+            
+            if (PlayerTurnCounter == 1 && Player1Point < 45)
+            {
+                MessageBox.Show($"Nu är din tur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
+            }
+
+            else if (PlayerTurnCounter == 1 && Player1Point >= 45) 
             {
                 ForegroundBrushPlayer1 = Brushes.Red;
                 MessageBox.Show($"Du har fått {Player1Point} poäng. " +
-                    $"Om {Player2.Name} inte får fler poäng förlorar du");
-                
+                    $"Om {Player2Name} inte får 45 poäng eller mer så förlorar du");
             }
-            if (Player2Point >= 45)
+
+            else if (PlayerTurnCounter == 2 && Player2Point < 45 && Player1Point >= 45)
             {
-               ForegroundBrushPlayer2 = Brushes.Red;
-                MessageBox.Show($"Du har fått {Player2Point} poäng. " +
-                     $"Om {Player1.Name} inte får fler poäng förlorar du");
-              
+                MessageBox.Show($"Grattis {Player2Name}, du har vunnit!");
+                StartNewGame(); 
             }
-        }
-
-        public void WinnerOfGame()
-        {
-            if(Player2Point >= 45 || Player1Point >= 45)
+            else if (PlayerTurnCounter == 2 && Player2Point < 45 && Player1Point < 45)
             {
-                if(Player1Point > Player2Point)
-                {
-                    MessageBox.Show("Grattis Spelare2 du vann!");
-                }
-                else if (Player1Point < Player2Point)
-                {
-                    MessageBox.Show("Grattis Spelare1 du vann!");
-
-                }
+                MessageBox.Show($"Nu är din tur slut. Du har {Player2Point} poäng.Det är nu {Player1Name}s tur");
+            }
+            else if (PlayerTurnCounter == 2 && Player1Point < 45 && Player2Point >= 45)
+            {
+                MessageBox.Show($"Grattis {Player1Name}, du har vunnit!");
+                StartNewGame();
 
             }
-            //när player två har kört sin tur
-            //kontrollera om någon har poäng som är över 45
-            //om ja, kolla vem som har mest poäng
-            //Den som har minst poäng utses till vinnare i en MessageBox
-            // och när man klickar på OK kommer man åter till startview för spelet. 
+
+            else if (PlayerTurnCounter == 2 && Player1Point >= 45 && Player2Point >= 45)
+            {
+                ForegroundBrushPlayer2 = Brushes.Red;
+                MessageBoxResult result = MessageBox.Show("Spelet slutade lika då båda spelarna fick över 45 poäng i samma omgång, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+
+                    StartBonusGame(); 
+                    
+                }
+                else if (result == MessageBoxResult.No)
+                {
+
+                }
+            }
+
         }
 
         /// <summary>
@@ -435,16 +533,7 @@ namespace SUP23_G4.ViewModels
             if (count == 0)
             {
                 PointCounter();
-
-                if (PlayerTurnCounter == 1)
-                {
-                    MessageBox.Show($"Nu är din tur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
-                }
-                else
-                {
-                    MessageBox.Show($"Nu är din tur slut. Du har {Player2Point} poäng.Det är nu {Player1Name}s tur");
-                }    
-                
+                GameWinner(); 
                 SwitchPlayerTurn();
                 SetNewGameTurn();
                 
