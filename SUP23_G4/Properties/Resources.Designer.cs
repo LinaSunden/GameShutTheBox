@@ -128,5 +128,15 @@ namespace SUP23_G4.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] GameRules {
+            get {
+                object obj = ResourceManager.GetObject("GameRules", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
