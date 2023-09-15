@@ -115,7 +115,22 @@
                    Margin="10,0,0,0"  
                    Opacity="1" 
                    FontWeight="Bold" 
-                   FontFamily="Cascadia Mono">
+                   FontFamily="Cascadia Mono"
+                   Visibility="{Binding GameRoundVisibility}">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <TextBlock 
+                   Text="Bonusomgång"
+                   HorizontalAlignment="Left"
+                   Foreground="Red"
+                   FontSize="20"
+                   Margin="10,0,0,0"  
+                   Opacity="1" 
+                   FontWeight="Bold" 
+                   FontFamily="Cascadia Mono"
+                   Visibility="{Binding BonusRoundVisibility}">
                     <TextBlock.Effect>
                         <DropShadowEffect/>
                     </TextBlock.Effect>

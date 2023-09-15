@@ -77,11 +77,13 @@ namespace SUP23_G4.ViewModels
         public Visibility TurnPlayer1 { get; set; }
 
         public Visibility TurnPlayer2 { get; set; } 
+        public Visibility GameRoundVisibility { get; set; }
+        public Visibility BonusRoundVisibility { get; set; } = Visibility.Hidden; 
         public bool IsThrowEnable { get; set; } = true;
         public int GameRoundCounter { get; set; } = 1;
         public int PlayerTurnCounter { get; set; } = 1;     
-        public int Player1Point { get; set; } = 0;
-        public int Player2Point { get; set; } = 0;
+        public int Player1Point { get; set; } = 40;
+        public int Player2Point { get; set; } = 40;
         public string Player1Name { get; set; } 
         public string Player2Name { get; set; }
 
@@ -231,6 +233,26 @@ namespace SUP23_G4.ViewModels
 
         }
 
+        public void StartBonusGame()
+        {
+            Player1Point = 0;
+            Player2Point = 0;
+            ForegroundBrushPlayer1 = Brushes.White;
+            ForegroundBrushPlayer2 = Brushes.White;
+            SwitchGameRoundVisibility();
+
+        }
+
+        public void StartNewGame()
+        {
+            SetNewGameTurn();
+            Player1Point = 0;
+            Player2Point = 0;
+            ForegroundBrushPlayer1 = Brushes.White;
+            ForegroundBrushPlayer2 = Brushes.White;
+            GameRoundCounter = 1; 
+
+        }
 
             /// <summary>
             /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
@@ -307,12 +329,12 @@ namespace SUP23_G4.ViewModels
                 {
                     if (PlayerTurnCounter == 1)
                     {
-                        Player1Point = Player1.Score += tile.TileValue;
+                        Player1Point = Player1Point += tile.TileValue;
                         
                     }
                     else
                     {
-                         Player2Point =  Player2.Score += tile.TileValue;
+                         Player2Point =  Player2Point += tile.TileValue;
                         
                     }
                 }
@@ -336,6 +358,14 @@ namespace SUP23_G4.ViewModels
             }
             
         }
+
+        public void SwitchGameRoundVisibility()
+        {
+            GameRoundVisibility = Visibility.Hidden;
+            BonusRoundVisibility = Visibility.Visible; 
+            
+        }
+
         //public void SwitchPlayerTurnNotifier()
         //{
         //    if (GameRoundC % 2 != 0)
@@ -369,26 +399,112 @@ namespace SUP23_G4.ViewModels
             }
         }
 
-        public void WinnerOfGame()
+        public void GameWinner()
         {
-            if(Player2Point >= 45 || Player1Point >= 45)
+            if(BonusRoundVisibility == Visibility.Visible)
             {
-                if(Player1Point > Player2Point)
-                {
-                    MessageBox.Show("Grattis Spelare2 du vann!");
-                }
-                else if (Player1Point < Player2Point)
-                {
-                    MessageBox.Show("Grattis Spelare1 du vann!");
+                BonusGame();
+            }
+            else
+            {
+                WinnerOfGame();
+            }
+        }
 
+        private void BonusGame()
+        {   
+            
+            if (PlayerTurnCounter == 1)
+            {
+                if (Player1Point < 45)
+                {
+                    MessageBox.Show($"Nu är din bonustur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
                 }
+                else if (Player1Point >= 45)
+                {
+                    ForegroundBrushPlayer1 = Brushes.Red;
+                    MessageBox.Show($"Du har fått {Player1Point} poäng. " +
+                        $"Om {Player2Name} inte får fler poäng än du så förlorar du bonusomgången");
+                }
+            }
+            
+            else if (PlayerTurnCounter ==2 && Player1Point >= 45 && Player2Point >= 45)
+            {
+                if (Player1Point < Player2Point) { MessageBox.Show($"Grattis {Player1Name}, du har vunnit bonusomgången! Du fick {Player1Point} och {Player2Name} fick {Player2Point}."); }
+                else { MessageBox.Show($"Grattis {Player2Name}, du har vunnit bonusomgången! Du fick {Player2Point} och {Player1Name} fick {Player1Point}."); }
+
+                StartNewGame(); 
+            }
+
+            else 
+            {
+                if (Player2Point < 45 && Player1Point < 45)
+                {
+                    MessageBox.Show($"Nu är din bonustur slut. Du har {Player2Point} poäng.Det är nu {Player1Name}s tur");
+                }
+                else if (Player2Point < 45 && Player1Point >= 45)
+                {
+                    MessageBox.Show($"Grattis {Player2Name}, du har vunnit! Du fick {Player2Point} och {Player1Name} fick {Player1Point}.");
+                    StartNewGame();
+                }
+                else if (Player1Point < 45 && Player2Point >= 45)
+                {
+                    MessageBox.Show($"Grattis {Player1Name}, du har vunnit bonusomgången! Du fick {Player1Point} och {Player2Name} fick {Player2Point}.");
+                    StartNewGame();
+                }
+                
+            }
+
+
+        }
+
+        public void WinnerOfGame()
+        {          
+            
+            if (PlayerTurnCounter == 1 && Player1Point < 45)
+            {
+                MessageBox.Show($"Nu är din tur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
+            }
+
+            else if (PlayerTurnCounter == 1 && Player1Point >= 45) 
+            {
+                ForegroundBrushPlayer1 = Brushes.Red;
+                MessageBox.Show($"Du har fått {Player1Point} poäng. " +
+                    $"Om {Player2Name} inte får 45 poäng eller mer så förlorar du");
+            }
+
+            else if (PlayerTurnCounter == 2 && Player2Point < 45 && Player1Point >= 45)
+            {
+                MessageBox.Show($"Grattis {Player2Name}, du har vunnit!");
+                StartNewGame(); 
+            }
+            else if (PlayerTurnCounter == 2 && Player2Point < 45 && Player1Point < 45)
+            {
+                MessageBox.Show($"Nu är din tur slut. Du har {Player2Point} poäng.Det är nu {Player1Name}s tur");
+            }
+            else if (PlayerTurnCounter == 2 && Player1Point < 45 && Player2Point >= 45)
+            {
+                MessageBox.Show($"Grattis {Player1Name}, du har vunnit!");
+                StartNewGame();
 
             }
-            //när player två har kört sin tur
-            //kontrollera om någon har poäng som är över 45
-            //om ja, kolla vem som har mest poäng
-            //Den som har minst poäng utses till vinnare i en MessageBox
-            // och när man klickar på OK kommer man åter till startview för spelet. 
+
+            else if (PlayerTurnCounter == 2 && Player1Point >= 45 && Player2Point >= 45)
+            {
+                ForegroundBrushPlayer2 = Brushes.Red;
+                MessageBoxResult result = MessageBox.Show("Spelet slutade lika, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+
+                    StartBonusGame(); 
+                    
+                }
+                else if (result == MessageBoxResult.No)
+                {
+
+                }
+            }
+
         }
 
         /// <summary>
@@ -416,16 +532,7 @@ namespace SUP23_G4.ViewModels
             if (count == 0)
             {
                 PointCounter();
-
-                if (PlayerTurnCounter == 1)
-                {
-                    MessageBox.Show($"Nu är din tur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
-                }
-                else
-                {
-                    MessageBox.Show($"Nu är din tur slut. Du har {Player2Point} poäng.Det är nu {Player1Name}s tur");
-                }    
-                
+                GameWinner(); 
                 SwitchPlayerTurn();
                 SetNewGameTurn();
                 
