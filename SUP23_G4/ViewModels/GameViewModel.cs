@@ -78,8 +78,8 @@ namespace SUP23_G4.ViewModels
 
         public Visibility TurnPlayer2 { get; set; } 
         public bool IsThrowEnable { get; set; } = true;
-        public int GameRound { get; set; } = 1;
-        public int TurnCounter { get; set; } = 1;     
+        public int GameRoundCounter { get; set; } = 1;
+        public int PlayerTurnCounter { get; set; } = 1;     
         public int Player1Point { get; set; } = 0;
         public int Player2Point { get; set; } = 0;
         public string Player1Name { get; set; } 
@@ -305,7 +305,7 @@ namespace SUP23_G4.ViewModels
             {
                 if (tile.CurrentStatus == Status.AvailableGameTile || tile.CurrentStatus == Status.NotAvailableGameTile)
                 {
-                    if (TurnCounter == 1)
+                    if (PlayerTurnCounter == 1)
                     {
                         Player1Point = Player1.Score += tile.TileValue;
                         
@@ -320,36 +320,37 @@ namespace SUP23_G4.ViewModels
         }
         public void SwitchPlayerTurn()
         {
-            if (TurnCounter == 1)
+            if (PlayerTurnCounter == 1)
             {
                 TurnPlayer2 = Visibility.Visible;
                 TurnPlayer1 = Visibility.Hidden;
-                TurnCounter++;
+                PlayerTurnCounter++;            
             }
             else
             {
                 TurnPlayer1 = Visibility.Visible;
                 TurnPlayer2 = Visibility.Hidden;
-                TurnCounter = 1;
+                PlayerTurnCounter = 1;
+                GameRoundCounter++;
 
             }
             
         }
-        public void SwitchPlayerTurnNotifier()
-        {
-            if (GameRound % 2 != 0)
-            {
-                if (Player1Point <= 44)
-                {
-                    MessageBox.Show($"{Player1Name}s tur är nu över. Du har {Player1Point} poäng och det är nu {Player2Name}'s tur.");
-                }
-            }
-            else if (Player2Point <= 44)
-            {
-                MessageBox.Show($"{Player2Name}s tur är nu över. Du har {Player2Point} poäng och det är nu {Player1Name}'s tur.");
-            }
-            Point45();
-        }
+        //public void SwitchPlayerTurnNotifier()
+        //{
+        //    if (GameRoundC % 2 != 0)
+        //    {
+        //        if (Player1Point <= 44)
+        //        {
+        //            MessageBox.Show($"{Player1Name}s tur är nu över. Du har {Player1Point} poäng och det är nu {Player2Name}'s tur.");
+        //        }
+        //    }
+        //    else if (Player2Point <= 44)
+        //    {
+        //        MessageBox.Show($"{Player2Name}s tur är nu över. Du har {Player2Point} poäng och det är nu {Player1Name}'s tur.");
+        //    }
+        //    Point45();
+        //}
         public void Point45()
         {
             if (Player1Point >= 45)
@@ -416,7 +417,7 @@ namespace SUP23_G4.ViewModels
             {
                 PointCounter();
 
-                if (TurnCounter == 1)
+                if (PlayerTurnCounter == 1)
                 {
                     MessageBox.Show($"Nu är din tur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
                 }

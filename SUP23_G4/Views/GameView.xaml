@@ -108,7 +108,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <TextBlock 
-                   Text="{Binding GameRound}"
+                   Text="{Binding GameRoundCounter}"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="20"
