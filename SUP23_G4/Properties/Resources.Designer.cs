@@ -63,6 +63,15 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream ClosingTile {
+            get {
+                return ResourceManager.GetStream("ClosingTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream dice_rolls_30cm {
             get {
                 return ResourceManager.GetStream("dice_rolls_30cm", resourceCulture);

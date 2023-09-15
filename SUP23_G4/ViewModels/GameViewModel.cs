@@ -306,6 +306,8 @@ namespace SUP23_G4.ViewModels
             NotAvailableToAvailable();
             IsTileEnabled = false;
             DisplayDiceSumVisibility = Visibility.Hidden;
+            var closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
+            closingTileSound.Play();
         }
  
 
