@@ -155,20 +155,6 @@ namespace SUP23_G4.ViewModels
             IsTileEnabled = true;
         }
 
-        //private void ChangeTileEnabled()
-        //{
-        //    foreach (Tile tile in GameTiles)
-        //    {
-        //        if (tile.IsTileEnable)
-        //        {
-        //            tile.IsTileEnable = false;
-        //        }
-        //        else if (!tile.IsTileEnable)
-        //        {
-        //            tile.IsTileEnable = true;
-        //        }              
-        //    }
-        //}
         /// <summary>
         /// Ändrar status på vald tile från view
         /// </summary>
@@ -226,24 +212,7 @@ namespace SUP23_G4.ViewModels
             SetStatusOfGameTiles(sortedTiles);
         }
      
-            /// <summary>
-            /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
-            /// </summary>
-            private int GetTargetSum()
-            {
-            int targetSum = DiceValue;
 
-            foreach (Tile t in GameTiles)
-            {
-                if (t.CurrentStatus == Status.SelectedGameTile)
-                {
-                    targetSum -= t.TileValue;
-                }
-            }
-            return targetSum;
-        
-
-            }
         
         /// <summary>
         /// Metod som gör
@@ -265,19 +234,6 @@ namespace SUP23_G4.ViewModels
             IsTileEnabled = false;
         }
  
-        //Metod för att sätta status DownwardTile (just nu görs detta i metoden CompareSelectedTilesWithDiceValue) - vi får diskutera hur vi vill lägga upp det
-        //public void SetTileStatusDownwardTile(Tile tile) 
-        //{
-        //    foreach(Tile tile in GameTiles) 
-        //    {
-        //        if (tile.CurrentStatus == Status.SelectedGameTile)
-        //        {
-        //            tile.CurrentStatus = Status.DownwardGameTile;
-        //        }
-
-        //    }
-
-        //}
 
 
         /// <summary>
@@ -595,7 +551,6 @@ namespace SUP23_G4.ViewModels
             {
                 MessageBox.Show("För högt");
             }
-            //SetTileStatusDownwardTile();
         }
     }
         #endregion
