@@ -121,6 +121,24 @@
   <data name="ClosingTile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ClosingTile.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="DiceFace1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiceFace1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiceFace2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiceFace3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiceFace4.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiceFace5.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiceFace6.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="DiceSide1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DiceSide1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
