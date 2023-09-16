@@ -139,24 +139,6 @@
   <data name="DiceFace6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DiceFace6.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DiceSide1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceSide1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceSide2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceSide2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceSide3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceSide3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceSide4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceSide4.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceSide5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceSide5.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceSide6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceSide6.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="dice_rolls_30cm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dice_rolls_30cm.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

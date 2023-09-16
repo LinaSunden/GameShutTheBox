@@ -9,12 +9,11 @@
 
   <ItemGroup>
     <None Remove="Resources\DiceFace1.png" />
-    <None Remove="Resources\DiceSide1.png" />
-    <None Remove="Resources\DiceSide2.png" />
-    <None Remove="Resources\DiceSide3.png" />
-    <None Remove="Resources\DiceSide4.png" />
-    <None Remove="Resources\DiceSide5.png" />
-    <None Remove="Resources\DiceSide6.png" />
+    <None Remove="Resources\DiceFace2.png" />
+    <None Remove="Resources\DiceFace3.png" />
+    <None Remove="Resources\DiceFace4.png" />
+    <None Remove="Resources\DiceFace5.png" />
+    <None Remove="Resources\DiceFace6.png" />
     <None Remove="Resources\GameRules.png" />
     <None Remove="Views\GreenBackground.jpg" />
     <None Remove="Views\Spelregler Engelska.png" />
@@ -22,9 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\DiceFace4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\DiceFace1.png" />
-    <Resource Include="Resources\DiceSide1.png" />
-    <Resource Include="Resources\DiceSide2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,10 +37,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\DiceSide3.png" />
-    <Resource Include="Resources\DiceSide4.png" />
-    <Resource Include="Resources\DiceSide5.png" />
-    <Resource Include="Resources\DiceSide6.png" />
+    <Resource Include="Resources\DiceFace2.png" />
+    <Resource Include="Resources\DiceFace3.png" />
+    <Resource Include="Resources\DiceFace5.png" />
+    <Resource Include="Resources\DiceFace6.png" />
     <Resource Include="Resources\GameRules.png" />
     <Resource Include="Views\GreenBackground.jpg" />
     <Resource Include="Views\Spelregler Engelska.png" />
