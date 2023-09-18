@@ -15,6 +15,7 @@
     <None Remove="Resources\DiceFace5.png" />
     <None Remove="Resources\DiceFace6.png" />
     <None Remove="Resources\GameRules.png" />
+    <None Remove="Resources\SpeakerButton.png" />
     <None Remove="Views\GreenBackground.jpg" />
     <None Remove="Views\Spelregler Engelska.png" />
     <None Remove="Views\Spelregler.png" />
@@ -42,6 +43,7 @@
     <Resource Include="Resources\DiceFace5.png" />
     <Resource Include="Resources\DiceFace6.png" />
     <Resource Include="Resources\GameRules.png" />
+    <Resource Include="Resources\SpeakerButton.png" />
     <Resource Include="Views\GreenBackground.jpg" />
     <Resource Include="Views\Spelregler Engelska.png" />
     <Resource Include="Views\Spelregler.png" />

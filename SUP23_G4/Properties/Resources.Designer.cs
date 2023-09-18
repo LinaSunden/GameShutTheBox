@@ -151,9 +151,9 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] Speaker_Button {
+        public static byte[] SpeakerButton {
             get {
-                object obj = ResourceManager.GetObject("Speaker_Button", resourceCulture);
+                object obj = ResourceManager.GetObject("SpeakerButton", resourceCulture);
                 return ((byte[])(obj));
             }
         }
