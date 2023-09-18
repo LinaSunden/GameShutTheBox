@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SUP23_G4.ViewModels;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace SUP23_G4.Languages
 {
@@ -21,7 +22,7 @@ namespace SUP23_G4.Languages
 
         public string PlayerName2 { get; set; }
 
-        public string PointsPlayer { get; set; }
+        public string Points { get; set; }
 
         public string Round {  get; set; }
 
@@ -33,7 +34,11 @@ namespace SUP23_G4.Languages
 
         public string MakeMove { get; set; }
 
+        public string LanguageName { get; set; }
 
+        public string Flag {  get; set; }
+
+        public string SelectLanguage { get; set; }
 
 
 

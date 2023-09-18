@@ -3,6 +3,7 @@ using SUP23_G4.Converters;
 using SUP23_G4.Enums;
 using SUP23_G4.Languages;
 using SUP23_G4.Models;
+using SUP23_G4.Properties;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.Dice;
 using SUP23_G4.Views.GameTiles;
@@ -19,6 +20,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace SUP23_G4.ViewModels
 {
@@ -41,6 +43,7 @@ namespace SUP23_G4.ViewModels
             Player2 = startViewModel.Player2;
             GameTiles = new ObservableCollection<Tile>();
             Languages = new ObservableCollection<Language>();
+            Languages = GetLanguages();
             FillCollectionOfGameTiles();
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
@@ -642,6 +645,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void ViewGameRules()
         {
+
             if (GameRuleBtnGameView == "Visa spelregler")
             {
                 GameRuleVisibility = Visibility.Visible;
@@ -661,21 +665,27 @@ public static ObservableCollection<Language> GetLanguages()
             var languages = new ObservableCollection<Language>()
             {new Language(){PlayerName1="Spelar 1: ",
                             PlayerName2="Spelare 2: ",
-                            PointsPlayer="Poäng: ",
+                            Points="Poäng: ",
                             Round="Omgång: ",
                             MyTurn="Din tur",
                             GameRuleBtn="Visa spelregler",
                             ThrowDiceBtn="Kasta tärningar",
-                            MakeMove="Genomför drag"},
+                            MakeMove="Genomför drag",
+                            LanguageName ="Svenska",
+                            Flag= "/Resources/SwedenFlag.png",
+                            SelectLanguage="Välj språk"},
 
             new Language(){ PlayerName1="Player 1: ",
                             PlayerName2="Player 2: ",
-                            PointsPlayer="Points: ",
-                            Round="Omgång: ",
+                            Points="Points: ",
+                            Round="Round: ",
                             MyTurn="My turn",
                             GameRuleBtn="Show Game rules",
                             ThrowDiceBtn="Throw dice",
-                            MakeMove="Make move"},
+                            MakeMove="Make move",
+                            LanguageName="English",
+                            Flag= "/Resources/GreatBritainFlag.png",
+                            SelectLanguage="Select Language"},
            };
             return languages;
         }
