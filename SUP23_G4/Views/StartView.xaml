@@ -119,9 +119,8 @@
             </Button>
 
             <MuteButton:MuteButton>
-                
+
             </MuteButton:MuteButton>
-            <MuteButton:MuteButton HorizontalAlignment="Left" Margin="272,252,0,0" VerticalAlignment="Top"/>
 
         </Grid>
 
