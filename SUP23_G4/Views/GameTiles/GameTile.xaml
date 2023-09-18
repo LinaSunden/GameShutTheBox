@@ -19,7 +19,7 @@
             <ImageBrush ImageSource="/Resources/TileTexture.jpg"/>
         </Grid.Background>
         <Button Height="{Binding CurrentStatus, ElementName=tile, Converter={StaticResource StatusToHeightConverter}}" BorderBrush="Black" BorderThickness="1" Background="{Binding CurrentStatus, ElementName=tile, Converter={StaticResource StatusToColorConverter}}" Command="{Binding SelectedTileCommand, ElementName=tile}" CommandParameter="{Binding ElementName=tile}"
-                Content="{Binding TileValue, ElementName=tile}" FontSize="18" FontWeight="Bold" >
+                Content="{Binding TileValue, ElementName=tile}" FontSize="24" FontWeight="Medium" >
         </Button>
     </Grid>
 </local:Tile>
