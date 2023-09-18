@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
-             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice"  x:Class="SUP23_G4.Views.GameView"
+             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice"  
+             x:Class="SUP23_G4.Views.GameView"
+             xmlns:Language="clr-namespace:SUP23_G4.Languages"
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}"
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
              mc:Ignorable="d" 
@@ -37,10 +39,10 @@
 
             <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray">
             </Border>
-            <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding TurnPlayer1}"/>
+            <GroupBox Header="{Binding ElementName=CBO, Path=SelectedItem.MyTurn}" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding TurnPlayer1}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
-                    Text="Spelare 1:"
+                    Text="{Binding ElementName=CBO, Path=SelectedItem.PlayerName1}"
                     HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="20"
@@ -68,7 +70,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Grid.Row="0" Grid.Column="0" Margin="10,50,0,0">
                 <TextBlock
-                    Text="Poäng:"
+                    Text="{Binding ElementName=CBO, Path=SelectedItem.Points}"
                     HorizontalAlignment="left"
                     Foreground="White"
                     FontSize="20"
@@ -97,7 +99,7 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
                 <TextBlock
-                    Text="Omgång:"
+                    Text="{Binding ElementName=CBO, Path=SelectedItem.Round}"
                     Foreground="White"
                     FontSize="20"  
                     Opacity="1" 
@@ -137,8 +139,8 @@
                 </TextBlock>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
-                <Button Content="{Binding GameRuleBtnGameView}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ShowGameRulesCommand}">
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
+                <Button Content="{Binding GameRuleBtnGameView}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ShowGameRulesCommand}" Margin="0,20">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Black"/>
@@ -153,16 +155,37 @@
                         </LinearGradientBrush>
                     </Button.OpacityMask>
                 </Button>
+                <TextBlock Text="{Binding ElementName=CBO, Path=SelectedItem.SelectLanguage}"
+                           Foreground="White"
+                           FontSize="12"
+                           Opacity="1" 
+                           FontWeight="Bold" 
+                           FontFamily="Cascadia Mono">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <ComboBox x:Name="CBO" Margin="0,5" ItemsSource="{Binding Languages}" SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Flag}" Width="48"/>
+                                <TextBlock Text="{Binding LanguageName}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    
+                </ComboBox>
             </StackPanel>
 
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/GameRules.png" Visibility="{Binding GameRuleVisibility}" />
 
 
 
-            <GroupBox Header="Din tur" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="5" Visibility="{Binding TurnPlayer2}"/>
+            <GroupBox Header="{Binding ElementName=CBO, Path=SelectedItem.MyTurn}" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="5" Visibility="{Binding TurnPlayer2}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
-                    Text="Spelare 2:"
+                    Text="{Binding ElementName=CBO, Path=SelectedItem.PlayerName2}"
                     HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="20"
@@ -191,7 +214,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,50,0,0">
                 <TextBlock
-                   Text="Poäng: "
+                   Text="{Binding ElementName=CBO, Path=SelectedItem.Points}"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="20"
@@ -243,7 +266,7 @@
 
             </Grid>
 
-            <Button Content="Genomför drag" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="2" Grid.ColumnSpan="2" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="{Binding ExecuteMove}" Command="{Binding ExecuteMoveCommand}">
+            <Button Content="{Binding ElementName=CBO, Path=SelectedItem.MakeMove}" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="2" Grid.ColumnSpan="2" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="{Binding ExecuteMove}" Command="{Binding ExecuteMoveCommand}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -326,6 +349,7 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
+
 
 
 

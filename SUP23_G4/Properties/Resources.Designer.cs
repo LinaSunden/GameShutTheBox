@@ -156,5 +156,25 @@ namespace SUP23_G4.Properties {
                 return ResourceManager.GetStream("StartViewMusic", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] GreatBritainFlag {
+            get {
+                object obj = ResourceManager.GetObject("GreatBritainFlag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] SwedenFlag {
+            get {
+                object obj = ResourceManager.GetObject("SwedenFlag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
