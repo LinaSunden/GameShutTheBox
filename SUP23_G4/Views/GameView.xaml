@@ -125,7 +125,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
-                <Button Content="{Binding GameRuleBtnGameView}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ShowGameRulesCommand}" Margin="0,20">
+                <Button Content="{Binding ElementName=CBO, Path=SelectedItem.GameRuleBtn}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ShowGameRulesCommand}" Margin="0,20">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Black"/>
@@ -150,7 +150,7 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <ComboBox x:Name="CBO" Margin="0,5" ItemsSource="{Binding Languages}" SelectedIndex="0">
+                <ComboBox x:Name="CBO" Margin="0,5" ItemsSource="{Binding Languages}" SelectedIndex="{Binding CboSelectedIndex}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

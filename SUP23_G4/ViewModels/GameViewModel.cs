@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Media;
@@ -49,12 +50,12 @@ namespace SUP23_G4.ViewModels
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             NewSelectedTileCommand = new RelayCommand(x => UpdateStatusOfChosenGameTileInObservableCollection(x));
             PointCounterCommand = new RelayCommand(x => PointCounter());
-            ShowGameRulesCommand = new RelayCommand(x => ViewGameRules()); 
+            ShowGameRulesCommand = new RelayCommand(x => ViewGameRules());
 
             TurnPlayer1 = Visibility.Visible;
             TurnPlayer2 = Visibility.Hidden;
             Player2Name = "Frida";
-            Player1Name = "Gibson"; 
+            Player1Name = "Gibson";
 
         }
 
@@ -83,17 +84,17 @@ namespace SUP23_G4.ViewModels
 
         public ObservableCollection<Tile> GameTiles { set; get; }
 
-        public Visibility ExecuteMove {  get; set; } = Visibility.Hidden;
+        public Visibility ExecuteMove { get; set; } = Visibility.Hidden;
 
         public Visibility TurnPlayer1 { get; set; }
 
-        public Visibility TurnPlayer2 { get; set; } 
+        public Visibility TurnPlayer2 { get; set; }
         public bool IsThrowEnable { get; set; } = true;
         public int GameRoundCounter { get; set; } = 1;
-        public int PlayerTurnCounter { get; set; } = 1;     
+        public int PlayerTurnCounter { get; set; } = 1;
         public int Player1Point { get; set; } = 0;
         public int Player2Point { get; set; } = 0;
-        public string Player1Name { get; set; } 
+        public string Player1Name { get; set; }
         public string Player2Name { get; set; }
 
         public bool IsTileEnabled { get; set; } = false;
@@ -106,18 +107,18 @@ namespace SUP23_G4.ViewModels
 
         private List<List<int>> Collection { get; set; }
 
-        public string GameRuleBtnGameView { get; set; } = "Visa spelregler";
-
         public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
 
         public string? DisplayDiceSum { get; set; }
-    
+
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
-       
+
+        public int CboSelectedIndex { get; set; } = 0;
+
         #endregion
 
 
-  
+
 
 
         #region Instansvariabler
@@ -135,7 +136,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void FillCollectionOfGameTiles()
         {
-            
+
             Tile tile;
             for (int i = 1; i <= 10; i++)
             {
@@ -209,7 +210,7 @@ namespace SUP23_G4.ViewModels
                 if (tile.TileValue == t.TileValue)
                 {
                     t.CurrentStatus = tile.CurrentStatus;
-                    
+
                 }
             }
             UpdateStatusOfAvailableTiles();
@@ -236,16 +237,16 @@ namespace SUP23_G4.ViewModels
             List<int> sortedTiles = SortOutDuplicates(updatedCollection);
             SetStatusOfGameTiles(sortedTiles);
         }
-     
+
         /// <summary>
         /// Metod som sätter alla tiles till available, används vid start av ny spelares tur
         /// </summary>
         public void SetNewGameTurn()
         {
-            
-            foreach(Tile tile in GameTiles)
+
+            foreach (Tile tile in GameTiles)
             {
-                if(tile.CurrentStatus != Status.AvailableGameTile) 
+                if (tile.CurrentStatus != Status.AvailableGameTile)
                 {
                     tile.CurrentStatus = Status.AvailableGameTile;
                 }
@@ -255,11 +256,11 @@ namespace SUP23_G4.ViewModels
         }
 
 
-            /// <summary>
-            /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
-            /// </summary>
-            private int GetTargetSum()
-            {
+        /// <summary>
+        /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
+        /// </summary>
+        private int GetTargetSum()
+        {
             int targetSum = DiceValue;
 
             foreach (Tile t in GameTiles)
@@ -270,9 +271,9 @@ namespace SUP23_G4.ViewModels
                 }
             }
             return targetSum;
-        
 
-            }
+
+        }
 
         public void NotAvailableToAvailable()
         {
@@ -314,7 +315,7 @@ namespace SUP23_G4.ViewModels
             IsTileEnabled = false;
             DisplayDiceSumVisibility = Visibility.Hidden;
         }
- 
+
 
 
         /// <summary>
@@ -332,12 +333,12 @@ namespace SUP23_G4.ViewModels
                     if (PlayerTurnCounter == 1)
                     {
                         Player1Point = Player1.Score += tile.TileValue;
-                        
+
                     }
                     else
                     {
-                         Player2Point =  Player2.Score += tile.TileValue;
-                        
+                        Player2Point = Player2.Score += tile.TileValue;
+
                     }
                 }
             }
@@ -348,7 +349,7 @@ namespace SUP23_G4.ViewModels
             {
                 TurnPlayer2 = Visibility.Visible;
                 TurnPlayer1 = Visibility.Hidden;
-                PlayerTurnCounter++;            
+                PlayerTurnCounter++;
             }
             else
             {
@@ -358,7 +359,7 @@ namespace SUP23_G4.ViewModels
                 GameRoundCounter++;
 
             }
-            
+
         }
         //public void SwitchPlayerTurnNotifier()
         //{
@@ -382,22 +383,22 @@ namespace SUP23_G4.ViewModels
                 ForegroundBrushPlayer1 = Brushes.Red;
                 MessageBox.Show($"Du har fått {Player1Point} poäng. " +
                     $"Om {Player2.Name} inte får fler poäng förlorar du");
-                
+
             }
             if (Player2Point >= 45)
             {
-               ForegroundBrushPlayer2 = Brushes.Red;
+                ForegroundBrushPlayer2 = Brushes.Red;
                 MessageBox.Show($"Du har fått {Player2Point} poäng. " +
                      $"Om {Player1.Name} inte får fler poäng förlorar du");
-              
+
             }
         }
 
         public void WinnerOfGame()
         {
-            if(Player2Point >= 45 || Player1Point >= 45)
+            if (Player2Point >= 45 || Player1Point >= 45)
             {
-                if(Player1Point > Player2Point)
+                if (Player1Point > Player2Point)
                 {
                     MessageBox.Show("Grattis Spelare2 du vann!");
                 }
@@ -448,13 +449,13 @@ namespace SUP23_G4.ViewModels
                 else
                 {
                     MessageBox.Show($"Nu är din tur slut. Du har {Player2Point} poäng.Det är nu {Player1Name}s tur");
-                }    
-                
+                }
+
                 SwitchPlayerTurn();
                 SetNewGameTurn();
-                
+
             }
-     
+
         }
 
 
@@ -557,12 +558,12 @@ namespace SUP23_G4.ViewModels
             List<int> sortedList = SortOutDuplicates(Collection);
             SetStatusOfGameTiles(sortedList);
         }
-        
 
-            /// <summary>
-            /// Tar bort alla listor från listan med listor som innehåller nedvända/otillgängliga värden
-            /// </summary>
-            private List<List<int>> SortOutDownWardTiles(List<List<int>>collection)
+
+        /// <summary>
+        /// Tar bort alla listor från listan med listor som innehåller nedvända/otillgängliga värden
+        /// </summary>
+        private List<List<int>> SortOutDownWardTiles(List<List<int>> collection)
         {
             List<List<int>> updatedCollection = new List<List<int>>(collection);
             foreach (List<int> list in updatedCollection)
@@ -642,27 +643,55 @@ namespace SUP23_G4.ViewModels
 
         /// <summary>
         /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
+        /// Ändrar texten till Dölj spelregler när knappen har klickats en gång och på motsvarande sätt för varje språk
         /// </summary>
         public void ViewGameRules()
         {
 
-            if (GameRuleBtnGameView == "Visa spelregler")
+            if (CboSelectedIndex == 0)
             {
-                GameRuleVisibility = Visibility.Visible;
-                GameRuleBtnGameView = "Dölj spelregler";
-            }
-            else if (GameRuleBtnGameView == "Dölj spelregler")
-            {
-                GameRuleVisibility = Visibility.Hidden;
-                GameRuleBtnGameView = "Visa spelregler";
+                foreach (Language language in Languages)
+                {
+                    if (language.GameRuleBtn == "Visa spelregler")
+                    {
+                        GameRuleVisibility = Visibility.Visible;
+                        language.GameRuleBtn = "Dölj spelregler";
+                    }
 
+                    else if (language.GameRuleBtn == "Dölj spelregler")
+                    {
+                        GameRuleVisibility = Visibility.Hidden;
+                        language.GameRuleBtn = "Visa spelregler";
+
+                    }
+                }
             }
+
+            else if (CboSelectedIndex == 1)
+            {
+                foreach (Language language in Languages)
+                {
+                    if (language.GameRuleBtn == "Show game rules")
+                    {
+                        GameRuleVisibility = Visibility.Visible;
+                        language.GameRuleBtn = "Hide game rules";
+                    }
+                    else if (language.GameRuleBtn == "Hide game rules")
+                    {
+                        GameRuleVisibility = Visibility.Hidden;
+                        language.GameRuleBtn = "Show game rules";
+                    }
+                }
+            }
+          
+
+        
         }
 
 
-public static ObservableCollection<Language> GetLanguages()
-        {
-            var languages = new ObservableCollection<Language>()
+            public static ObservableCollection<Language> GetLanguages()
+            {
+                var languages = new ObservableCollection<Language>()
             {new Language(){PlayerName1="Spelar 1: ",
                             PlayerName2="Spelare 2: ",
                             Points="Poäng: ",
@@ -680,21 +709,21 @@ public static ObservableCollection<Language> GetLanguages()
                             Points="Points: ",
                             Round="Round: ",
                             MyTurn="My turn",
-                            GameRuleBtn="Show Game rules",
+                            GameRuleBtn="Show game rules",
                             ThrowDiceBtn="Throw dice",
                             MakeMove="Make move",
                             LanguageName="English",
                             Flag= "/Resources/GreatBritainFlag.png",
                             SelectLanguage="Select Language"},
            };
-            return languages;
-        }
+                return languages;
+            }
 
-    }
+        }
 
 
         #endregion
-        
-       
-    }
+
+
+    } 
 
