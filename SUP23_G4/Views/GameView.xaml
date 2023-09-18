@@ -10,8 +10,9 @@
              xmlns:Language="clr-namespace:SUP23_G4.Languages"
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}"
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
-             mc:Ignorable="d" 
+             mc:Ignorable="d"    
              d:DesignHeight="450" d:DesignWidth="800">
+                
 
     <Border
      BorderBrush="Gray"  
@@ -321,7 +322,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne" CurrentStatus="{Binding GameTiles[0].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[0].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
+                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne" CurrentStatus="{Binding GameTiles[0].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[0].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}" Loaded="GameTileOne_Loaded"/>
                 <GameTiles:GameTile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo" CurrentStatus="{Binding GameTiles[1].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[1].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
                 <GameTiles:GameTile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree" CurrentStatus="{Binding GameTiles[2].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[2].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
                 <GameTiles:GameTile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour" CurrentStatus="{Binding GameTiles[3].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[3].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
