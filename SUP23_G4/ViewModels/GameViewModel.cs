@@ -51,7 +51,7 @@ namespace SUP23_G4.ViewModels
             PointCounterCommand = new RelayCommand(x => PointCounter());
             ShowGameRulesCommand = new RelayCommand(x => ViewGameRules());
             TestBonusGame = new RelayCommand(x => StartBonusGame()); //TODO: Ta bort commando när vi har testat klart bonusomgång
-
+            MuteSoundEffects = new RelayCommand(x => SoundEffectsOnAndOff());
             TurnPlayer1 = Visibility.Visible;
             TurnPlayer2 = Visibility.Hidden;
             Player2Name = "Frida";
@@ -118,10 +118,17 @@ namespace SUP23_G4.ViewModels
     
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
        
+        public ICommand MuteSoundEffects { get; set; }
+
+        public bool SoundEffectsAllowed { get; set; } = true;
+
+        public SoundPlayer closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
+
+        public SoundPlayer diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
         #endregion
 
 
-  
+
 
 
         #region Instansvariabler
@@ -177,8 +184,7 @@ namespace SUP23_G4.ViewModels
             DiceValue = DieOne + DieTwo;
             VisibilityGameButton();
             GetAvailableTiles();
-            var soundPlayer = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
-            soundPlayer.Play();
+            DiceTossSound();
             IsTileEnabled = true;
             DisplayDiceSum = $"= {DiceValue}";
             DisplayDiceSumVisibility = Visibility.Visible;
@@ -342,8 +348,7 @@ namespace SUP23_G4.ViewModels
             NotAvailableToAvailable();
             IsTileEnabled = false;
             DisplayDiceSumVisibility = Visibility.Hidden;
-            var closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
-            closingTileSound.Play();
+            ClosingTileSound();
         }
  
 
@@ -760,6 +765,31 @@ public static ObservableCollection<Language> GetLanguages()
             return languages;
         }
 
+        private void SoundEffectsOnAndOff()
+        {
+            if (SoundEffectsAllowed)
+            {
+                SoundEffectsAllowed = false;
+            }
+            else if (!SoundEffectsAllowed)
+            {
+                SoundEffectsAllowed = true;
+            }
+        }
+        private void DiceTossSound()
+        {
+            if (SoundEffectsAllowed)
+            {
+                diceTossSound.Play();
+            }
+        }
+        private void ClosingTileSound()
+        {
+            if (SoundEffectsAllowed)
+            {
+                closingTileSound.Play();
+            }
+        }
     }
 
 
