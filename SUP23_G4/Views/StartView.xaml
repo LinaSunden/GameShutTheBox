@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
-             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice" x:Class="SUP23_G4.Views.StartView"
+             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice" xmlns:MuteButton="clr-namespace:SUP23_G4.Views.MuteButton" x:Class="SUP23_G4.Views.StartView"
              d:DataContext="{d:DesignInstance {x:Type vm:StartViewModel}}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -117,8 +117,12 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
-           
-           
+
+            <MuteButton:MuteButton>
+                
+            </MuteButton:MuteButton>
+            <MuteButton:MuteButton HorizontalAlignment="Left" Margin="272,252,0,0" VerticalAlignment="Top"/>
+
         </Grid>
 
     </Border>

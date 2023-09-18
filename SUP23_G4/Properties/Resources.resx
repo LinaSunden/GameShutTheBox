@@ -145,6 +145,9 @@
   <data name="GameRules" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GameRules.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Speaker_Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Speaker-Button.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="StartViewMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StartViewMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
