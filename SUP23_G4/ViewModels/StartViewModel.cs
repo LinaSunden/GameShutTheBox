@@ -4,6 +4,7 @@ using SUP23_G4.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,11 +20,12 @@ namespace SUP23_G4.ViewModels
             StartGameCommand = new RelayCommand(x => StartGame());
             GameRulesCommand = new RelayCommand(x => SwitchToGameRules());
             this._mainViewModel = mainViewModel;
-
+            StartScreenMusic.Play();
         }
 
         public StartViewModel()
         {
+            
         }
 
         #endregion
@@ -37,6 +39,9 @@ namespace SUP23_G4.ViewModels
         public ICommand StartGameCommand { get; set; }
         public ICommand GameRulesCommand { get; set; }
         //public ICommand CreatePlayerCommand { get; set; }
+
+        public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
+        
 
         #endregion
 
@@ -76,6 +81,10 @@ namespace SUP23_G4.ViewModels
             _mainViewModel.CurrentViewModel = new GameRulesModel();
         }
 
+        //public void StartMusic()
+        //{
+
+        //}
         #endregion
 
 

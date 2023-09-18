@@ -49,8 +49,8 @@ namespace SUP23_G4.ViewModels
             TurnPlayer1 = Visibility.Visible;
             TurnPlayer2 = Visibility.Hidden;
             Player2Name = "Frida";
-            Player1Name = "Gibson"; 
-
+            Player1Name = "Gibson";
+            _startViewModel.StartScreenMusic.Stop();
         }
 
         #endregion
