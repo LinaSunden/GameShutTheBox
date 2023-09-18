@@ -24,5 +24,6 @@ namespace SUP23_G4.Views.MuteButton
         {
             InitializeComponent();
         }
+
     }
 }
