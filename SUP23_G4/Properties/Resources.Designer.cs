@@ -147,5 +147,14 @@ namespace SUP23_G4.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream StartViewMusic {
+            get {
+                return ResourceManager.GetStream("StartViewMusic", resourceCulture);
+            }
+        }
     }
 }
