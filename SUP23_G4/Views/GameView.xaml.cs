@@ -1,4 +1,6 @@
-﻿using SUP23_G4.ViewModels;
+﻿using SUP23_G4.Dto;
+using SUP23_G4.Models;
+using SUP23_G4.ViewModels;
 using SUP23_G4.Views.Dice;
 using System;
 using System.Collections.Generic;
@@ -26,10 +28,11 @@ namespace SUP23_G4.Views
         public GameView()
         {
             InitializeComponent();
-            
+           
         }
 
-   public GameViewModel GameViewModel = new();
+        
+         public GameViewModel GameViewModel = new();
 
       
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

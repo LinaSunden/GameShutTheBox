@@ -20,7 +20,6 @@ namespace SUP23_G4.ViewModels
         {
             CurrentViewModel = new StartViewModel(this);
             StartViewClickCommand = new RelayCommand(x => SwitchToStartView());
-            StartGameCommand = new RelayCommand(x => StartGame());
             GoToStartCommand = new RelayCommand(x => GoToStart());
         }
 
@@ -45,17 +44,11 @@ namespace SUP23_G4.ViewModels
         {
             CurrentViewModel = new StartViewModel(this);
         }
-        // Skickar med vår StartViewModel till GameViewModel direkt när programmet startas.
-        private void StartGame()
-        {
-            GameViewModel gameViewModel = new GameViewModel((StartViewModel)CurrentViewModel);
-            CurrentViewModel = gameViewModel;
-        }
 
-        /// <summary>
-        /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
-        /// </summary>
-        public void GoToStart()
+    /// <summary>
+    /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
+    /// </summary>
+    public void GoToStart()
         {
             if (CurrentViewModel is GameViewModel)
             {

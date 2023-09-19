@@ -1,4 +1,5 @@
 ﻿using SUP23_G4.Commands;
+using SUP23_G4.Dto;
 using SUP23_G4.Models;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.MuteButton;
@@ -36,17 +37,17 @@ namespace SUP23_G4.ViewModels
         #region Egenskaper
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
-
-        public string PlayerOneName { get; set; }
-        public string PlayerTwoName { get; set; }
+        public PlayerSettingsDto SettingsDto;
+        public string Player1Name { get; set; }
+        public string Player2Name { get; set; }
         public ICommand StartGameCommand { get; set; }
         public ICommand GameRulesCommand { get; set; }
-        //public ICommand CreatePlayerCommand { get; set; }
         public ICommand MuteMusic { get; set; }
         public bool IsMusicPlaying { get; set; }
 
         public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
-        
+
+
 
         #endregion
 
@@ -66,15 +67,16 @@ namespace SUP23_G4.ViewModels
         /// <exception cref="NotImplementedException"></exception>
         protected void StartGame()
         {
+            StartScreenMusic.Stop();
             CreatePlayer();
-
-            _mainViewModel.CurrentViewModel = new GameViewModel(this);
+            _mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);
         }
 
         private void CreatePlayer()
         {
-            Player1 = new Player(PlayerOneName);
-            Player2 = new Player(PlayerTwoName);
+            Player1 = new Player(Player1Name);
+            Player2 = new Player(Player2Name);
+            SettingsDto = new PlayerSettingsDto(Player1, Player2);
         }
 
         /// <summary>
