@@ -189,11 +189,11 @@ namespace SUP23_G4.ViewModels
             }
             DiceValue = DieOne + DieTwo;
             VisibilityGameButton();
-            GetAvailableTiles();
             DiceTossSound();
             IsTileEnabled = true;
             DisplayDiceSum = $"= {DiceValue}";
             DisplayDiceSumVisibility = Visibility.Visible;
+            GetAvailableTiles();
         }
 
         /// <summary>
@@ -266,6 +266,7 @@ namespace SUP23_G4.ViewModels
                     tile.CurrentStatus = Status.AvailableGameTile;
                 }
             }
+            IsTileEnabled = false;
             VisibilityDiceButton();
 
         }
