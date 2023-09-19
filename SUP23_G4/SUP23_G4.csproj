@@ -16,6 +16,7 @@
     <None Remove="Resources\DiceFace6.png" />
     <None Remove="Resources\GameRules.png" />
     <None Remove="Resources\GreatBritainFlag.png" />
+    <None Remove="Resources\MutedSpeakerButton.png" />
     <None Remove="Resources\SwedenFlag.png" />
     <None Remove="Resources\SpeakerButton.png" />
     <None Remove="Resources\TileTexture.jpg" />
@@ -47,6 +48,7 @@
     <Resource Include="Resources\DiceFace6.png" />
     <Resource Include="Resources\GameRules.png" />
     <Resource Include="Resources\GreatBritainFlag.png" />
+    <Resource Include="Resources\MutedSpeakerButton.png" />
     <Resource Include="Resources\SwedenFlag.png" />
     <Resource Include="Resources\SpeakerButton.png" />
     <Resource Include="Resources\TileTexture.jpg" />

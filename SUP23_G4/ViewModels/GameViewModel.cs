@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace SUP23_G4.ViewModels
@@ -58,6 +59,7 @@ namespace SUP23_G4.ViewModels
             Player2Name = "Frida";
             Player1Name = "Gibson";
             _startViewModel.StartScreenMusic.Stop();
+            ImageSource = "/Resources/SpeakerButton.png";
         }
 
         #endregion
@@ -126,6 +128,9 @@ namespace SUP23_G4.ViewModels
         public SoundPlayer diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
 
         public int CboSelectedIndex { get; set; } = 0;
+
+        //public Uri ImageSource;
+        public string ImageSource { get; set; }
 
         #endregion
 
@@ -800,10 +805,12 @@ namespace SUP23_G4.ViewModels
             if (SoundEffectsAllowed)
             {
                 SoundEffectsAllowed = false;
+                ImageSource = "/Resources/MutedSpeakerButton.png";
             }
             else if (!SoundEffectsAllowed)
             {
                 SoundEffectsAllowed = true;
+                ImageSource = "/Resources/SpeakerButton.png";
             }
         }
         private void DiceTossSound()
