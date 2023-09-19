@@ -85,7 +85,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <TextBlock 
-                   Text="{Binding Player1Point}"
+                   Text="{Binding Player1.Score}"
                    HorizontalAlignment="Left"
                    Foreground="{Binding ForegroundBrushPlayer1}"
                    FontSize="20"
@@ -229,7 +229,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <TextBlock 
-                   Text="{Binding Player2Point}"
+                   Text="{Binding Player2.Score}"
                    HorizontalAlignment="Left"
                    Foreground="{Binding ForegroundBrushPlayer2}"
                    FontSize="20"

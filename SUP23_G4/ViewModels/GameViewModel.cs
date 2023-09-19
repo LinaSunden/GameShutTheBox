@@ -274,8 +274,8 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void StartBonusGame()
         {
-            Player1Point = 0;
-            Player2Point = 0;
+            Player1.Score = 0;
+            Player2.Score = 0;
             ForegroundBrushPlayer1 = Brushes.White;
             ForegroundBrushPlayer2 = Brushes.White;
             SwitchGameRoundVisibility();
@@ -287,8 +287,8 @@ namespace SUP23_G4.ViewModels
         public void StartNewGame()
         {
             SetNewGameTurn();
-            Player1Point = 0;
-            Player2Point = 0;
+            Player1.Score = 0;
+            Player2.Score = 0;
             ForegroundBrushPlayer1 = Brushes.White;
             ForegroundBrushPlayer2 = Brushes.White;
             GameRoundCounter = 0;
@@ -371,12 +371,12 @@ namespace SUP23_G4.ViewModels
                 {
                     if (PlayerTurnCounter == 1)
                     {
-                        Player1Point = Player1Point += tile.TileValue;
+                        Player1.Score = Player1.Score += tile.TileValue;
                         
                     }
                     else
                     {
-                         Player2Point =  Player2Point += tile.TileValue;
+                         Player2.Score = Player2.Score += tile.TileValue;
                         
                     }
                 }
@@ -435,13 +435,13 @@ namespace SUP23_G4.ViewModels
             
             if (PlayerTurnCounter == 1)
             {
-                MessageBox.Show($"Nu är din bonustur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
+                MessageBox.Show($"Nu är din bonustur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
 
             }
             else
             {
-                if(Player1Point < Player2Point) { MessageBox.Show($"Grattis {Player1Name}, du har vunnit bonusomgången! Du fick {Player1Point} och {Player2Name} fick {Player2Point}."); }
-                else { MessageBox.Show($"Grattis {Player2Name}, du har vunnit bonusomgången! Du fick {Player2Point} och {Player1Name} fick {Player1Point}."); }
+                if(Player1.Score < Player2.Score) { MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player1.Score} och {Player2.Name} fick {Player2.Score}."); }
+                else { MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player2.Score} och {Player1.Name} fick {Player1.Score}."); }
 
                 StartNewGame();
             }
@@ -456,38 +456,38 @@ namespace SUP23_G4.ViewModels
 
             if (PlayerTurnCounter == 1)
             {
-                if (Player1Point < 45)
+                if (Player1.Score < 45)
                 {
 
-                    MessageBox.Show($"Nu är din tur slut. Du har {Player1Point} poäng. Det är nu {Player2Name}s tur");
+                    MessageBox.Show($"Nu är din tur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
 
                 }
-                else if (Player1Point >= 45)
+                else if (Player1.Score >= 45)
                 {
                     ForegroundBrushPlayer1 = Brushes.Red;
-                    MessageBox.Show($"Du har fått {Player1Point} poäng. Om {Player2Name} inte får mer poäng än dig så förlorar du");
+                    MessageBox.Show($"Du har fått {Player1.Score} poäng. Om {Player2.Name} inte får mer poäng än dig så förlorar du");
                 }
 
             }
 
             else if(PlayerTurnCounter == 2)
             {
-                if (Player1Point < 45 && Player2Point < 45)
+                if (Player1.Score < 45 && Player2.Score < 45)
                 {
-                    MessageBox.Show($"Nu är din tur slut. Du har {Player2Point} poäng. Det är nu {Player1Name}s tur");
+                    MessageBox.Show($"Nu är din tur slut. Du har {Player2.Score} poäng. Det är nu {Player1.Name}s tur");
                 }
 
-                else if(Player1Point < Player2Point && Player2Point >= 45)
+                else if(Player1.Score < Player2.Score && Player2.Score >= 45)
                 {
-                    MessageBox.Show($"Grattis {Player1Name}, du har vunnit!");
+                    MessageBox.Show($"Grattis {Player1.Name}, du har vunnit!");
                     StartNewGame();
                 }
-                else if (Player1Point >= 45 && Player1Point > Player2Point)
+                else if (Player1.Score >= 45 && Player1.Score > Player2.Score)
                 {
-                    MessageBox.Show($"Grattis {Player2Name}, du har vunnit!");
+                    MessageBox.Show($"Grattis {Player2.Name}, du har vunnit!");
                     StartNewGame();
                 }
-                else if(Player1Point == Player2Point && Player1Point >=45 && Player2Point >= 45)
+                else if(Player1.Score == Player2.Score && Player1.Score >=45 && Player2.Score >= 45)
                 {
                     ForegroundBrushPlayer2 = Brushes.Red;
                     MessageBoxResult result = MessageBox.Show("Spelet slutade lika då båda spelarna fick samma poäng, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);
