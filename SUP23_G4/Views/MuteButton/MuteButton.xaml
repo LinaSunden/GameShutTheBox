@@ -16,7 +16,7 @@
                 </Style>
             </Button.Resources>
             <Button.Content>
-                <Image Source="/Resources/SpeakerButton.png"/>
+                <Image Source="{Binding ImageSource, Mode=TwoWay}"/>
             </Button.Content>
         </Button>
     </Grid>

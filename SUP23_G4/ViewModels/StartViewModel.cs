@@ -24,6 +24,7 @@ namespace SUP23_G4.ViewModels
             this._mainViewModel = mainViewModel;
             StartScreenMusic.Play();
             IsMusicPlaying = true;
+            ImageSource = "/Resources/SpeakerButton.png";
         }
 
         public StartViewModel()
@@ -46,6 +47,8 @@ namespace SUP23_G4.ViewModels
         public bool IsMusicPlaying { get; set; }
 
         public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
+
+        public string ImageSource { get; set; }
         
 
         #endregion
@@ -92,11 +95,13 @@ namespace SUP23_G4.ViewModels
             {
                 StartScreenMusic.Stop();
                 IsMusicPlaying = false;
+                ImageSource = "/Resources/MutedSpeakerButton.png";
             }
             else if (!IsMusicPlaying)
             {
                 StartScreenMusic.Play();
                 IsMusicPlaying = true;
+                ImageSource = "/Resources/SpeakerButton.png";
             }
         }
         #endregion

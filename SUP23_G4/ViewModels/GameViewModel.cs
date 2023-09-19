@@ -129,7 +129,6 @@ namespace SUP23_G4.ViewModels
 
         public int CboSelectedIndex { get; set; } = 0;
 
-        //public Uri ImageSource;
         public string ImageSource { get; set; }
 
         #endregion
