@@ -151,6 +151,16 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] GreatBritainFlag {
+            get {
+                object obj = ResourceManager.GetObject("GreatBritainFlag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] SpeakerButton {
             get {
                 object obj = ResourceManager.GetObject("SpeakerButton", resourceCulture);
@@ -164,16 +174,6 @@ namespace SUP23_G4.Properties {
         public static System.IO.UnmanagedMemoryStream StartViewMusic {
             get {
                 return ResourceManager.GetStream("StartViewMusic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] GreatBritainFlag {
-            get {
-                object obj = ResourceManager.GetObject("GreatBritainFlag", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         

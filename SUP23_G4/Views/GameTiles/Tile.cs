@@ -53,6 +53,5 @@ namespace SUP23_G4.Views.GameTiles
         public static readonly DependencyProperty SelectedTileCommandProperty =
             DependencyProperty.Register("SelectedTileCommand", typeof(ICommand), typeof(Tile), new PropertyMetadata(null));
 
-
     }
 }

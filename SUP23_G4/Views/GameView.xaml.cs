@@ -41,11 +41,6 @@ namespace SUP23_G4.Views
 
         }
 
-        private void GameTileOne_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
         //Har inte lyckats få denna metod att reagera.
         //Försökt sätta PreviewKeyDown = "Grid_PreviewKeyDown" och Focusable = "True" på dvs element i Gameview.

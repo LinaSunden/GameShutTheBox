@@ -20,12 +20,12 @@ namespace SUP23_G4.Converters
                 return status switch
                 {
 
-                    Status.AvailableGameTile => 100,
-                    Status.NotAvailableGameTile => 100,
-                    Status.SelectedGameTile => 100,
-                    Status.DownwardGameTile => 310,
+                    Status.AvailableGameTile => 80,
+                    Status.NotAvailableGameTile => 80,
+                    Status.SelectedGameTile => 80,
+                    Status.DownwardGameTile => 250,
 
-                    _ => 50, //osäker på vilken storlek vi ska sätta här? har gjort den extra stor för att identifiera fel i test
+                    _ => 50, //osäker på vilken storlek vi ska sätta här? har gjort den extra liten för att identifiera fel i test
                 };
             }
             return 50;
