@@ -1,5 +1,6 @@
 ﻿using SUP23_G4.Commands;
 using SUP23_G4.Converters;
+using SUP23_G4.Dto;
 using SUP23_G4.Enums;
 using SUP23_G4.Languages;
 using SUP23_G4.Models;
@@ -32,17 +33,13 @@ namespace SUP23_G4.ViewModels
 
         #region Konstruktor
 
-        public GameViewModel()
+     
+        public GameViewModel(PlayerSettingsDto SettingsDto)
         {
 
-        }
-
-        public GameViewModel(StartViewModel startViewModel)
-        {
-
-            _startViewModel = startViewModel;
-            Player1 = startViewModel.Player1;
-            Player2 = startViewModel.Player2;
+           
+            Player1 = SettingsDto.Player1;
+            Player2 = SettingsDto.Player2;
             GameTiles = new ObservableCollection<Tile>();
             Languages = new ObservableCollection<Language>();
             Languages = GetLanguages();
@@ -56,17 +53,19 @@ namespace SUP23_G4.ViewModels
             MuteSoundEffects = new RelayCommand(x => SoundEffectsOnAndOff());
             TurnPlayer1 = Visibility.Visible;
             TurnPlayer2 = Visibility.Hidden;
-            Player2Name = "Frida";
-            Player1Name = "Gibson";
-            _startViewModel.StartScreenMusic.Stop();
+           
             ImageSource = "/Resources/SpeakerButton.png";
+        }
+
+        public GameViewModel()
+        {
+
         }
 
         #endregion
 
-
-
         #region Egenskaper
+      
         public int DieOne { get; set; } = 5;
 
         public int DieTwo { get; set; } = 3;
@@ -81,6 +80,7 @@ namespace SUP23_G4.ViewModels
         public ICommand ShowGameRulesCommand { get; }
         public ICommand TestBonusGame { get; set; } //TODO: Ta bort commando när vi har testat klart bonusomgång
 
+        public PlayerSettingsDto SettingsDto;
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
 
@@ -772,7 +772,7 @@ namespace SUP23_G4.ViewModels
             public static ObservableCollection<Language> GetLanguages()
             {
                 var languages = new ObservableCollection<Language>()
-            {new Language(){PlayerName1="Spelar 1: ",
+            {new Language(){PlayerName1="Spelare 1: ",
                             PlayerName2="Spelare 2: ",
                             Points="Poäng: ",
                             Round="Omgång: ",

@@ -59,7 +59,7 @@
                 </TextBlock.Effect>
             </TextBlock>
             <TextBox x:Name="txtPlayer1"
-                     Text="{Binding PlayerOneName}"
+                     Text="{Binding Player1Name}"
                      Width="174"
                      Height="30"
                      Grid.Column="0" Grid.Row="1"
@@ -78,7 +78,7 @@
                 </TextBlock.Effect>
             </TextBlock>
             <TextBox x:Name="txtPlayer2"
-                     Text="{Binding PlayerTwoName}"
+                     Text="{Binding Player2Name}"
                      Width="174"
                      Height="30"
                      Grid.Column="0" Grid.Row="1"
