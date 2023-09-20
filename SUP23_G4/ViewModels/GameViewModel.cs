@@ -103,7 +103,7 @@ namespace SUP23_G4.ViewModels
         public string Player1Name { get; set; } 
         public string Player2Name { get; set; }
 
-        public bool IsTileEnabled { get; set; } = false;
+        //public bool IsTileEnabled { get; set; } = false;
 
         public Tile tile = new Tile();
 
@@ -149,6 +149,7 @@ namespace SUP23_G4.ViewModels
         #region Metoder
         /// <summary>
         /// Skapar 10 tiles med värde 1-10 och ger dem status AvailableGameTile och lägger dem i en ObservableCollection som heter GameTiles.
+        /// OBS! Ändrar status från avaiableGameTiles till Notavailabe för att testa TilesBeforeDiceToss
         /// </summary>
         public void FillCollectionOfGameTiles()
         {
@@ -159,7 +160,7 @@ namespace SUP23_G4.ViewModels
                 tile = new Tile();
                 {
                     tile.TileValue = i;
-                    tile.CurrentStatus = Status.AvailableGameTile;
+                    tile.CurrentStatus = Status.NotAvailableGameTile;
                 };
                 GameTiles.Add(tile);
             }
@@ -190,7 +191,7 @@ namespace SUP23_G4.ViewModels
             DiceValue = DieOne + DieTwo;
             VisibilityGameButton();
             DiceTossSound();
-            IsTileEnabled = true;
+            //IsTileEnabled = true;
             DisplayDiceSum = $"= {DiceValue}";
             DisplayDiceSumVisibility = Visibility.Visible;
             GetAvailableTiles();
@@ -228,8 +229,26 @@ namespace SUP23_G4.ViewModels
 
                 }
             }
-            UpdateStatusOfAvailableTiles();
+            if(TilesBeforeDiceToss() == true)
+            {
+                UpdateStatusOfAvailableTiles();
+            }
+            
         }
+
+        public bool TilesBeforeDiceToss()
+        {
+            foreach(Tile t in GameTiles)
+            {
+                if(t.CurrentStatus != Status.NotAvailableGameTile)
+                {
+                    return true; 
+                }
+            }
+            return false;
+        }
+
+
 
         public void UpdateStatusOfAvailableTiles()
         {
@@ -255,18 +274,19 @@ namespace SUP23_G4.ViewModels
 
         /// <summary>
         /// Metod som sätter alla tiles till available, används vid start av ny spelares tur
+        /// OBS!! Ändrar status från AvailableGameTile till NotAvaible för att testa metoden TilesBeforeDiceToss
         /// </summary>
         public void SetNewGameTurn()
         {
 
             foreach (Tile tile in GameTiles)
             {
-                if (tile.CurrentStatus != Status.AvailableGameTile)
+                if (tile.CurrentStatus != Status.NotAvailableGameTile)
                 {
-                    tile.CurrentStatus = Status.AvailableGameTile;
+                    tile.CurrentStatus = Status.NotAvailableGameTile;
                 }
             }
-            IsTileEnabled = false;
+            //IsTileEnabled = false; 
             VisibilityDiceButton();
 
         }
@@ -353,7 +373,7 @@ namespace SUP23_G4.ViewModels
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
             NotAvailableToAvailable();
-            IsTileEnabled = false;
+            //IsTileEnabled = false;
             DisplayDiceSumVisibility = Visibility.Hidden;
             ClosingTileSound();
         }
