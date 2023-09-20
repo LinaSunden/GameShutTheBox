@@ -219,8 +219,15 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void UpdateStatusOfChosenGameTileInObservableCollection(Object x)
         {
+            if (DiceValue == 0)
+            {
+                return;
+            }
+
             var tile = (Tile)x;
             ChangeStatusOfChosenTile(tile);
+           
+
             foreach (Tile t in GameTiles)
             {
                 if (tile.TileValue == t.TileValue)
@@ -229,7 +236,7 @@ namespace SUP23_G4.ViewModels
 
                 }
             }
-            if(TilesBeforeDiceToss() == true)
+            if(TilesBeforeDiceToss())
             {
                 UpdateStatusOfAvailableTiles();
             }
@@ -374,6 +381,7 @@ namespace SUP23_G4.ViewModels
             IsThrowEnable = true;
             NotAvailableToAvailable();
             //IsTileEnabled = false;
+            DiceValue= 0;
             DisplayDiceSumVisibility = Visibility.Hidden;
             ClosingTileSound();
         }
