@@ -105,7 +105,8 @@ namespace SUP23_G4.ViewModels
         #endregion
 
         #region Metoder
-        #region Tiles
+
+        #region Tiles   
 
         /// <summary>
         /// Skapar 10 tiles med värde 1-10 och ger dem status AvailableGameTile och lägger dem i en ObservableCollection som heter GameTiles.
@@ -400,8 +401,9 @@ namespace SUP23_G4.ViewModels
                 //MessageBox.Show("För lågt"); LABEL
             }
         }
-        #endregion
 
+        #endregion
+        
         #region Visibility
 
         /// <summary>
@@ -744,7 +746,9 @@ namespace SUP23_G4.ViewModels
            };
                 return languages;
             }
-    }
+
         #endregion
-} 
+    }
+
+}
 
