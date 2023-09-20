@@ -51,6 +51,7 @@ namespace SUP23_G4.ViewModels
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
             SpeakerImage = "/Resources/SpeakerButton.png";
+            
         }
         public GameViewModel()
         {
@@ -96,14 +97,14 @@ namespace SUP23_G4.ViewModels
         #endregion
 
         #region Instansvariabler
-
+        
         public StartViewModel _startViewModel;
         public PlayerSettingsDto _settingsDto;
         public Tile _tile = new Tile();
         public SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
         public SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
         #endregion
-
+        
         #region Metoder
 
         #region Tiles   
@@ -245,11 +246,11 @@ namespace SUP23_G4.ViewModels
             if (count == 0)
             {
                 ScoreCounter();
-                WinnerOfGame();
-                SwitchPlayerTurn();
                 NewGameTurn();
-
+                SwitchPlayerTurn();
+                if  (BonusRoundVisibility == Visibility.Visible) { BonusGame(); } else WinnerOfGame();
             }
+           
 
         }
         /// <summary>
@@ -550,7 +551,7 @@ namespace SUP23_G4.ViewModels
             Player1ForegroundBrush = Brushes.White;
             Player2ForegroundBrush = Brushes.White;
             VisibilityBonusRound();
-            BonusGame();
+            NewGameTurn();  
 
         }
         /// <summary>
@@ -602,26 +603,34 @@ namespace SUP23_G4.ViewModels
                     }
                 }
             }
+           
         }
         /// <summary>
         /// Metod som utser vinnaren i bonusomgång
         /// </summary>
         private void BonusGame()
-        {   
+        {
             
-            if (PlayerTurnCounter == 1)
+            if (PlayerTurnCounter == 2)
             {
-                MessageBox.Show($"Nu är din bonustur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
-
+                if (Player1.Score < 56)
+                {
+                    MessageBox.Show($"Nu är din bonustur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
+                }
             }
-            else
+            else if (PlayerTurnCounter == 1)
             {
-                if(Player1.Score < Player2.Score) { MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player1.Score} och {Player2.Name} fick {Player2.Score}."); }
-                else { MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player2.Score} och {Player1.Name} fick {Player1.Score}."); }
-
+               if (Player2.Score < Player1.Score)
+                  {
+                    MessageBox.Show($"Grattis {Player2.Name}, du har vunnit bonusomgången! Du fick {Player2.Score} och {Player1.Name} fick {Player1.Score}.");
+                  }
+               else if (Player1.Score < Player2.Score)
+                  {
+                    MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player1.Score} och {Player2.Name} fick {Player2.Score}.");
+                  }
                 StartRematch();
             }
-      
+
 
         }
         /// <summary>

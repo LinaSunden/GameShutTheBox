@@ -160,4 +160,13 @@
   <data name="GreenBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GreenBackground.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Bonus_Round" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bonus_Round.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogoSTB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoSTB.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Logo_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo_2.gif;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
