@@ -94,6 +94,7 @@ namespace SUP23_G4.ViewModels
         public bool IsSoundEffectsAllowed { get; set; } = true;
         public bool IsThrowEnable { get; set; } = true;
         #endregion
+
         #region Instansvariabler
 
         public StartViewModel _startViewModel;
@@ -102,38 +103,8 @@ namespace SUP23_G4.ViewModels
         public SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
         public SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
         #endregion
+
         #region Metoder
-        /// <summary>
-        /// Kastar två tärningar och får uppdaterade värden på DieOne och DieTwo
-        /// </summary>
-        public void DiceToss()
-        {
-            Random r = new Random();
-
-            for (int i = 0; i < 2; i++)
-            {
-                DiceOne diceOne = new();
-                DiceTwo diceTwo = new();
-                if (i == 0)
-                {
-                    diceOne.DieOneValue = r.Next(1, 7);
-                    DieOne = diceOne.DieOneValue;
-
-                }
-                else if (i == 1)
-                {
-                    diceTwo.DieTwoValue = r.Next(1, 7);
-                    DieTwo = diceTwo.DieTwoValue;
-                }
-            }
-            DiceValue = DieOne + DieTwo;
-            VisibilityMakeMoveButton();
-            DiceTossSound();
-            DisplayDiceSum = $"= {DiceValue}";
-            DisplayDiceSumVisibility = Visibility.Visible;
-            FindAvailableTiles();
-        }
-
         #region Tiles
 
         /// <summary>
@@ -272,8 +243,8 @@ namespace SUP23_G4.ViewModels
             }
             if (count == 0)
             {
-                PointCounter();
-                GameWinner();
+                ScoreCounter();
+                WinnerOfGame();
                 SwitchPlayerTurn();
                 NewGameTurn();
 
@@ -481,7 +452,75 @@ namespace SUP23_G4.ViewModels
 
         #endregion
 
+        #region Sound
+        /// <summary>
+        /// En knapp för att muta och starta ljudeffekter i Gameview samt byta bild.
+        /// </summary>
+        private void SoundEffectsOnAndOff()
+        {
+            if (IsSoundEffectsAllowed)
+            {
+                IsSoundEffectsAllowed = false;
+                SpeakerImage = "/Resources/MutedSpeakerButton.png";
+            }
+            else if (!IsSoundEffectsAllowed)
+            {
+                IsSoundEffectsAllowed = true;
+                SpeakerImage = "/Resources/SpeakerButton.png";
+            }
+        }
+        /// <summary>
+        /// Ljud för tärningskast
+        /// </summary>
+        private void DiceTossSound()
+        {
+            if (IsSoundEffectsAllowed)
+            {
+                _diceTossSound.Play();
+            }
+        }
+        /// <summary>
+        /// Ljud för nedfällning av tile.
+        /// </summary>
+        private void ClosingTileSound()
+        {
+            if (IsSoundEffectsAllowed)
+            {
+                _closingTileSound.Play();
+            }
+        }
+        #endregion
 
+        /// <summary>
+        /// Kastar två tärningar och får uppdaterade värden på DieOne och DieTwo
+        /// </summary>
+        public void DiceToss()
+        {
+            Random r = new Random();
+
+            for (int i = 0; i < 2; i++)
+            {
+                DiceOne diceOne = new();
+                DiceTwo diceTwo = new();
+                if (i == 0)
+                {
+                    diceOne.DieOneValue = r.Next(1, 7);
+                    DieOne = diceOne.DieOneValue;
+
+                }
+                else if (i == 1)
+                {
+                    diceTwo.DieTwoValue = r.Next(1, 7);
+                    DieTwo = diceTwo.DieTwoValue;
+                }
+            }
+            DiceValue = DieOne + DieTwo;
+            VisibilityMakeMoveButton();
+            DiceTossSound();
+            DisplayDiceSum = $"= {DiceValue}";
+            DisplayDiceSumVisibility = Visibility.Visible;
+            FindAvailableTiles();
+        }
         /// <summary>
         /// Metod som sätter alla tiles som inte är notavailable till notavailable, används vid start av ny spelares tur
         /// </summary>
@@ -509,9 +548,9 @@ namespace SUP23_G4.ViewModels
             Player1ForegroundBrush = Brushes.White;
             Player2ForegroundBrush = Brushes.White;
             VisibilityBonusRound();
+            BonusGame();
 
         }
-
         /// <summary>
         /// Metod som ger vyn försättningar och utseende för att spela en vanlig spelomgång
         /// </summary>
@@ -526,10 +565,9 @@ namespace SUP23_G4.ViewModels
             BonusRoundVisibility = Visibility.Hidden;
             GameRoundVisibility = Visibility.Visible; 
 
-        }
-      
+        }   
         /// <summary>
-        /// Metod som
+        /// Metod som avslutar ett drag och gör spelet redo för ett nytt tärningskast.
         /// </summary>
         public void MoveIsExecuted()
         {
@@ -540,11 +578,10 @@ namespace SUP23_G4.ViewModels
             NotAvailableToAvailable();
             ClosingTileSound();
         }
-
         /// <summary>
-        /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden omgång. 
+        /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden tur. 
         /// </summary>
-        public void PointCounter()
+        public void ScoreCounter()
         {
 
             foreach (Tile tile in GameTiles)
@@ -562,22 +599,6 @@ namespace SUP23_G4.ViewModels
                         
                     }
                 }
-            }
-        }
- 
-
-        /// <summary>
-        /// Metod som avgör vilken typ av spelomgång det är, vanlig eller bonusomgång
-        /// </summary>
-        public void GameWinner()
-        {
-            if(BonusRoundVisibility == Visibility.Visible)
-            {
-                BonusGame();
-            }
-            else
-            {
-                WinnerOfGame();
             }
         }
         /// <summary>
@@ -606,23 +627,18 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void WinnerOfGame()
         {
-
             if (PlayerTurnCounter == 1)
             {
                 if (Player1.Score < 45)
                 {
-
                     MessageBox.Show($"Nu är din tur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
-
                 }
                 else if (Player1.Score >= 45)
                 {
                     Player1ForegroundBrush = Brushes.Red;
                     MessageBox.Show($"Du har fått {Player1.Score} poäng. Om {Player2.Name} inte får mer poäng än dig så förlorar du");
                 }
-
             }
-
             else if(PlayerTurnCounter == 2)
             {
                 if (Player1.Score < 45 && Player2.Score < 45)
@@ -650,23 +666,17 @@ namespace SUP23_G4.ViewModels
                     }
                     else if (result == MessageBoxResult.No)
                     {
-
+                        return;
                     }
                 }
             } 
-
-
-        }
-
-  
-
+        }  
         /// <summary>
         /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
         /// Ändrar texten till Dölj spelregler när knappen har klickats en gång och på motsvarande sätt för varje språk
         /// </summary>
         public void ViewGameRules()
         {
-
             if (CboSelectedIndex == 0)
             {
                 foreach (Language language in Languages)
@@ -685,7 +695,6 @@ namespace SUP23_G4.ViewModels
                     }
                 }
             }
-
             else if (CboSelectedIndex == 1)
             {
                 foreach (Language language in Languages)
@@ -701,11 +710,11 @@ namespace SUP23_G4.ViewModels
                         language.GameRuleBtn = "Show game rules";
                     }
                 }
-            }
-          
-
-        
+            }           
         }
+        /// <summary>
+        /// Metod som en kollektion med språkalternativ.
+        /// </summary>
         public static ObservableCollection<Language> GetLanguages()
             {
                 var languages = new ObservableCollection<Language>()
@@ -735,38 +744,7 @@ namespace SUP23_G4.ViewModels
            };
                 return languages;
             }
-        private void SoundEffectsOnAndOff()
-        {
-            if (IsSoundEffectsAllowed)
-            {
-                IsSoundEffectsAllowed = false;
-                SpeakerImage = "/Resources/MutedSpeakerButton.png";
-            }
-            else if (!IsSoundEffectsAllowed)
-            {
-                IsSoundEffectsAllowed = true;
-                SpeakerImage = "/Resources/SpeakerButton.png";
-            }
-        }
-        private void DiceTossSound()
-        {
-            if (IsSoundEffectsAllowed)
-            {
-                _diceTossSound.Play();
-            }
-        }
-        private void ClosingTileSound()
-        {
-            if (IsSoundEffectsAllowed)
-            {
-                _closingTileSound.Play();
-            }
-        }
     }
-
-
         #endregion
-
-
-    } 
+} 
 

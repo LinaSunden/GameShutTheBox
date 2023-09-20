@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
-             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice" xmlns:MuteButton="clr-namespace:SUP23_G4.Views.MuteButton" x:Class="SUP23_G4.Views.StartView"
+             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice" 
+             x:Class="SUP23_G4.Views.StartView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -14,7 +15,7 @@
              BorderThickness="3"
              CornerRadius="5">
         <Border.Background>
-            <ImageBrush ImageSource="/Views/GreenBackground.jpg"/>
+            <ImageBrush ImageSource="/Resources/GreenBackground.jpg"/>
         </Border.Background>
 
         <Grid>
