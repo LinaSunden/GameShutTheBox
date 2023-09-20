@@ -103,7 +103,6 @@ namespace SUP23_G4.ViewModels
         public string Player1Name { get; set; } 
         public string Player2Name { get; set; }
 
-        //public bool IsTileEnabled { get; set; } = false;
 
         public Tile tile = new Tile();
 
@@ -191,7 +190,6 @@ namespace SUP23_G4.ViewModels
             DiceValue = DieOne + DieTwo;
             VisibilityGameButton();
             DiceTossSound();
-            //IsTileEnabled = true;
             DisplayDiceSum = $"= {DiceValue}";
             DisplayDiceSumVisibility = Visibility.Visible;
             GetAvailableTiles();
@@ -293,7 +291,7 @@ namespace SUP23_G4.ViewModels
                     tile.CurrentStatus = Status.NotAvailableGameTile;
                 }
             }
-            //IsTileEnabled = false; 
+            
             VisibilityDiceButton();
 
         }
