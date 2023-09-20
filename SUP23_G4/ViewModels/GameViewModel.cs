@@ -36,134 +36,73 @@ namespace SUP23_G4.ViewModels
      
         public GameViewModel(PlayerSettingsDto SettingsDto)
         {
-
-           
             Player1 = SettingsDto.Player1;
             Player2 = SettingsDto.Player2;
-            GameTiles = new ObservableCollection<Tile>();
-            Languages = new ObservableCollection<Language>();
-            Languages = GetLanguages();
-            FillCollectionOfGameTiles();
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
-            NewSelectedTileCommand = new RelayCommand(x => UpdateStatusOfChosenGameTileInObservableCollection(x));
-            PointCounterCommand = new RelayCommand(x => PointCounter());
-            ShowGameRulesCommand = new RelayCommand(x => ViewGameRules());
-            TestBonusGame = new RelayCommand(x => StartBonusGame()); //TODO: Ta bort commando när vi har testat klart bonusomgång
-            MuteSoundEffects = new RelayCommand(x => SoundEffectsOnAndOff());
-            TurnPlayer1 = Visibility.Visible;
-            TurnPlayer2 = Visibility.Hidden;
-           
-            ImageSource = "/Resources/SpeakerButton.png";
+            TileClickedCommand = new RelayCommand(x => UpdateStatusOfChosenGameTile(x));
+            ViewGameRulesCommand = new RelayCommand(x => ViewGameRules());
+            SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
+            GameTiles = new ObservableCollection<Tile>();
+            Languages = new ObservableCollection<Language>();
+            TestBonusGame = new RelayCommand(x => StartBonusRound()); //TODO: Ta bort commando när vi har testat klart bonusomgång
+            Languages = GetLanguages();
+            FillCollectionOfGameTiles();
+            Player1Turn = Visibility.Visible;
+            Player2Turn = Visibility.Hidden;
+            SpeakerImage = "/Resources/SpeakerButton.png";
         }
-
         public GameViewModel()
         {
 
         }
-
         #endregion
-
         #region Egenskaper
-      
-        public int DieOne { get; set; } = 5;
-
-        public int DieTwo { get; set; } = 3;
-        public int DiceValue { get; private set; }
-
-        public ICommand RollDiceCommand { get; }
-        public ICommand NewSelectedTileCommand { get; set; }
-        public ICommand ExecuteMoveCommand { get; }
-        public ICommand PointCounterCommand { get; }
-        public ICommand GoToStartCommand { get; }
-
-        public ICommand ShowGameRulesCommand { get; }
-        public ICommand TestBonusGame { get; set; } //TODO: Ta bort commando när vi har testat klart bonusomgång
-
-        public PlayerSettingsDto SettingsDto;
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
-
         public ObservableCollection<Language> Languages { get; set; }
-
         public ObservableCollection<Tile> GameTiles { set; get; }
 
+        /// <summary>
+        /// Collection används för att hålla olika sifferkombinationer.
+        /// </summary>
+        private List<List<int>> Collection { get; set; }
+        public Brush Player1ForegroundBrush { get; set; } = Brushes.White;
+        public Brush Player2ForegroundBrush { get; set; } = Brushes.White;
+        public ICommand RollDiceCommand { get; }
+        public ICommand TileClickedCommand { get; set; }
+        public ICommand ExecuteMoveCommand { get; }
+        public ICommand GoToStartCommand { get; }
+        public ICommand SoundEffectsCommand { get; set; }
+        public ICommand ViewGameRulesCommand { get; }
+        public ICommand TestBonusGame { get; set; } //TODO: Ta bort commando när vi har testat klart bonusomgång}
         public Visibility ExecuteMove { get; set; } = Visibility.Hidden;
-
-        public Visibility TurnPlayer1 { get; set; }
-
-        public Visibility TurnPlayer2 { get; set; } 
+        public Visibility Player1Turn { get; set; }
+        public Visibility Player2Turn { get; set; } 
         public Visibility GameRoundVisibility { get; set; }
-        public Visibility BonusRoundVisibility { get; set; } = Visibility.Hidden; 
-        public bool IsThrowEnable { get; set; } = true;
+        public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
+        public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
+        public Visibility BonusRoundVisibility { get; set; } = Visibility.Hidden;
+        public int DieOne { get; set; } = 5;
+        public int DieTwo { get; set; } = 3;
+        public int DiceValue { get; private set; }
         public int GameRoundCounter { get; set; } = 1;
         public int PlayerTurnCounter { get; set; } = 1;
-        public int Player1Point { get; set; } = 40;
-        public int Player2Point { get; set; } = 40;
-        public string Player1Name { get; set; } 
-        public string Player2Name { get; set; }
-
-
-        public Tile tile = new Tile();
-
-        public Brush ForegroundBrushPlayer1 { get; set; } = Brushes.White;
-
-        public Brush ForegroundBrushPlayer2 { get; set; } = Brushes.White;
-
-        private List<List<int>> Collection { get; set; }
-
-        public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
-
-        public string? DisplayDiceSum { get; set; }
-
-        public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
-       
-        public ICommand MuteSoundEffects { get; set; }
-
-        public bool SoundEffectsAllowed { get; set; } = true;
-
-        public SoundPlayer closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
-
-        public SoundPlayer diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
-
         public int CboSelectedIndex { get; set; } = 0;
-
-        public string ImageSource { get; set; }
-
+        public string SpeakerImage { get; set; }
+        public string? DisplayDiceSum { get; set; }
+        public bool IsSoundEffectsAllowed { get; set; } = true;
+        public bool IsThrowEnable { get; set; } = true;
         #endregion
-
-
-
-
-
         #region Instansvariabler
 
         public StartViewModel _startViewModel;
-
+        public PlayerSettingsDto _settingsDto;
+        public Tile _tile = new Tile();
+        public SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
+        public SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
         #endregion
-
-
-
-
         #region Metoder
-        /// <summary>
-        /// Skapar 10 tiles med värde 1-10 och ger dem status AvailableGameTile och lägger dem i en ObservableCollection som heter GameTiles.
-        /// OBS! Ändrar status från avaiableGameTiles till Notavailabe för att testa TilesBeforeDiceToss
-        /// </summary>
-        public void FillCollectionOfGameTiles()
-        {
-
-            Tile tile;
-            for (int i = 1; i <= 10; i++)
-            {
-                tile = new Tile();
-                {
-                    tile.TileValue = i;
-                    tile.CurrentStatus = Status.NotAvailableGameTile;
-                };
-                GameTiles.Add(tile);
-            }
-        }
         /// <summary>
         /// Kastar två tärningar och får uppdaterade värden på DieOne och DieTwo
         /// </summary>
@@ -188,15 +127,62 @@ namespace SUP23_G4.ViewModels
                 }
             }
             DiceValue = DieOne + DieTwo;
-            VisibilityGameButton();
+            VisibilityMakeMoveButton();
             DiceTossSound();
             DisplayDiceSum = $"= {DiceValue}";
             DisplayDiceSumVisibility = Visibility.Visible;
-            GetAvailableTiles();
+            FindAvailableTiles();
         }
 
+        #region Tiles
+
+        /// <summary>
+        /// Skapar 10 tiles med värde 1-10 och ger dem status AvailableGameTile och lägger dem i en ObservableCollection som heter GameTiles.
+        /// </summary>
+        public void FillCollectionOfGameTiles()
+        {
+
+            Tile tile;
+            for (int i = 1; i <= 10; i++)
+            {
+                tile = new Tile();
+                {
+                    tile.TileValue = i;
+                    tile.CurrentStatus = Status.NotAvailableGameTile;
+                };
+                GameTiles.Add(tile);
+            }
+        }
         /// <summary>
         /// Ändrar status på vald tile från view
+        /// </summary>
+        public void UpdateStatusOfChosenGameTile(Object x)
+        {
+            if (DiceValue == 0)
+            {
+                return;
+            }
+
+            var tile = (Tile)x;
+            ChangeStatusOfChosenTile(tile);
+
+
+            foreach (Tile t in GameTiles)
+            {
+                if (tile.TileValue == t.TileValue)
+                {
+                    t.CurrentStatus = tile.CurrentStatus;
+
+                }
+            }
+            if (IsTileNotAvailable())
+            {
+                UpdateStatusOfAvailableTiles();
+            }
+
+        }
+        /// <summary>
+        /// Ändrar status på vald tile i kollektionen av tiles
         /// </summary>
         public void ChangeStatusOfChosenTile(Tile tile)
         {
@@ -211,37 +197,10 @@ namespace SUP23_G4.ViewModels
                 tile.CurrentStatus = Status.AvailableGameTile;
             }
         }
-
         /// <summary>
-        /// Ändrar status på vald tile i kollektionen av tiles
+        /// Metod som används för att sätta rätt status på en tile inför ett tärningskast.
         /// </summary>
-        public void UpdateStatusOfChosenGameTileInObservableCollection(Object x)
-        {
-            if (DiceValue == 0)
-            {
-                return;
-            }
-
-            var tile = (Tile)x;
-            ChangeStatusOfChosenTile(tile);
-           
-
-            foreach (Tile t in GameTiles)
-            {
-                if (tile.TileValue == t.TileValue)
-                {
-                    t.CurrentStatus = tile.CurrentStatus;
-
-                }
-            }
-            if(TilesBeforeDiceToss())
-            {
-                UpdateStatusOfAvailableTiles();
-            }
-            
-        }
-
-        public bool TilesBeforeDiceToss()
+        public bool IsTileNotAvailable()
         {
             foreach(Tile t in GameTiles)
             {
@@ -252,9 +211,9 @@ namespace SUP23_G4.ViewModels
             }
             return false;
         }
-
-
-
+        /// <summary>
+        /// Metod som tar bort alla sifferkombinationer som inte överenstämmer med vald siffra.
+        /// </summary>
         public void UpdateStatusOfAvailableTiles()
         {
             List<List<int>> updatedCollection = new List<List<int>>(Collection);
@@ -276,71 +235,9 @@ namespace SUP23_G4.ViewModels
             List<int> sortedTiles = SortOutDuplicates(updatedCollection);
             SetStatusOfGameTiles(sortedTiles);
         }
-
         /// <summary>
-        /// Metod som sätter alla tiles till available, används vid start av ny spelares tur
-        /// OBS!! Ändrar status från AvailableGameTile till NotAvaible för att testa metoden TilesBeforeDiceToss
+        /// Metod som ändrar status på ospelade tiles till Available.
         /// </summary>
-        public void SetNewGameTurn()
-        {
-
-            foreach (Tile tile in GameTiles)
-            {
-                if (tile.CurrentStatus != Status.NotAvailableGameTile)
-                {
-                    tile.CurrentStatus = Status.NotAvailableGameTile;
-                }
-            }
-            
-            VisibilityDiceButton();
-
-        }
-        /// <summary>
-        /// Ger vyn förutsättningar och utseende för att spela en bonusomgång
-        /// </summary>
-        public void StartBonusGame()
-        {
-            Player1.Score = 0;
-            Player2.Score = 0;
-            ForegroundBrushPlayer1 = Brushes.White;
-            ForegroundBrushPlayer2 = Brushes.White;
-            SwitchGameRoundVisibility();
-
-        }
-        /// <summary>
-        /// Metod som ger vyn försättningar och utseende för att spela en vanlig spelomgång
-        /// </summary>
-        public void StartNewGame()
-        {
-            SetNewGameTurn();
-            Player1.Score = 0;
-            Player2.Score = 0;
-            ForegroundBrushPlayer1 = Brushes.White;
-            ForegroundBrushPlayer2 = Brushes.White;
-            GameRoundCounter = 0;
-            BonusRoundVisibility = Visibility.Hidden;
-            GameRoundVisibility = Visibility.Visible; 
-
-        }
-        /// <summary>
-        /// Metod som uppdaterar riktvärdet för metoden "UpdateStatusOfAvailableTiles"
-        /// </summary>
-        private int GetTargetSum()
-            {
-            int targetSum = DiceValue;
-
-            foreach (Tile t in GameTiles)
-            {
-                if (t.CurrentStatus == Status.SelectedGameTile)
-                {
-                    targetSum -= t.TileValue;
-                }
-            }
-            return targetSum;
-
-
-        }
-
         public void NotAvailableToAvailable()
         {
             foreach (Tile tile in GameTiles)
@@ -351,189 +248,8 @@ namespace SUP23_G4.ViewModels
                 }
             }
         }
-
         /// <summary>
-        /// Metod som gör
-        /// </summary>
-        public void VisibilityGameButton()
-        {
-            ExecuteMove = Visibility.Visible;
-            IsThrowEnable = false;
-        }
-
-        /// <summary>
-        /// Metod som gör DiceButton synlig igen
-        /// </summary>
-        public void VisibilityDiceButton()
-        {
-            ExecuteMove = Visibility.Hidden;
-            IsThrowEnable = true;
-        }
-
-        /// <summary>
-        /// GameRound Startar vid 1, och plusar för tillfället vid varje genomförd drag, en omgång består av varje spelares drag.
-        /// </summary>
-        public void MoveIsExecuted()
-        {
-            ExecuteMove = Visibility.Hidden;
-            IsThrowEnable = true;
-            NotAvailableToAvailable();
-            //IsTileEnabled = false;
-            DiceValue= 0;
-            DisplayDiceSumVisibility = Visibility.Hidden;
-            ClosingTileSound();
-        }
-
-
-
-        /// <summary>
-        /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden omgång. 
-        /// </summary>
-        public void PointCounter()
-        {
-
-            foreach (Tile tile in GameTiles)
-            {
-                if (tile.CurrentStatus == Status.AvailableGameTile || tile.CurrentStatus == Status.NotAvailableGameTile)
-                {
-                    if (PlayerTurnCounter == 1)
-                    {
-                        Player1.Score = Player1.Score += tile.TileValue;
-                        
-                    }
-                    else
-                    {
-                         Player2.Score = Player2.Score += tile.TileValue;
-                        
-                    }
-                }
-            }
-        }
-        /// <summary>
-        /// Metod som gör så att aktuell spelares namn och poäng markeras med en grön ruta i vyn
-        /// </summary>
-        public void SwitchPlayerTurn()
-        {
-            if (PlayerTurnCounter == 1)
-            {
-                TurnPlayer2 = Visibility.Visible;
-                TurnPlayer1 = Visibility.Hidden;
-                PlayerTurnCounter++;
-            }
-            else
-            {
-                TurnPlayer1 = Visibility.Visible;
-                TurnPlayer2 = Visibility.Hidden;
-                PlayerTurnCounter = 1;
-                GameRoundCounter++;
-
-            }
-
-        }
-        /// <summary>
-        /// Metod som gör bonusomgången synlig i vyn
-        /// </summary>
-        public void SwitchGameRoundVisibility()
-        {
-            GameRoundVisibility = Visibility.Hidden;
-            BonusRoundVisibility = Visibility.Visible; 
-            
-        }
-
-        /// <summary>
-        /// Metod som avgör vilken typ av spelomgång det är, vanlig eller bonusomgång
-        /// </summary>
-        public void GameWinner()
-        {
-            if(BonusRoundVisibility == Visibility.Visible)
-            {
-                BonusGame();
-            }
-            else
-            {
-                WinnerOfGame();
-            }
-        }
-        /// <summary>
-        /// Metod som utser vinnaren i bonusomgång
-        /// </summary>
-        private void BonusGame()
-        {   
-            
-            if (PlayerTurnCounter == 1)
-            {
-                MessageBox.Show($"Nu är din bonustur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
-
-            }
-            else
-            {
-                if(Player1.Score < Player2.Score) { MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player1.Score} och {Player2.Name} fick {Player2.Score}."); }
-                else { MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player2.Score} och {Player1.Name} fick {Player1.Score}."); }
-
-                StartNewGame();
-            }
-      
-
-        }
-        /// <summary>
-        /// Metod som utser vinnaren vanlig spelomgång alternativ ger övergång till en bonusomgång
-        /// </summary>
-        public void WinnerOfGame()
-        {
-
-            if (PlayerTurnCounter == 1)
-            {
-                if (Player1.Score < 45)
-                {
-
-                    MessageBox.Show($"Nu är din tur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
-
-                }
-                else if (Player1.Score >= 45)
-                {
-                    ForegroundBrushPlayer1 = Brushes.Red;
-                    MessageBox.Show($"Du har fått {Player1.Score} poäng. Om {Player2.Name} inte får mer poäng än dig så förlorar du");
-                }
-
-            }
-
-            else if(PlayerTurnCounter == 2)
-            {
-                if (Player1.Score < 45 && Player2.Score < 45)
-                {
-                    MessageBox.Show($"Nu är din tur slut. Du har {Player2.Score} poäng. Det är nu {Player1.Name}s tur");
-                }
-
-                else if(Player1.Score < Player2.Score && Player2.Score >= 45)
-                {
-                    MessageBox.Show($"Grattis {Player1.Name}, du har vunnit!");
-                    StartNewGame();
-                }
-                else if (Player1.Score >= 45 && Player1.Score > Player2.Score)
-                {
-                    MessageBox.Show($"Grattis {Player2.Name}, du har vunnit!");
-                    StartNewGame();
-                }
-                else if(Player1.Score == Player2.Score && Player1.Score >=45 && Player2.Score >= 45)
-                {
-                    ForegroundBrushPlayer2 = Brushes.Red;
-                    MessageBoxResult result = MessageBox.Show("Spelet slutade lika då båda spelarna fick samma poäng, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        StartBonusGame();
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-
-                    }
-                }
-            } 
-
-
-        }
-
-        /// <summary>
-        /// Metod som räknar ut vilka brickor som är tillgängliga utifrån 
+        /// Metod som räknar ut vilka tiles som är tillgängliga utifrån 
         /// det sammanlagda värdet av båda tärningar
         /// </summary>
         public void SetStatusOfGameTiles(List<int> sortedList)
@@ -557,24 +273,40 @@ namespace SUP23_G4.ViewModels
             if (count == 0)
             {
                 PointCounter();
-                GameWinner(); 
+                GameWinner();
                 SwitchPlayerTurn();
-                SetNewGameTurn();
+                NewGameTurn();
 
             }
 
         }
-
-
-
         /// <summary>
-        /// Metod som undersöker vilka kombinationer av brickor som är
+        /// Skickar ut en lista med tillåtna värden från listan med listor.
+        /// Dubbletter av värden sorteras bort och listan sorteras i ordning, minst till störst
+        /// </summary>      
+        private List<int> SortOutDuplicates(List<List<int>> collection)
+        {
+            List<int> sorted = new List<int>();
+
+            foreach (List<int> list in collection)
+            {
+                foreach (int i in list)
+                {
+                    if (!sorted.Contains(i))
+                    {
+                        sorted.Add(i);
+                    }
+                }
+            }
+            sorted.Sort();
+            return sorted;
+        }
+        /// <summary>
+        /// Metod som undersöker vilka kombinationer av tiles som är
         /// möjliga för att nå tärningarnas summa
         /// </summary>
         /// 
-
-        //TITTA HÄR!!!
-        public void GetAvailableTiles()
+        public void FindAvailableTiles()
         {
             List<int> tiles = new List<int>();
 
@@ -664,54 +396,10 @@ namespace SUP23_G4.ViewModels
             Collection = collection;
             List<int> sortedList = SortOutDuplicates(Collection);
             SetStatusOfGameTiles(sortedList);
-        }
-
-
+        }  
         /// <summary>
-        /// Tar bort alla listor från listan med listor som innehåller nedvända/otillgängliga värden
-        /// </summary>
-        private List<List<int>> SortOutDownWardTiles(List<List<int>> collection)
-        {
-            List<List<int>> updatedCollection = new List<List<int>>(collection);
-            foreach (List<int> list in updatedCollection)
-            {
-                foreach (int i in list)
-                {
-                    if (GameTiles[i - 1].CurrentStatus == Status.DownwardGameTile)
-                    {
-                        updatedCollection.Remove(list);
-                    }
-                }
-            }
-            return updatedCollection;
-        }
-
-        /// <summary>
-        /// Skickar ut en lista med tillåtna värden från listan med listor.
-        /// Dubbletter av värden sorteras bort och listan sorteras i ordning, minst till störst
-        /// </summary>
-        private List<int> SortOutDuplicates(List<List<int>> collection)
-        {
-            List<int> sorted = new List<int>();
-
-            foreach (List<int> list in collection)
-            {
-                foreach (int i in list)
-                {
-                    if (!sorted.Contains(i))
-                    {
-                        sorted.Add(i);
-                    }
-                }
-            }
-            sorted.Sort();
-            return sorted;
-        }
-
-
-        /// <summary>
-        /// Metod som testar om spelarens valda brickor blir tärningarnas
-        /// summa och sätter relevant status (Eventuellt överflödig)
+        /// Metod som testar om spelarens valda tiles blir tärningarnas
+        /// summa och sätter relevant status 
         /// </summary>
         public void CompareSelectedTilesWithDiceValue()
         {
@@ -727,8 +415,6 @@ namespace SUP23_G4.ViewModels
 
             if (calculatedSum == DiceValue)
             {
-                //MessageBox.Show("Rätt");
-
                 foreach (Tile tile in GameTiles)
                 {
                     if (tile.CurrentStatus == Status.SelectedGameTile)
@@ -740,13 +426,239 @@ namespace SUP23_G4.ViewModels
             }
             else if (calculatedSum < DiceValue)
             {
-                //MessageBox.Show("För lågt");
-            }
-            else if (calculatedSum > DiceValue)
-            {
-                //MessageBox.Show("För högt");
+                //MessageBox.Show("För lågt"); LABEL
             }
         }
+        #endregion
+
+        #region Visibility
+
+        /// <summary>
+        /// Metod som gör tärningarna inte går att klicka samt visar "genomför drag knapp".
+        /// </summary>
+        public void VisibilityMakeMoveButton()
+        {
+            ExecuteMove = Visibility.Visible;
+            IsThrowEnable = false;
+        }
+        /// <summary>
+        /// Metod som gör att tärningarna går att klicka samt att "genomför drag knapp" ej är synlig.
+        /// </summary>
+        public void MakeDiceClickable()
+        {
+            ExecuteMove = Visibility.Hidden;
+            IsThrowEnable = true;
+        }
+        /// <summary>
+        /// Metod som gör bonusomgången synlig i vyn
+        /// </summary>
+        public void VisibilityBonusRound()
+        {
+            GameRoundVisibility = Visibility.Hidden;
+            BonusRoundVisibility = Visibility.Visible;
+        }
+        /// <summary>
+        /// Metod som gör så att aktuell spelares namn och poäng markeras med en grön ruta i vyn
+        /// </summary>
+        public void SwitchPlayerTurn()
+        {
+            if (PlayerTurnCounter == 1)
+            {
+                Player2Turn = Visibility.Visible;
+                Player1Turn = Visibility.Hidden;
+                PlayerTurnCounter++;
+            }
+            else
+            {
+                Player1Turn = Visibility.Visible;
+                Player2Turn = Visibility.Hidden;
+                PlayerTurnCounter = 1;
+                GameRoundCounter++;
+
+            }
+
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// Metod som sätter alla tiles som inte är notavailable till notavailable, används vid start av ny spelares tur
+        /// </summary>
+        public void NewGameTurn()
+        {
+
+            foreach (Tile tile in GameTiles)
+            {
+                if (tile.CurrentStatus != Status.NotAvailableGameTile)
+                {
+                    tile.CurrentStatus = Status.NotAvailableGameTile;
+                }
+            }
+            
+            MakeDiceClickable();
+
+        }
+        /// <summary>
+        /// Ger vyn förutsättningar och utseende för att spela en bonusomgång
+        /// </summary>
+        public void StartBonusRound()
+        {
+            Player1.Score = 0;
+            Player2.Score = 0;
+            Player1ForegroundBrush = Brushes.White;
+            Player2ForegroundBrush = Brushes.White;
+            VisibilityBonusRound();
+
+        }
+
+        /// <summary>
+        /// Metod som ger vyn försättningar och utseende för att spela en vanlig spelomgång
+        /// </summary>
+        public void StartRematch()  // Kopplas till messagebox som ska avgöra om du vill göra en rematch med samma spelare eller gå ur spelet till startsida.
+        {
+            NewGameTurn();
+            Player1.Score = 0;
+            Player2.Score = 0;
+            Player1ForegroundBrush = Brushes.White;
+            Player2ForegroundBrush = Brushes.White;
+            GameRoundCounter = 0;
+            BonusRoundVisibility = Visibility.Hidden;
+            GameRoundVisibility = Visibility.Visible; 
+
+        }
+      
+        /// <summary>
+        /// Metod som
+        /// </summary>
+        public void MoveIsExecuted()
+        {
+            ExecuteMove = Visibility.Hidden;
+            DisplayDiceSumVisibility = Visibility.Hidden;
+            IsThrowEnable = true;
+            DiceValue = 0;
+            NotAvailableToAvailable();
+            ClosingTileSound();
+        }
+
+        /// <summary>
+        /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden omgång. 
+        /// </summary>
+        public void PointCounter()
+        {
+
+            foreach (Tile tile in GameTiles)
+            {
+                if (tile.CurrentStatus == Status.AvailableGameTile || tile.CurrentStatus == Status.NotAvailableGameTile)
+                {
+                    if (PlayerTurnCounter == 1)
+                    {
+                        Player1.Score = Player1.Score += tile.TileValue;
+                        
+                    }
+                    else
+                    {
+                         Player2.Score = Player2.Score += tile.TileValue;
+                        
+                    }
+                }
+            }
+        }
+ 
+
+        /// <summary>
+        /// Metod som avgör vilken typ av spelomgång det är, vanlig eller bonusomgång
+        /// </summary>
+        public void GameWinner()
+        {
+            if(BonusRoundVisibility == Visibility.Visible)
+            {
+                BonusGame();
+            }
+            else
+            {
+                WinnerOfGame();
+            }
+        }
+        /// <summary>
+        /// Metod som utser vinnaren i bonusomgång
+        /// </summary>
+        private void BonusGame()
+        {   
+            
+            if (PlayerTurnCounter == 1)
+            {
+                MessageBox.Show($"Nu är din bonustur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
+
+            }
+            else
+            {
+                if(Player1.Score < Player2.Score) { MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player1.Score} och {Player2.Name} fick {Player2.Score}."); }
+                else { MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgången! Du fick {Player2.Score} och {Player1.Name} fick {Player1.Score}."); }
+
+                StartRematch();
+            }
+      
+
+        }
+        /// <summary>
+        /// Metod som utser vinnaren vanlig spelomgång alternativ ger övergång till en bonusomgång
+        /// </summary>
+        public void WinnerOfGame()
+        {
+
+            if (PlayerTurnCounter == 1)
+            {
+                if (Player1.Score < 45)
+                {
+
+                    MessageBox.Show($"Nu är din tur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
+
+                }
+                else if (Player1.Score >= 45)
+                {
+                    Player1ForegroundBrush = Brushes.Red;
+                    MessageBox.Show($"Du har fått {Player1.Score} poäng. Om {Player2.Name} inte får mer poäng än dig så förlorar du");
+                }
+
+            }
+
+            else if(PlayerTurnCounter == 2)
+            {
+                if (Player1.Score < 45 && Player2.Score < 45)
+                {
+                    MessageBox.Show($"Nu är din tur slut. Du har {Player2.Score} poäng. Det är nu {Player1.Name}s tur");
+                }
+
+                else if(Player1.Score < Player2.Score && Player2.Score >= 45)
+                {
+                    MessageBox.Show($"Grattis {Player1.Name}, du har vunnit!");
+                    StartRematch();
+                }
+                else if (Player1.Score >= 45 && Player1.Score > Player2.Score)
+                {
+                    MessageBox.Show($"Grattis {Player2.Name}, du har vunnit!");
+                    StartRematch();
+                }
+                else if(Player1.Score == Player2.Score && Player1.Score >=45 && Player2.Score >= 45)
+                {
+                    Player2ForegroundBrush = Brushes.Red;
+                    MessageBoxResult result = MessageBox.Show("Spelet slutade lika då båda spelarna fick samma poäng, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        StartBonusRound();
+                    }
+                    else if (result == MessageBoxResult.No)
+                    {
+
+                    }
+                }
+            } 
+
+
+        }
+
+  
 
         /// <summary>
         /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
@@ -794,9 +706,7 @@ namespace SUP23_G4.ViewModels
 
         
         }
-
-
-            public static ObservableCollection<Language> GetLanguages()
+        public static ObservableCollection<Language> GetLanguages()
             {
                 var languages = new ObservableCollection<Language>()
             {new Language(){PlayerName1="Spelare 1: ",
@@ -825,32 +735,31 @@ namespace SUP23_G4.ViewModels
            };
                 return languages;
             }
-
         private void SoundEffectsOnAndOff()
         {
-            if (SoundEffectsAllowed)
+            if (IsSoundEffectsAllowed)
             {
-                SoundEffectsAllowed = false;
-                ImageSource = "/Resources/MutedSpeakerButton.png";
+                IsSoundEffectsAllowed = false;
+                SpeakerImage = "/Resources/MutedSpeakerButton.png";
             }
-            else if (!SoundEffectsAllowed)
+            else if (!IsSoundEffectsAllowed)
             {
-                SoundEffectsAllowed = true;
-                ImageSource = "/Resources/SpeakerButton.png";
+                IsSoundEffectsAllowed = true;
+                SpeakerImage = "/Resources/SpeakerButton.png";
             }
         }
         private void DiceTossSound()
         {
-            if (SoundEffectsAllowed)
+            if (IsSoundEffectsAllowed)
             {
-                diceTossSound.Play();
+                _diceTossSound.Play();
             }
         }
         private void ClosingTileSound()
         {
-            if (SoundEffectsAllowed)
+            if (IsSoundEffectsAllowed)
             {
-                closingTileSound.Play();
+                _closingTileSound.Play();
             }
         }
     }

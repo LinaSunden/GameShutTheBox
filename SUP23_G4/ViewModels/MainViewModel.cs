@@ -13,42 +13,25 @@ namespace SUP23_G4.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-
-
         #region Konstruktor
         public MainViewModel()
         {
             CurrentViewModel = new StartViewModel(this);
-            StartViewClickCommand = new RelayCommand(x => SwitchToStartView());
-            GoToStartCommand = new RelayCommand(x => GoToStart());
+            GoToStartCommand = new RelayCommand(x => GoToStartView());
         }
-
-
         #endregion
 
         #region Egenskaper
         public BaseViewModel CurrentViewModel { get; set; }
-        public ICommand StartViewClickCommand { get; set; }
-        public ICommand StartGameCommand { get; set; }
         public ICommand GoToStartCommand { get; }
 
         #endregion
-
-        #region Instansvariabler
-        private BaseViewModel _mainViewModel;
-
-        #endregion
+        
         #region Metoder
-        // Byter CurrentViewModel till StartViewModel//
-        private void SwitchToStartView()
-        {
-            CurrentViewModel = new StartViewModel(this);
-        }
-
     /// <summary>
     /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
     /// </summary>
-    public void GoToStart()
+      private void GoToStartView()
         {
             if (CurrentViewModel is GameViewModel)
             {
@@ -57,19 +40,12 @@ namespace SUP23_G4.ViewModels
                 {
                     CurrentViewModel = new StartViewModel(this);
                 }
-                else if (result == MessageBoxResult.No)
-                {
-
-                }
             }
             else
             {
                 CurrentViewModel = new StartViewModel(this);
             }
-
         }
-
         #endregion
-
     }
 }

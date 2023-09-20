@@ -142,7 +142,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
-                <Button Content="{Binding ElementName=CBO, Path=SelectedItem.GameRuleBtn}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ShowGameRulesCommand}" Margin="0,20">
+                <Button Content="{Binding ElementName=CBO, Path=SelectedItem.GameRuleBtn}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ViewGameRulesCommand}" Margin="0,20">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Black"/>
@@ -243,14 +243,14 @@
                 </TextBlock>
             </StackPanel>
 
-            <Button Height="80" Width="80" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="2" Command="{Binding MuteSoundEffects}">
+            <Button Height="80" Width="80" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="2" Command="{Binding SoundEffectsCommand}">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
                 <Button.Content>
-                    <Image Source="{Binding ImageSource, Mode=TwoWay}"/>
+                    <Image Source="{Binding SpeakerImage, Mode=TwoWay}"/>
                 </Button.Content>
             </Button>
 
@@ -319,16 +319,16 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne" CurrentStatus="{Binding GameTiles[0].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[0].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}" Loaded="GameTileOne_Loaded"/>
-                <GameTiles:GameTile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo" CurrentStatus="{Binding GameTiles[1].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[1].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
-                <GameTiles:GameTile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree" CurrentStatus="{Binding GameTiles[2].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[2].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
-                <GameTiles:GameTile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour" CurrentStatus="{Binding GameTiles[3].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[3].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
-                <GameTiles:GameTile Grid.Column="4" VerticalAlignment="Top" x:Name="GameTileFive" CurrentStatus="{Binding GameTiles[4].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[4].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
-                <GameTiles:GameTile Grid.Column="5" VerticalAlignment="Top" x:Name="GameTileSix" CurrentStatus="{Binding GameTiles[5].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[5].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
-                <GameTiles:GameTile Grid.Column="6" VerticalAlignment="Top" x:Name="GameTileSeven" CurrentStatus="{Binding GameTiles[6].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[6].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
-                <GameTiles:GameTile Grid.Column="7" VerticalAlignment="Top" x:Name="GameTileEight" CurrentStatus="{Binding GameTiles[7].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[7].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
-                <GameTiles:GameTile Grid.Column="8" VerticalAlignment="Top" x:Name="GameTileNine" CurrentStatus="{Binding GameTiles[8].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[8].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
-                <GameTiles:GameTile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen" CurrentStatus="{Binding GameTiles[9].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[9].TileValue}" SelectedTileCommand="{Binding NewSelectedTileCommand}"/>
+                <GameTiles:GameTile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne" CurrentStatus="{Binding GameTiles[0].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[0].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}" Loaded="GameTileOne_Loaded"/>
+                <GameTiles:GameTile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo" CurrentStatus="{Binding GameTiles[1].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[1].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:GameTile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree" CurrentStatus="{Binding GameTiles[2].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[2].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:GameTile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour" CurrentStatus="{Binding GameTiles[3].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[3].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:GameTile Grid.Column="4" VerticalAlignment="Top" x:Name="GameTileFive" CurrentStatus="{Binding GameTiles[4].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[4].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:GameTile Grid.Column="5" VerticalAlignment="Top" x:Name="GameTileSix" CurrentStatus="{Binding GameTiles[5].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[5].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:GameTile Grid.Column="6" VerticalAlignment="Top" x:Name="GameTileSeven" CurrentStatus="{Binding GameTiles[6].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[6].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:GameTile Grid.Column="7" VerticalAlignment="Top" x:Name="GameTileEight" CurrentStatus="{Binding GameTiles[7].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[7].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:GameTile Grid.Column="8" VerticalAlignment="Top" x:Name="GameTileNine" CurrentStatus="{Binding GameTiles[8].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[8].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:GameTile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen" CurrentStatus="{Binding GameTiles[9].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[9].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
 
 
             </Grid>

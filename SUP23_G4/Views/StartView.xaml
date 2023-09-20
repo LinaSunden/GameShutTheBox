@@ -117,7 +117,16 @@
                 </Button.OpacityMask>
             </Button>
 
-            <MuteButton:MuteButton Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <Button Height="80" Width="80" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="2" Command="{Binding MuteMusicCommand}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <Image Source="{Binding SpeakerImage, Mode=TwoWay}"/>
+                </Button.Content>
+            </Button>
 
         </Grid>
 
