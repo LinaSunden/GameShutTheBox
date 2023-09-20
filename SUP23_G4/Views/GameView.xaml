@@ -300,8 +300,19 @@
                 </TextBlock.Effect>
             </TextBlock>
 
-            <!--Grid för själva boxen, kankse kan vi byta ut denna svarta ruta mot en snyggare bakgrundsbild för att få den att likna spelet mer senare? -->
-            <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Background="Black">
+            <!--Grid för nedre boxen, kankse kan vi byta ut denna svarta ruta mot en snyggare bakgrundsbild för att få den att likna spelet mer senare? -->
+            <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Margin="0,50,0,0">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Resources/BoxBackground.jpg"/>
+                </Grid.Background>
+
+
+                <Rectangle Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Height="60"  VerticalAlignment="Bottom" >
+                    <!--Träkant i nedre spelplanen-->
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/Resources/TileTexture.jpg"/>
+                    </Rectangle.Fill>
+                </Rectangle>
             </Grid>
 
             <!-- Grid med GameTiles-->
