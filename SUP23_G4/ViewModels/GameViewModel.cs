@@ -6,7 +6,6 @@ using SUP23_G4.Languages;
 using SUP23_G4.Models;
 using SUP23_G4.Properties;
 using SUP23_G4.ViewModels.Base;
-using SUP23_G4.Views.Dice;
 using SUP23_G4.Views.GameComponents;
 using SUP23_G4.Views.GameTiles;
 using System;

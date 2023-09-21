@@ -1,7 +1,7 @@
 ﻿using SUP23_G4.Dto;
 using SUP23_G4.Models;
 using SUP23_G4.ViewModels;
-using SUP23_G4.Views.Dice;
+using SUP23_G4.Views.GameComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
