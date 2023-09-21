@@ -5,14 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
-             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice"  
-             x:Class="SUP23_G4.Views.GameView"
+             xmlns:Dice="clr-namespace:SUP23_G4.Views.Dice"
              xmlns:Language="clr-namespace:SUP23_G4.Languages"
-             d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}"
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
+             xmlns:GameComponents="clr-namespace:SUP23_G4.Views.GameComponents"  
+             x:Class="SUP23_G4.Views.GameView"
+             d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-                
+
 
     <Border
      BorderBrush="Gray"  
@@ -38,12 +39,11 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray">
-            </Border>
-            <GroupBox Header="{Binding ElementName=CBO, Path=SelectedItem.MyTurn}" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding Player1Turn}"/>
+            <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray"/>
+            <GroupBox Header="{Binding SelectedItem.MyTurn, ElementName=CBO}" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding Player1Turn}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
-                    Text="{Binding ElementName=CBO, Path=SelectedItem.PlayerName1}"
+                    Text="{Binding SelectedItem.PlayerName1, ElementName=CBO}"
                     HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="20"
@@ -71,7 +71,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Grid.Row="0" Grid.Column="0" Margin="10,50,0,0">
                 <TextBlock
-                    Text="{Binding ElementName=CBO, Path=SelectedItem.Points}"
+                    Text="{Binding SelectedItem.Points, ElementName=CBO}"
                     HorizontalAlignment="left"
                     Foreground="White"
                     FontSize="20"
@@ -100,7 +100,7 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
                 <TextBlock
-                    Text="{Binding ElementName=CBO, Path=SelectedItem.Round}"
+                    Text="{Binding SelectedItem.Round, ElementName=CBO}"
                     Foreground="White"
                     FontSize="20"  
                     Opacity="1" 
@@ -141,7 +141,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
-                <Button Content="{Binding ElementName=CBO, Path=SelectedItem.GameRuleBtn}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ViewGameRulesCommand}" Margin="0,20">
+                <Button Content="{Binding SelectedItem.GameRuleBtn, ElementName=CBO}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ViewGameRulesCommand}" Margin="0,20">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="Black"/>
@@ -156,7 +156,7 @@
                         </LinearGradientBrush>
                     </Button.OpacityMask>
                 </Button>
-                <TextBlock Text="{Binding ElementName=CBO, Path=SelectedItem.SelectLanguage}"
+                <TextBlock Text="{Binding SelectedItem.SelectLanguage, ElementName=CBO}"
                            Foreground="White"
                            FontSize="12"
                            Opacity="1" 
@@ -171,22 +171,22 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding Flag}" Width="48"/>
-                                <TextBlock Text="{Binding LanguageName}"></TextBlock>
+                                <TextBlock Text="{Binding LanguageName}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
-                    
+
                 </ComboBox>
             </StackPanel>
 
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/GameRules.png" Visibility="{Binding GameRuleVisibility}" />
 
-            
 
-            <GroupBox Header="{Binding ElementName=CBO, Path=SelectedItem.MyTurn}" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="5" Visibility="{Binding Player2Turn}"/>
+
+            <GroupBox Header="{Binding SelectedItem.MyTurn, ElementName=CBO}" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="5" Visibility="{Binding Player2Turn}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
-                    Text="{Binding ElementName=CBO, Path=SelectedItem.PlayerName2}"
+                    Text="{Binding SelectedItem.PlayerName2, ElementName=CBO}"
                     HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="20"
@@ -215,7 +215,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,50,0,0">
                 <TextBlock
-                   Text="{Binding ElementName=CBO, Path=SelectedItem.Points}"
+                   Text="{Binding SelectedItem.Points, ElementName=CBO}"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="20"
@@ -244,13 +244,11 @@
 
             <Button Height="80" Width="80" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="2" Command="{Binding SoundEffectsCommand}">
                 <Button.Resources>
-                    <Style TargetType="Border">
+                    <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
-                <Button.Content>
-                    <Image Source="{Binding SpeakerImage, Mode=TwoWay}"/>
-                </Button.Content>
+                <Image Source="{Binding SpeakerImage, Mode=TwoWay}"/>
             </Button>
 
             <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" IsEnabled="{Binding IsThrowEnable}">
@@ -267,18 +265,29 @@
 
                 <Rectangle Fill="Transparent" Height="100" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" />
 
+
+
+
+
+                <GameComponents:Die Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" DieValue="{Binding Dice[0].DieValue}"/>
+                <GameComponents:Die Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" DieValue="{Binding Dice[1].DieValue}"/>
+
+
                 <!--The First Dice-->
+                <!--
                 <Dice:DiceOne Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" DieOneValue="{Binding DieOne}"/>
 
+                -->
                 <!--The Second Dice-->
-                <Dice:DiceTwo Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" DieTwoValue="{Binding DieTwo}"/>
+                <!--
+                <Dice:DiceTwo Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" DieTwoValue="{Binding DieTwo}"/>-->
 
 
 
 
             </Grid>
 
-            <Button Content="{Binding ElementName=CBO, Path=SelectedItem.MakeMove}" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="2" Grid.ColumnSpan="2" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="{Binding ExecuteMove}" Command="{Binding ExecuteMoveCommand}">
+            <Button Content="{Binding SelectedItem.MakeMove, ElementName=CBO}" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="2" Grid.ColumnSpan="2" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="{Binding ExecuteMove}" Command="{Binding ExecuteMoveCommand}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -329,16 +338,16 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GameTiles:Tile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne" CurrentStatus="{Binding GameTiles[0].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[0].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}" Loaded="GameTileOne_Loaded"/>
-                <GameTiles:Tile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo" CurrentStatus="{Binding GameTiles[1].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[1].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
-                <GameTiles:Tile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree" CurrentStatus="{Binding GameTiles[2].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[2].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
-                <GameTiles:Tile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour" CurrentStatus="{Binding GameTiles[3].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[3].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
-                <GameTiles:Tile Grid.Column="4" VerticalAlignment="Top" x:Name="GameTileFive" CurrentStatus="{Binding GameTiles[4].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[4].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
-                <GameTiles:Tile Grid.Column="5" VerticalAlignment="Top" x:Name="GameTileSix" CurrentStatus="{Binding GameTiles[5].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[5].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
-                <GameTiles:Tile Grid.Column="6" VerticalAlignment="Top" x:Name="GameTileSeven" CurrentStatus="{Binding GameTiles[6].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[6].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
-                <GameTiles:Tile Grid.Column="7" VerticalAlignment="Top" x:Name="GameTileEight" CurrentStatus="{Binding GameTiles[7].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[7].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
-                <GameTiles:Tile Grid.Column="8" VerticalAlignment="Top" x:Name="GameTileNine" CurrentStatus="{Binding GameTiles[8].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[8].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
-                <GameTiles:Tile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen" CurrentStatus="{Binding GameTiles[9].CurrentStatus,Mode=TwoWay}" TileValue="{Binding GameTiles[9].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="0" VerticalAlignment="Top" x:Name="GameTileOne" CurrentStatus="{Binding GameTiles[0].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[0].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="1" VerticalAlignment="Top" x:Name="GameTileTwo" CurrentStatus="{Binding GameTiles[1].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[1].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="2" VerticalAlignment="Top" x:Name="GameTileThree" CurrentStatus="{Binding GameTiles[2].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[2].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="3" VerticalAlignment="Top" x:Name="GameTileFour" CurrentStatus="{Binding GameTiles[3].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[3].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="4" VerticalAlignment="Top" x:Name="GameTileFive" CurrentStatus="{Binding GameTiles[4].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[4].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="5" VerticalAlignment="Top" x:Name="GameTileSix" CurrentStatus="{Binding GameTiles[5].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[5].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="6" VerticalAlignment="Top" x:Name="GameTileSeven" CurrentStatus="{Binding GameTiles[6].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[6].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="7" VerticalAlignment="Top" x:Name="GameTileEight" CurrentStatus="{Binding GameTiles[7].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[7].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="8" VerticalAlignment="Top" x:Name="GameTileNine" CurrentStatus="{Binding GameTiles[8].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[8].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
+                <GameTiles:Tile Grid.Column="9" VerticalAlignment="Top" x:Name="GameTileTen" CurrentStatus="{Binding GameTiles[9].CurrentStatus, Mode=TwoWay}" TileValue="{Binding GameTiles[9].TileValue}" SelectedTileCommand="{Binding TileClickedCommand}"/>
 
 
             </Grid>

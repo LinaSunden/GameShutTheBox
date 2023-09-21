@@ -1,6 +1,4 @@
-﻿using SUP23_G4.Commands;
-using SUP23_G4.Enums;
-using SUP23_G4.ViewModels;
+﻿using SUP23_G4.Views.Dice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,34 +14,34 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SUP23_G4.Views.Dice
+namespace SUP23_G4.Views.GameComponents
 {
     /// <summary>
-    /// Interaction logic for Dice.xaml
+    /// Interaction logic for Die.xaml
     /// </summary>
-    public partial class DiceOne : UserControl
+    public partial class Die : UserControl
     {
-        public DiceOne()
+        public Die()
         {
             InitializeComponent();
-
         }
 
 
-        public int DieOneValue
+
+        public int DieValue
         {
-            get { return (int)GetValue(DieOneValueProperty); }
-            set { SetValue(DieOneValueProperty, value); }
+            get { return (int)GetValue(DieValueProperty); }
+            set { SetValue(DieValueProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for DieValue.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty DieOneValueProperty =
-            DependencyProperty.Register("DieOneValue", typeof(int), typeof(DiceOne), new PropertyMetadata(0));
+        public static readonly DependencyProperty DieValueProperty =
+            DependencyProperty.Register("DieValue", typeof(int), typeof(Die), new PropertyMetadata(0));
 
 
 
-     
+
+
+
     }
 }
-
-
