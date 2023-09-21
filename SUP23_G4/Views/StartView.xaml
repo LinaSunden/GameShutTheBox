@@ -30,6 +30,8 @@
             </Grid.RowDefinitions>
             <Border Grid.Column="0" Grid.Row="1" Background="SlateGray"/>
             <Border Grid.Column="0" Grid.Row="0" Background="SlateGray"/>
+
+
             <TextBlock  Text="SHUT"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
@@ -128,9 +130,8 @@
                     <Image Source="{Binding SpeakerImage, Mode=TwoWay}"/>
                 </Button.Content>
             </Button>
-
+            <Image Grid.Row="0" HorizontalAlignment="Center"  Source="/Resources/Logo_2.gif" Grid.Column="1"/>
         </Grid>
-
     </Border>
 
 </UserControl>
