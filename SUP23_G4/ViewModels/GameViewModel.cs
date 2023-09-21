@@ -101,11 +101,11 @@ namespace SUP23_G4.ViewModels
 
         #region Instansvariabler
 
-        public StartViewModel _startViewModel;
-        public PlayerSettingsDto _settingsDto;
-        public Tile _tile = new Tile();
-        public SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
-        public SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
+        private StartViewModel _startViewModel;
+        private PlayerSettingsDto _settingsDto;
+        private Tile _tile = new Tile();
+        private SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
+        private SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
         #endregion
 
         #region Metoder
