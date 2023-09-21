@@ -84,6 +84,7 @@ namespace SUP23_G4.ViewModels
         public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
         public Visibility BonusRoundVisibility { get; set; } = Visibility.Hidden;
+        public Visibility TileValueVisibility { get; set; } = Visibility.Hidden;
         public int DieOne { get; set; } = 5;
         public int DieTwo { get; set; } = 3;
         public int DiceValue { get; private set; }
@@ -399,7 +400,7 @@ namespace SUP23_G4.ViewModels
             }
             else if (calculatedSum < DiceValue)
             {
-                //MessageBox.Show("För lågt"); LABEL
+               TileValueVisibility = Visibility.Visible;    
             }
         }
 
@@ -583,6 +584,7 @@ namespace SUP23_G4.ViewModels
         {
             ExecuteMove = Visibility.Hidden;
             DisplayDiceSumVisibility = Visibility.Hidden;
+            TileValueVisibility = Visibility.Hidden;
             IsThrowEnable = true;
             DiceValue = 0;
             NotAvailableToAvailable();
