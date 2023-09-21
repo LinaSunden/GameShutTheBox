@@ -312,7 +312,7 @@ namespace SUP23_G4.ViewModels
                 {
                     foreach (int j in tiles)
                     {
-                        if (i != j)
+                        if (i < j)
                         {
                             if (i + j == DiceSum)
                             {
@@ -328,7 +328,7 @@ namespace SUP23_G4.ViewModels
                             {
                                 foreach (int k in tiles)
                                 {
-                                    if (i != k && j != k)
+                                    if (j < k)
                                     {
                                         if (i + j + k == DiceSum)
                                         {
@@ -345,7 +345,7 @@ namespace SUP23_G4.ViewModels
                                         {
                                             foreach (int l in tiles)
                                             {
-                                                if (i != j && i != k && i != l)
+                                                if (k < l)
                                                 {
                                                     if (j + l + k + l == DiceSum)
                                                     {
