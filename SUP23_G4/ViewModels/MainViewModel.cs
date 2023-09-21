@@ -1,4 +1,6 @@
 ﻿using SUP23_G4.Commands;
+using SUP23_G4.FileHandler;
+using SUP23_G4.Languages;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views;
 using System;
@@ -13,11 +15,13 @@ namespace SUP23_G4.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        
         #region Konstruktor
         public MainViewModel()
         {
             CurrentViewModel = new StartViewModel(this);
             GoToStartCommand = new RelayCommand(x => GoToStartView());
+
         }
         #endregion
 

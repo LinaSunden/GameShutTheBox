@@ -44,6 +44,7 @@ namespace SUP23_G4.ViewModels
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
         public string SpeakerImage { get; set; }
+        public int CboSelectedIndex { get; set; } = 0;
         public bool IsMusicPlaying { get; set; }
         #endregion
 

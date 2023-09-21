@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SUP23_G4.Views"
-             xmlns:vm="clr-namespace:SUP23_G4.ViewModels"   
+             xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
+             xmlns:language="clr-namespace:SUP23_G4.Languages"
              x:Class="SUP23_G4.Views.StartView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -130,6 +131,30 @@
                 </Button.Content>
             </Button>
             <Image Grid.Row="0" HorizontalAlignment="Center"  Source="/Resources/Logo_2.gif" Grid.Column="1"/>
+
+            <StackPanel Grid.Row="1" HorizontalAlignment="Right" Grid.Column="0" VerticalAlignment="Bottom">
+                <TextBlock Text="{Binding Language.SelectLanguage}"
+           Foreground="White"
+           FontSize="12"
+           Opacity="1" 
+           FontWeight="Bold" 
+           FontFamily="Cascadia Mono">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <ComboBox x:Name="CBO" Margin="0,5" ItemsSource="{Binding Language}" SelectedIndex="{Binding CboSelectedIndex}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Flag}" Width="48"/>
+                                <TextBlock Text="{Binding LanguageName}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+            </StackPanel>
         </Grid>
     </Border>
 
