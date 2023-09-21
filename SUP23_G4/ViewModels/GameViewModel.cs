@@ -347,7 +347,7 @@ namespace SUP23_G4.ViewModels
                                             {
                                                 if (k < l)
                                                 {
-                                                    if (j + l + k + l == DiceSum)
+                                                    if (i + j + k + l == DiceSum)
                                                     {
                                                         availableTiles = new List<int>()
                                                         {
