@@ -6,7 +6,7 @@ using SUP23_G4.Languages;
 using SUP23_G4.Models;
 using SUP23_G4.Properties;
 using SUP23_G4.ViewModels.Base;
-using SUP23_G4.Views.Dice;
+using SUP23_G4.Views.GameComponents;
 using SUP23_G4.Views.GameTiles;
 using System;
 using System.Collections.Generic;
@@ -17,6 +17,7 @@ using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,9 +46,11 @@ namespace SUP23_G4.ViewModels
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
             GameTiles = new ObservableCollection<Tile>();
             Languages = new ObservableCollection<Language>();
+            Dice = new ObservableCollection<Die>();
             TestBonusGame = new RelayCommand(x => StartBonusRound()); //TODO: Ta bort commando när vi har testat klart bonusomgång
             Languages = GetLanguages();
             FillCollectionOfGameTiles();
+            CreateDice();
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
             SpeakerImage = "/Resources/SpeakerButton.png";
@@ -63,7 +66,8 @@ namespace SUP23_G4.ViewModels
         public Player Player2 { get; set; }
         public ObservableCollection<Language> Languages { get; set; }
         public ObservableCollection<Tile> GameTiles { set; get; }
-
+        public ObservableCollection<Die> Dice { set; get; }
+        
         /// <summary>
         /// Collection används för att hålla olika sifferkombinationer.
         /// </summary>
@@ -84,6 +88,7 @@ namespace SUP23_G4.ViewModels
         public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
         public Visibility BonusRoundVisibility { get; set; } = Visibility.Hidden;
+        public int DiceSum { get; private set; }
         public Visibility TileValueVisibility { get; set; } = Visibility.Hidden;
         public int DieOne { get; set; } = 5;
         public int DieTwo { get; set; } = 3;
@@ -132,7 +137,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void UpdateStatusOfChosenGameTile(Object x)
         {
-            if (DiceValue == 0)
+            if (DiceSum == 0)
             {
                 return;
             }
@@ -297,7 +302,7 @@ namespace SUP23_G4.ViewModels
 
             foreach (int i in tiles)
             {
-                if (i == DiceValue)
+                if (i == DiceSum)
                 {
                     availableTiles = new List<int>()
                     {
@@ -306,13 +311,13 @@ namespace SUP23_G4.ViewModels
                     collection.Add(availableTiles);
                     break;
                 }
-                else if (i < DiceValue)
+                else if (i < DiceSum)
                 {
                     foreach (int j in tiles)
                     {
                         if (i != j)
                         {
-                            if (i + j == DiceValue)
+                            if (i + j == DiceSum)
                             {
                                 availableTiles = new List<int>()
                             {
@@ -322,13 +327,13 @@ namespace SUP23_G4.ViewModels
                                 collection.Add(availableTiles);
                                 break;
                             }
-                            else if (i + j < DiceValue)
+                            else if (i + j < DiceSum)
                             {
                                 foreach (int k in tiles)
                                 {
                                     if (i != k && j != k)
                                     {
-                                        if (i + j + k == DiceValue)
+                                        if (i + j + k == DiceSum)
                                         {
                                             availableTiles = new List<int>()
                                         {
@@ -339,13 +344,13 @@ namespace SUP23_G4.ViewModels
                                             collection.Add(availableTiles);
                                             break;
                                         }
-                                        else if (i + j + k < DiceValue)
+                                        else if (i + j + k < DiceSum)
                                         {
                                             foreach (int l in tiles)
                                             {
                                                 if (i != j && i != k && i != l)
                                                 {
-                                                    if (j + l + k + l == DiceValue)
+                                                    if (j + l + k + l == DiceSum)
                                                     {
                                                         availableTiles = new List<int>()
                                                         {
@@ -387,7 +392,7 @@ namespace SUP23_G4.ViewModels
                 }
             }
 
-            if (calculatedSum == DiceValue)
+            if (calculatedSum == DiceSum)
             {
                 foreach (Tile tile in GameTiles)
                 {
@@ -398,7 +403,7 @@ namespace SUP23_G4.ViewModels
                 }
                 MoveIsExecuted();
             }
-            else if (calculatedSum < DiceValue)
+            else if (calculatedSum < DiceSum)
             {
                TileValueVisibility = Visibility.Visible;    
             }
@@ -500,33 +505,69 @@ namespace SUP23_G4.ViewModels
         }
         #endregion
 
+
+
+
+
+        /// <summary>
+        /// Skapar två tärningar och sätter fasta värden när spelet startas 
+        /// </summary>
+        public void CreateDice()
+        {
+            
+            for (int i = 0; i < 2; i++)
+            {
+                Die die = new Die();
+                if (i == 0)
+                {
+                    die.DieValue = 3;
+                    Dice.Add(die);
+                }
+
+                else if (i == 1)
+                {
+                    die.DieValue = 5;
+                    Dice.Add(die);
+                }
+
+                
+            }
+           
+
+        }
+
+
         /// <summary>
         /// Kastar två tärningar och får uppdaterade värden på DieOne och DieTwo
         /// </summary>
         public void DiceToss()
         {
+           
+            DiceSum = 0;
+
             Random r = new Random();
 
             for (int i = 0; i < 2; i++)
             {
-                DiceOne diceOne = new();
-                DiceTwo diceTwo = new();
+                
+                Die die = new Die();
                 if (i == 0)
                 {
-                    diceOne.DieOneValue = r.Next(1, 7);
-                    DieOne = diceOne.DieOneValue;
-
+                    die.DieValue = r.Next(1, 7);
+                    DiceSum += die.DieValue;
+                    Dice[0]=die;         
                 }
                 else if (i == 1)
                 {
-                    diceTwo.DieTwoValue = r.Next(1, 7);
-                    DieTwo = diceTwo.DieTwoValue;
+                    die.DieValue = r.Next(1, 7);
+                    DiceSum += die.DieValue;
+                    Dice[1]=die;
                 }
             }
-            DiceValue = DieOne + DieTwo;
+
             VisibilityMakeMoveButton();
             DiceTossSound();
-            DisplayDiceSum = $"= {DiceValue}";
+            DisplayDiceSum = $"= {DiceSum}";
             DisplayDiceSumVisibility = Visibility.Visible;
             FindAvailableTiles();
         }
@@ -586,7 +627,7 @@ namespace SUP23_G4.ViewModels
             DisplayDiceSumVisibility = Visibility.Hidden;
             TileValueVisibility = Visibility.Hidden;
             IsThrowEnable = true;
-            DiceValue = 0;
+            DiceSum = 0;
             NotAvailableToAvailable();
             ClosingTileSound();
         }

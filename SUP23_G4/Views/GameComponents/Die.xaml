@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="SUP23_G4.Views.Dice.DiceOne"
+﻿<UserControl x:Class="SUP23_G4.Views.GameComponents.Die"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SUP23_G4.Views.GameComponents" 
              xmlns:converter="clr-namespace:SUP23_G4.Converters"
-             x:Name="firstDice"
-             xmlns:local="clr-namespace:SUP23_G4.Views.Dice"
              mc:Ignorable="d" 
+             x:Name="DieComponent"
              d:DesignHeight="60" d:DesignWidth="60">
     <UserControl.Resources>
         <converter:DiceValueToVisibilityConverter x:Key="DiceValueToVisibilityConverter"/>
@@ -14,23 +14,22 @@
 
     <Canvas Width="150" Height="150" >
         <Image Height="154" Canvas.Left="-65" Source="/Resources/DiceFace1.png" Stretch="Fill" Width="274" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-2"
-               Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=1, ElementName=firstDice}"/>
+        Visibility="{Binding DieValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=1, ElementName=DieComponent}"/>
 
         <Image Height="154" Canvas.Left="-65" Source="/Resources/DiceFace2.png" Stretch="Fill" Width="274" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-2"
-               Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=2, ElementName=firstDice}"/>
+               Visibility="{Binding DieValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=2, ElementName=DieComponent}"/>
 
         <Image Height="154" Canvas.Left="-65" Source="/Resources/DiceFace3.png" Stretch="Fill" Width="274" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-2"
-               Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=3, ElementName=firstDice}"/>
+               Visibility="{Binding DieValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=3, ElementName=DieComponent}"/>
 
         <Image Height="154" Canvas.Left="-65" Source="/Resources/DiceFace4.png" Stretch="Fill" Width="274" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-2"
-               Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=4, ElementName=firstDice}"/>
+               Visibility="{Binding DieValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=4, ElementName=DieComponent}"/>
 
         <Image Height="154" Canvas.Left="-65" Source="/Resources/DiceFace5.png" Stretch="Fill" Width="274" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-2"
-               Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=5, ElementName=firstDice}"/>
+               Visibility="{Binding DieValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=5, ElementName=DieComponent}"/>
 
         <Image Height="154" Canvas.Left="-65" Source="/Resources/DiceFace6.png" Stretch="Fill" Width="274" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="-2"
-               Visibility="{Binding DieOneValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=6, ElementName=firstDice}"/>
+               Visibility="{Binding DieValue, Converter={StaticResource DiceValueToVisibilityConverter}, ConverterParameter=6, ElementName=DieComponent}"/>
 
     </Canvas>
-
 </UserControl>

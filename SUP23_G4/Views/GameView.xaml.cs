@@ -1,7 +1,7 @@
 ﻿using SUP23_G4.Dto;
 using SUP23_G4.Models;
 using SUP23_G4.ViewModels;
-using SUP23_G4.Views.Dice;
+using SUP23_G4.Views.GameComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,22 +44,7 @@ namespace SUP23_G4.Views
 
         }
 
-        private void GameTileOne_Loaded(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-
-        //Har inte lyckats få denna metod att reagera.
-        //Försökt sätta PreviewKeyDown = "Grid_PreviewKeyDown" och Focusable = "True" på dvs element i Gameview.
-        //Testat på båda gridarna men också längst up i usercontrol.
-        //private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Space)
-        //    {
-        //        GameViewModel.DiceToss();
-        //    }
-        //}
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿using SUP23_G4.Enums;
-using SUP23_G4.Views.Dice;
+using SUP23_G4.Views.GameComponents;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
