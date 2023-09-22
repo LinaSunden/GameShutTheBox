@@ -81,6 +81,7 @@ namespace SUP23_G4.ViewModels
         public ICommand GoToStartCommand { get; }
         public ICommand SoundEffectsCommand { get; set; }
         public ICommand ViewGameRulesCommand { get; }
+        public ICommand StartRematchCommand { get; }
         public ICommand TestBonusGame { get; set; } //TODO: Ta bort commando när vi har testat klart bonusomgång}
         public Visibility ExecuteMove { get; set; } = Visibility.Hidden;
         public Visibility Player1Turn { get; set; }
@@ -90,6 +91,7 @@ namespace SUP23_G4.ViewModels
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
         public Visibility BonusRoundVisibility { get; set; } = Visibility.Hidden;
         public Visibility TileValueVisibility { get; set; } = Visibility.Hidden;
+        public Visibility MessageBoxVisibility { get; set; } = Visibility.Visible;
         public int DiceSum { get; private set; }
         public int GameRoundCounter { get; set; } = 1;
         public int PlayerTurnCounter { get; set; } = 1;

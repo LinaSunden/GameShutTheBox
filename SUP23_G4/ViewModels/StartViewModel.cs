@@ -21,9 +21,9 @@ namespace SUP23_G4.ViewModels
             this._mainViewModel = mainViewModel;
             StartGameCommand = new RelayCommand(x => StartGame());
             GameRulesCommand = new RelayCommand(x => GoToGameRules());
-            MuteMusicCommand = new RelayCommand(x => MuteStartMusic());
-            StartScreenMusic.Play();
-            IsMusicPlaying = true;
+            //MuteMusicCommand = new RelayCommand(x => MuteStartMusic());
+            //StartScreenMusic.Play();
+            //IsMusicPlaying = true;
             SpeakerImage = "/Resources/SpeakerButton.png";
         }
         public StartViewModel()
