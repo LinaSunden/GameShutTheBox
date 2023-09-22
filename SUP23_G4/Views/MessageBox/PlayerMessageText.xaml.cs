@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace SUP23_G4.Views.MessageBox
 {
     /// <summary>
-    /// Interaction logic for PlayerMessageButton.xaml
+    /// Interaction logic for PlayerMessageText.xaml
     /// </summary>
-    public partial class PlayerMessageButton : UserControl
+    public partial class PlayerMessageText : UserControl
     {
-        public PlayerMessageButton()
+        public PlayerMessageText()
         {
             InitializeComponent();
-
         }
-        public string Winner { get; set; } = "Grattis Du har vunnit!";
-      
     }
 }
