@@ -404,6 +404,20 @@ namespace SUP23_G4.ViewModels
                TileValueVisibility = Visibility.Visible;    
             }
         }
+        /// <summary>
+        /// Metod som kollar om alla tiles är nedvända innan tärningen kastas
+        /// </summary>
+        private bool IsAllTilesDownward()
+        {
+            foreach (Tile tile in GameTiles)
+            {
+                if (tile.CurrentStatus != Status.DownwardGameTile)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         #endregion
 
@@ -637,20 +651,6 @@ namespace SUP23_G4.ViewModels
                 NotAvailableToAvailable();
                 ClosingTileSound();
             }            
-        }
-        /// <summary>
-        /// Metod som kollar om alla tiles är nedvända innan tärningen kastas
-        /// </summary>
-        private bool IsAllTilesDownward()
-        {
-            foreach(Tile tile in GameTiles)
-            {
-                if(tile.CurrentStatus != Status.DownwardGameTile)
-                {
-                    return false;
-                }            
-            }
-            return true;
         }
 
         /// <summary>
