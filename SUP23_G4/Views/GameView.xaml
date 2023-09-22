@@ -13,18 +13,74 @@
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
+    <UserControl.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                        Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="0" 
+                        CornerRadius="10"
+                        SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 
     <Border
-     BorderBrush="Gray"  
+     BorderBrush="White"  
      BorderThickness="3"
      CornerRadius="5">
-        <Border.Background>
-            <ImageBrush ImageSource="/Resources/GreenBackground.jpg"/>
-        </Border.Background>
-
         <Grid>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="*"/>
@@ -38,15 +94,43 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <Border Grid.Column="0" Grid.RowSpan="3" Background="SlateGray"/>
-            <GroupBox Header="{Binding SelectedItem.MyTurn, ElementName=CBO}" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Margin="5" Visibility="{Binding Player1Turn}"/>
+            <Border Grid.Column="0" Grid.Row="0">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Views/SmallDice.jpg" Opacity="0.3"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="1">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Views/SmallDice.jpg" Opacity="0.3"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="2" Opacity="0.5">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Views/SmallDice.jpg" Opacity="0.3"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="2">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Resources/GreenBackground.jpg"/>
+                </Border.Background>
+            </Border>
+            <GroupBox Header="{Binding SelectedItem.MyTurn, ElementName=CBO}" 
+                      Background="#FFF5B94A" 
+                      Foreground="WhiteSmoke" 
+                      FontFamily="Cascadia Mono" 
+                      FontSize="14" 
+                      Width="270" 
+                      Height="150" 
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      Grid.Column="0" Grid.Row="0" 
+                      Margin="5" Visibility="{Binding Player1Turn}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
                     Text="{Binding SelectedItem.PlayerName1, ElementName=CBO}"
                     HorizontalAlignment="Left"
                     Foreground="White"
-                    FontSize="20"
+                    FontSize="25"
                     Margin="10,30,0,0"  
                     Opacity="1" 
                     FontWeight="Bold" 
@@ -59,7 +143,7 @@
                    Text="{Binding Player1.Name}"
                    HorizontalAlignment="Left"
                    Foreground="White"
-                   FontSize="20"
+                   FontSize="25"
                    Margin="10,30,0,0"  
                    Opacity="1" 
                    FontWeight="Bold" 
@@ -143,10 +227,11 @@
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
                 <Button Content="{Binding SelectedItem.GameRuleBtn, ElementName=CBO}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ViewGameRulesCommand}" Margin="0,20">
                     <Button.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="Black"/>
-                            <GradientStop Color="LightGray" Offset="1"/>
-                            <GradientStop Color="DarkGreen" Offset="0"/>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
+                            <GradientStop Color="#FFF1DA9A" Offset="0.5"/>
+                            <GradientStop Color="#FFF3DB9B" Offset="0.5"/>
+                            <GradientStop Color="#FFFDC155" Offset="1.0"/>
                         </LinearGradientBrush>
                     </Button.Background>
                     <Button.OpacityMask>
@@ -181,17 +266,24 @@
 
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/GameRules.png" Visibility="{Binding GameRuleVisibility}" />
 
-            <Label FontSize="20" FontWeight="SemiBold" Foreground="White" Content="För låga värden valt!" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding TileValueVisibility}" />
+            <Label FontSize="25" FontWeight="SemiBold" Foreground="White" Content="För låga värden valt!" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding TileValueVisibility}" />
 
-            <GroupBox Header="{Binding SelectedItem.MyTurn, ElementName=CBO}" Background="SeaGreen" Foreground="WhiteSmoke" FontFamily="Cascadia Mono" FontSize="14" BorderBrush="SeaGreen" Width="270" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="2" Margin="5" Visibility="{Binding Player2Turn}"/>
+            <GroupBox Header="{Binding SelectedItem.MyTurn, ElementName=CBO}" 
+                      Background="#FFF5B94A" 
+                      Foreground="WhiteSmoke" 
+                      FontFamily="Cascadia Mono" 
+                      FontSize="14"
+                      Width="270" Height="150" 
+                      HorizontalAlignment="Left" VerticalAlignment="Top" 
+                      Grid.Column="0" Grid.Row="2" Margin="5" 
+                      Visibility="{Binding Player2Turn}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
                     Text="{Binding SelectedItem.PlayerName2, ElementName=CBO}"
                     HorizontalAlignment="Left"
                     Foreground="White"
-                    FontSize="20"
+                    FontSize="25"
                     Margin="10,30,0,0"  
-                    Opacity="1" 
                     FontWeight="Bold" 
                     FontFamily="Cascadia Mono">
                     <TextBlock.Effect>
@@ -202,7 +294,7 @@
                    Text="{Binding Player2.Name}"
                    HorizontalAlignment="Left"
                    Foreground="White"
-                   FontSize="20"
+                   FontSize="25"
                    Margin="10,30,0,0"  
                    Opacity="1" 
                    FontWeight="Bold" 
@@ -218,7 +310,7 @@
                    Text="{Binding SelectedItem.Points, ElementName=CBO}"
                    HorizontalAlignment="Left"
                    Foreground="White"
-                   FontSize="20"
+                   FontSize="25"
                    Margin="10,30,0,0"  
                    Opacity="1" 
                    FontWeight="Bold" 
@@ -231,7 +323,7 @@
                    Text="{Binding Player2.Score}"
                    HorizontalAlignment="Left"
                    Foreground="{Binding Player2ForegroundBrush}"
-                   FontSize="20"
+                   FontSize="25"
                    Margin="10,30,0,0"  
                    Opacity="1" 
                    FontWeight="Bold" 
@@ -276,12 +368,20 @@
 
             </Grid>
 
-            <Button Content="{Binding SelectedItem.MakeMove, ElementName=CBO}" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="2" Grid.ColumnSpan="2" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="{Binding ExecuteMove}" Command="{Binding ExecuteMoveCommand}">
+            <Button Style="{DynamicResource RoundedButton}" 
+                    Content="{Binding SelectedItem.MakeMove, ElementName=CBO}" 
+                    Width="180"
+                    FontFamily="Cascadia Code" FontWeight="SemiBold" 
+                    Grid.Column="2" Grid.ColumnSpan="2" Height="50" 
+                    BorderBrush="#FF7B7B7B" Grid.Row="1" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Visibility="{Binding ExecuteMove}" Command="{Binding ExecuteMoveCommand}">
                 <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="#FF9EE7FF" Offset="1"/>
-                        <GradientStop Color="#FF005B59" Offset="0"/>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
+                        <GradientStop Color="#FFF1DA9A" Offset="0.5"/>
+                        <GradientStop Color="#FFF3DB9B" Offset="0.5"/>
+                        <GradientStop Color="#FFFDC155" Offset="1.0"/>
                     </LinearGradientBrush>
                 </Button.Background>
                 <Button.OpacityMask>
