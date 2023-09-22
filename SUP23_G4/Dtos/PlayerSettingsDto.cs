@@ -12,11 +12,13 @@ namespace SUP23_G4.Dto
     {
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
+        public int TargetPoints { get; set; }
 
-        public PlayerSettingsDto(Player player1, Player player2)
+        public PlayerSettingsDto(Player player1, Player player2, int targetPoints)
         {
             Player1 = player1;
             Player2 = player2;
+            TargetPoints = targetPoints;
         }
 
     }

@@ -39,6 +39,7 @@ namespace SUP23_G4.ViewModels
         {
             Player1 = SettingsDto.Player1;
             Player2 = SettingsDto.Player2;
+            TargetPoints = SettingsDto.TargetPoints;
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             TileClickedCommand = new RelayCommand(x => UpdateStatusOfChosenGameTile(x));
@@ -93,6 +94,7 @@ namespace SUP23_G4.ViewModels
         public int GameRoundCounter { get; set; } = 1;
         public int PlayerTurnCounter { get; set; } = 1;
         public int CboSelectedIndex { get; set; } = 0;
+        private int TargetPoints {  get; set; }
         public string SpeakerImage { get; set; }
         public string? DisplayDiceSum { get; set; }
         public bool IsSoundEffectsAllowed { get; set; } = true;
@@ -101,9 +103,9 @@ namespace SUP23_G4.ViewModels
 
         #region Instansvariabler
 
-        private StartViewModel _startViewModel;
-        private PlayerSettingsDto _settingsDto;
-        private Tile _tile = new Tile();
+        //private StartViewModel _startViewModel;
+        //private PlayerSettingsDto _settingsDto;
+        //private Tile _tile = new Tile();
         private SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
         private SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
         #endregion
@@ -705,11 +707,11 @@ namespace SUP23_G4.ViewModels
         {
             if (PlayerTurnCounter == 2)
             {
-                if (Player1.Score < 45)
+                if (Player1.Score < TargetPoints)
                 {
                     MessageBox.Show($"Nu är din tur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
                 }
-                else if (Player1.Score >= 45)
+                else if (Player1.Score >= TargetPoints)
                 {
                     Player1ForegroundBrush = Brushes.Red;
                     MessageBox.Show($"Du har fått {Player1.Score} poäng. Om {Player2.Name} inte får mer poäng än dig så förlorar du");
@@ -717,7 +719,7 @@ namespace SUP23_G4.ViewModels
             }
             else if (PlayerTurnCounter == 1)
             {
-                if (Player1.Score > Player2.Score && Player1.Score >= 45)
+                if (Player1.Score > Player2.Score && Player1.Score >= TargetPoints)
                 { 
                     Player1ForegroundBrush = Brushes.Red;
                     Player2ForegroundBrush = Brushes.Goldenrod;
@@ -732,7 +734,7 @@ namespace SUP23_G4.ViewModels
                     }
                 }
 
-                if (Player2.Score > Player1.Score && Player2.Score >= 45)
+                if (Player2.Score > Player1.Score && Player2.Score >= TargetPoints)
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     Player1ForegroundBrush = Brushes.Goldenrod;
@@ -747,12 +749,12 @@ namespace SUP23_G4.ViewModels
                     }
                 }
 
-                else if (Player2.Score < 45 && Player1.Score <45)
+                else if (Player2.Score < TargetPoints && Player1.Score < TargetPoints)
                 {
                     MessageBox.Show($"Nu är din tur slut. Du har {Player2.Score} poäng. Det är nu {Player1.Name}s tur");
                 }
 
-                else if (Player1.Score == Player2.Score && Player1.Score >= 45 && Player2.Score >= 45)
+                else if (Player1.Score == Player2.Score && Player1.Score >= TargetPoints && Player2.Score >= TargetPoints)
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     MessageBoxResult result = MessageBox.Show("Spelet slutade lika då båda spelarna fick samma poäng, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);

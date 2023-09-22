@@ -87,7 +87,26 @@
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
                      Margin="10,100,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
-
+            <TextBlock Grid.Column="0" Grid.Row="1"
+                Text="Antal poäng att spela till"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Foreground="White"
+                FontSize="16"
+                Margin="10,150,0,0"  Opacity="1" FontWeight="Bold" FontFamily="Cascadia Mono">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBox x:Name="txtTargetPoints"
+                 Text="{Binding TargetPoints}"
+                 Width="100"
+                 Height="30"
+                 Grid.Column="0" Grid.Row="1"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Margin="10,180,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
+            
             <Button Content="Starta spelet" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="0" Margin="63,22,42,72" Height="50" BorderBrush="#FF7B7B7B" Grid.Row="1" Command="{Binding StartGameCommand}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

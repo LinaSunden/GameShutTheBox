@@ -34,13 +34,14 @@ namespace SUP23_G4.ViewModels
         #region Egenskaper
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
-    
+        
         public PlayerSettingsDto SettingsDto;
 
         public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
         public ICommand StartGameCommand { get; set; }
         public ICommand GameRulesCommand { get; set; }
         public ICommand MuteMusicCommand { get; set; }
+        public int TargetPoints { get; set; } = 45;
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
         public string SpeakerImage { get; set; }
@@ -60,17 +61,17 @@ namespace SUP23_G4.ViewModels
         private void StartGame()
         {
             StartScreenMusic.Stop();
-            CreatePlayer();
+            CreateGame();
             _mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);
         }
         /// <summary>
         /// Skapar 2 spelare samt en Dto som lagrar dessa.
         /// </summary>
-        private void CreatePlayer()
+        private void CreateGame()
         {
             Player1 = new Player(Player1Name);
             Player2 = new Player(Player2Name);
-            SettingsDto = new PlayerSettingsDto(Player1, Player2);
+            SettingsDto = new PlayerSettingsDto(Player1, Player2, TargetPoints);
         }
         /// <summary>
         /// Byter CurrentViewModel från att visa Startview till att visa GameRules
