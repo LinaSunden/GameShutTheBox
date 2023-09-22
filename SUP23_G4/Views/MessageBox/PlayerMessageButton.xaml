@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SUP23_G4.Views.MessageBox"
+             xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
+             d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="400">
     <UserControl.Resources>
@@ -109,7 +110,8 @@
                  Background="#FF16BB08"
                  FontFamily="Arial"
                  Foreground="White"
-                 FontSize="15" RenderTransformOrigin="0.229,0.497"/>
+                 FontSize="15" 
+                 Command="{Binding StartRematchCommand}"/>
                 <Button Style="{DynamicResource RoundedButton}" x:Name="buttonFinish" Content="Avsluta" HorizontalAlignment="Right" Margin="0,130,34,20" VerticalAlignment="Top" Height="32" Width="101"
                  Background="#FFF57132"
                  FontFamily="Arial"

@@ -45,6 +45,7 @@ namespace SUP23_G4.ViewModels
             TileClickedCommand = new RelayCommand(x => UpdateStatusOfChosenGameTile(x));
             ViewGameRulesCommand = new RelayCommand(x => ViewGameRules());
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
+            StartRematchCommand = new RelayCommand(x => StartRematch());    
             GameTiles = new ObservableCollection<Tile>();
             Languages = new ObservableCollection<Language>();
             Dice = new ObservableCollection<Die>();
