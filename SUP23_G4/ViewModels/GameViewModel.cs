@@ -619,14 +619,40 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void MoveIsExecuted()
         {
-            ExecuteMove = Visibility.Hidden;
-            DisplayDiceSumVisibility = Visibility.Hidden;
-            TileValueVisibility = Visibility.Hidden;
-            IsThrowEnable = true;
-            DiceSum = 0;
-            NotAvailableToAvailable();
-            ClosingTileSound();
+            if (IsAllTilesDownward())
+            {
+                ClosingTileSound();
+                ScoreCounter();
+                WinnerOfGame();
+                NewGameTurn();
+                SwitchPlayerTurn();
+            }
+            else
+            {
+                ExecuteMove = Visibility.Hidden;
+                DisplayDiceSumVisibility = Visibility.Hidden;
+                TileValueVisibility = Visibility.Hidden;
+                IsThrowEnable = true;
+                DiceSum = 0;
+                NotAvailableToAvailable();
+                ClosingTileSound();
+            }            
         }
+        /// <summary>
+        /// Metod som kollar om alla tiles är nedvända innan tärningen kastas
+        /// </summary>
+        private bool IsAllTilesDownward()
+        {
+            foreach(Tile tile in GameTiles)
+            {
+                if(tile.CurrentStatus != Status.DownwardGameTile)
+                {
+                    return false;
+                }            
+            }
+            return true;
+        }
+
         /// <summary>
         /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden tur. 
         /// </summary>
