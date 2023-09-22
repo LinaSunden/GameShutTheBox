@@ -74,16 +74,13 @@
              BorderBrush="Gray"  
              BorderThickness="3"
              CornerRadius="5">
-        <!--<Border.Background>
-            <ImageBrush ImageSource="/Resources/GreenBackground.jpg"/>
-        </Border.Background>-->
 
         <Grid>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition/>
-                
+
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -196,7 +193,7 @@
                  VerticalAlignment="Top"
                  HorizontalAlignment="Left"
                  Margin="10,180,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
-
+            <Image Grid.Column="1" Source="/Views/LogoSTB.png"  Margin="100,100,100,100" Grid.RowSpan="2" Stretch="Fill" Grid.ColumnSpan="2" />
             <Button Style="{DynamicResource RoundedButton}"  
                     Content="Starta spelet" 
                     FontFamily="Cascadia Code"
@@ -263,9 +260,9 @@
                     <Image Source="{Binding SpeakerImage, Mode=TwoWay}"/>
                 </Button.Content>
             </Button>
-            
+
         </Grid>
-        
-        
+
+
     </Border>
 </UserControl>
