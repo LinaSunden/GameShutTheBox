@@ -73,19 +73,19 @@
         <Border CornerRadius="35" BorderThickness="12">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FFFBDFAD" Offset="0.0"/>
-                    <GradientStop Color="#FFFBF398" Offset="0.5"/>
-                    <GradientStop Color="#FFF3F39B" Offset="0.5"/>
-                    <GradientStop Color="#FFFDF755" Offset="1.0"/>
+                    <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
+                    <GradientStop Color="#FFF1DA9A" Offset="0.5"/>
+                    <GradientStop Color="#FFF3DB9B" Offset="0.5"/>
+                    <GradientStop Color="#FFFDC155" Offset="1.0"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Grid>
                 <Grid.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#FFFBDFAD" Offset="0.0"/>
-                        <GradientStop Color="#FFFBF398" Offset="0.5"/>
-                        <GradientStop Color="#FFF3F39B" Offset="0.5"/>
-                        <GradientStop Color="#FFFDF755" Offset="1.0"/>
+                        <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
+                        <GradientStop Color="#FFF1DA9A" Offset="0.5"/>
+                        <GradientStop Color="#FFF3DB9B" Offset="0.5"/>
+                        <GradientStop Color="#FFFDC155" Offset="1.0"/>
                     </LinearGradientBrush>
                 </Grid.Background>
                 <TextBlock Text="WINNER WINNER!"

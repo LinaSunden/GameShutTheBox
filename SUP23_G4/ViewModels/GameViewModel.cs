@@ -627,6 +627,7 @@ namespace SUP23_G4.ViewModels
             GameRoundCounter = 0;
             BonusRoundVisibility = Visibility.Hidden;
             GameRoundVisibility = Visibility.Visible;
+            MessageBoxVisibility = Visibility.Collapsed;
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
 
