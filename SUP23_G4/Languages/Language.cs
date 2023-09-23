@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using SUP23_G4.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+using System.IO;
+using SUP23_G4.FileHandler;
 
 namespace SUP23_G4.Languages
 {
@@ -15,30 +17,41 @@ namespace SUP23_G4.Languages
 
         public Language()
         {
-           
+            
         }
+        #region GameView
+        public string Player1 { get; set; } = "Spelare 1: "; //finns även i StartView
 
-        public string PlayerName1 { get; set; }
+        public string Player2 { get; set; } = "Spelare 2: "; //finns även i StartView
 
-        public string PlayerName2 { get; set; }
+        public string Score { get; set; } = "Poäng: ";
 
-        public string Points { get; set; }
+        public string Round { get; set; } = "Omgång: ";
 
-        public string Round {  get; set; }
+        public string MyTurn { get; set; } = "Din tur";
 
-        public string MyTurn { get; set; }
+        public string GameRuleBtn { get; set; } = "Visa spelregler";
 
-        public string GameRuleBtn { get; set; }
+        public string ThrowDiceBtn { get; set; } = "Kasta tärningar";
 
-        public string ThrowDiceBtn { get;set; }
+        public string ConfirmMove { get; set; } = "Genomför drag";
 
-        public string MakeMove { get; set; }
+        #endregion
 
-        public string LanguageName { get; set; }
+        #region StartView
+        public string LanguageName { get; set; } = "Svenska";
 
-        public string Flag {  get; set; }
+        public string Flag { get; set; } = "/Resources/SwedenFlag.png";
 
-        public string SelectLanguage { get; set; }
+        public string SelectLanguage { get; set; } = "Välj språk";
+
+        public string StartGame { get; set; } = "Starta spelet";
+
+        public string GameRules { get; set; } = "Spelregler";
+
+        #endregion
+
+
 
 
 

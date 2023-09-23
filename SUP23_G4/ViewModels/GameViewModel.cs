@@ -43,13 +43,12 @@ namespace SUP23_G4.ViewModels
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             TileClickedCommand = new RelayCommand(x => UpdateStatusOfChosenGameTile(x));
-            ViewGameRulesCommand = new RelayCommand(x => ViewGameRules());
+            //ViewGameRulesCommand = new RelayCommand(x => ViewGameRules());
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
             GameTiles = new ObservableCollection<Tile>();
-            Languages = new ObservableCollection<Language>();
             Dice = new ObservableCollection<Die>();
+            Language = new ();
             TestBonusGame = new RelayCommand(x => StartBonusRound()); //TODO: Ta bort commando när vi har testat klart bonusomgång
-            Languages = GetLanguages();
             FillCollectionOfGameTiles();
             CreateDice();
             Player1Turn = Visibility.Visible;
@@ -65,10 +64,9 @@ namespace SUP23_G4.ViewModels
         #region Egenskaper
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
-        public ObservableCollection<Language> Languages { get; set; }
         public ObservableCollection<Tile> GameTiles { set; get; }
         public ObservableCollection<Die> Dice { set; get; }
-        
+        public Language Language { get; set; } 
         /// <summary>
         /// Collection används för att hålla olika sifferkombinationer.
         /// </summary>
@@ -116,6 +114,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         public void FillCollectionOfGameTiles()
         {
+
 
             Tile tile;
             for (int i = 1; i <= 10; i++)
@@ -797,75 +796,44 @@ namespace SUP23_G4.ViewModels
         /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
         /// Ändrar texten till Dölj spelregler när knappen har klickats en gång och på motsvarande sätt för varje språk
         /// </summary>
-        public void ViewGameRules()
-        {
-            if (CboSelectedIndex == 0)
-            {
-                foreach (Language language in Languages)
-                {
-                    if (language.GameRuleBtn == "Visa spelregler")
-                    {
-                        GameRuleVisibility = Visibility.Visible;
-                        language.GameRuleBtn = "Dölj spelregler";
-                    }
+        //public void ViewGameRules()
+        //{
+        //    if (CboSelectedIndex == 0)
+        //    {
+        //        foreach (Language language in Languages)
+        //        {
+        //            if (language.GameRuleBtn == "Visa spelregler")
+        //            {
+        //                GameRuleVisibility = Visibility.Visible;
+        //                language.GameRuleBtn = "Dölj spelregler";
+        //            }
 
-                    else if (language.GameRuleBtn == "Dölj spelregler")
-                    {
-                        GameRuleVisibility = Visibility.Hidden;
-                        language.GameRuleBtn = "Visa spelregler";
+        //            else if (language.GameRuleBtn == "Dölj spelregler")
+        //            {
+        //                GameRuleVisibility = Visibility.Hidden;
+        //                language.GameRuleBtn = "Visa spelregler";
 
-                    }
-                }
-            }
-            else if (CboSelectedIndex == 1)
-            {
-                foreach (Language language in Languages)
-                {
-                    if (language.GameRuleBtn == "Show game rules")
-                    {
-                        GameRuleVisibility = Visibility.Visible;
-                        language.GameRuleBtn = "Hide game rules";
-                    }
-                    else if (language.GameRuleBtn == "Hide game rules")
-                    {
-                        GameRuleVisibility = Visibility.Hidden;
-                        language.GameRuleBtn = "Show game rules";
-                    }
-                }
-            }           
-        }
-        /// <summary>
-        /// Metod som en kollektion med språkalternativ.
-        /// </summary>
-        public static ObservableCollection<Language> GetLanguages()
-            {
-                var languages = new ObservableCollection<Language>()
-            {new Language(){PlayerName1="Spelare 1: ",
-                            PlayerName2="Spelare 2: ",
-                            Points="Poäng: ",
-                            Round="Omgång: ",
-                            MyTurn="Din tur",
-                            GameRuleBtn="Visa spelregler",
-                            ThrowDiceBtn="Kasta tärningar",
-                            MakeMove="Genomför drag",
-                            LanguageName ="Svenska",
-                            Flag= "/Resources/SwedenFlag.png",
-                            SelectLanguage="Välj språk"},
-
-            new Language(){ PlayerName1="Player 1: ",
-                            PlayerName2="Player 2: ",
-                            Points="Points: ",
-                            Round="Round: ",
-                            MyTurn="My turn",
-                            GameRuleBtn="Show game rules",
-                            ThrowDiceBtn="Throw dice",
-                            MakeMove="Make move",
-                            LanguageName="English",
-                            Flag= "/Resources/GreatBritainFlag.png",
-                            SelectLanguage="Select Language"},
-           };
-                return languages;
-            }
+        //            }
+        //        }
+        //    }
+        //    else if (CboSelectedIndex == 1)
+        //    {
+        //        foreach (Language language in Languages)
+        //        {
+        //            if (language.GameRuleBtn == "Show game rules")
+        //            {
+        //                GameRuleVisibility = Visibility.Visible;
+        //                language.GameRuleBtn = "Hide game rules";
+        //            }
+        //            else if (language.GameRuleBtn == "Hide game rules")
+        //            {
+        //                GameRuleVisibility = Visibility.Hidden;
+        //                language.GameRuleBtn = "Show game rules";
+        //            }
+        //        }
+        //    }           
+        //}
+    
 
         #endregion
     }
