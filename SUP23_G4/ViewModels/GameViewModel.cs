@@ -46,6 +46,7 @@ namespace SUP23_G4.ViewModels
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
             GameTiles = new ObservableCollection<Tile>();
             Dice = new ObservableCollection<Die>();
+            Language = new ();
             TestBonusGame = new RelayCommand(x => StartBonusRound()); //TODO: Ta bort commando när vi har testat klart bonusomgång
             FillCollectionOfGameTiles();
             CreateDice();
@@ -64,7 +65,7 @@ namespace SUP23_G4.ViewModels
         public Player Player2 { get; set; }
         public ObservableCollection<Tile> GameTiles { set; get; }
         public ObservableCollection<Die> Dice { set; get; }
-        
+        public Language Language { get; set; } 
         /// <summary>
         /// Collection används för att hålla olika sifferkombinationer.
         /// </summary>
@@ -100,7 +101,7 @@ namespace SUP23_G4.ViewModels
         private StartViewModel _startViewModel;
         private PlayerSettingsDto _settingsDto;
         private Tile _tile = new Tile();
-        public Language _language = new Language();
+        
         private SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
         private SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
         #endregion

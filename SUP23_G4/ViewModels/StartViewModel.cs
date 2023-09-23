@@ -1,14 +1,20 @@
 ﻿using SUP23_G4.Commands;
 using SUP23_G4.Dto;
+using SUP23_G4.FileHandler;
+using SUP23_G4.Languages;
 using SUP23_G4.Models;
 using SUP23_G4.ViewModels.Base;
+using SUP23_G4.Views.GameComponents;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
 
 namespace SUP23_G4.ViewModels
 {
@@ -22,9 +28,13 @@ namespace SUP23_G4.ViewModels
             StartGameCommand = new RelayCommand(x => StartGame());
             GameRulesCommand = new RelayCommand(x => GoToGameRules());
             MuteMusicCommand = new RelayCommand(x => MuteStartMusic());
+            Language = new ();
             StartScreenMusic.Play();
             IsMusicPlaying = true;
             SpeakerImage = "/Resources/SpeakerButton.png";
+            UpdateLanguage();
+          
+
         }
         public StartViewModel()
         {
@@ -34,9 +44,8 @@ namespace SUP23_G4.ViewModels
         #region Egenskaper
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
-    
+        public Language Language { get; set; }
         public PlayerSettingsDto SettingsDto;
-
         public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
         public ICommand StartGameCommand { get; set; }
         public ICommand GameRulesCommand { get; set; }
@@ -44,7 +53,22 @@ namespace SUP23_G4.ViewModels
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
         public string SpeakerImage { get; set; }
-        public int CboSelectedIndex { get; set; } = 0;
+     
+
+        private int _cboSelectedIndex = 1;
+        public int CboSelectedIndex
+        {
+            get { return _cboSelectedIndex; }
+            set
+            {
+                if (_cboSelectedIndex != value)
+                {
+                    _cboSelectedIndex = value;
+                    UpdateLanguage();
+                }
+            }
+        }
+
         public bool IsMusicPlaying { get; set; }
         #endregion
 
@@ -97,6 +121,24 @@ namespace SUP23_G4.ViewModels
                 StartScreenMusic.Play();
                 IsMusicPlaying = true;
                 SpeakerImage = "/Resources/SpeakerButton.png";
+            }
+        }
+
+
+        private void UpdateLanguage()
+        {
+            if (File.Exists("English.json") && CboSelectedIndex == 1)
+            {
+                Language = JsonFileHandler.Open<Language>("English.json");
+               
+            }
+            else if (File.Exists("Swedish.json") && CboSelectedIndex == 0)
+            {
+                Language = JsonFileHandler.Open<Language>("Swedish.json");
+            }
+            else
+            {
+                Language = new Language();
             }
         }
         #endregion
