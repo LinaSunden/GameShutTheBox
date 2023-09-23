@@ -124,7 +124,9 @@ namespace SUP23_G4.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på StartView
+        /// </summary>
         private void UpdateLanguage()
         {
             if (File.Exists("English.json") && CboSelectedIndex == 1)
