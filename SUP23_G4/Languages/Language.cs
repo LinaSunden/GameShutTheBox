@@ -19,6 +19,12 @@ namespace SUP23_G4.Languages
         {
             
         }
+
+        #region MainWindow
+        public string HomePage { get; set; } = "Startsida";
+        #endregion
+
+
         #region GameView
         public string Player1 { get; set; } = "Spelare 1: "; //finns även i StartView
 

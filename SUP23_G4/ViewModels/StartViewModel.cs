@@ -32,7 +32,7 @@ namespace SUP23_G4.ViewModels
             StartScreenMusic.Play();
             IsMusicPlaying = true;
             SpeakerImage = "/Resources/SpeakerButton.png";
-            UpdateLanguage();
+            
           
 
         }
@@ -55,20 +55,6 @@ namespace SUP23_G4.ViewModels
         public string Player2Name { get; set; }
         public string SpeakerImage { get; set; }
      
-
-        private int _cboSelectedIndex = 1;
-        public int CboSelectedIndex
-        {
-            get { return _cboSelectedIndex; }
-            set
-            {
-                if (_cboSelectedIndex != value)
-                {
-                    _cboSelectedIndex = value;
-                    UpdateLanguage();
-                }
-            }
-        }
 
         public bool IsMusicPlaying { get; set; }
         #endregion
@@ -125,25 +111,7 @@ namespace SUP23_G4.ViewModels
             }
         }
 
-        /// <summary>
-        /// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på StartView
-        /// </summary>
-        private void UpdateLanguage()
-        {
-            if (File.Exists("English.json") && CboSelectedIndex == 1)
-            {
-                Language = JsonFileHandler.Open<Language>("English.json");
-               
-            }
-            else if (File.Exists("Swedish.json") && CboSelectedIndex == 0)
-            {
-                Language = JsonFileHandler.Open<Language>("Swedish.json");
-            }
-            else
-            {
-                Language = new Language();
-            }
-        }
+
         #endregion
 
 

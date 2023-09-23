@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SUP23_G4"
         xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
         xmlns:views="clr-namespace:SUP23_G4.Views"
+        xmlns:language="clr-namespace:SUP23_G4.Languages"
         d:DataContext="{d:DesignInstance vm:MainViewModel}"
    
         mc:Ignorable="d"
@@ -23,7 +24,36 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            <Button Content="Startsida" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand}">
+
+            <StackPanel HorizontalAlignment="Right" Grid.Column="1">
+                <TextBlock Text="{Binding Language.SelectLanguage}"
+    Foreground="White"
+    FontSize="12"
+    Opacity="1" 
+    FontFamily="Cascadia Mono">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+                <ComboBox Margin="0,5" SelectedIndex="{Binding CboSelectedIndex}">
+                    <ComboBoxItem x:Name="Svenska">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/SwedenFlag.png" Width="48"/>
+                            <TextBlock Text="Svenska"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem x:Name="English">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/GreatBritainFlag.png" Width="48"/>
+                            <TextBlock Text="English"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+
+                </ComboBox>
+            </StackPanel>
+
+
+            <Button Content="{Binding Language.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -43,6 +73,8 @@
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"/>
+
+            
 
         </Grid>
     </Border>
