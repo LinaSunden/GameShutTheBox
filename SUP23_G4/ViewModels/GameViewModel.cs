@@ -91,7 +91,6 @@ namespace SUP23_G4.ViewModels
         public int DiceSum { get; private set; }
         public int GameRoundCounter { get; set; } = 1;
         public int PlayerTurnCounter { get; set; } = 1;
-        public int CboSelectedIndex { get; set; } = 0;
         private int TargetPoints {  get; set; }
         public string SpeakerImage { get; set; }
         public string? DisplayDiceSum { get; set; }
