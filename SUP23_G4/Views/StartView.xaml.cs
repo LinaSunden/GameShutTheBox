@@ -38,8 +38,7 @@ namespace SUP23_G4.Views
         private Model3D _die3D;
         private ModelVisual3D _die1ModelVisual;
         private ModelVisual3D _die2ModelVisual;
-        ModelImporter _importer = new();
-        private HelixViewport3D _helixViewport3D;
+        private ModelImporter _importer = new();
         private Transform3DGroup _rotationTransformGroup;
         private DispatcherTimer _rotationTimer;
         private double _rotationAngleDie1 = 0.5;
@@ -50,7 +49,7 @@ namespace SUP23_G4.Views
 
         #region Metoder
         /// <summary>
-        /// 
+        /// Öppnar 3D tärning .obj fil och lägger in varsin tärning i en Viewport vardera
         /// </summary>
         private void LoadDice()
         {
@@ -76,25 +75,25 @@ namespace SUP23_G4.Views
         }
 
      
-
+        /// <summary>
+        /// Startar timer och ställer in dess intervall
+        /// </summary>
         private void RotationTimerDice()
         {
             _rotationTimer = new DispatcherTimer();
             _rotationTimer.Interval = TimeSpan.FromMilliseconds(10);
-            _rotationTimer.Tick += RotationTickDie1;
-            _rotationTimer.Tick += RotationTickDie2;
+            _rotationTimer.Tick += RotateDie1;
+            _rotationTimer.Tick += RotateDie2;
             _rotationTimer.Start();
         }
 
-        private void RotationTickDie1(object sender, EventArgs e)
+        /// <summary>
+        /// Sätter rotation på y-axel till 1 för Die1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RotateDie1(object sender, EventArgs e)
         {
-            RotateDie1();
-        }
-
-
-        private void RotateDie1()
-        {
-
             RotateTransform3D rotation = new (new AxisAngleRotation3D(new Vector3D(0, 1, 0), _rotationAngleDie1));
 
             _die1ModelVisual.Transform = rotation;
@@ -102,15 +101,12 @@ namespace SUP23_G4.Views
             _rotationAngleDie1 += 0.5;
         }
 
-
-
-        private void RotationTickDie2(object sender, EventArgs e)
-        {
-            RotateDie2();
-        }
-
-
-        private void RotateDie2()
+        /// <summary>
+        /// Sätter rotation på z-axel (djupet) till 1 för Die2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RotateDie2(object sender, EventArgs e)
         {
             RotateTransform3D rotation = new(new AxisAngleRotation3D(new Vector3D(0, 0, 1), _rotationAngleDie2));
 
