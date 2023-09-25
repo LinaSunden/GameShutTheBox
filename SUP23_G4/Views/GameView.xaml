@@ -246,7 +246,7 @@
 
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/GameRules.png" Visibility="{Binding GameRuleVisibility}" />
 
-            <Label FontSize="25" FontWeight="SemiBold" Foreground="White" Content="För låga värden valt!" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding TileValueVisibility}" />
+            <Label FontSize="22" FontWeight="SemiBold" Foreground="White" Content="För låga värden valt!" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Margin="0,40,30,0" Visibility="{Binding TileValueVisibility}" />
 
             <GroupBox Header="{Binding Language.MyTurn}" 
                       Background="#FFF5B94A" 
@@ -335,14 +335,14 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Fill="Transparent" Height="100" Width="160" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" />
+                <Rectangle Fill="Transparent" Height="100" Width="160" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" />
 
 
 
 
 
-                <GameComponents:Die x:Name="DieOne" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" DieValue="{Binding Dice[0].DieValue}"/>
-                <GameComponents:Die x:Name="DieTwo" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" DieValue="{Binding Dice[1].DieValue}"/>
+                <GameComponents:Die x:Name="DieOne" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Top" DieValue="{Binding Dice[0].DieValue}"/>
+                <GameComponents:Die x:Name="DieTwo" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" DieValue="{Binding Dice[1].DieValue}"/>
 
 
 
@@ -353,8 +353,9 @@
                     Width="180"
                     FontFamily="Cascadia Code" FontWeight="SemiBold" 
                     Grid.Column="2" Grid.ColumnSpan="2" Height="50" 
-                    BorderBrush="#FF7B7B7B" Grid.Row="1" 
-                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    BorderBrush="#FF7B7B7B" Grid.Row="0" 
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    Margin="0,0,0,10"
                     Visibility="{Binding ExecuteMove}" Command="{Binding ExecuteMoveCommand}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -372,7 +373,7 @@
                 </Button.OpacityMask>
             </Button>
             <TextBlock Text="{Binding DisplayDiceSum, Mode=TwoWay}" Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="24" 
-                       Foreground="White" FontWeight="Bold" Margin="30,100,0,0" Visibility="{Binding DisplayDiceSumVisibility, Mode=TwoWay}">
+                       Foreground="White" FontWeight="Bold" Margin="30,30,0,0" Visibility="{Binding DisplayDiceSumVisibility, Mode=TwoWay}">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
@@ -420,7 +421,7 @@
 
 
             </Grid>
-            <Button Content="Testa bonusomgång" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="4" Height="50" BorderBrush="#FF7B7B7B" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding TestBonusGame}" Margin="10,45,0,0">
+            <!--<Button Content="Testa bonusomgång" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="4" Height="50" BorderBrush="#FF7B7B7B" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding TestBonusGame}" Margin="10,45,0,0">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -434,7 +435,7 @@
                         <GradientStop Color="Black" Offset="1"/>
                     </LinearGradientBrush>
                 </Button.OpacityMask>
-            </Button>
+            </Button>-->
 
             <!--<MessageBox:PlayerMessageButton Grid.ColumnSpan="4" Margin="0,0,20,0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" Visibility="{Binding MessageBoxVisibility}"/>-->
 
