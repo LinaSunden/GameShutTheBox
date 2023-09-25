@@ -25,7 +25,7 @@ namespace SUP23_G4.Views.MessageBox
             InitializeComponent();
 
         }
-        public string Winner { get; set; } = "Grattis Du har vunnit!";
+       
       
     }
 }

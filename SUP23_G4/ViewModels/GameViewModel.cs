@@ -622,7 +622,7 @@ namespace SUP23_G4.ViewModels
             Player2.Score = 0;
             Player1ForegroundBrush = Brushes.White;
             Player2ForegroundBrush = Brushes.White;
-            GameRoundCounter = 0;
+            GameRoundCounter = 1;
             BonusRoundVisibility = Visibility.Hidden;
             GameRoundVisibility = Visibility.Visible;
             MessageBoxVisibility = Visibility.Collapsed;
@@ -752,6 +752,7 @@ namespace SUP23_G4.ViewModels
                     if (result == MessageBoxResult.Yes)
                     {
                         StartRematch();
+                        return;
                     }
                     else if (result == MessageBoxResult.No)
                     {
@@ -767,6 +768,7 @@ namespace SUP23_G4.ViewModels
                     if (result == MessageBoxResult.Yes)
                     {
                         StartRematch();
+                        return;
                     }
                     else if (result == MessageBoxResult.No)
                     {

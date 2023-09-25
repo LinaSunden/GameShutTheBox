@@ -421,7 +421,7 @@
 
 
             </Grid>
-            <!--<Button Content="Testa bonusomgång" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="4" Height="50" BorderBrush="#FF7B7B7B" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding TestBonusGame}" Margin="10,45,0,0">
+            <!--<Button Content="Testa bonusomgång" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="4" Height="50" BorderBrush="#FF7B7B7B" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding StartRematchCommand}" Margin="10,45,0,0">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
