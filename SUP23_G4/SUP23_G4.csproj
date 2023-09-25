@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Resources\BoxBackground.jpg" />
+    <None Remove="Resources\Dice3DO.obj" />
     <None Remove="Resources\DiceFace1.png" />
     <None Remove="Resources\DiceFace2.png" />
     <None Remove="Resources\DiceFace3.png" />
@@ -31,6 +32,9 @@
 
   <ItemGroup>
     <Resource Include="Resources\BoxBackground.jpg" />
+    <Resource Include="Resources\Dice3DO.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\DiceFace4.png" />
   </ItemGroup>
 
@@ -43,6 +47,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.24.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
   </ItemGroup>

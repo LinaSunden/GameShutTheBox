@@ -91,6 +91,26 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] Dice3DO {
+            get {
+                object obj = ResourceManager.GetObject("Dice3DO", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Dice3DO1 {
+            get {
+                object obj = ResourceManager.GetObject("Dice3DO1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] DiceFace1 {
             get {
                 object obj = ResourceManager.GetObject("DiceFace1", resourceCulture);

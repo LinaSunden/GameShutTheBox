@@ -23,6 +23,7 @@ namespace SUP23_G4.Views
         public StartView()
         {
             InitializeComponent();
+
         }
     }
 }
