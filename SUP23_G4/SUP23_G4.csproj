@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Resources\BoxBackground.jpg" />
+    <None Remove="Resources\Dice3DO.mtl" />
     <None Remove="Resources\Dice3DO.obj" />
     <None Remove="Resources\DiceFace1.png" />
     <None Remove="Resources\DiceFace2.png" />
@@ -32,9 +33,12 @@
 
   <ItemGroup>
     <Resource Include="Resources\BoxBackground.jpg" />
-    <Resource Include="Resources\Dice3DO.obj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <Content Include="Resources\Dice3DO.mtl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Dice3DO.obj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\DiceFace4.png" />
   </ItemGroup>
 
