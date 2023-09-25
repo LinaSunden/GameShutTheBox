@@ -25,7 +25,6 @@
     <None Remove="Views\DicesBackground.jpg" />
     <None Remove="Views\LogoSTB.png" />
     <None Remove="Views\SmallDice.jpg" />
-    <None Remove="Views\SmallDices.jpg" />
     <None Remove="Views\Spelregler Engelska.png" />
     <None Remove="Views\Spelregler.png" />
   </ItemGroup>
@@ -63,7 +62,6 @@
     <Resource Include="Views\DicesBackground.jpg" />
     <Resource Include="Views\LogoSTB.png" />
     <Resource Include="Views\SmallDice.jpg" />
-    <Resource Include="Views\SmallDices.jpg" />
     <Resource Include="Views\Spelregler Engelska.png" />
     <Resource Include="Views\Spelregler.png" />
   </ItemGroup>
