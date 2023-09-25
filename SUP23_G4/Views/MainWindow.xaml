@@ -12,7 +12,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <Border Background="SandyBrown">
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="/Views/Smalldice.jpg"/>
+        </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
@@ -55,10 +58,11 @@
 
             <Button Content="{Binding Language.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand}">
                 <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="LightGray" Offset="1"/>
-                        <GradientStop Color="DarkGreen" Offset="0"/>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
+                        <GradientStop Color="#FFF1DA9A" Offset="0.5"/>
+                        <GradientStop Color="#FFF3DB9B" Offset="0.5"/>
+                        <GradientStop Color="#FFFDC155" Offset="1.0"/>
                     </LinearGradientBrush>
                 </Button.Background>
                 <Button.OpacityMask>
