@@ -118,7 +118,7 @@
                 </Border.Background>
             </Border>
             <Image Grid.Row="0" HorizontalAlignment="Center"  Source="/" Grid.Column="1" Panel.ZIndex="1" />
-            <TextBlock  Text="SHUT"
+            <!--<TextBlock  Text="SHUT"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
                        Foreground="#FFFDC155"
@@ -135,7 +135,7 @@
                        Margin="10,129,0,0" FontStyle="Italic" Opacity="1">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
-                </TextBlock.Effect></TextBlock>
+                </TextBlock.Effect></TextBlock>-->
             <TextBlock Grid.Column="0" Grid.Row="1"
            Text="Spelare 1"
            VerticalAlignment="Top"
@@ -193,7 +193,7 @@
                  VerticalAlignment="Top"
                  HorizontalAlignment="Left"
                  Margin="10,180,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
-            <Image Grid.Column="1" Source="/Views/LogoSTB.png"  Margin="100,100,100,100" Grid.RowSpan="2" Stretch="Fill" Grid.ColumnSpan="2" />
+            <Image Grid.Column="1" Source="/Views/LogoSTB.png"  Margin="100,100,100,100" Grid.RowSpan="2" Grid.ColumnSpan="2" />
             <Button Style="{DynamicResource RoundedButton}"  
                     Content="Starta spelet" 
                     FontFamily="Cascadia Code"

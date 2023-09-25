@@ -94,12 +94,6 @@
                         FontWeight="Bold"
                         Margin="0,20,0,0"
                         HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding }"
-                        HorizontalAlignment="Center"
-                        FontWeight="SemiBold"
-                        FontSize="15"
-                        FontFamily="Cascadia Mono"
-                        Margin="0,60,0,50"></TextBlock>
                 <TextBlock Text="Vill du spela en rematch eller avsluta?"
                         HorizontalAlignment="Center"
                         FontWeight="SemiBold"
