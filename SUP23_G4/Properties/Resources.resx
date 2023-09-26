@@ -160,9 +160,6 @@
   <data name="GreenBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GreenBackground.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Bonus_Round" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bonus_Round.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Dice3DO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dice3DO.obj;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
