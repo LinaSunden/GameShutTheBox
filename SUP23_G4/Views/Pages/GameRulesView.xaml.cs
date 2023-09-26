@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SUP23_G4.Views
+namespace SUP23_G4.Views.Pages
 {
     /// <summary>
     /// Interaction logic for GameRulesView.xaml

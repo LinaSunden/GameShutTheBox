@@ -9,7 +9,7 @@
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
              xmlns:GameComponents="clr-namespace:SUP23_G4.Views.GameComponents"  
              xmlns:MessageBox="clr-namespace:SUP23_G4.Views.MessageBox"  
-             x:Class="SUP23_G4.Views.GameView"
+             x:Class="SUP23_G4.Views.Pages.GameView"
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -97,22 +97,22 @@
             </Grid.RowDefinitions>
             <Border Grid.Column="0" Grid.Row="0">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Views/SmallDice.jpg" Opacity="0.3"/>
+                    <ImageBrush ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.3"/>
                 </Border.Background>
             </Border>
             <Border Grid.Column="0" Grid.Row="1">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Views/SmallDice.jpg" Opacity="0.3"/>
+                    <ImageBrush ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.3"/>
                 </Border.Background>
             </Border>
             <Border Grid.Column="0" Grid.Row="2" Opacity="0.5">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Views/SmallDice.jpg" Opacity="0.3"/>
+                    <ImageBrush ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.3"/>
                 </Border.Background>
             </Border>
             <Border Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="2">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Resources/GreenBackground.jpg"/>
+                    <ImageBrush ImageSource="/Resources/Image/GreenBackground.jpg"/>
                 </Border.Background>
             </Border>
             <GroupBox Header="{Binding Language.MyTurn}" 
@@ -245,7 +245,7 @@
                 
             </StackPanel>
 
-            <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/GameRules.png" Visibility="{Binding GameRuleVisibility}" />
+            <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesSwedish.png" Visibility="{Binding GameRuleVisibility}" />
 
             <Label FontSize="22" FontWeight="SemiBold" Foreground="White" Content="För låga värden valt!" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Margin="0,40,30,0" Visibility="{Binding TileValueVisibility}" />
 
@@ -383,14 +383,14 @@
             <!--Grid för nedre boxen, kankse kan vi byta ut denna svarta ruta mot en snyggare bakgrundsbild för att få den att likna spelet mer senare? -->
             <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Margin="0,50,0,0">
                 <Grid.Background>
-                    <ImageBrush ImageSource="/Resources/BoxBackground.jpg"/>
+                    <ImageBrush ImageSource="/Resources/Image/BoxBackground.jpg"/>
                 </Grid.Background>
 
 
                 <Rectangle Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Height="60"  VerticalAlignment="Bottom" >
                     <!--Träkant i nedre spelplanen-->
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="/Resources/TileTexture.jpg"/>
+                        <ImageBrush ImageSource="/Resources/Image/TileTexture.jpg"/>
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>

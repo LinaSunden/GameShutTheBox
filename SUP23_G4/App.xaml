@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SUP23_G4"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
-             xmlns:views="clr-namespace:SUP23_G4.Views"
+             xmlns:views="clr-namespace:SUP23_G4.Views.Pages" 
              StartupUri="/Views/MainWindow.xaml">
     
     <Application.Resources>

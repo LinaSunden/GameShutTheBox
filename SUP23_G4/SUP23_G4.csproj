@@ -17,9 +17,14 @@
     <None Remove="Resources\DiceFace4.png" />
     <None Remove="Resources\DiceFace5.png" />
     <None Remove="Resources\DiceFace6.png" />
-    <None Remove="Resources\GameRules.png" />
     <None Remove="Resources\GreatBritainFlag.png" />
     <None Remove="Resources\GreenBackground.jpg" />
+    <None Remove="Resources\Image\Bonus_Round.png" />
+    <None Remove="Resources\Image\DicesBackground.jpg" />
+    <None Remove="Resources\Image\GameRulesEnglish.png" />
+    <None Remove="Resources\Image\GameRulesSwedish.png" />
+    <None Remove="Resources\Image\LogoSTB.png" />
+    <None Remove="Resources\Image\SmallDice.jpg" />
     <None Remove="Resources\MutedSpeakerButton.png" />
     <None Remove="Resources\Sound\ClosingTile.wav" />
     <None Remove="Resources\Sound\dice_rolls_30cm.wav" />
@@ -27,26 +32,27 @@
     <None Remove="Resources\SwedenFlag.png" />
     <None Remove="Resources\SpeakerButton.png" />
     <None Remove="Resources\TileTexture.jpg" />
-    <None Remove="Views\DicesBackground.jpg" />
-    <None Remove="Views\LogoSTB.png" />
-    <None Remove="Views\SmallDice.jpg" />
-    <None Remove="Views\Spelregler Engelska.png" />
-    <None Remove="Views\Spelregler.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\BoxBackground.jpg" />
+    <Resource Include="Resources\Image\Bonus_Round.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\BoxBackground.jpg" />
     <Content Include="Resources\Dice3DO.mtl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Dice3DO.obj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\DiceFace4.png" />
+    <Resource Include="Resources\Image\DicesBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\DiceFace4.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\DiceFace1.png" />
+    <Resource Include="Resources\Image\DiceFace1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,14 +66,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\DiceFace2.png" />
-    <Resource Include="Resources\DiceFace3.png" />
-    <Resource Include="Resources\DiceFace5.png" />
-    <Resource Include="Resources\DiceFace6.png" />
-    <Resource Include="Resources\GameRules.png" />
-    <Resource Include="Resources\GreatBritainFlag.png" />
-    <Resource Include="Resources\GreenBackground.jpg" />
-    <Resource Include="Resources\MutedSpeakerButton.png" />
+    <Resource Include="Resources\Image\DiceFace2.png" />
+    <Resource Include="Resources\Image\DiceFace3.png" />
+    <Resource Include="Resources\Image\DiceFace5.png" />
+    <Resource Include="Resources\Image\DiceFace6.png" />
+    <Resource Include="Resources\Image\GameRulesEnglish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\GameRulesSwedish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\GreatBritainFlag.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\GreenBackground.jpg" />
+    <Resource Include="Resources\Image\LogoSTB.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\MutedSpeakerButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\SmallDice.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Sound\ClosingTile.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -77,20 +98,13 @@
     <Resource Include="Resources\Sound\StartViewMusic.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\SwedenFlag.png" />
-    <Resource Include="Resources\SpeakerButton.png" />
-    <Resource Include="Resources\TileTexture.jpg" />
-    <Resource Include="Views\DicesBackground.jpg">
+    <Resource Include="Resources\Image\SwedenFlag.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Views\LogoSTB.png">
+    <Resource Include="Resources\Image\SpeakerButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Views\SmallDice.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Views\Spelregler Engelska.png" />
-    <Resource Include="Views\Spelregler.png" />
+    <Resource Include="Resources\Image\TileTexture.jpg" />
   </ItemGroup>
 
   <ItemGroup>

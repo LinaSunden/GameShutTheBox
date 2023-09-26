@@ -31,7 +31,7 @@ namespace SUP23_G4.ViewModels
             Language = new();
             StartScreenMusic.Play();
             IsMusicPlaying = true;
-            SpeakerImage = "/Resources/SpeakerButton.png";
+            SpeakerImage = "/Resources/Image/SpeakerButton.png";
 
 
 
@@ -101,13 +101,13 @@ namespace SUP23_G4.ViewModels
             {
                 StartScreenMusic.Stop();
                 IsMusicPlaying = false;
-                SpeakerImage = "/Resources/MutedSpeakerButton.png";
+                SpeakerImage = "/Resources/Image/MutedSpeakerButton.png";
             }
             else if (!IsMusicPlaying)
             {
                 StartScreenMusic.Play();
                 IsMusicPlaying = true;
-                SpeakerImage = "/Resources/SpeakerButton.png";
+                SpeakerImage = "/Resources/Image/SpeakerButton.png";
             }
         }
 

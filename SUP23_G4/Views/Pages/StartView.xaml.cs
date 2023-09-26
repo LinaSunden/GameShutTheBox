@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace SUP23_G4.Views
+namespace SUP23_G4.Views.Pages
 {
     /// <summary>
     /// Interaction logic for StartView.xaml

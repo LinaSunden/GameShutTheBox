@@ -14,7 +14,7 @@
 
     <Border>
         <Border.Background>
-            <ImageBrush ImageSource="/Views/Smalldice.jpg"/>
+            <ImageBrush ImageSource="/Resources/Image/SmallDice.jpg"/>
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -41,13 +41,13 @@
                 <ComboBox Margin="0,5" SelectedIndex="{Binding CboSelectedIndex}">
                     <ComboBoxItem x:Name="Svenska">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/SwedenFlag.png" Width="48"/>
+                            <Image Source="/Resources/Image/SwedenFlag.png" Width="48"/>
                             <TextBlock Text="Svenska"/>
                         </StackPanel>
                     </ComboBoxItem>
                     <ComboBoxItem x:Name="English">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/GreatBritainFlag.png" Width="48"/>
+                            <Image Source="/Resources/Image/GreatBritainFlag.png" Width="48"/>
                             <TextBlock Text="English"/>
                         </StackPanel>
                     </ComboBoxItem>
