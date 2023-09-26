@@ -57,7 +57,7 @@ namespace SUP23_G4.ViewModels
             SpeakerImage = "/Resources/SpeakerButton.png";
 
         }
-        public GameViewModel()
+        public GameViewModel(object v)
         {
 
         }

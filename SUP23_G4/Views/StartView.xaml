@@ -208,7 +208,7 @@
                     HorizontalAlignment="Left"
                     Margin="10,0,0,0"
                     BorderBrush="#FF7B7B7B" 
-                    Command="{Binding StartGameCommand}">
+                    Command="{Binding StartGameCommand, Source= {x:Static vm:MainViewModel.Instance}}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
@@ -236,7 +236,7 @@
                     HorizontalAlignment="Left"
                     Margin="10,80,0,0"
                     BorderBrush="#FF7B7B7B" 
-                    Command="{Binding GameRulesCommand}">
+                    Command="{Binding GameRulesCommand, Source= {x:Static vm:MainViewModel.Instance}}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#FFFBD8AD" Offset="0.0"/>

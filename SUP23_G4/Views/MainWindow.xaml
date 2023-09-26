@@ -56,7 +56,7 @@
             </StackPanel>
 
 
-            <Button Content="{Binding Language.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand}">
+            <Button Content="{Binding Language.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand, Source={x:Static vm:MainViewModel.Instance}}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
@@ -72,7 +72,7 @@
                     </LinearGradientBrush>
                 </Button.OpacityMask>
             </Button>
-            <ContentControl Content="{Binding CurrentViewModel}"
+            <ContentControl Content="{Binding CurrentViewModel, Source={x:Static vm:MainViewModel.Instance}}"
                     Grid.Row="1"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
