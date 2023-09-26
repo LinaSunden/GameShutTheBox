@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SUP23_G4.Views"
+             xmlns:local="clr-namespace:SUP23_G4.Views.Pages"
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
              xmlns:language="clr-namespace:SUP23_G4.Languages"
              xmlns:HelixToolkit="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
-             x:Class="SUP23_G4.Views.StartView"
+             x:Class="SUP23_G4.Views.Pages.StartView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -91,36 +91,36 @@
             </Grid.RowDefinitions>
             <Border Grid.Column="0" Grid.Row="1" >
                 <Border.Background>
-                    <ImageBrush ImageSource="/Views/SmallDice.jpg" Opacity="0.5"/>
+                    <ImageBrush ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
                 </Border.Background>
             </Border>
             <Border Grid.Column="0" Grid.Row="0" >
                 <Border.Background>
-                    <ImageBrush  ImageSource="/Views/SmallDice.jpg" Opacity="0.5"/>
+                    <ImageBrush  ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
                 </Border.Background>
             </Border>
             <Border Grid.Column="0" Grid.Row="3" >
                 <Border.Background>
-                    <ImageBrush  ImageSource="/Views/SmallDice.jpg" Opacity="0.5"/>
+                    <ImageBrush  ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
                 </Border.Background>
             </Border>
             <Border Grid.Column="1" Grid.Row="0">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Resources/GreenBackground.jpg"/>
+                    <ImageBrush ImageSource="/Resources/Image/GreenBackground.jpg"/>
                 </Border.Background>
             </Border>
             <Border Grid.Column="1" Grid.Row="1">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Resources/GreenBackground.jpg"/>
+                    <ImageBrush ImageSource="/Resources/Image/GreenBackground.jpg"/>
                 </Border.Background>
             </Border>
             <Border Grid.Column="1" Grid.Row="3">
                 <Border.Background>
-                    <ImageBrush ImageSource="/Resources/GreenBackground.jpg"/>
+                    <ImageBrush ImageSource="/Resources/Image/GreenBackground.jpg"/>
                 </Border.Background>
             </Border>
-            <Image Grid.Row="0" HorizontalAlignment="Center"  Source="/" Grid.Column="1" Panel.ZIndex="1" />
-            <!--<TextBlock  Text="SHUT"
+           
+            <TextBlock  Text="SHUT"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"
                        Foreground="#FFFDC155"
@@ -137,7 +137,7 @@
                        Margin="10,129,0,0" FontStyle="Italic" Opacity="1">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
-                </TextBlock.Effect></TextBlock>-->
+                </TextBlock.Effect></TextBlock>
             <TextBlock Grid.Column="0" Grid.Row="1"
            Text="{Binding Language.Player1}"
            VerticalAlignment="Top"
@@ -195,7 +195,7 @@
                  VerticalAlignment="Top"
                  HorizontalAlignment="Left"
                  Margin="10,180,0,0" SelectionTextBrush="#FFADADAD" Background="Gainsboro"/>
-            <Image Grid.Column="1" Source="/Views/LogoSTB.png"  Margin="100,100,100,100" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+            <Image Grid.Column="1" Source="/Resources/Image/LogoSTB.png"  Margin="100,100,100,100" Grid.RowSpan="2" Grid.ColumnSpan="2" />
             <Button Style="{DynamicResource RoundedButton}"  
                     Content="{Binding Language.StartGame}" 
                     FontFamily="Cascadia Code"

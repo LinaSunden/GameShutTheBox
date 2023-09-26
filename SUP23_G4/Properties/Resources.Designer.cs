@@ -61,6 +61,26 @@ namespace SUP23_G4.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Bonus_Round {
+            get {
+                object obj = ResourceManager.GetObject("Bonus_Round", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] BoxBackground {
+            get {
+                object obj = ResourceManager.GetObject("BoxBackground", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream ClosingTile {
@@ -161,9 +181,19 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] GameRules {
+        public static byte[] GameRulesEnglish {
             get {
-                object obj = ResourceManager.GetObject("GameRules", resourceCulture);
+                object obj = ResourceManager.GetObject("GameRulesEnglish", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] GameRulesSwedish {
+            get {
+                object obj = ResourceManager.GetObject("GameRulesSwedish", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -184,6 +214,36 @@ namespace SUP23_G4.Properties {
         public static byte[] GreenBackground {
             get {
                 object obj = ResourceManager.GetObject("GreenBackground", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] LogoSTB {
+            get {
+                object obj = ResourceManager.GetObject("LogoSTB", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] MutedSpeakerButton {
+            get {
+                object obj = ResourceManager.GetObject("MutedSpeakerButton", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] SmallDice {
+            get {
+                object obj = ResourceManager.GetObject("SmallDice", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -213,6 +273,16 @@ namespace SUP23_G4.Properties {
         public static byte[] SwedenFlag {
             get {
                 object obj = ResourceManager.GetObject("SwedenFlag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] TileTexture {
+            get {
+                object obj = ResourceManager.GetObject("TileTexture", resourceCulture);
                 return ((byte[])(obj));
             }
         }

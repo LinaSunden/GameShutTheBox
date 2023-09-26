@@ -118,52 +118,73 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ClosingTile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ClosingTile.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceFace1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceFace1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceFace2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceFace2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceFace3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceFace3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceFace4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceFace4.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceFace5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceFace5.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DiceFace6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiceFace6.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="dice_rolls_30cm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dice_rolls_30cm.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GameRules" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GameRules.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GreatBritainFlag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GreatBritainFlag.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SwedenFlag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SwedenFlag.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SpeakerButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SpeakerButton.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="StartViewMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\StartViewMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GreenBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GreenBackground.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Dice3DO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dice3DO.obj;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Dice3DO1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dice3DO.mtl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Bonus_Round" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\Bonus_Round.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BoxBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\BoxBackground.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ClosingTile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\ClosingTile.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\DiceFace1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\DiceFace2.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\DiceFace3.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\DiceFace4.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\DiceFace5.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DiceFace6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\DiceFace6.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dice_rolls_30cm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\dice_rolls_30cm.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GameRulesEnglish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\GameRulesEnglish.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GameRulesSwedish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\GameRulesSwedish.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GreatBritainFlag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\GreatBritainFlag.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GreenBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\GreenBackground.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogoSTB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\LogoSTB.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MutedSpeakerButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\MutedSpeakerButton.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SpeakerButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\SpeakerButton.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StartViewMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\StartViewMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SwedenFlag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\SwedenFlag.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TileTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\TileTexture.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SmallDice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image\SmallDice.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -31,7 +31,7 @@ namespace SUP23_G4.ViewModels
             Language = new();
             StartScreenMusic.Play();
             IsMusicPlaying = true;
-            SpeakerImage = "/Resources/SpeakerButton.png";
+            SpeakerImage = "/Resources/Image/SpeakerButton.png";
 
 
 
@@ -90,7 +90,7 @@ namespace SUP23_G4.ViewModels
         /// <exception cref="NotImplementedException"></exception>
         private void GoToGameRules()
         {
-            _mainViewModel.CurrentViewModel = new GameRulesModel();
+            _mainViewModel.CurrentViewModel = new GameRulesViewModel();
         }
         /// <summary>
         /// En knapp för att muta och starta Startview musik samt byta bild.
@@ -101,13 +101,13 @@ namespace SUP23_G4.ViewModels
             {
                 StartScreenMusic.Stop();
                 IsMusicPlaying = false;
-                SpeakerImage = "/Resources/MutedSpeakerButton.png";
+                SpeakerImage = "/Resources/Image/MutedSpeakerButton.png";
             }
             else if (!IsMusicPlaying)
             {
                 StartScreenMusic.Play();
                 IsMusicPlaying = true;
-                SpeakerImage = "/Resources/SpeakerButton.png";
+                SpeakerImage = "/Resources/Image/SpeakerButton.png";
             }
         }
 
