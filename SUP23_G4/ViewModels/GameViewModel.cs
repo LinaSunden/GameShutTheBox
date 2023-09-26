@@ -58,7 +58,7 @@ namespace SUP23_G4.ViewModels
             CreateDice();
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
-            SpeakerImage = "/Resources/SpeakerButton.png";
+            SpeakerImage = "/Resources/Image/SpeakerButton.png";
 
         }
         public GameViewModel()
@@ -495,12 +495,12 @@ namespace SUP23_G4.ViewModels
             if (IsSoundEffectsAllowed)
             {
                 IsSoundEffectsAllowed = false;
-                SpeakerImage = "/Resources/MutedSpeakerButton.png";
+                SpeakerImage = "/Resources/Image/MutedSpeakerButton.png";
             }
             else if (!IsSoundEffectsAllowed)
             {
                 IsSoundEffectsAllowed = true;
-                SpeakerImage = "/Resources/SpeakerButton.png";
+                SpeakerImage = "/Resources/Image/SpeakerButton.png";
             }
         }
         /// <summary>

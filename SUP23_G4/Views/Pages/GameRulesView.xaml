@@ -156,8 +156,18 @@
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="34" Canvas.Top="30" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible"/>
                 <Ellipse Height="12"  Stroke="Black" Width="12" Fill="Black" Canvas.Left="54" Canvas.Top="61" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
             </Canvas>
-            <Image VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" Grid.Column="1" Source="/Resources/Image/GameRulesSwedish.png" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-            <Image VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,50,0" Grid.Column="1"  Source="/Resources/Image/GameRulesEnglish.png" Grid.RowSpan="2"/>
+
+            <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Resources/Image/GameRulesSwedish.png" Grid.Column="0" Grid.RowSpan="2" Margin="50" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <Image Source="/Resources/Image/GameRulesEnglish.png" Grid.Column="1" Grid.RowSpan="2" Margin="50" HorizontalAlignment="Right" VerticalAlignment="Center" />
+
+
+            </Grid>
+
 
         </Grid>
 
