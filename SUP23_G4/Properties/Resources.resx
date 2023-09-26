@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ClosingTile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ClosingTile.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="DiceFace1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DiceFace1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -139,9 +136,6 @@
   <data name="DiceFace6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DiceFace6.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="dice_rolls_30cm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dice_rolls_30cm.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="GameRules" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GameRules.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -154,9 +148,6 @@
   <data name="SpeakerButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SpeakerButton.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="StartViewMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\StartViewMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="GreenBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GreenBackground.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -165,5 +156,23 @@
   </data>
   <data name="Dice3DO1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dice3DO.mtl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DicesBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Views\DicesBackground.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogoSTB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Views\LogoSTB.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SmallDice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Views\SmallDice.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ClosingTile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\ClosingTile.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dice_rolls_30cm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\dice_rolls_30cm.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StartViewMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sound\StartViewMusic.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

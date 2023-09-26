@@ -161,6 +161,16 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] DicesBackground {
+            get {
+                object obj = ResourceManager.GetObject("DicesBackground", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] GameRules {
             get {
                 object obj = ResourceManager.GetObject("GameRules", resourceCulture);
@@ -184,6 +194,26 @@ namespace SUP23_G4.Properties {
         public static byte[] GreenBackground {
             get {
                 object obj = ResourceManager.GetObject("GreenBackground", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] LogoSTB {
+            get {
+                object obj = ResourceManager.GetObject("LogoSTB", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] SmallDice {
+            get {
+                object obj = ResourceManager.GetObject("SmallDice", resourceCulture);
                 return ((byte[])(obj));
             }
         }
