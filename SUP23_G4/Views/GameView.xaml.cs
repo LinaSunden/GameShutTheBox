@@ -30,21 +30,5 @@ namespace SUP23_G4.Views
             InitializeComponent();
            
         }
-
-        
-         public GameViewModel GameViewModel = new();
-
-      
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                GameViewModel.DiceToss();
-            }
-
-        }
-
-
-
     }
 }

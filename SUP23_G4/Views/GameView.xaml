@@ -14,6 +14,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+       
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -421,7 +422,7 @@
 
 
             </Grid>
-            <!--<Button Content="Testa bonusomgång" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="4" Height="50" BorderBrush="#FF7B7B7B" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding StartRematchCommand}" Margin="10,45,0,0">
+            <Button Content="Testa bonusomgång" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="4" Height="50" BorderBrush="#FF7B7B7B" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding TestBonusGame}" Margin="10,45,0,0">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black"/>
@@ -435,12 +436,12 @@
                         <GradientStop Color="Black" Offset="1"/>
                     </LinearGradientBrush>
                 </Button.OpacityMask>
-            </Button>-->
+            </Button>
 
-            <!--<MessageBox:PlayerMessageButton Grid.ColumnSpan="4" Margin="0,0,20,0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" Visibility="{Binding MessageBoxVisibility}"/>-->
+            <MessageBox:PlayerMessageButton Grid.ColumnSpan="4" Margin="0,0,20,0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" CurrentMessage="{Binding PMButton.CurrentMessage, Mode=TwoWay}"  Visibility="{Binding MessageBoxVisibility}"/>
 
 
-        </Grid>
+       </Grid>
 
     </Border>
 

@@ -5,9 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}"
+             xmlns:converter="clr-namespace:SUP23_G4.Converters"
+             x:Name="playermessagebutton"
+              
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="400">
+ 
+
     <UserControl.Resources>
+        <converter:SituationToMessageConverter x:Key="SituationToMessageConverter" />
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -69,8 +75,10 @@
             </Setter>
         </Style>
     </UserControl.Resources>
+    <!--Visibility="{Binding MBVisibility, ElementName=playermessagebutton}"-->
     <Border CornerRadius="10">
-        <Border CornerRadius="35" BorderThickness="12">
+            
+                <Border CornerRadius="35" BorderThickness="12">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
@@ -79,46 +87,59 @@
                     <GradientStop Color="#FFFDC155" Offset="1.0"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
+
             <Grid>
+                <!--<Grid.InputBindings>
+                    <MouseBinding
+                        Gesture="LeftClick"
+                        Command="{Binding MBVisibilityCommand, ElementName=playermessagebutton}"/>
+                </Grid.InputBindings>-->
+                
                 <Grid.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
-                        <GradientStop Color="#FFF1DA9A" Offset="0.5"/>
-                        <GradientStop Color="#FFF3DB9B" Offset="0.5"/>
-                        <GradientStop Color="#FFFDC155" Offset="1.0"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
-                <TextBlock Text="WINNER WINNER!"
+
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
+                            <GradientStop Color="#FFF1DA9A" Offset="0.5"/>
+                            <GradientStop Color="#FFF3DB9B" Offset="0.5"/>
+                            <GradientStop Color="#FFFDC155" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <!--<TextBlock Text="WINNER WINNER!"
                         FontSize="22"
                         FontFamily="Comic Sans MS"
                         FontWeight="Bold"
                         Margin="0,20,0,0"
-                        HorizontalAlignment="Center"/>
-                <TextBlock Text="Vill du spela en rematch eller avsluta?"
+                        HorizontalAlignment="Center"/>-->
+                    <TextBlock Text="{Binding CurrentMessage, ElementName=playermessagebutton, Converter={StaticResource SituationToMessageConverter}}"
                         HorizontalAlignment="Center"
                         FontWeight="SemiBold"
                         FontSize="15"
                         FontFamily="Cascadia Mono"
-                        Margin="0,80,0,50"></TextBlock>
-                <Button Style="{DynamicResource RoundedButton}" x:Name="buttonRematch" Content="Rematch" HorizontalAlignment="Left" Margin="24,130,0,20" VerticalAlignment="Top" Height="32" Width="101"
+                        Margin="0,30,0,50"></TextBlock>
+                    <Button Style="{DynamicResource RoundedButton}" x:Name="buttonRematch" Content="Rematch" HorizontalAlignment="Left" Margin="24,130,0,20" VerticalAlignment="Top" Height="32" Width="101"
                  Background="#FF16BB08"
                  FontFamily="Arial"
                  Foreground="White"
                  FontSize="15" 
-                 Command="{Binding StartRematchCommand}"/>
-                <Button Style="{DynamicResource RoundedButton}" x:Name="buttonBonus" Content="Bonus" HorizontalAlignment="Left" Margin="140,130,0,0" VerticalAlignment="Top" Height="32" Width="101"
+                 Command="{Binding StartRematchCommand}"
+                  Visibility="{Binding GameButtonsVisibility}"/>
+                    <Button Style="{DynamicResource RoundedButton}" x:Name="buttonBonus" Content="Bonus" HorizontalAlignment="Left" Margin="140,130,0,0" VerticalAlignment="Top" Height="32" Width="101"
                 Background="#FF07A9AD"
                 FontFamily="Arial"
                 Foreground="White"
                 FontSize="15" 
-                Command="{Binding StartRematchCommand}"
-                Visibility="{Binding BonusRoundVisibility}"/>
-                <Button Style="{DynamicResource RoundedButton}" x:Name="buttonFinish" Content="Avsluta" HorizontalAlignment="Right" Margin="0,130,24,20" VerticalAlignment="Top" Height="32" Width="101"
+                Command="{Binding TestBonusGame}"
+                Visibility="{Binding BonusButtonVisibility}"/>
+                    <Button Style="{DynamicResource RoundedButton}" x:Name="buttonFinish" Content="Avsluta" HorizontalAlignment="Right" Margin="0,130,24,20" VerticalAlignment="Top" Height="32" Width="101"
                  Background="#FFF57132"
                  FontFamily="Arial"
                  Foreground="White"
-                 FontSize="15"/>
+                 FontSize="15"
+                 Command="{Binding VisibilityGameEndingCommand}"
+                 Visibility="{Binding GameButtonsVisibility}"/>
+                
             </Grid>
         </Border>
-    </Border>
+            </Border>
+            
 </UserControl>
