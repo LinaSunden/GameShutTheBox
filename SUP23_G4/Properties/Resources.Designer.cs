@@ -201,26 +201,6 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] LogoSTB {
-            get {
-                object obj = ResourceManager.GetObject("LogoSTB", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] SmallDices {
-            get {
-                object obj = ResourceManager.GetObject("SmallDices", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         public static byte[] SpeakerButton {
             get {
                 object obj = ResourceManager.GetObject("SpeakerButton", resourceCulture);

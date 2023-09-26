@@ -163,12 +163,6 @@
   <data name="Bonus_Round" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bonus_Round.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LogoSTB" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LogoSTB.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SmallDices" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SmallDices.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Dice3DO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dice3DO.obj;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
