@@ -90,7 +90,7 @@ namespace SUP23_G4.ViewModels
         /// <exception cref="NotImplementedException"></exception>
         private void GoToGameRules()
         {
-            _mainViewModel.CurrentViewModel = new GameRulesModel();
+            _mainViewModel.CurrentViewModel = new GameRulesViewModel();
         }
         /// <summary>
         /// En knapp för att muta och starta Startview musik samt byta bild.

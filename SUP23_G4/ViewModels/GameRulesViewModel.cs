@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace SUP23_G4.ViewModels
 {
-    internal class GameRulesModel : BaseViewModel
+    public class GameRulesViewModel : BaseViewModel
     {
    
     }
