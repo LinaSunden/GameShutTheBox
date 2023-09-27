@@ -55,7 +55,7 @@ namespace SUP23_G4.ViewModels
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
             SpeakerImage = "/Resources/SpeakerButton.png";
-
+            Player1.Score = 40; 
         }
         #endregion
         #region Egenskaper
@@ -752,7 +752,8 @@ namespace SUP23_G4.ViewModels
                     }
                     else if (result == MessageBoxResult.No)
                     {
-                        VisibilityGameEnding();
+                        MainViewModel.Instance.CurrentViewModel = new StartViewModel();
+                        //VisibilityGameEnding();
                     }
                 }
 
@@ -768,7 +769,8 @@ namespace SUP23_G4.ViewModels
                     }
                     else if (result == MessageBoxResult.No)
                     {
-                        VisibilityGameEnding();
+                        //VisibilityGameEnding();
+                        MainViewModel.Instance.CurrentViewModel = new StartViewModel(); 
                     }
                 }
 

@@ -53,13 +53,13 @@ namespace SUP23_G4.ViewModels
 
         private void StartGame(object dto) //Hur når vi metoden SetupGame?? (ligger i startviewmodel)
         {
-            var settingsDto = dto as PlayerSettingsDto; 
+            var settingsDto = dto as PlayerSettingsDto;
             //CurrentViewModel = new StartViewModel();
             //CurrentViewModel = startViewModel.SetupGame(); 
-            
+
             //startViewModel.SetupGame(); ///Kan inte ligga här för då är startviewmodel null
             CurrentViewModel = new GameViewModel(settingsDto); //får inte med sig DTOn
-            
+
         }
 
         private StartViewModel _startViewModel = new StartViewModel();

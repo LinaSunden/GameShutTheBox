@@ -69,7 +69,8 @@ namespace SUP23_G4.ViewModels
         {
             StartScreenMusic.Stop();
             CreatePlayers();
-            MainViewModel.Instance.StartGameCommand(SettingsDto);
+            MainViewModel.Instance.StartGameCommand.Execute(SettingsDto);
+            MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto); 
             
             //MainViewModel.Instance.CurrentViewModel = new MainViewModel(SettingsDto); //hur får vi med oss DTOn?
             
