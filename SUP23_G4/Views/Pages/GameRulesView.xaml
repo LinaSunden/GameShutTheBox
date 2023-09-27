@@ -8,7 +8,88 @@
              d:DataContext="{d:DesignInstance vm:GameRulesViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+
     <Border
+          BorderBrush="Gray"  
+          BorderThickness="3"
+          CornerRadius="5">
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Grid.Column="0" Grid.Row="1" >
+                <Border.Background>
+                    <ImageBrush ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="0" >
+                <Border.Background>
+                    <ImageBrush  ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="3" >
+                <Border.Background>
+                    <ImageBrush  ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="0">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Resources/Image/GreenBackground.jpg"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="1">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Resources/Image/GreenBackground.jpg"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="3">
+                <Border.Background>
+                    <ImageBrush ImageSource="/Resources/Image/GreenBackground.jpg"/>
+                </Border.Background>
+            </Border>
+
+            <TextBlock  Text="SHUT"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Foreground="#FFFDC155"
+                    FontSize="70"
+                    Margin="61,27,0,0" FontFamily="Cascadia Mono" FontStyle="Italic" Opacity="1">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <TextBlock Text="THE BOX"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Foreground="#FFFDC155"
+                    FontSize="70"
+                    Margin="10,129,0,0" FontStyle="Italic" Opacity="1">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect></TextBlock>
+            <Image Source="/Resources/Image/GameRulesSwedish.png" Grid.Column="1" Grid.RowSpan="3" Margin="50,100,770,100" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Image Source="/Resources/Image/GameRulesEnglish.png" Grid.Column="1" Grid.RowSpan="3" Margin="770,0,50,70" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+    <!--<Border
           BorderBrush="Gray"  
           BorderThickness="3"
           CornerRadius="5">
@@ -28,8 +109,22 @@
                 </RowDefinition>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Border Grid.Column="0" Grid.Row="1" Background="SlateGray"/>
-            <Border Grid.Column="0" Grid.Row="0" Background="SlateGray"/>
+            <Border Grid.Column="0" Grid.Row="1" >
+                <Border.Background>
+                    <ImageBrush ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="0" >
+                <Border.Background>
+                    <ImageBrush  ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
+                </Border.Background>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="3" >
+                <Border.Background>
+                    <ImageBrush  ImageSource="/Resources/Image/SmallDice.jpg" Opacity="0.5"/>
+                </Border.Background>
+            </Border>
+           
             <TextBlock  Text="SHUT"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
@@ -171,5 +266,5 @@
 
         </Grid>
 
-    </Border>
+    </Border>-->
 </UserControl>
