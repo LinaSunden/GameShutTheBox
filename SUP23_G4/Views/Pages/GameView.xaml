@@ -14,7 +14,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-       
+
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -245,7 +245,7 @@
                         </LinearGradientBrush>
                     </Button.OpacityMask>
                 </Button>
-                
+
             </StackPanel>
 
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesSwedish.png" Visibility="{Binding GameRuleVisibility}" />
@@ -443,9 +443,10 @@
             </Button>
 
             <MessageBox:PlayerMessageButton Grid.ColumnSpan="4" Margin="0,0,20,0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" CurrentMessage="{Binding PMButton.CurrentMessage, Mode=TwoWay}"  Visibility="{Binding MessageBoxVisibility}"/>
+            <Label x:Name="Player1" Content="{Binding Player1.Name}" FontSize="22" FontWeight="Bold" FontStyle="Italic" FontFamily="Cascadia Mono" Grid.ColumnSpan="4" Margin="300,0,20,150" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" Visibility="{Binding Player1LabelVisibility}" />
+            <Label x:Name="Player2" Content="{Binding Player2.Name}" FontSize="22" FontWeight="Bold" FontStyle="Italic" FontFamily="Cascadia Mono" Grid.ColumnSpan="4" Margin="300,0,20,150" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" Visibility="{Binding Player2LabelVisibility}"  />
 
-
-       </Grid>
+        </Grid>
 
     </Border>
 
