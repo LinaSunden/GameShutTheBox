@@ -288,13 +288,13 @@ namespace SUP23_G4.ViewModels
             sorted.Sort();
             return sorted;
         }
+       
         /// <summary>
-        /// Metod som undersöker vilka kombinationer av tiles som är
-        /// möjliga för att nå tärningarnas summa
+        /// Metod som fyller en tvådimensionell array med booleska värden. Det som styr true eller false
+        /// är värdena på de tiles som är tillgängliga samt tärningarnas summa
         /// </summary>
-        /// 
-        
-        public void FindAvailableTiles()
+        ///        
+        public void Fill2DArray()
         {
             List<int> tiles = new List<int>();
 
@@ -308,7 +308,7 @@ namespace SUP23_G4.ViewModels
             int sum = DiceSum;
             int n = tiles.Count;
 
-            if (n == 0 || sum < 0) { return; }
+            //if (n == 0 || sum < 0) { return; } //Onödig
 
             dp = new bool[n, sum + 1];
 
@@ -334,13 +334,17 @@ namespace SUP23_G4.ViewModels
 
             collection = new List<List<int>>();
             List<int> p = new List<int>();
-            Print(tiles, n - 1, sum, p);
+            TilesCombinationToList(tiles, n - 1, sum, p);
             Collection = collection;
             List<int> sortedList = SortOutDuplicates(Collection);
             SetStatusOfGameTiles(sortedList);
 
         }
-        private void Display(List<int> v)
+        /// <summary>
+        /// Metod som tar emot en lista med värden som kan bli tärningarnas summa och lägger till den
+        /// i en lista av listor
+        /// </summary>
+        private void FillListOfLists(List<int> v)
         {
             List<int> availableTiles = new List<int>();
             foreach (var i in v)
@@ -350,21 +354,29 @@ namespace SUP23_G4.ViewModels
             collection.Add(availableTiles);
         }
 
-        private void Print(List<int> arr, int i, int sum, List<int> p)
+        /// <summary>
+        /// En rekursiv loop som kollar vilka värden av tiles som kan bli tärningarnas summa och lägger dessa
+        /// i en lista samt skickar de vidare till en annan metod
+        /// </summary>
+        private void TilesCombinationToList(List<int> tiles, int i, int sum, List<int> p)
         {
-            
+
             if (i == 0 && sum != 0 && dp[0, sum])
             {
-                p.Add(arr[i]);
-                Display(p);
+                p.Add(tiles[i]);
+                FillListOfLists(p);
                 p.Clear();
                 return;
             }
 
             if (i == 0 && sum == 0)
             {
-                Display(p);
+                FillListOfLists(p);
                 p.Clear();
+                return;
+            }
+            if (i == 0)
+            {
                 return;
             }
 
@@ -372,187 +384,16 @@ namespace SUP23_G4.ViewModels
             {
                 List<int> b = new List<int>();
                 b.AddRange(p);
-                Print(arr, i - 1, sum, b);
+                TilesCombinationToList(tiles, i - 1, sum, b);
             }
 
-            if (sum >= arr[i] && dp[i - 1, sum - arr[i]])
+            if (sum >= tiles[i] && dp[i - 1, sum - tiles[i]])
             {
-                p.Add(arr[i]);
-                Print(arr, i - 1, sum - arr[i], p);
-            }
-            
+                p.Add(tiles[i]);
+                TilesCombinationToList(tiles, i - 1, sum - tiles[i], p);
+            }          
         }
 
-
-
-
-        //    foreach (int i in tiles)
-        //    {
-        //        if (i == DiceSum)
-        //        {
-        //            availableTiles = new List<int>()
-        //            {
-        //                i,
-        //            };
-        //            collection.Add(availableTiles);
-        //            break;
-        //        }
-        //        else if (i < DiceSum)
-        //        {
-        //            foreach (int j in tiles)
-        //            {
-        //                if (i < j)
-        //                {
-        //                    if (i + j == DiceSum)
-        //                    {
-        //                        availableTiles = new List<int>()
-        //                    {
-        //                        i,
-        //                        j,
-        //                    };
-        //                        collection.Add(availableTiles);
-        //                        break;
-        //                    }
-        //                    else if (i + j < DiceSum)
-        //                    {
-        //                        foreach (int k in tiles)
-        //                        {
-        //                            if (j < k)
-        //                            {
-        //                                if (i + j + k == DiceSum)
-        //                                {
-        //                                    availableTiles = new List<int>()
-        //                                {
-        //                                    i,
-        //                                    j,
-        //                                    k,
-        //                                };
-        //                                    collection.Add(availableTiles);
-        //                                    break;
-        //                                }
-        //                                else if (i + j + k < DiceSum)
-        //                                {
-        //                                    foreach (int l in tiles)
-        //                                    {
-        //                                        if (k < l)
-        //                                        {
-        //                                            if (i + j + k + l == DiceSum)
-        //                                            {
-        //                                                availableTiles = new List<int>()
-        //                                                {
-        //                                                    i,
-        //                                                    j,
-        //                                                    k,
-        //                                                    l,
-        //                                                };
-        //                                                collection.Add(availableTiles);
-        //                                                break;
-        //                                            }
-        //                                        }
-        //                                    }
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    Collection = collection;
-        //    List<int> sortedList = SortOutDuplicates(Collection);
-        //    SetStatusOfGameTiles(sortedList);
-        //}
-        //public void FindAvailableTiles()
-        //{
-        //    List<int> tiles = new List<int>();
-
-        //    foreach (Tile tile in GameTiles)
-        //    {
-        //        if (tile.CurrentStatus != Status.DownwardGameTile)
-        //        {
-        //            tiles.Add(tile.TileValue);
-        //        }
-        //    }
-
-        //    List<List<int>> collection = new List<List<int>>();
-        //    List<int> availableTiles;
-
-        //    foreach (int i in tiles)
-        //    {
-        //        if (i == DiceSum)
-        //        {
-        //            availableTiles = new List<int>()
-        //            {
-        //                i,
-        //            };
-        //            collection.Add(availableTiles);
-        //            break;
-        //        }
-        //        else if (i < DiceSum)
-        //        {
-        //            foreach (int j in tiles)
-        //            {
-        //                if (i < j)
-        //                {
-        //                    if (i + j == DiceSum)
-        //                    {
-        //                        availableTiles = new List<int>()
-        //                    {
-        //                        i,
-        //                        j,
-        //                    };
-        //                        collection.Add(availableTiles);
-        //                        break;
-        //                    }
-        //                    else if (i + j < DiceSum)
-        //                    {
-        //                        foreach (int k in tiles)
-        //                        {
-        //                            if (j < k)
-        //                            {
-        //                                if (i + j + k == DiceSum)
-        //                                {
-        //                                    availableTiles = new List<int>()
-        //                                {
-        //                                    i,
-        //                                    j,
-        //                                    k,
-        //                                };
-        //                                    collection.Add(availableTiles);
-        //                                    break;
-        //                                }
-        //                                else if (i + j + k < DiceSum)
-        //                                {
-        //                                    foreach (int l in tiles)
-        //                                    {
-        //                                        if (k < l)
-        //                                        {
-        //                                            if (i + j + k + l == DiceSum)
-        //                                            {
-        //                                                availableTiles = new List<int>()
-        //                                                {
-        //                                                    i,
-        //                                                    j,
-        //                                                    k,
-        //                                                    l,
-        //                                                };
-        //                                                collection.Add(availableTiles);
-        //                                                break;
-        //                                            }
-        //                                        }
-        //                                    }
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    Collection = collection;
-        //    List<int> sortedList = SortOutDuplicates(Collection);
-        //    SetStatusOfGameTiles(sortedList);
-        //}
         /// <summary>
         /// Metod som testar om spelarens valda tiles blir tärningarnas
         /// summa och sätter relevant status 
@@ -758,7 +599,7 @@ namespace SUP23_G4.ViewModels
             DiceTossSound();
             DisplayDiceSum = $"= {DiceSum}";
             DisplayDiceSumVisibility = Visibility.Visible;
-            FindAvailableTiles();
+            Fill2DArray();
         }
         /// <summary>
         /// Metod som sätter alla tiles som inte är notavailable till notavailable, används vid start av ny spelares tur
