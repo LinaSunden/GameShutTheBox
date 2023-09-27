@@ -50,7 +50,6 @@ namespace SUP23_G4.ViewModels
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
             StartRematchCommand = new RelayCommand(x => StartRematch());
             VisibilityGameEndingCommand = new RelayCommand(x => VisibilityGameEnding());
-
             GameTiles = new ObservableCollection<Tile>();
             Dice = new ObservableCollection<Die>();
             Language = new ();
