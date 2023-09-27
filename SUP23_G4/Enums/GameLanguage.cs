@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SUP23_G4.Enums
 {
-    internal enum GameLanguage
+    public enum GameLanguage
     {
         Swedish,
         English, 

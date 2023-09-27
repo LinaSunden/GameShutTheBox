@@ -64,10 +64,10 @@ namespace SUP23_G4.ViewModels
         }
         #endregion
         #region Egenskaper
-        public Player Player1 { get; set; }
-        public Player Player2 { get; set; }
-        public ObservableCollection<Tile> GameTiles { set; get; }
-        public ObservableCollection<Die> Dice { set; get; }
+        public Player Player1 { get; private set; }
+        public Player Player2 { get; private set; }
+        public ObservableCollection<Tile> GameTiles { get; private set; }
+        public ObservableCollection<Die> Dice { get; private set; }
         public Language Language { get; set; } 
         /// <summary>
         /// Collection används för att hålla olika sifferkombinationer.
@@ -77,41 +77,41 @@ namespace SUP23_G4.ViewModels
         public Brush Player2ForegroundBrush { get; set; } = Brushes.White;
         public PlayerMessageButton PMButton { get; set; }
         public ICommand RollDiceCommand { get; }
-        public ICommand TileClickedCommand { get; set; }
+        public ICommand TileClickedCommand { get; }
         public ICommand ExecuteMoveCommand { get; }
         public ICommand GoToStartCommand { get; }
-        public ICommand SoundEffectsCommand { get; set; }
+        public ICommand SoundEffectsCommand { get; }
         public ICommand ViewGameRulesCommand { get; }
         public ICommand StartRematchCommand { get; }
         public ICommand VisibilityGameEndingCommand { get; }
-        public ICommand TestBonusGame { get; set; } //TODO: Ta bort commando när vi har testat klart bonusomgång}
-        public Visibility ExecuteMove { get; set; } = Visibility.Hidden;
-        public Visibility Player1Turn { get; set; }
-        public Visibility Player2Turn { get; set; }
-        public Visibility BonusButtonVisibility { get; set; } = Visibility.Collapsed;
-        public Visibility GameButtonsVisibility { get; set; } = Visibility.Collapsed;
-        public Visibility GameRoundVisibility { get; set; } 
-        public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
+        public ICommand TestBonusGame { get; } //TODO: Ta bort commando när vi har testat klart bonusomgång}
+        public Visibility ExecuteMove { get; private set; } = Visibility.Hidden;
+        public Visibility Player1Turn { get; private set; }
+        public Visibility Player2Turn { get; private set; }
+        public Visibility BonusButtonVisibility { get; private set; } = Visibility.Collapsed;
+        public Visibility GameButtonsVisibility { get; private set; } = Visibility.Collapsed;
+        public Visibility GameRoundVisibility { get; private set; } 
+        public Visibility GameRuleVisibility { get; private set; } = Visibility.Hidden;
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
-        public Visibility BonusRoundVisibility { get; set; } = Visibility.Hidden;
-        public Visibility TileValueVisibility { get; set; } = Visibility.Hidden;
-        public Visibility MessageBoxVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility BonusRoundVisibility { get; private set; } = Visibility.Hidden;
+        public Visibility TileValueVisibility { get; private set; } = Visibility.Hidden;
+        public Visibility MessageBoxVisibility { get; private set; } = Visibility.Collapsed;
         public int DiceSum { get; private set; }
-        public int GameRoundCounter { get; set; } = 1;
-        public int PlayerTurnCounter { get; set; } = 1;
+        public int GameRoundCounter { get; private set; } = 1;
+        public int PlayerTurnCounter { get; private set; } = 1;
         private int TargetPoints {  get; set; }
         public string SpeakerImage { get; set; }
         public string? DisplayDiceSum { get; set; }
-        public bool IsSoundEffectsAllowed { get; set; } = true;
-        public bool IsThrowEnable { get; set; } = true;
+        public bool IsSoundEffectsAllowed { get; private set; } = true;
+        public bool IsThrowEnable { get; private set; } = true;
         #endregion
 
         #region Instansvariabler
 
         private SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
         private SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
-        List<List<int>> collection;
-        static bool[,] dp;
+        private List<List<int>> collection;
+        private static bool[,] dp;
         #endregion
 
         #region Metoder
@@ -121,7 +121,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Skapar 10 tiles med värde 1-10 och ger dem status AvailableGameTile och lägger dem i en ObservableCollection som heter GameTiles.
         /// </summary>
-        public void FillCollectionOfGameTiles()
+        private void FillCollectionOfGameTiles()
         {
 
 
@@ -139,7 +139,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Ändrar status på vald tile från view
         /// </summary>
-        public void UpdateStatusOfChosenGameTile(Object x)
+        private void UpdateStatusOfChosenGameTile(Object x)
         {
             if (DiceSum == 0)
             {
@@ -167,7 +167,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Ändrar status på vald tile i kollektionen av tiles
         /// </summary>
-        public void ChangeStatusOfChosenTile(Tile tile)
+        private void ChangeStatusOfChosenTile(Tile tile)
         {
 
             if (tile.CurrentStatus == Status.AvailableGameTile)
@@ -183,7 +183,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som används för att sätta rätt status på en tile inför ett tärningskast.
         /// </summary>
-        public bool IsTileNotAvailable()
+        private bool IsTileNotAvailable()
         {
             foreach (Tile t in GameTiles)
             {
@@ -197,7 +197,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som tar bort alla sifferkombinationer som inte överenstämmer med vald siffra.
         /// </summary>
-        public void UpdateStatusOfAvailableTiles()
+        private void UpdateStatusOfAvailableTiles()
         {
             List<List<int>> updatedCollection = new List<List<int>>(Collection);
 
@@ -221,7 +221,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som ändrar status på ospelade tiles till Available.
         /// </summary>
-        public void NotAvailableToAvailable()
+        private void NotAvailableToAvailable()
         {
             foreach (Tile tile in GameTiles)
             {
@@ -235,7 +235,7 @@ namespace SUP23_G4.ViewModels
         /// Metod som räknar ut vilka tiles som är tillgängliga utifrån 
         /// det sammanlagda värdet av båda tärningar
         /// </summary>
-        public void SetStatusOfGameTiles(List<int> sortedList)
+        private void SetStatusOfGameTiles(List<int> sortedList)
         {
             int count = 0;
             foreach (Tile tile in GameTiles)
@@ -290,7 +290,7 @@ namespace SUP23_G4.ViewModels
         /// är värdena på de tiles som är tillgängliga samt tärningarnas summa
         /// </summary>
         ///        
-        public void Fill2DArray()
+        private void Fill2DArray()
         {
             List<int> tiles = new List<int>();
 
@@ -394,7 +394,7 @@ namespace SUP23_G4.ViewModels
         /// Metod som testar om spelarens valda tiles blir tärningarnas
         /// summa och sätter relevant status 
         /// </summary>
-        public void CompareSelectedTilesWithDiceValue()
+        private void CompareSelectedTilesWithDiceValue()
         {
             int calculatedSum = 0;
 
@@ -441,7 +441,7 @@ namespace SUP23_G4.ViewModels
 
         #region Visibility
 
-        public void VisibilityGameEnding()
+        private void VisibilityGameEnding()
         {
             MessageBoxVisibility = Visibility.Collapsed;    
             ExecuteMove = Visibility.Hidden;
@@ -450,7 +450,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som gör tärningarna inte går att klicka samt visar "genomför drag knapp".
         /// </summary>
-        public void VisibilityMakeMoveButton()
+        private void VisibilityMakeMoveButton()
         {
             ExecuteMove = Visibility.Visible;
             IsThrowEnable = false;
@@ -458,7 +458,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som gör att tärningarna går att klicka samt att "genomför drag knapp" ej är synlig.
         /// </summary>
-        public void MakeDiceClickable()
+        private void MakeDiceClickable()
         {
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = true;
@@ -466,7 +466,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som gör bonusomgången synlig i vyn
         /// </summary>
-        public void VisibilityBonusRound()
+        private void VisibilityBonusRound()
         {
             GameRoundVisibility = Visibility.Hidden;
             BonusRoundVisibility = Visibility.Visible;
@@ -474,7 +474,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som gör så att aktuell spelares namn och poäng markeras med en grön ruta i vyn
         /// </summary>
-        public void SwitchPlayerTurn()
+        private void SwitchPlayerTurn()
         {
             if (PlayerTurnCounter == 1)
             {
@@ -538,7 +538,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Skapar två tärningar och sätter fasta värden när spelet startas 
         /// </summary>
-        public void CreateDice()
+        private void CreateDice()
         {
             
             for (int i = 0; i < 2; i++)
@@ -566,7 +566,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Kastar två tärningar och får uppdaterade värden på DieOne och DieTwo
         /// </summary>
-        public void DiceToss()
+        private void DiceToss()
         {
             MessageBoxVisibility = Visibility.Collapsed;
             DiceSum = 0;
@@ -600,7 +600,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som sätter alla tiles som inte är notavailable till notavailable, används vid start av ny spelares tur
         /// </summary>
-        public void NewGameTurn()
+        private void NewGameTurn()
         {
 
             foreach (Tile tile in GameTiles)
@@ -617,7 +617,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Ger vyn förutsättningar och utseende för att spela en bonusomgång
         /// </summary>
-        public void StartBonusRound()
+        private void StartBonusRound()
         {
 
             MessageBoxVisibility = Visibility.Collapsed;
@@ -634,7 +634,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som ger vyn försättningar och utseende för att spela en vanlig spelomgång
         /// </summary>
-        public void StartRematch()  // Kopplas till messagebox som ska avgöra om du vill göra en rematch med samma spelare eller gå ur spelet till startsida.
+        private void StartRematch()  // Kopplas till messagebox som ska avgöra om du vill göra en rematch med samma spelare eller gå ur spelet till startsida.
         {
             NewGameTurn();
             Player1.Score = 0;
@@ -654,7 +654,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som avslutar ett drag och gör spelet redo för ett nytt tärningskast.
         /// </summary>
-        public void MoveIsExecuted()
+        private void MoveIsExecuted()
         {
             MessageBoxVisibility = Visibility.Collapsed;
             if (IsAllTilesDownward())
@@ -680,7 +680,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden tur. 
         /// </summary>
-        public void ScoreCounter()
+        private void ScoreCounter()
         {
 
             foreach (Tile tile in GameTiles)
@@ -759,7 +759,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Metod som utser vinnaren vanlig spelomgång alternativ ger övergång till en bonusomgång
         /// </summary>
-        public void WinnerOfGame()
+        private void WinnerOfGame()
         {
             if (PlayerTurnCounter == 2)
             {
