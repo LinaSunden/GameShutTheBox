@@ -29,7 +29,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel HorizontalAlignment="Right" Grid.Column="1">
-                <TextBlock Text="{Binding Language.SelectLanguage}"
+                <TextBlock Text="{Binding CurrentLanguage.SelectLanguage}"
     Foreground="White"
     FontSize="12"
     Opacity="1" 
@@ -56,7 +56,7 @@
             </StackPanel>
 
 
-            <Button Content="{Binding Language.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand, Source={x:Static vm:MainViewModel.Instance}}">
+            <Button Content="{Binding CurrentLanguage.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand, Source={x:Static vm:MainViewModel.Instance}}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#FFFDE3C2" Offset="0.0"/>

@@ -30,10 +30,10 @@ namespace SUP23_G4.ViewModels
         {
             GoToStartCommand = new RelayCommand(page => GoToStartView());
             GameRulesCommand = new RelayCommand(page => StartGameRules());
-            StartGameCommand = new RelayCommand(page => StartGame(page)); 
+            StartGameCommand = new RelayCommand(page => StartGame(page));
 
-            Language = new();
-            UpdateLanguage();
+            CurrentLanguage = new English();
+            //UpdateLanguage();
         }
 
         /// <summary>
@@ -68,25 +68,31 @@ namespace SUP23_G4.ViewModels
         public ICommand GoToStartCommand { get; }
         public ICommand StartGameCommand { get; }
         public ICommand GameRulesCommand { get; }
-        public Language Language { get; set; } // ska det stå CurrentLanguage?
+        public Language CurrentLanguage { get; set; }
 
-        private int _cboSelectedIndex = 1;
-        public int CboSelectedIndex
-        {
-            get { return _cboSelectedIndex; }
-            set
-            {
-                if (_cboSelectedIndex != value)
-                {
-                    _cboSelectedIndex = value;
-                    UpdateLanguage();
-                }
-            }
-        }
+
+        //private int _cboSelectedIndex = 1;
+        //public int CboSelectedIndex
+        //{
+        //    get { return _cboSelectedIndex; }
+        //    set
+        //    {
+        //        if (_cboSelectedIndex != value)
+        //        {
+        //            _cboSelectedIndex = value;
+        //            UpdateLanguage();
+        //        }
+        //    }
+        //}
 
         #endregion
 
         #region Metoder
+
+        private void UpdateLanguage()
+        {
+
+        }
 
         /// <summary>
         /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
@@ -107,25 +113,25 @@ namespace SUP23_G4.ViewModels
         //    }
         //}
 
-        /// <summary>
-        /// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på StartView
-        /// </summary>
-        private void UpdateLanguage()
-        {
-            if (File.Exists("English.json") && CboSelectedIndex == 1)
-            {
-                Language = JsonFileHandler.Open<Language>("English.json");
+        ///// <summary>
+        ///// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på StartView
+        ///// </summary>
+        //private void UpdateLanguage()
+        //{
+        //    if (File.Exists("English.json") && CboSelectedIndex == 1)
+        //    {
+        //        CurrentLanguage = JsonFileHandler.Open<Language>("English.json");
 
-            }
-            else if (File.Exists("Swedish.json") && CboSelectedIndex == 0)
-            {
-                Language = JsonFileHandler.Open<Language>("Swedish.json");
-            }
-            else
-            {
-                Language = new Language();
-            }
-        }
+        //    }
+        //    else if (File.Exists("Swedish.json") && CboSelectedIndex == 0)
+        //    {
+        //        CurrentLanguage = JsonFileHandler.Open<Language>("Swedish.json");
+        //    }
+        //    else
+        //    {
+        //        CurrentLanguage = new Language();
+        //    }
+        //}
         #endregion
     }
 }

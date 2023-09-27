@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.IO;
 using SUP23_G4.FileHandler;
+using SUP23_G4.Enums;
 
 namespace SUP23_G4.Models.Languages
 {
@@ -58,6 +59,23 @@ namespace SUP23_G4.Models.Languages
         #endregion
 
 
+
+        #region Metoder
+        private void UpdateLanguage()
+        {
+            switch (GameLanguage.Swedish)
+            {
+
+            }
+
+            switch (GameLanguage.English) 
+            {
+
+            }
+
+        }
+
+        #endregion
 
 
 
