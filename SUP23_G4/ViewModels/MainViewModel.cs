@@ -32,9 +32,8 @@ namespace SUP23_G4.ViewModels
             //CurrentViewModel = new StartViewModel(this);
             //PlayerSettingsDto _settingsDto;
             GoToStartCommand = new RelayCommand(page => GoToStartView());
-            StartGameCommand = new RelayCommand(page => StartGame()); //ta emot dton
             GameRulesCommand = new RelayCommand(page => StartGameRules());
-            
+            StartGameCommand = new RelayCommand(page => StartGame(page)); //ta emot dton
 
             Language = new();
             UpdateLanguage();
@@ -52,12 +51,14 @@ namespace SUP23_G4.ViewModels
             CurrentViewModel = new GameRulesModel();
         }
 
-        private void StartGame() //Hur når vi metoden SetupGame?? (ligger i startviewmodel)
+        private void StartGame(object dto) //Hur når vi metoden SetupGame?? (ligger i startviewmodel)
         {
-
+            var settingsDto = dto as PlayerSettingsDto; 
+            //CurrentViewModel = new StartViewModel();
             //CurrentViewModel = startViewModel.SetupGame(); 
+            
             //startViewModel.SetupGame(); ///Kan inte ligga här för då är startviewmodel null
-            CurrentViewModel = new GameViewModel(SettingsDto); //får inte med sig DTOn
+            CurrentViewModel = new GameViewModel(settingsDto); //får inte med sig DTOn
             
         }
 
@@ -71,8 +72,11 @@ namespace SUP23_G4.ViewModels
         public ICommand StartGameCommand { get; }
         public ICommand GameRulesCommand { get; }
         public Language Language { get; set; } // ska det stå CurrentLanguage?
+
         public PlayerSettingsDto SettingsDto; 
+
         public StartViewModel startViewModel; 
+
         private int _cboSelectedIndex = 1;
         public int CboSelectedIndex
         {

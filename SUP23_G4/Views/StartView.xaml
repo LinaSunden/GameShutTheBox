@@ -207,8 +207,10 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
                     Margin="10,0,0,0"
-                    BorderBrush="#FF7B7B7B" 
-                    Command="{Binding StartGameCommand, Source= {x:Static vm:MainViewModel.Instance}}">
+                    BorderBrush="#FF7B7B7B"
+                    Command="{Binding SetUpGameCommand}">
+ 
+                 
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#FFFDE3C2" Offset="0.0"/>

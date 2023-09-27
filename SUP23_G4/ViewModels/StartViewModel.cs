@@ -33,7 +33,7 @@ namespace SUP23_G4.ViewModels
             //SetupGame();
             //MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto);
             //_mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);
-
+            SetUpGameCommand = new RelayCommand(S => SetupGame()); 
         }
 
         #endregion
@@ -46,6 +46,7 @@ namespace SUP23_G4.ViewModels
         public Language Language {get; set;}  
         public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
         public ICommand MuteMusicCommand { get; set; }
+        public ICommand SetUpGameCommand { get; }
         public int TargetPoints { get; set; } = 45;
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
@@ -68,7 +69,9 @@ namespace SUP23_G4.ViewModels
         {
             StartScreenMusic.Stop();
             CreatePlayers();
-            MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto); //hur får vi med oss DTOn?
+            MainViewModel.Instance.StartGameCommand(SettingsDto);
+            
+            //MainViewModel.Instance.CurrentViewModel = new MainViewModel(SettingsDto); //hur får vi med oss DTOn?
             
             //_mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);
         }
