@@ -14,10 +14,9 @@ namespace SUP23_G4.Models.Languages
         {
             if (File.Exists("Swedish.json"))
             {
-                LanguageSwedish = JsonFileHandler.Open<Language>("Swedish.json");
+                SelectedLanguage = JsonFileHandler.Open<Language>("Swedish.json");
             }
         }
 
-        public Language LanguageSwedish { get; set; }
     }
 }

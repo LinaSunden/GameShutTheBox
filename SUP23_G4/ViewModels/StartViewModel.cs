@@ -26,7 +26,7 @@ namespace SUP23_G4.ViewModels
         public StartViewModel()
         {
 
-            Language = new();
+            //Language = new();
             StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
             StartScreenMusic.Play();
             IsMusicPlaying = true;
@@ -43,7 +43,7 @@ namespace SUP23_G4.ViewModels
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
         public PlayerSettingsDto SettingsDto;
-        public Language Language {get; set;}  
+        //public Language Language {get; set;}  
         public SoundPlayer StartScreenMusic;
         public ICommand MuteMusicCommand { get; set; }
         public ICommand SetUpGameCommand { get; }

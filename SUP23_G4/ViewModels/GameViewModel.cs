@@ -52,7 +52,7 @@ namespace SUP23_G4.ViewModels
 
             GameTiles = new ObservableCollection<Tile>();
             Dice = new ObservableCollection<Die>();
-            Language = new ();
+            //Language = new ();
             PMButton = new();
             TestBonusGame = new RelayCommand(x => StartBonusRound()); //TODO: Ta bort commando när vi har testat klart bonusomgång
             FillCollectionOfGameTiles();
@@ -68,7 +68,7 @@ namespace SUP23_G4.ViewModels
         public Player Player2 { get; set; }
         public ObservableCollection<Tile> GameTiles { set; get; }
         public ObservableCollection<Die> Dice { set; get; }
-        public Language Language { get; set; } 
+        //public Language Language { get; set; } 
         /// <summary>
         /// Collection används för att hålla olika sifferkombinationer.
         /// </summary>

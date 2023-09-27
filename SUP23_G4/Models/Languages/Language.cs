@@ -21,6 +21,8 @@ namespace SUP23_G4.Models.Languages
 
         }
 
+        public Language SelectedLanguage { get; set; }
+
         #region MainWindow
         public string HomePage { get; set; } = "Startsida";
         #endregion
@@ -56,23 +58,43 @@ namespace SUP23_G4.Models.Languages
 
         public string GameRules { get; set; } = "Spelregler";
 
+        public string DecidePoints { get; set; } = "Antal poäng att spela till";
+
+        #endregion
+
+
+        #region Meddelandeboxar
+
+        public string Player1Winner { get; set; } = "Grattis Player1 du har vunnit!\n\rVill du köra en rematch?";
+
         #endregion
 
 
 
         #region Metoder
-        private void UpdateLanguage()
+
+        /// <summary>
+        /// Ändrar visningsspråket i appen genom en enum. Property SelectedLanguage fylls med det valda språket
+        /// </summary>
+        /// <param name="gameLanguage"></param>
+        /// <returns></returns>
+        public static Language UpdateLanguage(GameLanguage gameLanguage)
         {
-            switch (GameLanguage.Swedish)
+
+            switch (gameLanguage)
             {
+                case GameLanguage.Swedish:
+                    return new Swedish();
+                    break;
+                case GameLanguage.English:
+                    return new English();
+                    break;
+                default:
+                    return null;
+              
 
             }
-
-            switch (GameLanguage.English) 
-            {
-
-            }
-
+        
         }
 
         #endregion

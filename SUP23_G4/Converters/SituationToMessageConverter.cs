@@ -1,4 +1,6 @@
 ﻿using SUP23_G4.Enums;
+using SUP23_G4.Models.Languages;
+using SUP23_G4.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,15 +14,17 @@ namespace SUP23_G4.Converters
 {
      public class SituationToMessageConverter : IValueConverter
     {
-           
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is MessageStatus && value != null)
             {
                 var messageStatus = (MessageStatus)value;
+                MainViewModel mainViewModel = parameter as MainViewModel;
+
                 return messageStatus switch
                 {
-                    MessageStatus.Player1Winner => "Grattis Player1 du har vunnit!\n\rVill du köra en rematch?",
+                    MessageStatus.Player1Winner => mainViewModel.CurrentLanguage.SelectedLanguage.Player1Winner,
                     MessageStatus.Player2Winner => "Grattis Player2 du har vunnit!\n\rVill du köra en rematch?",
                     MessageStatus.BonusGame => "Spelet slutade lika då \n\rbåda spelarna fick samma poäng,\n\rVill ni köra en bonusomgång?",
                     //MessageStatus.GameFinished1,

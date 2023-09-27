@@ -1,11 +1,13 @@
 ﻿using SUP23_G4.Commands;
 using SUP23_G4.Dto;
+using SUP23_G4.Enums;
 using SUP23_G4.FileHandler;
 using SUP23_G4.Models.Languages;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Media;
@@ -32,8 +34,8 @@ namespace SUP23_G4.ViewModels
             GameRulesCommand = new RelayCommand(page => StartGameRules());
             StartGameCommand = new RelayCommand(page => StartGame(page));
 
-            CurrentLanguage = new English();
-            //UpdateLanguage();
+            ChangeLanguage(GameLanguage.English);
+
         }
 
         /// <summary>
@@ -70,28 +72,40 @@ namespace SUP23_G4.ViewModels
         public ICommand GameRulesCommand { get; }
         public Language CurrentLanguage { get; set; }
 
+        private GameLanguage _gameLanguage;  
+        public GameLanguage GameLanguage
+        {
+            get { return _gameLanguage; }
+            set
+            {
+                if (_gameLanguage != value)
+                {
+                    _gameLanguage = value;
+                    ChangeLanguage(_gameLanguage);
+                }
+            }
+        }
 
-        //private int _cboSelectedIndex = 1;
-        //public int CboSelectedIndex
-        //{
-        //    get { return _cboSelectedIndex; }
-        //    set
-        //    {
-        //        if (_cboSelectedIndex != value)
-        //        {
-        //            _cboSelectedIndex = value;
-        //            UpdateLanguage();
-        //        }
-        //    }
-        //}
+        public ObservableCollection<GameLanguage> GameLanguages { get; } = new ObservableCollection<GameLanguage>
+        {
+            GameLanguage.English,
+            GameLanguage.Swedish,
+        };
+
+
+
+
 
         #endregion
 
         #region Metoder
-
-        private void UpdateLanguage()
+        /// <summary>
+        /// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på MainView
+        /// </summary>
+        /// <param name="gameLanguage"></param>
+        public void ChangeLanguage (GameLanguage gameLanguage)
         {
-
+            CurrentLanguage = Language.UpdateLanguage(gameLanguage);
         }
 
         /// <summary>
@@ -113,25 +127,7 @@ namespace SUP23_G4.ViewModels
         //    }
         //}
 
-        ///// <summary>
-        ///// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på StartView
-        ///// </summary>
-        //private void UpdateLanguage()
-        //{
-        //    if (File.Exists("English.json") && CboSelectedIndex == 1)
-        //    {
-        //        CurrentLanguage = JsonFileHandler.Open<Language>("English.json");
-
-        //    }
-        //    else if (File.Exists("Swedish.json") && CboSelectedIndex == 0)
-        //    {
-        //        CurrentLanguage = JsonFileHandler.Open<Language>("Swedish.json");
-        //    }
-        //    else
-        //    {
-        //        CurrentLanguage = new Language();
-        //    }
-        //}
+     
         #endregion
     }
 }

@@ -7,6 +7,7 @@
         xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
         xmlns:views="clr-namespace:SUP23_G4.Views.Pages"
         xmlns:language="clr-namespace:SUP23_G4.Models.Languages"
+        xmlns:enum="clr-namespace:SUP23_G4.Enums"
         d:DataContext="{d:DesignInstance vm:MainViewModel}"
    
         mc:Ignorable="d"
@@ -29,7 +30,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel HorizontalAlignment="Right" Grid.Column="1">
-                <TextBlock Text="{Binding CurrentLanguage.SelectLanguage}"
+                <TextBlock Text="{Binding CurrentLanguage.SelectedLanguage.SelectLanguage}"
     Foreground="White"
     FontSize="12"
     Opacity="1" 
@@ -38,25 +39,37 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <ComboBox Margin="0,5" SelectedIndex="{Binding CboSelectedIndex}">
-                    <ComboBoxItem x:Name="Svenska">
+
+                <ComboBox Margin="0,5" SelectedItem="{Binding GameLanguage}" ItemsSource="{Binding GameLanguages}">
+                    
+                    
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding}"/>
+                                
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    
+                    <!--<ComboBoxItem x:Name="Swedish">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Image/SwedenFlag.png" Width="48"/>
                             <TextBlock Text="Svenska"/>
                         </StackPanel>
                     </ComboBoxItem>
+
                     <ComboBoxItem x:Name="English">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Image/GreatBritainFlag.png" Width="48"/>
                             <TextBlock Text="English"/>
                         </StackPanel>
-                    </ComboBoxItem>
-
+                    </ComboBoxItem>-->
                 </ComboBox>
             </StackPanel>
 
 
-            <Button Content="{Binding CurrentLanguage.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand, Source={x:Static vm:MainViewModel.Instance}}">
+            <Button Content="{Binding CurrentLanguage.SelectedLanguage.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand, Source={x:Static vm:MainViewModel.Instance}}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#FFFDE3C2" Offset="0.0"/>

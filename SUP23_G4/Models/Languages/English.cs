@@ -14,11 +14,11 @@ namespace SUP23_G4.Models.Languages
         {
             if (File.Exists("English.json"))
             {
-                LanguageEnglish = JsonFileHandler.Open<Language>("English.json");
+                SelectedLanguage = JsonFileHandler.Open<Language>("English.json");
 
             }
         }
 
-        public Language LanguageEnglish { get; set; }
+       
     }
 }
