@@ -89,6 +89,25 @@ namespace SUP23_G4.ViewModels
         #region Metoder
 
         /// <summary>
+        /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
+        /// </summary>
+        //private void GoToStartView()
+        //{
+        //    if (CurrentViewModel is GameViewModel)
+        //    {
+        //        MessageBoxResult result = MessageBox.Show("Vill du avsluta spelet och gå tillbaka till startsidan?", "Avsluta spelet", MessageBoxButton.YesNo);
+        //        if (result == MessageBoxResult.Yes)
+        //        {
+        //            CurrentViewModel = new StartViewModel();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        CurrentViewModel = new StartViewModel();
+        //    }
+        //}
+
+        /// <summary>
         /// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på StartView
         /// </summary>
         private void UpdateLanguage()

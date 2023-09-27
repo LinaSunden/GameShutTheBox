@@ -29,9 +29,9 @@ namespace SUP23_G4.ViewModels
             Language = new();
             StartScreenMusic.Play();
             IsMusicPlaying = true;
-            SetUpGameCommand = new RelayCommand(S => SetupGame());
+            SetUpGameCommand = new RelayCommand(S => SetupGame()); 
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
-
+            MuteMusicCommand = new RelayCommand(x => MuteStartMusic());
 
 
         }
