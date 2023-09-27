@@ -143,6 +143,8 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,35,0,0">
                 <TextBlock 
                    Text="{Binding Player1.Name}"
                    HorizontalAlignment="Left"
@@ -157,12 +159,12 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"  Grid.Row="0" Grid.Column="0" Margin="10,50,0,0">
+            <StackPanel Orientation="Horizontal"  Grid.Row="0" Grid.Column="0" Margin="10,80,0,0">
                 <TextBlock
                     Text="{Binding Language.Score}"
                     HorizontalAlignment="left"
                     Foreground="White"
-                    FontSize="20"
+                    FontSize="25"
                     Margin="10,20,0,0"  
                     Opacity="1" 
                     FontWeight="Bold" 
@@ -275,6 +277,8 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,35,0,0">
                 <TextBlock 
                    Text="{Binding Player2.Name}"
                    HorizontalAlignment="Left"
@@ -288,9 +292,8 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
-
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,50,0,0">
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,80,0,0">
                 <TextBlock
                    Text="{Binding Language.Score}"
                    HorizontalAlignment="Left"
