@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace SUP23_G4.Commands
 {
-    internal class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;
 

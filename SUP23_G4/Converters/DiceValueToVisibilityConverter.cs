@@ -11,7 +11,7 @@ using System.Windows.Data;
 
 namespace SUP23_G4.Converters
 {
-    class DiceValueToVisibilityConverter : IValueConverter
+    public class DiceValueToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -40,18 +40,19 @@ namespace SUP23_G4.ViewModels
         #endregion
 
         #region Egenskaper
-        public Player Player1 { get; set; }
-        public Player Player2 { get; set; }
-        public PlayerSettingsDto SettingsDto;
+        public Player Player1 { get; private set; }
+        public Player Player2 { get; private set; }
+
+        private PlayerSettingsDto SettingsDto;
         public Language Language {get; set;}  
-        public SoundPlayer StartScreenMusic;
-        public ICommand MuteMusicCommand { get; set; }
+        private SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
+        public ICommand MuteMusicCommand { get;}
         public ICommand SetUpGameCommand { get; }
         public int TargetPoints { get; set; } = 45;
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
         public string SpeakerImage { get; set; }
-        public bool IsMusicPlaying { get; set; }
+        public bool IsMusicPlaying { get; private set; }
         #endregion
 
         
@@ -60,7 +61,7 @@ namespace SUP23_G4.ViewModels
         /// Stoppar startmusiken, lägger till spelarnamn i Dton och skickar med den till GameViewModel
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void SetupGame()
+        private void SetupGame()
         {
             StartScreenMusic.Stop();
             CreatePlayers();
