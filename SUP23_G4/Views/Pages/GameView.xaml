@@ -119,13 +119,16 @@
                       Background="#FFF5B94A" 
                       Foreground="WhiteSmoke" 
                       FontFamily="Cascadia Mono" 
-                      FontSize="14" 
+                      FontWeight="Bold"
+                      FontSize="22" 
+                      Opacity="1"
                       Width="270" 
-                      Height="150" 
+                      Height="150"  
                       HorizontalAlignment="Left"
                       VerticalAlignment="Top"
                       Grid.Column="0" Grid.Row="0" 
-                      Margin="5" Visibility="{Binding Player1Turn}"/>
+                      Margin="5" Visibility="{Binding Player1Turn}" IsEnabled="False">
+            </GroupBox>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
                     Text="{Binding Language.Player1}"
@@ -253,7 +256,8 @@
                       Background="#FFF5B94A" 
                       Foreground="WhiteSmoke" 
                       FontFamily="Cascadia Mono" 
-                      FontSize="14"
+                      FontSize="22"
+                      FontWeight="Bold"
                       Width="270" Height="150" 
                       HorizontalAlignment="Left" VerticalAlignment="Top" 
                       Grid.Column="0" Grid.Row="2" Margin="5" 
