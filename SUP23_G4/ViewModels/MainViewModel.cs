@@ -49,7 +49,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         private void StartGameRules()
         {
-            CurrentViewModel = new GameRulesModel();
+            CurrentViewModel = new GameRulesViewModel();
         }
 
         /// <summary>
