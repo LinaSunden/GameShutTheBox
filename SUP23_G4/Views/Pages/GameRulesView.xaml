@@ -76,7 +76,6 @@
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect></TextBlock>
-            <!--<Image Source="/Resources/Image/GameRulesSwedish.png" Grid.Column="0" Grid.RowSpan="2" Margin="50" HorizontalAlignment="Left" VerticalAlignment="Center" />-->
             <Image Source="/Resources/Image/GameRulesSwedish.png" Grid.Column="1" Grid.RowSpan="3" Margin="50,100,770,100" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Image Source="/Resources/Image/GameRulesEnglish.png" Grid.Column="1" Grid.RowSpan="3" Margin="770,0,50,70" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
