@@ -61,10 +61,6 @@ namespace SUP23_G4.ViewModels
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
 
         }
-        public GameViewModel()
-        {
-
-        }
         #endregion
         #region Egenskaper
         public Player Player1 { get; set; }
@@ -774,39 +770,43 @@ namespace SUP23_G4.ViewModels
                 { 
                     Player1ForegroundBrush = Brushes.Red;
                     Player2ForegroundBrush = Brushes.Goldenrod;
+                    MessageBoxResult result = MessageBox.Show($"Grattis {Player2.Name}, du har vunnit! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        StartRematch();
+                        return;
+                    }
+                    else if (result == MessageBoxResult.No)
+                    {
+                        MainViewModel.Instance.CurrentViewModel = new StartViewModel();
+                        //VisibilityGameEnding();
+                    }
                     GameButtonsVisibility = Visibility.Visible; 
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.Player2Winner;
 
-                    //MessageBoxResult result = MessageBox.Show($"Grattis {Player2.Name}, du har vunnit! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
-                    //if (result == MessageBoxResult.Yes)
-                    //{
-                    //    StartRematch();
-                    //    return;
-                    //}
-                    //else if (result == MessageBoxResult.No)
-                    //{
-                    //    VisibilityGameEnding();
-                    //}
+
                 }
 
                 if (Player2.Score > Player1.Score && Player2.Score >= TargetPoints)
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     Player1ForegroundBrush = Brushes.Goldenrod;
+                    MessageBoxResult result = MessageBox.Show($"Grattis {Player1.Name}, du har vunnit! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        StartRematch();
+                        return;
+                    }
+                    else if (result == MessageBoxResult.No)
+                    {
+                        //VisibilityGameEnding();
+                        MainViewModel.Instance.CurrentViewModel = new StartViewModel(); 
+                    }
                     GameButtonsVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.Player1Winner;
-                    //MessageBoxResult result = MessageBox.Show($"Grattis {Player1.Name}, du har vunnit! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
-                    //if (result == MessageBoxResult.Yes)
-                    //{
-                    //    StartRematch();
-                    //    return;
-                    //}
-                    //else if (result == MessageBoxResult.No)
-                    //{
-                    //    VisibilityGameEnding();
-                    //}
+
                 }
 
                 else if (Player2.Score < TargetPoints && Player1.Score < TargetPoints)

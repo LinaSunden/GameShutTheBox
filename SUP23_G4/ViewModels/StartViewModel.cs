@@ -13,6 +13,7 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 
@@ -22,79 +23,64 @@ namespace SUP23_G4.ViewModels
     {
         #region Konstruktor
 
-        public StartViewModel(MainViewModel mainViewModel)
+        public StartViewModel()
         {
-            this._mainViewModel = mainViewModel;
-            StartGameCommand = new RelayCommand(x => StartGame());
-            GameRulesCommand = new RelayCommand(x => GoToGameRules());
-            MuteMusicCommand = new RelayCommand(x => MuteStartMusic());
+
             Language = new();
             StartScreenMusic.Play();
             IsMusicPlaying = true;
+            SetUpGameCommand = new RelayCommand(S => SetupGame()); 
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
 
 
 
         }
-        public StartViewModel()
-        {
 
-        }
         #endregion
+
         #region Egenskaper
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
-        public Language Language { get; set; }
+
         public PlayerSettingsDto SettingsDto;
+        public Language Language {get; set;}  
         public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
-        public ICommand StartGameCommand { get; set; }
-        public ICommand GameRulesCommand { get; set; }
         public ICommand MuteMusicCommand { get; set; }
+        public ICommand SetUpGameCommand { get; }
         public int TargetPoints { get; set; } = 45;
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
         public string SpeakerImage { get; set; }
-     
-
         public bool IsMusicPlaying { get; set; }
         #endregion
 
-        #region Instansvariabler
-
-        private MainViewModel _mainViewModel;
-
-        #endregion
+        
         #region Metoder
         /// <summary>
-        /// Byter CurrentViewModel från att visa Startview till att visa Gameview
+        /// Stoppar startmusiken, lägger till spelarnamn i Dton och skickar med den till GameViewModel
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        private void StartGame()
+        public void SetupGame()
         {
             StartScreenMusic.Stop();
-            CreateGame();
-            _mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);
+            CreatePlayers();
+            MainViewModel.Instance.StartGameCommand.Execute(SettingsDto);
+            MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto); 
+          
         }
         /// <summary>
         /// Skapar 2 spelare samt en Dto som lagrar dessa.
         /// </summary>
-        private void CreateGame()
+        private void CreatePlayers()
         {
             Player1 = new Player(Player1Name);
             Player2 = new Player(Player2Name);
             SettingsDto = new PlayerSettingsDto(Player1, Player2, TargetPoints);
         }
-        /// <summary>
-        /// Byter CurrentViewModel från att visa Startview till att visa GameRules
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        private void GoToGameRules()
-        {
-            _mainViewModel.CurrentViewModel = new GameRulesViewModel();
-        }
-        /// <summary>
-        /// En knapp för att muta och starta Startview musik samt byta bild.
-        /// </summary>
+
+        ///// <summary>
+        ///// En knapp för att muta och starta Startview musik samt byta bild.
+        ///// </summary>
         private void MuteStartMusic()
         {
             if (IsMusicPlaying)
