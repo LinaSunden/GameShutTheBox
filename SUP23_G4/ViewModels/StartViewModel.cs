@@ -24,17 +24,17 @@ namespace SUP23_G4.ViewModels
         #region Konstruktor
 
         public StartViewModel()
-        { 
-           
+        {
+
             Language = new();
             StartScreenMusic.Play();
             IsMusicPlaying = true;
             SpeakerImage = "/Resources/SpeakerButton.png";
             //SetupGame();
+            //MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto);
             //_mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);
-            
-        }
 
+        }
 
         #endregion
 
@@ -68,7 +68,6 @@ namespace SUP23_G4.ViewModels
         {
             StartScreenMusic.Stop();
             CreatePlayers();
-           
             MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto); //hur får vi med oss DTOn?
             
             //_mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);

@@ -57,10 +57,6 @@ namespace SUP23_G4.ViewModels
             SpeakerImage = "/Resources/SpeakerButton.png";
 
         }
-        public GameViewModel(object v)
-        {
-
-        }
         #endregion
         #region Egenskaper
         public Player Player1 { get; set; }

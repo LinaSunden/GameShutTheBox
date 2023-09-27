@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Media;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -52,11 +54,15 @@ namespace SUP23_G4.ViewModels
 
         private void StartGame() //Hur når vi metoden SetupGame?? (ligger i startviewmodel)
         {
-            
-            startViewModel.SetupGame(); ///Kan inte ligga här för då är startviewmodel null
-            //CurrentViewModel = new GameViewModel(SettingsDto); //får inte med sig DTOn
 
+            //CurrentViewModel = startViewModel.SetupGame(); 
+            //startViewModel.SetupGame(); ///Kan inte ligga här för då är startviewmodel null
+            CurrentViewModel = new GameViewModel(SettingsDto); //får inte med sig DTOn
+            
         }
+
+        private StartViewModel _startViewModel = new StartViewModel();
+        //private SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
         #endregion
 
         #region Egenskaper
