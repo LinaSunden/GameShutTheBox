@@ -28,54 +28,47 @@ namespace SUP23_G4.ViewModels
         #region Konstruktor
         public MainViewModel()
         {
-            //PlayerSettingsDto settingsDto;
-            //CurrentViewModel = new StartViewModel(this);
-            //PlayerSettingsDto _settingsDto;
             GoToStartCommand = new RelayCommand(page => GoToStartView());
             GameRulesCommand = new RelayCommand(page => StartGameRules());
-            StartGameCommand = new RelayCommand(page => StartGame(page)); //ta emot dton
+            StartGameCommand = new RelayCommand(page => StartGame(page)); 
 
             Language = new();
             UpdateLanguage();
         }
 
+        /// <summary>
+        /// Byter vy till StartView
+        /// </summary>
         private void GoToStartView()
-        {
-            
-            CurrentViewModel = new StartViewModel();
-            
+        {  
+            CurrentViewModel = new StartViewModel();        
         }
 
+        /// <summary>
+        /// Byter vy till GameRules
+        /// </summary>
         private void StartGameRules()
         {
             CurrentViewModel = new GameRulesModel();
         }
 
-        private void StartGame(object dto) //Hur når vi metoden SetupGame?? (ligger i startviewmodel)
+        /// <summary>
+        /// Byter vy till GameView och skickar med PlayerSettingsDton
+        /// </summary>
+        /// <param name="dto"></param>
+        private void StartGame(object dto)
         {
             var settingsDto = dto as PlayerSettingsDto;
-            //CurrentViewModel = new StartViewModel();
-            //CurrentViewModel = startViewModel.SetupGame(); 
-
-            //startViewModel.SetupGame(); ///Kan inte ligga här för då är startviewmodel null
-            CurrentViewModel = new GameViewModel(settingsDto); //får inte med sig DTOn
-
+            CurrentViewModel = new GameViewModel(settingsDto); 
         }
 
-        private StartViewModel _startViewModel = new StartViewModel();
-        //private SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
         #endregion
 
         #region Egenskaper
-        //public BaseViewModel CurrentViewModel { get; set; }
         public ICommand GoToStartCommand { get; }
         public ICommand StartGameCommand { get; }
         public ICommand GameRulesCommand { get; }
         public Language Language { get; set; } // ska det stå CurrentLanguage?
-
-        public PlayerSettingsDto SettingsDto; 
-
-        public StartViewModel startViewModel; 
 
         private int _cboSelectedIndex = 1;
         public int CboSelectedIndex
@@ -94,25 +87,6 @@ namespace SUP23_G4.ViewModels
         #endregion
 
         #region Metoder
-        /// <summary>
-        /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
-        /// </summary>
-        //private void GoToStartView()
-        //{
-        //    if (CurrentViewModel is GameViewModel)
-        //    {
-        //        MessageBoxResult result = MessageBox.Show("Vill du avsluta spelet och gå tillbaka till startsidan?", "Avsluta spelet", MessageBoxButton.YesNo);
-        //        if (result == MessageBoxResult.Yes)
-        //        {
-        //            CurrentViewModel = new StartViewModel(this);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        CurrentViewModel = new StartViewModel(this);
-        //    }
-        //}
-
 
         /// <summary>
         /// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på StartView

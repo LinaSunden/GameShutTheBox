@@ -30,9 +30,6 @@ namespace SUP23_G4.ViewModels
             StartScreenMusic.Play();
             IsMusicPlaying = true;
             SpeakerImage = "/Resources/SpeakerButton.png";
-            //SetupGame();
-            //MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto);
-            //_mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);
             SetUpGameCommand = new RelayCommand(S => SetupGame()); 
         }
 
@@ -41,7 +38,7 @@ namespace SUP23_G4.ViewModels
         #region Egenskaper
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
-        //public Language Language { get; set; }
+
         public PlayerSettingsDto SettingsDto;
         public Language Language {get; set;}  
         public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
@@ -54,15 +51,10 @@ namespace SUP23_G4.ViewModels
         public bool IsMusicPlaying { get; set; }
         #endregion
 
-        #region Instansvariabler
-
-        //private MainViewModel _mainViewModel;
-
-        #endregion
         
         #region Metoder
         /// <summary>
-        /// Stoppar startmusiken och lägger till spelarnamn i Dton
+        /// Stoppar startmusiken, lägger till spelarnamn i Dton och skickar med den till GameViewModel
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public void SetupGame()
@@ -71,10 +63,7 @@ namespace SUP23_G4.ViewModels
             CreatePlayers();
             MainViewModel.Instance.StartGameCommand.Execute(SettingsDto);
             MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto); 
-            
-            //MainViewModel.Instance.CurrentViewModel = new MainViewModel(SettingsDto); //hur får vi med oss DTOn?
-            
-            //_mainViewModel.CurrentViewModel = new GameViewModel(SettingsDto);
+          
         }
         /// <summary>
         /// Skapar 2 spelare samt en Dto som lagrar dessa.
