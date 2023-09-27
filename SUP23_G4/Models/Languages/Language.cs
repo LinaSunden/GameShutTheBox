@@ -10,14 +10,14 @@ using System.Windows.Controls;
 using System.IO;
 using SUP23_G4.FileHandler;
 
-namespace SUP23_G4.Languages
+namespace SUP23_G4.Models.Languages
 {
-    public class Language: BaseViewModel
+    public class Language : BaseViewModel
     {
 
         public Language()
         {
-            
+
         }
 
         #region MainWindow

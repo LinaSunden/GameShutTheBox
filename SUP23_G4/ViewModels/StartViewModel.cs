@@ -1,8 +1,8 @@
 ﻿using SUP23_G4.Commands;
 using SUP23_G4.Dto;
 using SUP23_G4.FileHandler;
-using SUP23_G4.Languages;
 using SUP23_G4.Models;
+using SUP23_G4.Models.Languages;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.GameComponents;
 using System;
@@ -27,9 +27,10 @@ namespace SUP23_G4.ViewModels
         {
 
             Language = new();
+            StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
             StartScreenMusic.Play();
             IsMusicPlaying = true;
-            SetUpGameCommand = new RelayCommand(S => SetupGame()); 
+            SetUpGameCommand = new RelayCommand(S => SetupGame());
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
             MuteMusicCommand = new RelayCommand(x => MuteStartMusic());
 
@@ -41,10 +42,9 @@ namespace SUP23_G4.ViewModels
         #region Egenskaper
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
-
         public PlayerSettingsDto SettingsDto;
         public Language Language {get; set;}  
-        public SoundPlayer StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
+        public SoundPlayer StartScreenMusic;
         public ICommand MuteMusicCommand { get; set; }
         public ICommand SetUpGameCommand { get; }
         public int TargetPoints { get; set; } = 45;

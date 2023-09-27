@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using SUP23_G4.FileHandler;
-using SUP23_G4.Languages;
+using SUP23_G4.Models.Languages;
 using System.Collections.ObjectModel;
 
 namespace SUP23_G4

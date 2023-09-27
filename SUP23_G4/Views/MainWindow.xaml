@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SUP23_G4"
         xmlns:vm="clr-namespace:SUP23_G4.ViewModels"
-        xmlns:views="clr-namespace:SUP23_G4.Views"
-        xmlns:language="clr-namespace:SUP23_G4.Languages"
+        xmlns:views="clr-namespace:SUP23_G4.Views.Pages"
+        xmlns:language="clr-namespace:SUP23_G4.Models.Languages"
         d:DataContext="{d:DesignInstance vm:MainViewModel}"
    
         mc:Ignorable="d"

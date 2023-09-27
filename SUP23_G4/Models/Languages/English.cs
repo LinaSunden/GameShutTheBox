@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SUP23_G4.Enums
+namespace SUP23_G4.Models.Languages
 {
-    public enum GameLanguage
+    public class English : Language
     {
-        Swedish,
-        English, 
+
     }
 }

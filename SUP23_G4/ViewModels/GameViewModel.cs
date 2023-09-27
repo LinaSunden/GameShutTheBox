@@ -2,8 +2,8 @@
 using SUP23_G4.Converters;
 using SUP23_G4.Dto;
 using SUP23_G4.Enums;
-using SUP23_G4.Languages;
 using SUP23_G4.Models;
+using SUP23_G4.Models.Languages;
 using SUP23_G4.Properties;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views.GameComponents;

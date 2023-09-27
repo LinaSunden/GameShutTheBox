@@ -1,7 +1,7 @@
 ﻿using SUP23_G4.Commands;
 using SUP23_G4.Dto;
 using SUP23_G4.FileHandler;
-using SUP23_G4.Languages;
+using SUP23_G4.Models.Languages;
 using SUP23_G4.ViewModels.Base;
 using SUP23_G4.Views;
 using System;
