@@ -36,39 +36,17 @@ namespace SUP23_G4.ViewModels
             UpdateLanguage();
         }
 
-        /// <summary>
-        /// Byter vy till StartView
-        /// </summary>
-        private void GoToStartView()
-        {  
-            CurrentViewModel = new StartViewModel();        
-        }
-
-        /// <summary>
-        /// Byter vy till GameRules
-        /// </summary>
-        private void StartGameRules()
-        {
-            CurrentViewModel = new GameRulesViewModel();
-        }
-
-        /// <summary>
-        /// Byter vy till GameView och skickar med PlayerSettingsDton
-        /// </summary>
-        /// <param name="dto"></param>
-        private void StartGame(object dto)
-        {
-            var settingsDto = dto as PlayerSettingsDto;
-            CurrentViewModel = new GameViewModel(settingsDto); 
-        }
-
         #endregion
 
         #region Egenskaper
+        public Language Language { get; set; } // ska det stå CurrentLanguage?
         public ICommand GoToStartCommand { get; }
         public ICommand StartGameCommand { get; }
         public ICommand GameRulesCommand { get; }
-        public Language Language { get; set; } // ska det stå CurrentLanguage?
+        public Visibility BonusButtonVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility GameButtonsVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility MessageBoxVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility EndGameVisibility { get; set; } = Visibility.Collapsed;
 
         private int _cboSelectedIndex = 1;
         public int CboSelectedIndex
@@ -89,17 +67,39 @@ namespace SUP23_G4.ViewModels
         #region Metoder
 
         /// <summary>
+        /// Byter vy till StartView
+        /// </summary>
+        private void GoToStartView()
+        {
+            CurrentViewModel = new StartViewModel();
+        }
+
+        /// <summary>
+        /// Byter vy till GameRules
+        /// </summary>
+        private void StartGameRules()
+        {
+            CurrentViewModel = new GameRulesViewModel();
+        }
+
+        /// <summary>
+        /// Byter vy till GameView och skickar med PlayerSettingsDton
+        /// </summary>
+        /// <param name="dto"></param>
+        private void StartGame(object dto)
+        {
+            var settingsDto = dto as PlayerSettingsDto;
+            CurrentViewModel = new GameViewModel(settingsDto);
+        }
+        /// <summary>
         /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
         /// </summary>
         //private void GoToStartView()
         //{
         //    if (CurrentViewModel is GameViewModel)
         //    {
-        //        MessageBoxResult result = MessageBox.Show("Vill du avsluta spelet och gå tillbaka till startsidan?", "Avsluta spelet", MessageBoxButton.YesNo);
-        //        if (result == MessageBoxResult.Yes)
-        //        {
-        //            CurrentViewModel = new StartViewModel();
-        //        }
+        //        //MessageBoxVisibility = Visibility.Visible;
+        //        //EndGameVisibility = Visibility.Visible;
         //    }
         //    else
         //    {

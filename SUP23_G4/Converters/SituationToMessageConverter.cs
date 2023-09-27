@@ -20,17 +20,16 @@ namespace SUP23_G4.Converters
                 var messageStatus = (MessageStatus)value;
                 return messageStatus switch
                 {
-                    MessageStatus.Player1Winner => "Grattis Player1 du har vunnit!\n\rVill du köra en rematch?",
-                    MessageStatus.Player2Winner => "Grattis Player2 du har vunnit!\n\rVill du köra en rematch?",
-                    MessageStatus.BonusGame => "Spelet slutade lika då \n\rbåda spelarna fick samma poäng,\n\rVill ni köra en bonusomgång?",
-                    //MessageStatus.GameFinished1,
-                    //MessageStatus.GameFinished2,
-                    MessageStatus.BonusGameWon1 => "Grattis Player1, du har vunnit \n\rbonusomgångenomgången\n\roch spelet! Vill du köra en rematch?",
-                    MessageStatus.BonusGameWon2 => "Grattis Player2, du har vunnit \n\rbonusomgångenomgången\n\roch spelet! Vill du köra en rematch?",
-                    MessageStatus.Player1Turn => "Player1 tur är över,\n\rdet är nu Player2s tur",
-                    MessageStatus.Player2Turn => "Player2 tur är över,\n\rdet är nu Player1s tur",
-                    MessageStatus.BonusGameTurn => "Nu är din bonustur slut.\n\rDet är nu Player2s tur",
-
+                    MessageStatus.Player1Winner => "GRATTIS!\r\bDu har vunnit! Vill du köra en rematch?",
+                    MessageStatus.Player2Winner => "GRATTIS!\r\bDu har vunnit! Vill du köra en rematch?",
+                    MessageStatus.BonusGame => "Spelet slutade lika då\r\bbåda spelarna fick samma poäng.\r\nVill ni köra en bonusomgång?",
+                    MessageStatus.BonusGameWon1 => "GRATTIS!\r\bDu har vunnit bonusomgångenomgången\r\boch spelet! Vill du köra en rematch?",
+                    MessageStatus.BonusGameWon2 => "GRATTIS!\r\bDu har vunnit bonusomgångenomgången\r\boch spelet! Vill du köra en rematch?",
+                    MessageStatus.Over45Player1 => "Din tur är nu över!\r\bOm inte din motståndare får mer poäng\r\bän dig förlorar du.",
+                    MessageStatus.Player1Turn => "Din tur är nu över!\n\r\n\r",
+                    MessageStatus.Player2Turn => "Din tur är nu över!\n\r\n\r",
+                    MessageStatus.BonusGameTurn => "Nu är din bonustur slut.\n\r\n\r",
+                    MessageStatus.EndGame => "Vill du avsluta spelet \r\boch gå tillbaka till startsida?",
                     _ => "",
                 };
             }

@@ -12,13 +12,16 @@ namespace SUP23_G4.Enums
         Player1Winner,
         Player2Winner,
         BonusGame,
+        Over45Player1,  
         GameFinished1,
         GameFinished2,
         BonusGameWon1,
         BonusGameWon2,
+        EndGame,
         Player1Turn,
         Player2Turn,
         BonusGameTurn,
+        
 
     }
 }

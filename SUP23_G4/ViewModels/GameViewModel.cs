@@ -45,11 +45,11 @@ namespace SUP23_G4.ViewModels
             RollDiceCommand = new RelayCommand(x => DiceToss());
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             TileClickedCommand = new RelayCommand(x => UpdateStatusOfChosenGameTile(x));
+            EndGameCommand = new RelayCommand(x => EndGame());
             //ViewGameRulesCommand = new RelayCommand(x => ViewGameRules());
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
             StartRematchCommand = new RelayCommand(x => StartRematch());
             VisibilityGameEndingCommand = new RelayCommand(x => VisibilityGameEnding());
-
             GameTiles = new ObservableCollection<Tile>();
             Dice = new ObservableCollection<Die>();
             Language = new ();
@@ -60,8 +60,8 @@ namespace SUP23_G4.ViewModels
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
-
         }
+
         #endregion
         #region Egenskaper
         public Player Player1 { get; private set; }
@@ -84,14 +84,18 @@ namespace SUP23_G4.ViewModels
         public ICommand ViewGameRulesCommand { get; }
         public ICommand StartRematchCommand { get; }
         public ICommand VisibilityGameEndingCommand { get; }
-        public ICommand TestBonusGame { get; } //TODO: Ta bort commando när vi har testat klart bonusomgång}
-        public Visibility ExecuteMove { get; private set; } = Visibility.Hidden;
-        public Visibility Player1Turn { get; private set; }
-        public Visibility Player2Turn { get; private set; }
-        public Visibility BonusButtonVisibility { get; private set; } = Visibility.Collapsed;
-        public Visibility GameButtonsVisibility { get; private set; } = Visibility.Collapsed;
-        public Visibility GameRoundVisibility { get; private set; } 
-        public Visibility GameRuleVisibility { get; private set; } = Visibility.Hidden;
+        public ICommand EndGameCommand { get; }
+        public ICommand TestBonusGame { get; set; } //TODO: Ta bort commando när vi har testat klart bonusomgång}
+        public Visibility ExecuteMove { get; set; } = Visibility.Hidden;
+        public Visibility Player1Turn { get; set; }
+        public Visibility Player2Turn { get; set; }
+        public Visibility Player1LabelVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility Player2LabelVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility EndGameVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility BonusButtonVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility GameButtonsVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility GameRoundVisibility { get; set; } 
+        public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
         public Visibility BonusRoundVisibility { get; private set; } = Visibility.Hidden;
         public Visibility TileValueVisibility { get; private set; } = Visibility.Hidden;
@@ -441,9 +445,15 @@ namespace SUP23_G4.ViewModels
 
         #region Visibility
 
-        private void VisibilityGameEnding()
+        public void VisibilityMessageBoxLabel()
         {
-            MessageBoxVisibility = Visibility.Collapsed;    
+            MessageBoxVisibility = Visibility.Collapsed;
+            Player1LabelVisibility = Visibility.Collapsed;
+            Player2LabelVisibility = Visibility.Collapsed;
+        }
+        public void VisibilityGameEnding()
+        {
+            VisibilityMessageBoxLabel();   
             ExecuteMove = Visibility.Hidden;
             IsThrowEnable = false;
         }
@@ -568,7 +578,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         private void DiceToss()
         {
-            MessageBoxVisibility = Visibility.Collapsed;
+            VisibilityMessageBoxLabel();
             DiceSum = 0;
 
             Random r = new Random();
@@ -636,6 +646,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         private void StartRematch()  // Kopplas till messagebox som ska avgöra om du vill göra en rematch med samma spelare eller gå ur spelet till startsida.
         {
+            VisibilityMessageBoxLabel();
             NewGameTurn();
             Player1.Score = 0;
             Player2.Score = 0;
@@ -651,12 +662,22 @@ namespace SUP23_G4.ViewModels
             Player2Turn = Visibility.Hidden;
 
         }
+
+        /// <summary>
+        /// Metod som avslutar pågående match och går tillbaka till startsidan.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void EndGame()
+        {
+            MessageBoxVisibility = Visibility.Visible;
+            MainViewModel.Instance.CurrentViewModel = new StartViewModel();
+        }
         /// <summary>
         /// Metod som avslutar ett drag och gör spelet redo för ett nytt tärningskast.
         /// </summary>
         private void MoveIsExecuted()
         {
-            MessageBoxVisibility = Visibility.Collapsed;
             if (IsAllTilesDownward())
             {
                 ClosingTileSound();
@@ -713,6 +734,7 @@ namespace SUP23_G4.ViewModels
                 {
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameTurn;
+                    Player1LabelVisibility = Visibility.Visible;
                 }
             }
             else if (PlayerTurnCounter == 1)
@@ -724,17 +746,7 @@ namespace SUP23_G4.ViewModels
                     MessageBoxVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon2;
-
-                    //MessageBoxResult result = MessageBox.Show($"Grattis {Player2.Name}, du har vunnit bonusomgången och spelet! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
-                    //if (result == MessageBoxResult.Yes)
-                    //{
-                    //    StartRematch();
-                    //}
-                    //else if (result == MessageBoxResult.No)
-                    //{
-                    //    VisibilityGameEnding();
-                    //}
-
+                    Player2LabelVisibility = Visibility.Visible;
                 }
                 else if (Player1.Score < Player2.Score)
                 {
@@ -743,16 +755,7 @@ namespace SUP23_G4.ViewModels
                     MessageBoxVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon1;
-                    
-                    //MessageBoxResult result = MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgångeno och spelet! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
-                    //if (result == MessageBoxResult.Yes)
-                    //{
-                    //    StartRematch();
-                    //}
-                    //else if (result == MessageBoxResult.No)
-                    //{
-                    //    VisibilityGameEnding();
-                    //}
+                    Player1LabelVisibility = Visibility.Visible;
                 }
             }
         }
@@ -765,16 +768,16 @@ namespace SUP23_G4.ViewModels
             {
                 if (Player1.Score < TargetPoints)
                 {
+                    Player1LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.Player1Turn;
-                    //MessageBox.Show($"Nu är din tur slut. Du har {Player1.Score} poäng. Det är nu {Player2.Name}s tur");
                 }
                 else if (Player1.Score >= TargetPoints)
                 {
                     Player1ForegroundBrush = Brushes.Red;
+                    Player1LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
-                    PMButton.CurrentMessage = MessageStatus.Player2Turn;
-                    //MessageBox.Show($"Du har fått {Player1.Score} poäng. Om {Player2.Name} inte får mer poäng än dig så förlorar du");
+                    PMButton.CurrentMessage = MessageStatus.Over45Player1;
                 }
             }
             else if (PlayerTurnCounter == 1)
@@ -783,50 +786,28 @@ namespace SUP23_G4.ViewModels
                 { 
                     Player1ForegroundBrush = Brushes.Red;
                     Player2ForegroundBrush = Brushes.Goldenrod;
-                    MessageBoxResult result = MessageBox.Show($"Grattis {Player2.Name}, du har vunnit! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        StartRematch();
-                        return;
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        MainViewModel.Instance.CurrentViewModel = new StartViewModel();
-                        //VisibilityGameEnding();
-                    }
-                    GameButtonsVisibility = Visibility.Visible; 
+                    Player2LabelVisibility = Visibility.Visible;
+                    GameButtonsVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.Player2Winner;
-
-
                 }
 
                 if (Player2.Score > Player1.Score && Player2.Score >= TargetPoints)
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     Player1ForegroundBrush = Brushes.Goldenrod;
-                    MessageBoxResult result = MessageBox.Show($"Grattis {Player1.Name}, du har vunnit! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        StartRematch();
-                        return;
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        //VisibilityGameEnding();
-                        MainViewModel.Instance.CurrentViewModel = new StartViewModel(); 
-                    }
+                    Player1LabelVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.Player1Winner;
-
                 }
 
                 else if (Player2.Score < TargetPoints && Player1.Score < TargetPoints)
                 {
+                    Player2LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.Player2Turn;
-                    //MessageBox.Show($"Nu är din tur slut. Du har {Player2.Score} poäng. Det är nu {Player1.Name}s tur");
+                    
                 }
 
                 else if (Player1.Score == Player2.Score && Player1.Score >= TargetPoints && Player2.Score >= TargetPoints)
@@ -837,15 +818,6 @@ namespace SUP23_G4.ViewModels
                     BonusRoundVisibility = Visibility.Visible;
                     BonusButtonVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
-                    //MessageBoxResult result = MessageBox.Show("Spelet slutade lika då båda spelarna fick samma poäng, vill ni köra en bonusomgång?", "Oavgjort", MessageBoxButton.YesNo);
-                    //if (result == MessageBoxResult.Yes)
-                    //{
-                    //    StartBonusRound();
-                    //}
-                    //else if (result == MessageBoxResult.No)
-                    //{
-                    //    VisibilityGameEnding();
-                    //}
                 }
         }
     
