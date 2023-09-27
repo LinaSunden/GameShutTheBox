@@ -735,6 +735,7 @@ namespace SUP23_G4.ViewModels
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameTurn;
                     Player1LabelVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                 }
             }
             else if (PlayerTurnCounter == 1)
@@ -747,6 +748,7 @@ namespace SUP23_G4.ViewModels
                     GameButtonsVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon2;
                     Player2LabelVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                 }
                 else if (Player1.Score < Player2.Score)
                 {
@@ -756,6 +758,7 @@ namespace SUP23_G4.ViewModels
                     GameButtonsVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon1;
                     Player1LabelVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                 }
             }
         }
@@ -770,6 +773,7 @@ namespace SUP23_G4.ViewModels
                 {
                     Player1LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                     PMButton.CurrentMessage = MessageStatus.Player1Turn;
                 }
                 else if (Player1.Score >= TargetPoints)
@@ -777,6 +781,7 @@ namespace SUP23_G4.ViewModels
                     Player1ForegroundBrush = Brushes.Red;
                     Player1LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                     PMButton.CurrentMessage = MessageStatus.Over45Player1;
                 }
             }
@@ -789,6 +794,7 @@ namespace SUP23_G4.ViewModels
                     Player2LabelVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                     PMButton.CurrentMessage = MessageStatus.Player2Winner;
                 }
 
@@ -799,6 +805,7 @@ namespace SUP23_G4.ViewModels
                     Player1LabelVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                     PMButton.CurrentMessage = MessageStatus.Player1Winner;
                 }
 
@@ -806,6 +813,7 @@ namespace SUP23_G4.ViewModels
                 {
                     Player2LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                     PMButton.CurrentMessage = MessageStatus.Player2Turn;
                     
                 }
@@ -818,6 +826,7 @@ namespace SUP23_G4.ViewModels
                     BonusRoundVisibility = Visibility.Visible;
                     BonusButtonVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
+                    DisplayDiceSumVisibility = Visibility.Hidden; //TEST
                 }
         }
     
