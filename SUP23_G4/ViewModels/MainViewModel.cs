@@ -86,6 +86,7 @@ namespace SUP23_G4.ViewModels
         /// <param name="gameLanguage"></param>
         public void ChangeLanguage (GameLanguage gameLanguage)
         {
+            GameLanguage = gameLanguage;
             CurrentLanguage = Language.UpdateLanguage(gameLanguage);
         }
 

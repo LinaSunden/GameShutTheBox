@@ -49,10 +49,8 @@ namespace SUP23_G4.ViewModels
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
             StartRematchCommand = new RelayCommand(x => StartRematch());
             VisibilityGameEndingCommand = new RelayCommand(x => VisibilityGameEnding());
-
             GameTiles = new ObservableCollection<Tile>();
             Dice = new ObservableCollection<Die>();
-            //Language = new ();
             PMButton = new();
             TestBonusGame = new RelayCommand(x => StartBonusRound()); //TODO: Ta bort commando när vi har testat klart bonusomgång
             FillCollectionOfGameTiles();
@@ -68,7 +66,6 @@ namespace SUP23_G4.ViewModels
         public Player Player2 { get; set; }
         public ObservableCollection<Tile> GameTiles { set; get; }
         public ObservableCollection<Die> Dice { set; get; }
-        //public Language Language { get; set; } 
         /// <summary>
         /// Collection används för att hålla olika sifferkombinationer.
         /// </summary>
@@ -849,14 +846,16 @@ namespace SUP23_G4.ViewModels
                 }
         }
     
-        }  
+        }
         /// <summary>
         /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
         /// Ändrar texten till Dölj spelregler när knappen har klickats en gång och på motsvarande sätt för varje språk
         /// </summary>
         //public void ViewGameRules()
-        //{
-        //    if (CboSelectedIndex == 0)
+        //{ 
+
+
+        //    if (GameLanguage == GameLanguage.Swedish)
         //    {
         //        foreach (Language language in Languages)
         //        {
@@ -889,9 +888,9 @@ namespace SUP23_G4.ViewModels
         //                language.GameRuleBtn = "Show game rules";
         //            }
         //        }
-        //    }           
+        //    }
         //}
-    
+
 
         #endregion
     }
