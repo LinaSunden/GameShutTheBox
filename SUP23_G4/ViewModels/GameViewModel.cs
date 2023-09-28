@@ -49,8 +49,8 @@ namespace SUP23_G4.ViewModels
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             TileClickedCommand = new RelayCommand(x => UpdateStatusOfChosenGameTile(x));
             EndGameCommand = new RelayCommand(x => EndGame());
-            StartBonusRoundCommand = new RelayCommand(x => StartBonusRound()); 
-            //ViewGameRulesCommand = new RelayCommand(x => ViewGameRules());
+            StartBonusRoundCommand = new RelayCommand(x => StartBonusRound());
+            ViewGameRulesCommand = new RelayCommand(x => ViewGameRules());
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
             StartRematchCommand = new RelayCommand(x => StartRematch());
             GameTiles = new ObservableCollection<Tile>();
@@ -97,7 +97,8 @@ namespace SUP23_G4.ViewModels
         public Visibility BonusButtonVisibility { get; set; } = Visibility.Collapsed;
         public Visibility GameButtonsVisibility { get; set; } = Visibility.Collapsed;
         public Visibility GameRoundVisibility { get; set; } 
-        public Visibility GameRuleVisibility { get; set; } = Visibility.Hidden;
+        public Visibility GameRulesSwedishVisibility { get; set; } = Visibility.Hidden;
+        public Visibility GameRulesEnglishVisibility {  get; set; } = Visibility.Hidden;
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
         public Visibility BonusRoundVisibility { get; private set; } = Visibility.Hidden;
         public Visibility TileValueVisibility { get; private set; } = Visibility.Hidden;
@@ -852,45 +853,43 @@ namespace SUP23_G4.ViewModels
         /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
         /// Ändrar texten till Dölj spelregler när knappen har klickats en gång och på motsvarande sätt för varje språk
         /// </summary>
-        //public void ViewGameRules()
-        //{ 
+        public void ViewGameRules()
+        {
+
+            if (MainViewModel.Instance.GameLanguage == GameLanguage.Swedish)
+            {
+
+                if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Visa spelregler")
+                {
+                    GameRulesSwedishVisibility = Visibility.Visible;
+                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Dölj spelregler";
+                }
+
+                else if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Dölj spelregler")
+                {
+                    GameRulesSwedishVisibility = Visibility.Hidden;
+                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Visa spelregler";
+                }
 
 
-        //    if (GameLanguage == GameLanguage.Swedish)
-        //    {
-        //        foreach (Language language in Languages)
-        //        {
-        //            if (language.GameRuleBtn == "Visa spelregler")
-        //            {
-        //                GameRuleVisibility = Visibility.Visible;
-        //                language.GameRuleBtn = "Dölj spelregler";
-        //            }
-
-        //            else if (language.GameRuleBtn == "Dölj spelregler")
-        //            {
-        //                GameRuleVisibility = Visibility.Hidden;
-        //                language.GameRuleBtn = "Visa spelregler";
-
-        //            }
-        //        }
-        //    }
-        //    else if (CboSelectedIndex == 1)
-        //    {
-        //        foreach (Language language in Languages)
-        //        {
-        //            if (language.GameRuleBtn == "Show game rules")
-        //            {
-        //                GameRuleVisibility = Visibility.Visible;
-        //                language.GameRuleBtn = "Hide game rules";
-        //            }
-        //            else if (language.GameRuleBtn == "Hide game rules")
-        //            {
-        //                GameRuleVisibility = Visibility.Hidden;
-        //                language.GameRuleBtn = "Show game rules";
-        //            }
-        //        }
-        //    }
-        //}
+          
+            }
+            else if (MainViewModel.Instance.GameLanguage == GameLanguage.English)
+            {
+            
+                    if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Show game rules")
+                    {
+                        GameRulesEnglishVisibility = Visibility.Visible;
+                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Hide game rules";
+                    }
+                    else if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Hide game rules")
+                    {
+                        GameRulesEnglishVisibility = Visibility.Hidden;
+                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Show game rules";
+                    }
+                
+            }
+        }
 
 
         #endregion
