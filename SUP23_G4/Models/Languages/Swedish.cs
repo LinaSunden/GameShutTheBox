@@ -31,9 +31,16 @@ namespace SUP23_G4.Models.Languages
                 StartGame = swedishData.StartGame;
                 GameRules = swedishData.GameRules;
                 DecidePoints = swedishData.DecidePoints;
-                Player1Winner = swedishData.Player1Winner;
+                PlayerWinner = swedishData.PlayerWinner;
+                BonusGame = swedishData.BonusGame;
+                BonusGameWon = swedishData.BonusGameWon;
+                Over45Player1 = swedishData.Over45Player1;
+                PlayerTurn = swedishData.PlayerTurn;
+                BonusGameTurn = swedishData.BonusGameTurn;
+                valueTooLow = swedishData.valueTooLow;
             }
         }
 
     }
 }
+

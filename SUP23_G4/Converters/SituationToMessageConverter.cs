@@ -20,19 +20,19 @@ namespace SUP23_G4.Converters
             if (value is MessageStatus && value != null)
             {
                 var messageStatus = (MessageStatus)value;
-                MainViewModel mainViewModel = parameter as MainViewModel;
+                
 
                 return messageStatus switch
                 {
-                    MessageStatus.Player1Winner => "Grattis Player1 du har vunnit!\n\rVill du köra en rematch?",
-                    MessageStatus.Player2Winner => "GRATTIS!\r\bDu har vunnit! Vill du köra en rematch?",
-                    MessageStatus.BonusGame => "Spelet slutade lika då\r\bbåda spelarna fick samma poäng.\r\nVill ni köra en bonusomgång?",
-                    MessageStatus.BonusGameWon1 => "GRATTIS!\r\bDu har vunnit bonusomgångenomgången\r\boch spelet! Vill du köra en rematch?",
-                    MessageStatus.BonusGameWon2 => "GRATTIS!\r\bDu har vunnit bonusomgångenomgången\r\boch spelet! Vill du köra en rematch?",
-                    MessageStatus.Over45Player1 => "Din tur är nu över!\r\bOm inte din motståndare får mer poäng\r\bän dig förlorar du.",
-                    MessageStatus.Player1Turn => "Din tur är nu över!\n\r\n\r",
-                    MessageStatus.Player2Turn => "Din tur är nu över!\n\r\n\r",
-                    MessageStatus.BonusGameTurn => "Nu är din bonustur slut.\n\r\n\r",
+                    MessageStatus.Player1Winner => MainViewModel.Instance.CurrentLanguage.PlayerWinner,
+                    MessageStatus.Player2Winner => MainViewModel.Instance.CurrentLanguage.PlayerWinner,
+                    MessageStatus.BonusGame => MainViewModel.Instance.CurrentLanguage.BonusGame,
+                    MessageStatus.BonusGameWon1 => MainViewModel.Instance.CurrentLanguage.BonusGameWon,
+                    MessageStatus.BonusGameWon2 => MainViewModel.Instance.CurrentLanguage.BonusGameWon,
+                    MessageStatus.Over45Player1 => MainViewModel.Instance.CurrentLanguage.Over45Player1,
+                    MessageStatus.Player1Turn => MainViewModel.Instance.CurrentLanguage.PlayerTurn,
+                    MessageStatus.Player2Turn => MainViewModel.Instance.CurrentLanguage.PlayerTurn,
+                    MessageStatus.BonusGameTurn => MainViewModel.Instance.CurrentLanguage.BonusGameTurn,
                     _ => "",
                 };
             }
