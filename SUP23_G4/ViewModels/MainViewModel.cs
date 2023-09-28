@@ -65,10 +65,27 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// Byter vy till StartView
         /// </summary>
-        private void GoToStartView()
+ 
+        public void GoToStartView()
         {
-            CurrentViewModel = new StartViewModel();
+            if (CurrentViewModel is GameViewModel)
+            {
+                MessageBoxResult result = MessageBox.Show("Vill du avsluta spelet och gå tillbaka till startsidan?", "Avsluta spelet", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    CurrentViewModel = new StartViewModel();
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                CurrentViewModel = new StartViewModel();
+            }
         }
+
 
         /// <summary>
         /// Byter vy till GameRules
