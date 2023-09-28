@@ -44,6 +44,8 @@ namespace SUP23_G4.Models.Languages
 
         public string ConfirmMove { get; set; }/* = "Genomför drag";*/
 
+        public string valueTooLow { get; set; }
+
         #endregion
 
         #region StartView
@@ -64,11 +66,22 @@ namespace SUP23_G4.Models.Languages
 
         #region Meddelandeboxar
 
-        public string Player1Winner { get; set; }/* = "Grattis Player1 du har vunnit!\n\rVill du köra en rematch?";*/
+        public string PlayerWinner { get; set; }/* = "Grattis Player1 du har vunnit!\n\rVill du köra en rematch?";*/
+
+        public string BonusGame {  get; set; }
+
+        public string BonusGameWon { get; set; }
+
+        public string Over45Player1 { get; set; }
+
+        public string PlayerTurn { get; set; }
+
+        public string BonusGameTurn { get; set; }
+
 
         #endregion
 
-
+    
 
         #region Metoder
 

@@ -32,13 +32,19 @@ namespace SUP23_G4.Models.Languages
                 StartGame = englishData.StartGame;
                 GameRules = englishData.GameRules;
                 DecidePoints = englishData.DecidePoints;
-                Player1Winner = englishData.Player1Winner;
+                PlayerWinner = englishData.PlayerWinner;
+                BonusGame = englishData.BonusGame;
+                BonusGameWon = englishData.BonusGameWon;
+                Over45Player1 = englishData.Over45Player1;
+                PlayerTurn = englishData.PlayerTurn;
+                BonusGameTurn = englishData.BonusGameTurn;
+                valueTooLow = englishData.valueTooLow;
             }
         }
 
 
-    
 
+       
 
 
 

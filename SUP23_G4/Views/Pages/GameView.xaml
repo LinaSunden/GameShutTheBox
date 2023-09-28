@@ -263,7 +263,8 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Label FontSize="22" FontWeight="SemiBold" Foreground="White" Content="För låga värden valt!" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Margin="0,40,30,0" Visibility="{Binding TileValueVisibility}" />
+        
+            <Label FontSize="22" FontWeight="SemiBold" Foreground="White" Content="{Binding CurrentLanguage.valueTooLow, Source= {x:Static vm:MainViewModel.Instance}}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Margin="0,40,30,0" Visibility="{Binding TileValueVisibility}" />
 
             <GroupBox Header="{Binding CurrentLanguage.MyTurn, Source= {x:Static vm:MainViewModel.Instance}}" 
                       Background="#FFF5B94A" 
