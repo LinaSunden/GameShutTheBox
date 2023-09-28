@@ -23,10 +23,13 @@ using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAnimatedGif;
 
 namespace SUP23_G4.ViewModels
 {
@@ -60,7 +63,8 @@ namespace SUP23_G4.ViewModels
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
-
+            Gif = new Image();
+            //StartAnimation();
         }
         #endregion
         #region Egenskaper
@@ -96,6 +100,7 @@ namespace SUP23_G4.ViewModels
         public Visibility BonusRoundVisibility { get; private set; } = Visibility.Hidden;
         public Visibility TileValueVisibility { get; private set; } = Visibility.Hidden;
         public Visibility MessageBoxVisibility { get; private set; } = Visibility.Collapsed;
+        public Visibility gif { get; set; } = Visibility.Collapsed;
         public int DiceSum { get; private set; }
         public int GameRoundCounter { get; private set; } = 1;
         public int PlayerTurnCounter { get; private set; } = 1;
@@ -104,6 +109,26 @@ namespace SUP23_G4.ViewModels
         public string? DisplayDiceSum { get; set; }
         public bool IsSoundEffectsAllowed { get; private set; } = true;
         public bool IsThrowEnable { get; private set; } = true;
+
+        
+        public Image Gif {  get; set; }
+        public void StartAnimation()
+        {
+            gif = Visibility.Visible;
+            var image = new BitmapImage();
+            image.BeginInit();
+            //UriBuilder builder = new UriBuilder("/resource/Fireworks.gif");
+            //Uri uri = new Uri("/resources/Fireworks.gif", UriKind.Relative);
+            //image.UriSource = uri;
+            image.UriSource = new Uri("/resources/Fireworks.gif", UriKind.Relative);
+            
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(Gif, image);
+            ImageBehavior.SetRepeatBehavior(Gif, new RepeatBehavior(0));
+            ImageBehavior.SetRepeatBehavior(Gif, RepeatBehavior.Forever);
+            //image.BeginAnimation();
+        }
+
         #endregion
 
         #region Instansvariabler
@@ -570,7 +595,6 @@ namespace SUP23_G4.ViewModels
         {
             MessageBoxVisibility = Visibility.Collapsed;
             DiceSum = 0;
-
             Random r = new Random();
 
             for (int i = 0; i < 2; i++)
@@ -724,7 +748,7 @@ namespace SUP23_G4.ViewModels
                     MessageBoxVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon2;
-
+                    gif = Visibility.Visible;
                     //MessageBoxResult result = MessageBox.Show($"Grattis {Player2.Name}, du har vunnit bonusomgången och spelet! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
                     //if (result == MessageBoxResult.Yes)
                     //{
@@ -743,7 +767,7 @@ namespace SUP23_G4.ViewModels
                     MessageBoxVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon1;
-                    
+                    gif = Visibility.Visible;
                     //MessageBoxResult result = MessageBox.Show($"Grattis {Player1.Name}, du har vunnit bonusomgångeno och spelet! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
                     //if (result == MessageBoxResult.Yes)
                     //{
@@ -783,6 +807,7 @@ namespace SUP23_G4.ViewModels
                 { 
                     Player1ForegroundBrush = Brushes.Red;
                     Player2ForegroundBrush = Brushes.Goldenrod;
+                    gif = Visibility.Visible;
                     MessageBoxResult result = MessageBox.Show($"Grattis {Player2.Name}, du har vunnit! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
                     if (result == MessageBoxResult.Yes)
                     {
@@ -805,6 +830,7 @@ namespace SUP23_G4.ViewModels
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     Player1ForegroundBrush = Brushes.Goldenrod;
+                    gif = Visibility.Visible;
                     MessageBoxResult result = MessageBox.Show($"Grattis {Player1.Name}, du har vunnit! Vill du köra en rematch?", "Grattis!", MessageBoxButton.YesNo);
                     if (result == MessageBoxResult.Yes)
                     {
