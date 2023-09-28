@@ -25,7 +25,7 @@ namespace SUP23_G4.Converters
                     Status.SelectedGameTile => 100,
                     Status.DownwardGameTile => 310,
 
-                    _ => 50, //osäker på vilken storlek vi ska sätta här? har gjort den extra stor för att identifiera fel i test
+                    _ => 50, 
                 };
             }
             return 50;

@@ -61,8 +61,7 @@ namespace SUP23_G4.ViewModels
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
-            Gif = new Image();
-            //StartAnimation();
+            
         }
 
         #endregion
@@ -87,8 +86,8 @@ namespace SUP23_G4.ViewModels
         public ICommand StartRematchCommand { get; }
         public ICommand VisibilityGameEndingCommand { get; }
         public ICommand EndGameCommand { get; }
-        public ICommand StartBonusRoundCommand { get; set; }
-        public Visibility ExecuteMove { get; set; } = Visibility.Hidden;
+        public ICommand StartBonusRoundCommand { get; }
+        public Visibility ExecuteMove { get; set; } = Visibility.Collapsed;
         public Visibility Player1Turn { get; set; }
         public Visibility Player2Turn { get; set; }
         public Visibility SBTLogoVisibility { get; set; } = Visibility.Collapsed;
@@ -98,13 +97,13 @@ namespace SUP23_G4.ViewModels
         public Visibility BonusButtonVisibility { get; set; } = Visibility.Collapsed;
         public Visibility GameButtonsVisibility { get; set; } = Visibility.Collapsed;
         public Visibility GameRoundVisibility { get; set; } 
-        public Visibility GameRulesSwedishVisibility { get; set; } = Visibility.Hidden;
-        public Visibility GameRulesEnglishVisibility {  get; set; } = Visibility.Hidden;
+        public Visibility GameRulesSwedishVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility GameRulesEnglishVisibility {  get; set; } = Visibility.Collapsed;
         public Visibility DisplayDiceSumVisibility { get; set; } = Visibility.Visible;
-        public Visibility BonusRoundVisibility { get; private set; } = Visibility.Hidden;
-        public Visibility TileValueVisibility { get; private set; } = Visibility.Hidden;
+        public Visibility BonusRoundVisibility { get; private set; } = Visibility.Collapsed;
+        public Visibility TileValueVisibility { get; private set; } = Visibility.Collapsed;
         public Visibility MessageBoxVisibility { get; private set; } = Visibility.Collapsed;
-        public Visibility gif { get; set; } = Visibility.Collapsed;
+        public Visibility Gif { get; set; } = Visibility.Collapsed;
         public int DiceSum { get; private set; }
         public int GameRoundCounter { get; private set; } = 1;
         public int PlayerTurnCounter { get; private set; } = 1;
@@ -114,33 +113,14 @@ namespace SUP23_G4.ViewModels
         public bool IsSoundEffectsAllowed { get; private set; } = true;
         public bool IsThrowEnable { get; private set; } = true;
 
-        
-        public Image Gif {  get; set; }
-        public void StartAnimation()
-        {
-            gif = Visibility.Visible;
-            var image = new BitmapImage();
-            image.BeginInit();
-            //UriBuilder builder = new UriBuilder("/resource/Fireworks.gif");
-            //Uri uri = new Uri("/resources/Fireworks.gif", UriKind.Relative);
-            //image.UriSource = uri;
-            image.UriSource = new Uri("/resources/Fireworks.gif", UriKind.Relative);
-            
-            image.EndInit();
-            ImageBehavior.SetAnimatedSource(Gif, image);
-            ImageBehavior.SetRepeatBehavior(Gif, new RepeatBehavior(0));
-            ImageBehavior.SetRepeatBehavior(Gif, RepeatBehavior.Forever);
-            //image.BeginAnimation();
-        }
-
         #endregion
 
         #region Instansvariabler
 
         private SoundPlayer _closingTileSound = new SoundPlayer(Properties.Resources.ClosingTile);
         private SoundPlayer _diceTossSound = new SoundPlayer(Properties.Resources.dice_rolls_30cm);
-        private List<List<int>> collection;
-        private static bool[,] dp;
+        private List<List<int>> _collection;
+        private static bool[,] _dp;
         #endregion
 
         #region Metoder
@@ -313,7 +293,6 @@ namespace SUP23_G4.ViewModels
             sorted.Sort();
             return sorted;
         }
-       
         /// <summary>
         /// Metod som fyller en tvådimensionell array med booleska värden. Det som styr true eller false
         /// är värdena på de tiles som är tillgängliga samt tärningarnas summa
@@ -333,34 +312,32 @@ namespace SUP23_G4.ViewModels
             int sum = DiceSum;
             int n = tiles.Count;
 
-            //if (n == 0 || sum < 0) { return; } //Onödig
-
-            dp = new bool[n, sum + 1];
+            _dp = new bool[n, sum + 1];
 
             for (int i = 0; i < n; i++)
             {
-                dp[i, 0] = true;
+                _dp[i, 0] = true;
             }
 
             if (tiles[0] <= sum)
             {
-                dp[0, tiles[0]] = true;
+                _dp[0, tiles[0]] = true;
             }
 
             for (int i = 1; i < n; i++)
             {
                 for (int j = 0; j < sum + 1; j++)
                 {
-                    dp[i, j] = (tiles[i] <= j) 
-                        ? (dp[i - 1, j] || dp[i - 1, j - tiles[i]]) 
-                        : dp[i - 1, j];                 
+                    _dp[i, j] = (tiles[i] <= j) 
+                        ? (_dp[i - 1, j] || _dp[i - 1, j - tiles[i]]) 
+                        : _dp[i - 1, j];                 
                 }
             }
 
-            collection = new List<List<int>>();
+            _collection = new List<List<int>>();
             List<int> p = new List<int>();
             TilesCombinationToList(tiles, n - 1, sum, p);
-            Collection = collection;
+            Collection = _collection;
             List<int> sortedList = SortOutDuplicates(Collection);
             SetStatusOfGameTiles(sortedList);
 
@@ -376,9 +353,8 @@ namespace SUP23_G4.ViewModels
             {
                 availableTiles.Add(i);
             }
-            collection.Add(availableTiles);
+            _collection.Add(availableTiles);
         }
-
         /// <summary>
         /// En rekursiv loop som kollar vilka värden av tiles som kan bli tärningarnas summa och lägger dessa
         /// i en lista samt skickar de vidare till en annan metod
@@ -386,7 +362,7 @@ namespace SUP23_G4.ViewModels
         private void TilesCombinationToList(List<int> tiles, int i, int sum, List<int> p)
         {
 
-            if (i == 0 && sum != 0 && dp[0, sum])
+            if (i == 0 && sum != 0 && _dp[0, sum])
             {
                 p.Add(tiles[i]);
                 FillListOfLists(p);
@@ -405,20 +381,19 @@ namespace SUP23_G4.ViewModels
                 return;
             }
 
-            if (dp[i - 1, sum])
+            if (_dp[i - 1, sum])
             {
                 List<int> b = new List<int>();
                 b.AddRange(p);
                 TilesCombinationToList(tiles, i - 1, sum, b);
             }
 
-            if (sum >= tiles[i] && dp[i - 1, sum - tiles[i]])
+            if (sum >= tiles[i] && _dp[i - 1, sum - tiles[i]])
             {
                 p.Add(tiles[i]);
                 TilesCombinationToList(tiles, i - 1, sum - tiles[i], p);
             }          
         }
-
         /// <summary>
         /// Metod som testar om spelarens valda tiles blir tärningarnas
         /// summa och sätter relevant status 
@@ -469,14 +444,15 @@ namespace SUP23_G4.ViewModels
         #endregion
 
         #region Visibility
-
+        /// <summary>
+        /// Metod som kollapsar Messagebox och label så man inte ser dem
+        /// </summary>
         public void VisibilityMessageBoxLabel()
         {
             MessageBoxVisibility = Visibility.Collapsed;
             Player1LabelVisibility = Visibility.Collapsed;
             Player2LabelVisibility = Visibility.Collapsed;
         }
- 
         /// <summary>
         /// Metod som gör tärningarna inte går att klicka samt visar "genomför drag knapp".
         /// </summary>
@@ -506,7 +482,9 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         private void SwitchPlayerTurn()
         {
-            if (PlayerTurnCounter == 1)
+            bool IsPlayer2Turn = PlayerTurnCounter == 1;
+
+            if (IsPlayer2Turn)
             {
                 Player2Turn = Visibility.Visible;
                 Player1Turn = Visibility.Hidden;
@@ -522,7 +500,47 @@ namespace SUP23_G4.ViewModels
             }
 
         }
+        /// <summary>
+        /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
+        /// Ändrar texten till Dölj spelregler när knappen har klickats en gång och på motsvarande sätt för varje språk
+        /// </summary>
+        public void ViewGameRules()
+        {
 
+            if (MainViewModel.Instance.GameLanguage == GameLanguage.Swedish)
+            {
+
+                if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Visa spelregler")
+                {
+                    GameRulesSwedishVisibility = Visibility.Visible;
+                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Dölj spelregler";
+                }
+
+                else if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Dölj spelregler")
+                {
+                    GameRulesSwedishVisibility = Visibility.Hidden;
+                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Visa spelregler";
+                }
+
+
+
+            }
+            else if (MainViewModel.Instance.GameLanguage == GameLanguage.English)
+            {
+
+                if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Show game rules")
+                {
+                    GameRulesEnglishVisibility = Visibility.Visible;
+                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Hide game rules";
+                }
+                else if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Hide game rules")
+                {
+                    GameRulesEnglishVisibility = Visibility.Hidden;
+                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Show game rules";
+                }
+
+            }
+        }
         #endregion
 
         #region Sound
@@ -675,15 +693,12 @@ namespace SUP23_G4.ViewModels
             BonusButtonVisibility = Visibility.Collapsed;
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
-            gif = Visibility.Collapsed;
+            Gif = Visibility.Collapsed;
 
         }
-
         /// <summary>
         /// Metod som avslutar pågående match och går tillbaka till startsidan.
         /// </summary>
-        /// <param name="x"></param>
-        /// <exception cref="NotImplementedException"></exception>
         private void EndGame()
         {
             MessageBoxVisibility = Visibility.Visible;
@@ -714,7 +729,6 @@ namespace SUP23_G4.ViewModels
                 ClosingTileSound();
             }            
         }
-
         /// <summary>
         /// Metod för att räkna ut varje spelares poäng. Metoden plussar på spelarens poäng med poängen från föregåenden tur. 
         /// </summary>
@@ -744,10 +758,15 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         private void BonusGame()
         {
+            bool IsPlayer1Turn = PlayerTurnCounter == 2;
+            bool IsPlayer2Turn = PlayerTurnCounter == 1;
+            bool IsPlayer1ScoreUnder56 = Player1.Score < 56;
+            bool IsPlayer1Winner = Player1.Score < Player2.Score;
+            bool IsPlayer2Winner = Player2.Score < Player1.Score;          
 
-            if (PlayerTurnCounter == 2)
+            if (IsPlayer1Turn)
             {
-                if (Player1.Score < 56)
+                if (IsPlayer1ScoreUnder56)
                 {
                     MessageBoxVisibility = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameTurn;
@@ -755,26 +774,26 @@ namespace SUP23_G4.ViewModels
                     DisplayDiceSumVisibility = Visibility.Hidden; 
                 }
             }
-            else if (PlayerTurnCounter == 1)
+            else if (IsPlayer2Turn)
             {
-                if (Player2.Score < Player1.Score)
+                if (IsPlayer2Winner)
                 {
                     Player1ForegroundBrush = Brushes.Red;
                     Player2ForegroundBrush = Brushes.Goldenrod;
                     MessageBoxVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
-                    gif = Visibility.Visible;
+                    Gif = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon2;
                     Player2LabelVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
                 }
-                else if (Player1.Score < Player2.Score)
+                else if (IsPlayer1Winner)
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     Player1ForegroundBrush = Brushes.Goldenrod;
                     MessageBoxVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
-                    gif = Visibility.Visible;
+                    Gif = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon1;
                     Player1LabelVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
@@ -786,16 +805,25 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         private void WinnerOfGame()
         {
-            if (PlayerTurnCounter == 2)
+            bool IsPlayer1Turn = PlayerTurnCounter == 2;
+            bool IsPlayer2Turn = PlayerTurnCounter == 1;
+            bool IsPlayer1TurnOver = Player1.Score < TargetPoints;
+            bool IsPlayer1Over45 = Player1.Score >= TargetPoints;
+            bool IsPlayer2Winner = Player1.Score > Player2.Score && Player1.Score >= TargetPoints;
+            bool IsPlayer1Winner = Player2.Score > Player1.Score && Player2.Score >= TargetPoints;
+            bool IsPlayer2TurnDone = Player2.Score < TargetPoints && Player1.Score < TargetPoints;
+            bool IsBonusGame = Player1.Score == Player2.Score && Player1.Score >= TargetPoints && Player2.Score >= TargetPoints; 
+
+            if (IsPlayer1Turn)
             {
-                if (Player1.Score < TargetPoints) //Player1 turn
+                if (IsPlayer1TurnOver) 
                 {
                     Player1LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
                     PMButton.CurrentMessage = MessageStatus.Player1Turn;
                 }
-                else if (Player1.Score >= TargetPoints) //Player 1 over 45
+                else if (IsPlayer1Over45) 
                 {
                     Player1ForegroundBrush = Brushes.Red;
                     Player1LabelVisibility = Visibility.Visible;
@@ -804,33 +832,33 @@ namespace SUP23_G4.ViewModels
                     PMButton.CurrentMessage = MessageStatus.Over45Player1;
                 }
             }
-            else if (PlayerTurnCounter == 1)
+            else if (IsPlayer2Turn)
             {
-                if (Player1.Score > Player2.Score && Player1.Score >= TargetPoints) //Player2Winner
+                if (IsPlayer2Winner) 
                 { 
                     Player1ForegroundBrush = Brushes.Red;
                     Player2ForegroundBrush = Brushes.Goldenrod;
                     Player2LabelVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
-                    gif = Visibility.Visible;
+                    Gif = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
                     PMButton.CurrentMessage = MessageStatus.Player2Winner;
                 }
 
-                if (Player2.Score > Player1.Score && Player2.Score >= TargetPoints) //Player1 Winner
+                if (IsPlayer1Winner) 
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     Player1ForegroundBrush = Brushes.Goldenrod;
                     Player1LabelVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
-                    gif = Visibility.Visible;
+                    Gif = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
                     PMButton.CurrentMessage = MessageStatus.Player1Winner;
                 }
 
-                else if (Player2.Score < TargetPoints && Player1.Score < TargetPoints) //Player2 Turns klar
+                else if (IsPlayer2TurnDone) 
                 {
                     Player2LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
@@ -839,7 +867,7 @@ namespace SUP23_G4.ViewModels
                     
                 }
 
-                else if (Player1.Score == Player2.Score && Player1.Score >= TargetPoints && Player2.Score >= TargetPoints)//BonusGame
+                else if (IsBonusGame)
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     MessageBoxVisibility = Visibility.Visible;
@@ -852,47 +880,7 @@ namespace SUP23_G4.ViewModels
         }
     
         }
-        /// <summary>
-        /// Metod som gör att spelreglerna kan visas i GameView under tiden som spelet spelas
-        /// Ändrar texten till Dölj spelregler när knappen har klickats en gång och på motsvarande sätt för varje språk
-        /// </summary>
-        public void ViewGameRules()
-        {
-
-            if (MainViewModel.Instance.GameLanguage == GameLanguage.Swedish)
-            {
-
-                if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Visa spelregler")
-                {
-                    GameRulesSwedishVisibility = Visibility.Visible;
-                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Dölj spelregler";
-                }
-
-                else if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Dölj spelregler")
-                {
-                    GameRulesSwedishVisibility = Visibility.Hidden;
-                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Visa spelregler";
-                }
-
-
-          
-            }
-            else if (MainViewModel.Instance.GameLanguage == GameLanguage.English)
-            {
-            
-                    if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Show game rules")
-                    {
-                        GameRulesEnglishVisibility = Visibility.Visible;
-                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Hide game rules";
-                    }
-                    else if (MainViewModel.Instance.CurrentLanguage.GameRuleBtn == "Hide game rules")
-                    {
-                        GameRulesEnglishVisibility = Visibility.Hidden;
-                    MainViewModel.Instance.CurrentLanguage.GameRuleBtn = "Show game rules";
-                    }
-                
-            }
-        }
+        
 
 
         #endregion

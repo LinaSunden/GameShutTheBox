@@ -75,7 +75,6 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <!--Visibility="{Binding MBVisibility, ElementName=playermessagebutton}"-->
     <Border CornerRadius="10">
 
         <Border CornerRadius="35" BorderThickness="12">
@@ -89,11 +88,6 @@
             </Border.BorderBrush>
 
             <Grid>
-                <!--<Grid.InputBindings>
-                    <MouseBinding
-                        Gesture="LeftClick"
-                        Command="{Binding MBVisibilityCommand, ElementName=playermessagebutton}"/>
-                </Grid.InputBindings>-->
 
                 <Grid.Background>
 

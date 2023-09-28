@@ -290,9 +290,9 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] The_Box_is_Shut1 {
+        public static byte[] The_Box_is_Shut {
             get {
-                object obj = ResourceManager.GetObject("The_Box_is_Shut1", resourceCulture);
+                object obj = ResourceManager.GetObject("The_Box_is_Shut", resourceCulture);
                 return ((byte[])(obj));
             }
         }

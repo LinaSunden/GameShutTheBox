@@ -44,13 +44,12 @@ namespace SUP23_G4.ViewModels
         #endregion
 
         #region Egenskaper
-        public Language Language { get; set; } // ska det stå CurrentLanguage?
+        public Language CurrentLanguage { get; set; }
         public ICommand GoToStartCommand { get; }
         public ICommand StartGameCommand { get; }
         public ICommand GameRulesCommand { get; }
         public ICommand ChangeLanguageToSwedish { get; }
         public ICommand ChangeLanguageToEnglish { get; }
-        public Language CurrentLanguage { get; set; }
         public GameLanguage GameLanguage { get; set; }
 
   
@@ -58,7 +57,7 @@ namespace SUP23_G4.ViewModels
 
         #region Metoder
         /// <summary>
-        /// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på MainView
+        /// Ändrar visningsspråket i appen baserat på val som spelaren gör i MainView
         /// </summary>
         /// <param name="gameLanguage"></param>
         public void ChangeLanguage (GameLanguage gameLanguage)
@@ -66,11 +65,9 @@ namespace SUP23_G4.ViewModels
             GameLanguage = gameLanguage;
             CurrentLanguage = Language.UpdateLanguage(gameLanguage);
         }
-
         /// <summary>
-        /// Byter vy till StartView
-        /// </summary>
- 
+        /// Byter vy till StartView, om vyn är gameview får spelaren en fråga om hen vill avsluta
+        /// </summary>, 
         public void GoToStartView()
         {
             if (CurrentViewModel is GameViewModel)
@@ -90,8 +87,6 @@ namespace SUP23_G4.ViewModels
                 CurrentViewModel = new StartViewModel();
             }
         }
-
-
         /// <summary>
         /// Byter vy till GameRules
         /// </summary>
@@ -99,7 +94,6 @@ namespace SUP23_G4.ViewModels
         {
             CurrentViewModel = new GameRulesViewModel();
         }
-
         /// <summary>
         /// Byter vy till GameView och skickar med PlayerSettingsDton
         /// </summary>

@@ -253,7 +253,8 @@
 
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesSwedish.png" Visibility="{Binding GameRulesSwedishVisibility}" />
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesEnglish.png" Visibility="{Binding GameRulesEnglishVisibility}" />
-            <Image Margin="-53,78,-244,92" Source="/The_Box_is_Shut.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+            <Image Margin="-53,78,-244,92" Source="pack://application:,,,/SUP23_G4;component/resources/Image/The_Box_is_Shut.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -356,18 +357,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Rectangle Fill="Transparent" Height="100" Width="160" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" />
-
-
-
-
-
                 <GameComponents:Die x:Name="DieOne" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Top" DieValue="{Binding Dice[0].DieValue}"/>
                 <GameComponents:Die x:Name="DieTwo" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" DieValue="{Binding Dice[1].DieValue}"/>
-
-                <!--<Image gif:ImageBehavior.AnimatedSource="{Binding Gif, Mode=TwoWay}"/>-->
-                <Image Grid.ColumnSpan="2" gif:ImageBehavior.AnimatedSource="/resources/Fireworks.gif" gif:ImageBehavior.AutoStart="True" Visibility="{Binding gif, Mode=TwoWay}"/>
-                <!--<MediaElement x:Name="gif" MediaEnded="GifPlay()" UnloadedBehavior="Manual" Source="/resources/Fireworks.gif" LoadedBehavior="Play"/>-->
-
+                <Image Grid.ColumnSpan="2" gif:ImageBehavior.AnimatedSource="/resources/Fireworks.gif" gif:ImageBehavior.AutoStart="True" Visibility="{Binding Gif, Mode=TwoWay}"/>
+                
             </Grid>
 
             <Button Style="{DynamicResource RoundedButton}" 
@@ -400,23 +393,20 @@
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
-
-            <!--Grid för nedre boxen, kankse kan vi byta ut denna svarta ruta mot en snyggare bakgrundsbild för att få den att likna spelet mer senare? -->
+            
             <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Margin="0,50,0,0">
                 <Grid.Background>
                     <ImageBrush ImageSource="/Resources/Image/BoxBackground.jpg"/>
                 </Grid.Background>
 
-
                 <Rectangle Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" Height="60"  VerticalAlignment="Bottom" >
-                    <!--Träkant i nedre spelplanen-->
+                   
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/Resources/Image/TileTexture.jpg"/>
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>
 
-            <!-- Grid med GameTiles-->
             <Grid Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

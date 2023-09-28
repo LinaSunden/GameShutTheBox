@@ -52,35 +52,6 @@
                         </Button.Background>
                     </Button>
                 </StackPanel>
-
-                
-                
-                <!--<ComboBox Margin="0,5" SelectedItem="{Binding GameLanguage}" ItemsSource="{Binding GameLanguages}">
-                    
-                    
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding}"/>
-                                
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                    
-                    --><!--<ComboBoxItem x:Name="Swedish">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/Image/SwedenFlag.png" Width="48"/>
-                            <TextBlock Text="Svenska"/>
-                        </StackPanel>
-                    </ComboBoxItem>
-
-                    <ComboBoxItem x:Name="English">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/Image/GreatBritainFlag.png" Width="48"/>
-                            <TextBlock Text="English"/>
-                        </StackPanel>
-                    </ComboBoxItem>-->
-                <!--</ComboBox>-->
             </StackPanel>
 
 

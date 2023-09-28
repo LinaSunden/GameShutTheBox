@@ -39,7 +39,6 @@ namespace SUP23_G4.Views.Pages
         private ModelVisual3D _die1ModelVisual;
         private ModelVisual3D _die2ModelVisual;
         private ModelImporter _importer = new();
-        private Transform3DGroup _rotationTransformGroup;
         private DispatcherTimer _rotationTimer;
         private double _rotationAngleDie1 = 0.5;
         private double _rotationAngleDie2 = 0.5;
@@ -72,9 +71,7 @@ namespace SUP23_G4.Views.Pages
 
             
             RotationTimerDice();
-        }
-
-     
+        }   
         /// <summary>
         /// Startar timer och ställer in dess intervall
         /// </summary>
@@ -86,12 +83,9 @@ namespace SUP23_G4.Views.Pages
             _rotationTimer.Tick += RotateDie2;
             _rotationTimer.Start();
         }
-
         /// <summary>
         /// Sätter rotation på y-axel till 1 för Die1
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void RotateDie1(object sender, EventArgs e)
         {
             RotateTransform3D rotation = new (new AxisAngleRotation3D(new Vector3D(0, 1, 0), _rotationAngleDie1));
@@ -100,12 +94,9 @@ namespace SUP23_G4.Views.Pages
 
             _rotationAngleDie1 += 0.5;
         }
-
         /// <summary>
         /// Sätter rotation på z-axel (djupet) till 1 för Die2
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void RotateDie2(object sender, EventArgs e)
         {
             RotateTransform3D rotation = new(new AxisAngleRotation3D(new Vector3D(0, 0, 1), _rotationAngleDie2));

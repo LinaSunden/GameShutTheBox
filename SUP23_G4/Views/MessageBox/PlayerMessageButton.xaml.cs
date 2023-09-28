@@ -25,22 +25,9 @@ namespace SUP23_G4.Views.MessageBox
         public PlayerMessageButton()
         {
             InitializeComponent();
-            //MBVisibilityCommand = new RelayCommand(x => ExitMessage_MousLeftButtonDown());
+            
         }
-        //public ICommand MBVisibilityCommand { get; }
-        ////public Visibility MBVisibility = Visibility.Visible;   
-
-
-        //public Visibility MBVisibility
-        //{
-        //    get { return (Visibility)GetValue(MBVisibilityProperty); }
-        //    set { SetValue(MBVisibilityProperty, value); }
-        //}
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty MBVisibilityProperty =
-        //    DependencyProperty.Register("MBVisibility", typeof(Visibility), typeof(PlayerMessageButton), new PropertyMetadata(Visibility.Hidden));
-
+        
 
         public MessageStatus CurrentMessage
         {
@@ -52,12 +39,6 @@ namespace SUP23_G4.Views.MessageBox
         public static readonly DependencyProperty CurrentMessageProperty =
             DependencyProperty.Register("CurrentMessage", typeof(MessageStatus), typeof(PlayerMessageButton), new PropertyMetadata(null));
 
-        //private void ExitMessage_MousLeftButtonDown()
-        
-        //{
-        //    //MBVisibility = Visibility.Collapsed;
-
-        //}
 
     }
 }
