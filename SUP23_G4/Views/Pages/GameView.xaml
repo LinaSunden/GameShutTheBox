@@ -253,19 +253,7 @@
 
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesSwedish.png" Visibility="{Binding GameRulesSwedishVisibility}" />
             <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesEnglish.png" Visibility="{Binding GameRulesEnglishVisibility}" />
-            <Image Margin="-53,78,-244,92" Source="pack://application:,,,/SUP23_G4;component/resources/Image/The_Box_is_Shut.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
-                
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="6.896"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-        
-            <Label FontSize="22" FontWeight="SemiBold" Foreground="White" Content="{Binding CurrentLanguage.valueTooLow, Source= {x:Static vm:MainViewModel.Instance}}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Margin="0,40,30,0" Visibility="{Binding TileValueVisibility}" />
+            <Label FontSize="22" FontWeight="SemiBold" Foreground="White" Content="{Binding CurrentLanguage.valueTooLow, Source= {x:Static vm:MainViewModel.Instance}}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,200,0" Visibility="{Binding TileValueVisibility}" />
 
             <GroupBox Header="{Binding CurrentLanguage.MyTurn, Source= {x:Static vm:MainViewModel.Instance}}" 
                       Background="#FFF5B94A" 
@@ -434,7 +422,7 @@
             <MessageBox:PlayerMessageButton Grid.ColumnSpan="4" Margin="0,0,20,0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" CurrentMessage="{Binding PMButton.CurrentMessage, Mode=TwoWay}"  Visibility="{Binding MessageBoxVisibility}"/>
             <Label x:Name="Player1" Content="{Binding Player1.Name}" FontSize="22" FontWeight="Bold" FontStyle="Italic" FontFamily="Cascadia Mono" Grid.ColumnSpan="4" Margin="300,0,20,150" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" Visibility="{Binding Player1LabelVisibility}" />
             <Label x:Name="Player2" Content="{Binding Player2.Name}" FontSize="22" FontWeight="Bold" FontStyle="Italic" FontFamily="Cascadia Mono" Grid.ColumnSpan="4" Margin="300,0,20,150" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="407" Visibility="{Binding Player2LabelVisibility}"  />
-            <Image Margin="84,38,-10,50" Source="/Resources/Image/The_Box_is_Shut.png" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="1" RenderTransformOrigin="0.5,0.5" Visibility="{Binding SBTLogoVisibility}">
+            <Image Margin="84,38,-10,50" Source="pack://application:,,,/SUP23_G4;component/resources/Image/The_Box_is_Shut.png" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="1" RenderTransformOrigin="0.5,0.5" Visibility="{Binding SBTLogoVisibility}">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
