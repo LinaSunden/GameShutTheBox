@@ -91,6 +91,7 @@ namespace SUP23_G4.ViewModels
         public Visibility ExecuteMove { get; set; } = Visibility.Hidden;
         public Visibility Player1Turn { get; set; }
         public Visibility Player2Turn { get; set; }
+        public Visibility SBTLogoVisibility { get; set; } = Visibility.Collapsed;
         public Visibility Player1LabelVisibility { get; set; } = Visibility.Collapsed;
         public Visibility Player2LabelVisibility { get; set; } = Visibility.Collapsed;
         public Visibility EndGameVisibility { get; set; } = Visibility.Collapsed;
@@ -596,6 +597,7 @@ namespace SUP23_G4.ViewModels
         private void DiceToss()
         {
             VisibilityMessageBoxLabel();
+            SBTLogoVisibility = Visibility.Collapsed;
             DiceSum = 0;
             Random r = new Random();
 
@@ -694,6 +696,7 @@ namespace SUP23_G4.ViewModels
         {
             if (IsAllTilesDownward())
             {
+                SBTLogoVisibility = Visibility.Visible;
                 ClosingTileSound();
                 ScoreCounter();
                 WinnerOfGame();
