@@ -672,6 +672,7 @@ namespace SUP23_G4.ViewModels
             BonusButtonVisibility = Visibility.Collapsed;
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
+            gif = Visibility.Collapsed;
 
         }
 
