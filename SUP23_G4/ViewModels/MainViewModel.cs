@@ -33,7 +33,8 @@ namespace SUP23_G4.ViewModels
             GoToStartCommand = new RelayCommand(page => GoToStartView());
             GameRulesCommand = new RelayCommand(page => StartGameRules());
             StartGameCommand = new RelayCommand(page => StartGame(page));
-
+            ChangeLanguageToSwedish = new RelayCommand (x => ChangeLanguage(GameLanguage.Swedish));
+            ChangeLanguageToEnglish = new RelayCommand(x => ChangeLanguage(GameLanguage.English));
             ChangeLanguage(GameLanguage.English);
 
         }
@@ -70,32 +71,12 @@ namespace SUP23_G4.ViewModels
         public ICommand GoToStartCommand { get; }
         public ICommand StartGameCommand { get; }
         public ICommand GameRulesCommand { get; }
+        public ICommand ChangeLanguageToSwedish { get; }
+        public ICommand ChangeLanguageToEnglish { get; }
         public Language CurrentLanguage { get; set; }
+        public GameLanguage GameLanguage { get; set; }
 
-        private GameLanguage _gameLanguage;  
-        public GameLanguage GameLanguage
-        {
-            get { return _gameLanguage; }
-            set
-            {
-                if (_gameLanguage != value)
-                {
-                    _gameLanguage = value;
-                    ChangeLanguage(_gameLanguage);
-                }
-            }
-        }
-
-        public ObservableCollection<GameLanguage> GameLanguages { get; } = new ObservableCollection<GameLanguage>
-        {
-            GameLanguage.English,
-            GameLanguage.Swedish,
-        };
-
-
-
-
-
+  
         #endregion
 
         #region Metoder

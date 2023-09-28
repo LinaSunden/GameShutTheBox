@@ -24,7 +24,7 @@ namespace SUP23_G4.Converters
 
                 return messageStatus switch
                 {
-                    MessageStatus.Player1Winner => mainViewModel.CurrentLanguage.SelectedLanguage.Player1Winner,
+                    MessageStatus.Player1Winner => mainViewModel.CurrentLanguage.Player1Winner,
                     MessageStatus.Player2Winner => "Grattis Player2 du har vunnit!\n\rVill du köra en rematch?",
                     MessageStatus.BonusGame => "Spelet slutade lika då \n\rbåda spelarna fick samma poäng,\n\rVill ni köra en bonusomgång?",
                     //MessageStatus.GameFinished1,

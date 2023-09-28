@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel HorizontalAlignment="Right" Grid.Column="1">
-                <TextBlock Text="{Binding CurrentLanguage.SelectedLanguage.SelectLanguage}"
+                <TextBlock Text="{Binding CurrentLanguage.SelectLanguage}"
     Foreground="White"
     FontSize="12"
     Opacity="1" 
@@ -39,8 +39,22 @@
                         <DropShadowEffect/>
                     </TextBlock.Effect>
                 </TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{Binding ChangeLanguageToEnglish, Source={x:Static vm:MainViewModel.Instance}}" Width="40" Height="25" Margin="5">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Image/GreatBritainFlag.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Command="{Binding ChangeLanguageToSwedish, Source={x:Static vm:MainViewModel.Instance}}"  Width="40" Height="25">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Resources/Image/SwedenFlag.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
 
-                <ComboBox Margin="0,5" SelectedItem="{Binding GameLanguage}" ItemsSource="{Binding GameLanguages}">
+                
+                
+                <!--<ComboBox Margin="0,5" SelectedItem="{Binding GameLanguage}" ItemsSource="{Binding GameLanguages}">
                     
                     
                     <ComboBox.ItemTemplate>
@@ -52,7 +66,7 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                     
-                    <!--<ComboBoxItem x:Name="Swedish">
+                    --><!--<ComboBoxItem x:Name="Swedish">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Image/SwedenFlag.png" Width="48"/>
                             <TextBlock Text="Svenska"/>
@@ -65,11 +79,11 @@
                             <TextBlock Text="English"/>
                         </StackPanel>
                     </ComboBoxItem>-->
-                </ComboBox>
+                <!--</ComboBox>-->
             </StackPanel>
 
 
-            <Button Content="{Binding CurrentLanguage.SelectedLanguage.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand, Source={x:Static vm:MainViewModel.Instance}}">
+            <Button Content="{Binding CurrentLanguage.HomePage}" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="SemiBold" Grid.Column="1" Margin="0,0,0,0" BorderBrush="#FF7B7B7B" Command="{Binding GoToStartCommand, Source={x:Static vm:MainViewModel.Instance}}">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
