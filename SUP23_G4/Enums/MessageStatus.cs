@@ -17,7 +17,6 @@ namespace SUP23_G4.Enums
         GameFinished2,
         BonusGameWon1,
         BonusGameWon2,
-        EndGame,
         Player1Turn,
         Player2Turn,
         BonusGameTurn,

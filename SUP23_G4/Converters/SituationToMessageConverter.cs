@@ -33,7 +33,6 @@ namespace SUP23_G4.Converters
                     MessageStatus.Player1Turn => "Din tur är nu över!\n\r\n\r",
                     MessageStatus.Player2Turn => "Din tur är nu över!\n\r\n\r",
                     MessageStatus.BonusGameTurn => "Nu är din bonustur slut.\n\r\n\r",
-                    MessageStatus.EndGame => "Vill du avsluta spelet \r\boch gå tillbaka till startsida?",
                     _ => "",
                 };
             }
