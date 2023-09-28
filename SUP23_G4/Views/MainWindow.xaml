@@ -78,11 +78,7 @@
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"/>
-            
-            <MessageBox:PlayerMessageButton Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="0" VerticalAlignment="Center" Width="405" Grid.RowSpan="2" Visibility="{Binding MessageBoxVisibility}"/>
-
-
-
+        
         </Grid>
     </Border>
 </Window>

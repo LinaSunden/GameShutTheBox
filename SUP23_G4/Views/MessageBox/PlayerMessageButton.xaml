@@ -123,30 +123,15 @@
                 FontFamily="Arial"
                 Foreground="White"
                 FontSize="15" 
-                Command="{Binding TestBonusGame}"
+                Command="{Binding StartBonusRoundCommand}"
                 Visibility="{Binding BonusButtonVisibility}"/>
                 <Button Style="{DynamicResource RoundedButton}" x:Name="buttonFinish" Content="Avsluta" HorizontalAlignment="Right" Margin="0,200,24,20" VerticalAlignment="Top" Height="32" Width="101"
                  Background="#FFF57132"
                  FontFamily="Arial"
                  Foreground="White"
                  FontSize="15"
-                 Command="{Binding VisibilityGameEndingCommand}"
+                 Command="{Binding EndGameCommand}"
                  Visibility="{Binding GameButtonsVisibility}"/>
-                <Button Style="{DynamicResource RoundedButton}" x:Name="buttonEndGameGreen" Content="Ja" HorizontalAlignment="Left" Margin="24,200,0,0" VerticalAlignment="Top" Height="32" Width="101"
-                        Background="Yellow"
-                        FontFamily="Arial"
-                        Foreground="White"
-                        FontSize="15" 
-                        Command="{Binding EndGameCommand}"
-                        Visibility="{Binding EndGameVisibility}"/>
-                <Button Style="{DynamicResource RoundedButton}" x:Name="buttonEndGameRed" Content="Avsluta" HorizontalAlignment="Right" Margin="0,200,24,0" VerticalAlignment="Top" Height="32" Width="101"
-                    Background="Purple"
-                    FontFamily="Arial"
-                    Foreground="White"
-                    FontSize="15"
-                    Command="{Binding EndGameCommand}"
-                    Visibility="{Binding EndGameVisibility}"/>
-
             </Grid>
         </Border>
     </Border>

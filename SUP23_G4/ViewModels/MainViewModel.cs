@@ -30,11 +30,12 @@ namespace SUP23_G4.ViewModels
         {
             GoToStartCommand = new RelayCommand(page => GoToStartView());
             GameRulesCommand = new RelayCommand(page => StartGameRules());
-            StartGameCommand = new RelayCommand(page => StartGame(page)); 
-
+            StartGameCommand = new RelayCommand(page => StartGame(page));
             Language = new();
             UpdateLanguage();
         }
+
+
 
         #endregion
 
@@ -43,11 +44,6 @@ namespace SUP23_G4.ViewModels
         public ICommand GoToStartCommand { get; }
         public ICommand StartGameCommand { get; }
         public ICommand GameRulesCommand { get; }
-        public Visibility BonusButtonVisibility { get; set; } = Visibility.Collapsed;
-        public Visibility GameButtonsVisibility { get; set; } = Visibility.Collapsed;
-        public Visibility MessageBoxVisibility { get; set; } = Visibility.Collapsed;
-        public Visibility EndGameVisibility { get; set; } = Visibility.Collapsed;
-
         private int _cboSelectedIndex = 1;
         public int CboSelectedIndex
         {
@@ -94,19 +90,7 @@ namespace SUP23_G4.ViewModels
         /// <summary>
         /// En metod som gör att du för en förfrågan om du vill gå till startsidan från Gamview, men den går direkt till startsidan från spelregler.
         /// </summary>
-        //private void GoToStartView()
-        //{
-        //    if (CurrentViewModel is GameViewModel)
-        //    {
-        //        //MessageBoxVisibility = Visibility.Visible;
-        //        //EndGameVisibility = Visibility.Visible;
-        //    }
-        //    else
-        //    {
-        //        CurrentViewModel = new StartViewModel();
-        //    }
-        //}
-
+  
         /// <summary>
         /// Ändrar visningsspråket i appen baserat på val som spelaren gör i combobox på StartView
         /// </summary>

@@ -46,15 +46,14 @@ namespace SUP23_G4.ViewModels
             ExecuteMoveCommand = new RelayCommand(x => CompareSelectedTilesWithDiceValue());
             TileClickedCommand = new RelayCommand(x => UpdateStatusOfChosenGameTile(x));
             EndGameCommand = new RelayCommand(x => EndGame());
+            StartBonusRoundCommand = new RelayCommand(x => StartBonusRound()); 
             //ViewGameRulesCommand = new RelayCommand(x => ViewGameRules());
             SoundEffectsCommand = new RelayCommand(x => SoundEffectsOnAndOff());
             StartRematchCommand = new RelayCommand(x => StartRematch());
-            VisibilityGameEndingCommand = new RelayCommand(x => VisibilityGameEnding());
             GameTiles = new ObservableCollection<Tile>();
             Dice = new ObservableCollection<Die>();
             Language = new ();
             PMButton = new();
-            TestBonusGame = new RelayCommand(x => StartBonusRound()); //TODO: Ta bort commando när vi har testat klart bonusomgång
             FillCollectionOfGameTiles();
             CreateDice();
             Player1Turn = Visibility.Visible;
@@ -85,7 +84,7 @@ namespace SUP23_G4.ViewModels
         public ICommand StartRematchCommand { get; }
         public ICommand VisibilityGameEndingCommand { get; }
         public ICommand EndGameCommand { get; }
-        public ICommand TestBonusGame { get; set; } //TODO: Ta bort commando när vi har testat klart bonusomgång}
+        public ICommand StartBonusRoundCommand { get; set; }
         public Visibility ExecuteMove { get; set; } = Visibility.Hidden;
         public Visibility Player1Turn { get; set; }
         public Visibility Player2Turn { get; set; }
@@ -451,12 +450,7 @@ namespace SUP23_G4.ViewModels
             Player1LabelVisibility = Visibility.Collapsed;
             Player2LabelVisibility = Visibility.Collapsed;
         }
-        public void VisibilityGameEnding()
-        {
-            VisibilityMessageBoxLabel();   
-            ExecuteMove = Visibility.Hidden;
-            IsThrowEnable = false;
-        }
+ 
         /// <summary>
         /// Metod som gör tärningarna inte går att klicka samt visar "genomför drag knapp".
         /// </summary>
@@ -571,8 +565,6 @@ namespace SUP23_G4.ViewModels
            
 
         }
-
-
         /// <summary>
         /// Kastar två tärningar och får uppdaterade värden på DieOne och DieTwo
         /// </summary>
@@ -629,22 +621,19 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         private void StartBonusRound()
         {
-
-            MessageBoxVisibility = Visibility.Collapsed;
-            BonusButtonVisibility = Visibility.Collapsed;
-            GameButtonsVisibility = Visibility.Collapsed;
+            VisibilityMessageBoxLabel();
+            VisibilityBonusRound();
             Player1.Score = 0;
             Player2.Score = 0;
             Player1ForegroundBrush = Brushes.White;
             Player2ForegroundBrush = Brushes.White;
-            VisibilityBonusRound();
             NewGameTurn();
 
         }
         /// <summary>
         /// Metod som ger vyn försättningar och utseende för att spela en vanlig spelomgång
         /// </summary>
-        private void StartRematch()  // Kopplas till messagebox som ska avgöra om du vill göra en rematch med samma spelare eller gå ur spelet till startsida.
+        private void StartRematch() 
         {
             VisibilityMessageBoxLabel();
             NewGameTurn();
@@ -769,14 +758,14 @@ namespace SUP23_G4.ViewModels
         {
             if (PlayerTurnCounter == 2)
             {
-                if (Player1.Score < TargetPoints)
+                if (Player1.Score < TargetPoints) //Player1 turn
                 {
                     Player1LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
                     PMButton.CurrentMessage = MessageStatus.Player1Turn;
                 }
-                else if (Player1.Score >= TargetPoints)
+                else if (Player1.Score >= TargetPoints) //Player 1 over 45
                 {
                     Player1ForegroundBrush = Brushes.Red;
                     Player1LabelVisibility = Visibility.Visible;
@@ -787,7 +776,7 @@ namespace SUP23_G4.ViewModels
             }
             else if (PlayerTurnCounter == 1)
             {
-                if (Player1.Score > Player2.Score && Player1.Score >= TargetPoints)
+                if (Player1.Score > Player2.Score && Player1.Score >= TargetPoints) //Player2Winner
                 { 
                     Player1ForegroundBrush = Brushes.Red;
                     Player2ForegroundBrush = Brushes.Goldenrod;
@@ -798,7 +787,7 @@ namespace SUP23_G4.ViewModels
                     PMButton.CurrentMessage = MessageStatus.Player2Winner;
                 }
 
-                if (Player2.Score > Player1.Score && Player2.Score >= TargetPoints)
+                if (Player2.Score > Player1.Score && Player2.Score >= TargetPoints) //Player1 Winner
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     Player1ForegroundBrush = Brushes.Goldenrod;
@@ -809,7 +798,7 @@ namespace SUP23_G4.ViewModels
                     PMButton.CurrentMessage = MessageStatus.Player1Winner;
                 }
 
-                else if (Player2.Score < TargetPoints && Player1.Score < TargetPoints)
+                else if (Player2.Score < TargetPoints && Player1.Score < TargetPoints) //Player2 Turns klar
                 {
                     Player2LabelVisibility = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
@@ -818,7 +807,7 @@ namespace SUP23_G4.ViewModels
                     
                 }
 
-                else if (Player1.Score == Player2.Score && Player1.Score >= TargetPoints && Player2.Score >= TargetPoints)
+                else if (Player1.Score == Player2.Score && Player1.Score >= TargetPoints && Player2.Score >= TargetPoints)//BonusGame
                 {
                     Player2ForegroundBrush = Brushes.Red;
                     MessageBoxVisibility = Visibility.Visible;
