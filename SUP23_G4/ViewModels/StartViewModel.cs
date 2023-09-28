@@ -25,8 +25,8 @@ namespace SUP23_G4.ViewModels
 
         public StartViewModel()
         {
-            StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
-            StartScreenMusic.Play();
+            //StartScreenMusic = new SoundPlayer(Properties.Resources.StartViewMusic);
+            //StartScreenMusic.Play();
             IsMusicPlaying = true;
             SetUpGameCommand = new RelayCommand(S => SetupGame());
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
@@ -40,7 +40,7 @@ namespace SUP23_G4.ViewModels
         public Player Player2 { get; private set; }
 
         private PlayerSettingsDto SettingsDto;
-        private SoundPlayer StartScreenMusic;
+        //private SoundPlayer StartScreenMusic;
         public ICommand MuteMusicCommand { get;}
         public ICommand SetUpGameCommand { get; }
         public int TargetPoints { get; set; } = 45;
@@ -57,7 +57,7 @@ namespace SUP23_G4.ViewModels
         /// </summary>
         private void SetupGame()
         {
-            StartScreenMusic.Stop();
+            //StartScreenMusic.Stop();
             CreatePlayers();
             MainViewModel.Instance.StartGameCommand.Execute(SettingsDto);
             MainViewModel.Instance.CurrentViewModel = new GameViewModel(SettingsDto); 
@@ -80,13 +80,13 @@ namespace SUP23_G4.ViewModels
         {
             if (IsMusicPlaying)
             {
-                StartScreenMusic.Stop();
+                //StartScreenMusic.Stop();
                 IsMusicPlaying = false;
                 SpeakerImage = "/Resources/Image/MutedSpeakerButton.png";
             }
             else if (!IsMusicPlaying)
             {
-                StartScreenMusic.Play();
+                //StartScreenMusic.Play();
                 IsMusicPlaying = true;
                 SpeakerImage = "/Resources/Image/SpeakerButton.png";
             }
