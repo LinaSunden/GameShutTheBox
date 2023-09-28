@@ -251,7 +251,8 @@
 
             </StackPanel>
 
-            <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesSwedish.png" Visibility="{Binding GameRuleVisibility}" />
+            <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesSwedish.png" Visibility="{Binding GameRulesSwedishVisibility}" />
+            <Image Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left"  Source="/Resources/Image/GameRulesEnglish.png" Visibility="{Binding GameRulesEnglishVisibility}" />
 
             <Label FontSize="22" FontWeight="SemiBold" Foreground="White" Content="För låga värden valt!" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Margin="0,40,30,0" Visibility="{Binding TileValueVisibility}" />
 
