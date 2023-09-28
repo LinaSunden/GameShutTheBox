@@ -115,7 +115,7 @@
                     <ImageBrush ImageSource="/Resources/Image/GreenBackground.jpg"/>
                 </Border.Background>
             </Border>
-            <GroupBox Header="{Binding Language.MyTurn}" 
+            <GroupBox Header="{Binding CurrentLanguage.MyTurn, Source= {x:Static vm:MainViewModel.Instance}}" 
                       Background="#FFF5B94A" 
                       Foreground="WhiteSmoke" 
                       FontFamily="Cascadia Mono" 
@@ -131,7 +131,7 @@
             </GroupBox>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
-                    Text="{Binding Language.Player1}"
+                    Text="{Binding CurrentLanguage.Player1, Source= {x:Static vm:MainViewModel.Instance}}"
                     HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="25"
@@ -161,7 +161,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Grid.Row="0" Grid.Column="0" Margin="10,80,0,0">
                 <TextBlock
-                    Text="{Binding Language.Score}"
+                    Text="{Binding CurrentLanguage.Score, Source= {x:Static vm:MainViewModel.Instance}}"
                     HorizontalAlignment="left"
                     Foreground="White"
                     FontSize="25"
@@ -190,7 +190,7 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Center">
                 <TextBlock
-                    Text="{Binding Language.Round}"
+                    Text="{Binding CurrentLanguage.Round, Source= {x:Static vm:MainViewModel.Instance}}"
                     Foreground="White"
                     FontSize="20"  
                     Opacity="1" 
@@ -231,7 +231,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
-                <Button Content="{Binding Language.GameRuleBtn}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ViewGameRulesCommand}" Margin="0,20">
+                <Button Content="{Binding CurrentLanguage.GameRuleBtn, Source= {x:Static vm:MainViewModel.Instance}}" FontFamily="Cascadia Code" FontWeight="SemiBold"  Height="50" BorderBrush="#FF7B7B7B" Command="{Binding ViewGameRulesCommand}" Margin="0,20">
                     <Button.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#FFFDE3C2" Offset="0.0"/>
@@ -254,7 +254,7 @@
 
             <Label FontSize="22" FontWeight="SemiBold" Foreground="White" Content="För låga värden valt!" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Margin="0,40,30,0" Visibility="{Binding TileValueVisibility}" />
 
-            <GroupBox Header="{Binding Language.MyTurn}" 
+            <GroupBox Header="{Binding CurrentLanguage.MyTurn, Source= {x:Static vm:MainViewModel.Instance}}" 
                       Background="#FFF5B94A" 
                       Foreground="WhiteSmoke" 
                       FontFamily="Cascadia Mono" 
@@ -266,7 +266,7 @@
                       Visibility="{Binding Player2Turn}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0">
                 <TextBlock
-                    Text="{Binding Language.Player2}"
+                    Text="{Binding CurrentLanguage.Player2, Source= {x:Static vm:MainViewModel.Instance}}"
                     HorizontalAlignment="Left"
                     Foreground="White"
                     FontSize="25"
@@ -295,7 +295,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="10,80,0,0">
                 <TextBlock
-                   Text="{Binding Language.Score}"
+                   Text="{Binding CurrentLanguage.Score, Source= {x:Static vm:MainViewModel.Instance}}"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="25"
@@ -357,7 +357,7 @@
             </Grid>
 
             <Button Style="{DynamicResource RoundedButton}" 
-                    Content="{Binding Language.ConfirmMove}" 
+                    Content="{Binding CurrentLanguage.ConfirmMove, Source= {x:Static vm:MainViewModel.Instance}}" 
                     Width="180"
                     FontFamily="Cascadia Code" FontWeight="SemiBold" 
                     Grid.Column="2" Grid.ColumnSpan="2" Height="50" 
