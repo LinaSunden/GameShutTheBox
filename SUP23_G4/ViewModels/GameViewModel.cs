@@ -23,10 +23,13 @@ using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAnimatedGif;
 
 namespace SUP23_G4.ViewModels
 {
@@ -58,6 +61,8 @@ namespace SUP23_G4.ViewModels
             Player1Turn = Visibility.Visible;
             Player2Turn = Visibility.Hidden;
             SpeakerImage = "/Resources/Image/SpeakerButton.png";
+            Gif = new Image();
+            //StartAnimation();
         }
 
         #endregion
@@ -97,6 +102,7 @@ namespace SUP23_G4.ViewModels
         public Visibility BonusRoundVisibility { get; private set; } = Visibility.Hidden;
         public Visibility TileValueVisibility { get; private set; } = Visibility.Hidden;
         public Visibility MessageBoxVisibility { get; private set; } = Visibility.Collapsed;
+        public Visibility gif { get; set; } = Visibility.Collapsed;
         public int DiceSum { get; private set; }
         public int GameRoundCounter { get; private set; } = 1;
         public int PlayerTurnCounter { get; private set; } = 1;
@@ -105,6 +111,26 @@ namespace SUP23_G4.ViewModels
         public string? DisplayDiceSum { get; set; }
         public bool IsSoundEffectsAllowed { get; private set; } = true;
         public bool IsThrowEnable { get; private set; } = true;
+
+        
+        public Image Gif {  get; set; }
+        public void StartAnimation()
+        {
+            gif = Visibility.Visible;
+            var image = new BitmapImage();
+            image.BeginInit();
+            //UriBuilder builder = new UriBuilder("/resource/Fireworks.gif");
+            //Uri uri = new Uri("/resources/Fireworks.gif", UriKind.Relative);
+            //image.UriSource = uri;
+            image.UriSource = new Uri("/resources/Fireworks.gif", UriKind.Relative);
+            
+            image.EndInit();
+            ImageBehavior.SetAnimatedSource(Gif, image);
+            ImageBehavior.SetRepeatBehavior(Gif, new RepeatBehavior(0));
+            ImageBehavior.SetRepeatBehavior(Gif, RepeatBehavior.Forever);
+            //image.BeginAnimation();
+        }
+
         #endregion
 
         #region Instansvariabler
@@ -570,7 +596,6 @@ namespace SUP23_G4.ViewModels
         {
             VisibilityMessageBoxLabel();
             DiceSum = 0;
-
             Random r = new Random();
 
             for (int i = 0; i < 2; i++)
@@ -733,6 +758,7 @@ namespace SUP23_G4.ViewModels
                     Player2ForegroundBrush = Brushes.Goldenrod;
                     MessageBoxVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
+                    gif = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon2;
                     Player2LabelVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
@@ -743,6 +769,7 @@ namespace SUP23_G4.ViewModels
                     Player1ForegroundBrush = Brushes.Goldenrod;
                     MessageBoxVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
+                    gif = Visibility.Visible;
                     PMButton.CurrentMessage = MessageStatus.BonusGameWon1;
                     Player1LabelVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
@@ -780,6 +807,7 @@ namespace SUP23_G4.ViewModels
                     Player2ForegroundBrush = Brushes.Goldenrod;
                     Player2LabelVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
+                    gif = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
                     PMButton.CurrentMessage = MessageStatus.Player2Winner;
@@ -791,6 +819,7 @@ namespace SUP23_G4.ViewModels
                     Player1ForegroundBrush = Brushes.Goldenrod;
                     Player1LabelVisibility = Visibility.Visible;
                     GameButtonsVisibility = Visibility.Visible;
+                    gif = Visibility.Visible;
                     MessageBoxVisibility = Visibility.Visible;
                     DisplayDiceSumVisibility = Visibility.Hidden; 
                     PMButton.CurrentMessage = MessageStatus.Player1Winner;

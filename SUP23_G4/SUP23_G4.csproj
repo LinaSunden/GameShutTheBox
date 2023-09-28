@@ -17,6 +17,7 @@
     <None Remove="Resources\DiceFace4.png" />
     <None Remove="Resources\DiceFace5.png" />
     <None Remove="Resources\DiceFace6.png" />
+    <None Remove="Resources\Fireworks.gif" />
     <None Remove="Resources\GreatBritainFlag.png" />
     <None Remove="Resources\GreenBackground.jpg" />
     <None Remove="Resources\Image\Bonus_Round.png" />
@@ -35,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Fireworks.gif" />
     <Resource Include="Resources\Image\Bonus_Round.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -63,6 +65,7 @@
     <PackageReference Include="HelixToolkit.Wpf" Version="2.24.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>

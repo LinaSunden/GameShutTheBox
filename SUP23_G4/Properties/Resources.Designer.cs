@@ -181,6 +181,16 @@ namespace SUP23_G4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] Fireworks {
+            get {
+                object obj = ResourceManager.GetObject("Fireworks", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] GameRulesEnglish {
             get {
                 object obj = ResourceManager.GetObject("GameRulesEnglish", resourceCulture);

@@ -9,6 +9,7 @@
              xmlns:GameTiles="clr-namespace:SUP23_G4.Views.GameTiles" 
              xmlns:GameComponents="clr-namespace:SUP23_G4.Views.GameComponents"  
              xmlns:MessageBox="clr-namespace:SUP23_G4.Views.MessageBox"  
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              x:Class="SUP23_G4.Views.Pages.GameView"
              d:DataContext="{d:DesignInstance {x:Type vm:GameViewModel}}" 
              mc:Ignorable="d" 
@@ -352,7 +353,9 @@
                 <GameComponents:Die x:Name="DieOne" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Top" DieValue="{Binding Dice[0].DieValue}"/>
                 <GameComponents:Die x:Name="DieTwo" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" DieValue="{Binding Dice[1].DieValue}"/>
 
-
+                <!--<Image gif:ImageBehavior.AnimatedSource="{Binding Gif, Mode=TwoWay}"/>-->
+                <Image Grid.ColumnSpan="2" gif:ImageBehavior.AnimatedSource="/resources/Fireworks.gif" gif:ImageBehavior.AutoStart="True" Visibility="{Binding gif, Mode=TwoWay}"/>
+                <!--<MediaElement x:Name="gif" MediaEnded="GifPlay()" UnloadedBehavior="Manual" Source="/resources/Fireworks.gif" LoadedBehavior="Play"/>-->
 
             </Grid>
 
