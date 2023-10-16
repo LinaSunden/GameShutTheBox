@@ -1,5 +1,4 @@
 # systemutvecklingsprojekt-ht23-sup_g4
-systemutvecklingsprojekt-ht23-sup_g4 created by GitHub Classroom
 
 
 Shut the box
