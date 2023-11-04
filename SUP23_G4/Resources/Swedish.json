@@ -1,0 +1,32 @@
+{
+  "HomePage": "Startsida",
+  "Player1": "Spelare 1: ",
+  "Player2": "Spelare 2: ",
+  "Score": "Poäng: ",
+  "Round": "Omgång: ",
+  "MyTurn": "Din tur",
+  "GameRuleBtn": "Visa spelregler",
+  "ThrowDiceBtn": "Kasta tärningar",
+  "ConfirmMove": "Genomför drag",
+  "LanguageName": "Svenska",
+  "Flag": "/Resources/SwedenFlag.png",
+  "SelectLanguage": "Välj språk",
+  "StartGame": "Starta spelet",
+  "GameRules": "Spelregler",
+  "DecidePoints": "Antal poäng att spela till",
+  "PlayerWinner": "Grattis du har vunnit!\n\rVill du köra en rematch?",
+  "BonusGame": "Spelet slutade lika då\r\bbåda spelarna fick samma poäng.\r\nVill ni köra en bonusomgång?",
+  "BonusGameWon": "GRATTIS!\r\bDu har vunnit bonusomgångenomgången\r\boch spelet! Vill du köra en rematch?",
+  "Over45Player1": "Din tur är nu över!\r\bOm inte din motståndare får mer poäng\r\bän dig förlorar du.",
+  "PlayerTurn": "Din tur är nu över!\n\r\n\r",
+  "BonusGameTurn": "Nu är din bonustur slut.\n\r\n\r",
+  "valueTooLow": "Du har valt för låga värden"
+
+} 
+
+
+   
+                   
+                 
+                   
+    
