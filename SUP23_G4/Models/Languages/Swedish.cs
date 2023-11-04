@@ -12,7 +12,8 @@ namespace SUP23_G4.Models.Languages
     {
         public Swedish()
         {
-            if (File.Exists("Swedish.json"))
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Swedish.json");
+            if (File.Exists(jsonFilePath))
             {
                var swedishData = JsonFileHandler.Open<Language>("Swedish.json");
 

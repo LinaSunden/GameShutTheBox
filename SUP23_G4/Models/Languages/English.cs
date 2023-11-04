@@ -13,7 +13,8 @@ namespace SUP23_G4.Models.Languages
     {
         public English()
         {
-            if (File.Exists("English.json"))
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "English.json");
+            if (File.Exists(jsonFilePath))
             {
                 var englishData = JsonFileHandler.Open<Language>("English.json");
 
