@@ -10,5 +10,11 @@ The standard is to play to 45 points, but players can choose to compete against 
 
 ![image](https://github.com/systemvetenskap/systemutvecklingsprojekt-ht23-sup_g4/assets/117045810/99eca23c-12e8-47fc-ba70-f7c6607abfe0)
 
+![game](https://github.com/LinaSunden/GameShutTheBox/assets/117045688/747df9eb-5799-40f5-8f5b-938e089f7a26)
+
+
+![bild](https://github.com/LinaSunden/GameShutTheBox/assets/117045688/c4872f6a-3ddb-4830-ba40-3b9e590817ed)
+
+
 
 
